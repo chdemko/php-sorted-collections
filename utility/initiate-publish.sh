@@ -2,6 +2,12 @@
 
 if [ "$TRAVIS_REPO_SLUG" == "chdemko/php-sorted-collections" ] && [ "$TRAVIS_PHP_VERSION" == "5.4" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_BRANCH" == "master" ]; then
 
+  echo -e "Publishing code coverage to coveralls.io ...\n"
+
+  php vendor/bin/coveralls -v
+
+  echo -e "Published code coverage to coveralls.io\n"
+  
   echo -e "Publishing doc...\n"
 
   cp -R build/api $HOME/api-latest
@@ -25,8 +31,4 @@ if [ "$TRAVIS_REPO_SLUG" == "chdemko/php-sorted-collections" ] && [ "$TRAVIS_PHP
 
   echo -e "Published doc to gh-pages.\n"
 
-  echo -e "Publishing code coverage to coveralls.io ...\n"
-  php vendor/bin/coveralls -v
-  echo -e "Published code coverage to coveralls.io\n"
-  
 fi

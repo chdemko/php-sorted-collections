@@ -153,6 +153,7 @@ class SubSetTest extends \PHPUnit_Framework_TestCase
 			(string) $tail
 		);
 	}
+
 	/**
 	 * Tests  SubSet::view
 	 *
