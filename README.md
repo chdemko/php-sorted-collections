@@ -35,8 +35,7 @@ $ composer install
 Create a `test.php` file containg
 ~~~php
 <?php
-$loader = require __DIR__ . "/vendor/autoload.php";
-$loader->addPsr4('chdemko\\SortedCollection\\', __DIR__ . '/SortedCollection');
+require __DIR__ . "/vendor/autoload.php";
 
 use chdemko\SortedCollection\TreeMap;
 
@@ -47,6 +46,7 @@ This should print
 ~~~
 [0,1,2,3,4,5,6,7,8,9]
 ~~~
+See the examples folder for more information.
 
 Documentation
 -------------

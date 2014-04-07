@@ -5,7 +5,7 @@ php:
   - 5.5
 
 before_install:
-  - sudo composer self-update
+  - composer self-update
 
 before_script:
   - composer update --dev
