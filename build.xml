@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Sorted Collections" default="build" basedir=".">
+	<property name="source" value="src" />
+	<property name="tests" value="tests" />
+	<property name="examples" value="examples" />
+
+	<condition property="script-suffix" value=".bat" else="">
+		<os family="windows" />
+	</condition>
+
+	<target name="clean" description="Clean up">
+		<delete dir="${basedir}/build" />
+		<mkdir dir="${basedir}/build" />
+	</target>
+
+	<target name="installdep" description="Install build dependencies using composer">
+		<exec executable="composer">
+			<arg value="update" />
+			<arg value="--dev" />
+		</exec>
+	</target>
+
+	<target name="phpunit" description="Run unit tests using PHPUnit">
+		<exec executable="phpunit${script-suffix}" />
+	</target>
+
+	<target name="phpcs" description="Generate codestyle report using PHP_CodeSniffer">
+		<exec executable="phpcs${script-suffix}">
+			<arg value="--report=full" />
+			<arg value="--extensions=php" />
+			<arg value="--ignore=${basedir}/src/Joomla/String/phputf8" />
+			<arg value="--standard=Joomla" />
+			<arg path="${source}" />
+			<arg path="${tests}" />
+			<arg path="${examples}" />
+		</exec>
+	</target>
+
+	<target name="phpdoc" description="Generate API documentation using phpDocumentor">
+		<exec executable="phpdoc${script-suffix}" />
+	</target>
+
+	<target name="composervalidate" description="Perform validation of composer.json files.">
+		<exec executable="composer" failonerror="true">
+			<arg value="validate" />
+		</exec>
+
+		<apply executable="composer" failonerror="true">
+			<arg value="validate" />
+
+			<fileset dir="${source}">
+				<include name="**/composer.json" />
+				<modified />
+			</fileset>
+		</apply>
+	</target>
+
+	<target name="build" depends="clean,composervalidate,installdep,phpunit,phpdoc" />
+</project>
