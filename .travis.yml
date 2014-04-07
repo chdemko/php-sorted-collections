@@ -11,7 +11,7 @@ before_script:
   - sudo apt-get install graphviz
   - sudo apt-get install tree
   - composer update --dev
-  - pyrus install -f pear/PHP_CodeSniffer
+  - pyrus install -f pear/PHP_CodeSniffer-1.5.2
   - tree `pyrus get php_dir | tail -1`
   - git clone https://github.com/joomla/coding-standards.git `pyrus get php_dir | tail -1`/PHP/CodeSniffer/Standards/Joomla
   - phpenv rehash
@@ -22,7 +22,6 @@ script:
   - ant phpunit
 
 after_script:
-  - php vendor/bin/coveralls -v
   - utility/initiate-publish.sh
 
 after_success:

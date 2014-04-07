@@ -24,5 +24,9 @@ if [ "$TRAVIS_REPO_SLUG" == "chdemko/php-sorted-collections" ] && [ "$TRAVIS_PHP
   git push -fq origin gh-pages > /dev/null
 
   echo -e "Published doc to gh-pages.\n"
+
+  echo -e "Publishing code coverage to coveralls.io ...\n"
+  php vendor/bin/coveralls -v
+  echo -e "Published code coverage to coveralls.io\n"
   
 fi
