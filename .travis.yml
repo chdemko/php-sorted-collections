@@ -9,7 +9,7 @@ before_install:
 
 before_script:
   - sudo apt-get install graphviz
-  - sudo apg-get install tree
+  - sudo apt-get install tree
   - composer update --dev
   - pyrus install -f pear/PHP_CodeSniffer
   - tree `pyrus get php_dir | tail -1`
