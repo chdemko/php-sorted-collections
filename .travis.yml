@@ -10,7 +10,7 @@ before_install:
 before_script:
   - composer update --dev
   - wget http://pear.php.net/go-pear.phar
-  - sudo php go-pear.phar
+  - php go-pear.phar
   - sudo pear install PHP_CodeSniffer
   - sudo git clone https://github.com/joomla/coding-standards.git `pear config-get php_dir`/PHP/CodeSniffer/Standards/Joomla
 
