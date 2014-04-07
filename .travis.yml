@@ -8,6 +8,7 @@ before_install:
   - composer self-update
 
 before_script:
+  - sudo apt-get install graphviz
   - composer update --dev
   - pyrus channel-discover pear.phpunit.de
   - pyrus install -f pear/PHP_CodeSniffer

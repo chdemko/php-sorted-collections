@@ -17,7 +17,7 @@
 	</target>
 
 	<target name="phpunit" description="Run unit tests using PHPUnit">
-		<exec executable="vendor/bin/phpdoc.php" />
+		<exec executable="phpunit" />
 	</target>
 
 	<target name="phpcs" description="Generate codestyle report using PHP_CodeSniffer">
