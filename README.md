@@ -1,9 +1,4 @@
-PHP Sorted Collections
-[![Downloads](https://poser.pugx.org/chdemko/sorted-collections/d/total.png)](https://packagist.org/packages/chdemko/sorted-collections)
-[![Latest Stable Version](https://poser.pugx.org/chdemko/sorted-collections/version.png)](https://packagist.org/packages/chdemko/sorted-collections)
-[![Latest Unstable Version](https://poser.pugx.org/chdemko/sorted-collections/v/unstable.png)](https://packagist.org/packages/chdemko/sorted-collections)
-[![Build Status](https://secure.travis-ci.org/chdemko/php-sorted-collections.png)](http://travis-ci.org/chdemko/php-sorted-collections)
-[![License](https://poser.pugx.org/chdemko/sorted-collections/license.png)](https://packagist.org/packages/chdemko/sorted-collections)
+PHP Sorted Collections [![Downloads](https://poser.pugx.org/chdemko/sorted-collections/d/total.png)](https://packagist.org/packages/chdemko/sorted-collections) [![Latest Stable Version](https://poser.pugx.org/chdemko/sorted-collections/version.png)](https://packagist.org/packages/chdemko/sorted-collections) [![Latest Unstable Version](https://poser.pugx.org/chdemko/sorted-collections/v/unstable.png)](https://packagist.org/packages/chdemko/sorted-collections) [![Build Status](https://secure.travis-ci.org/chdemko/php-sorted-collections.png)](http://travis-ci.org/chdemko/php-sorted-collections) [![License](https://poser.pugx.org/chdemko/sorted-collections/license.png)](https://packagist.org/packages/chdemko/sorted-collections)
 ======================
 
 Sorted Collection for PHP. Insertion, search, and removal compute in `log(n)` time where `n` is the number of items present in the collection. It uses AVL threaded tree [see @Knuth97, 1:320, Sect. 2.3.1] as internal structure.
