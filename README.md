@@ -3,6 +3,7 @@ PHP Sorted Collections
 [![Downloads](https://poser.pugx.org/chdemko/sorted-collections/d/total.png)](https://packagist.org/packages/chdemko/sorted-collections)
 [![Latest Stable Version](https://poser.pugx.org/chdemko/sorted-collections/version.png)](https://packagist.org/packages/chdemko/sorted-collections)
 [![Latest Unstable Version](https://poser.pugx.org/chdemko/sorted-collections/v/unstable.png)](https://packagist.org/packages/chdemko/sorted-collections)
+[![Code coverage](https://coveralls.io/repos/chdemko/php-sorted-collections/badge.png?branch=master)](https://coveralls.io/r/chdemko/php-sorted-collections?branch=master)
 [![Build Status](https://secure.travis-ci.org/chdemko/php-sorted-collections.png)](http://travis-ci.org/chdemko/php-sorted-collections)
 [![License](https://poser.pugx.org/chdemko/sorted-collections/license.png)](http://www.cecill.info/licences/Licence_CeCILL-B_V1-en.html)
 
