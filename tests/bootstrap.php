@@ -13,7 +13,5 @@
  * This file is part of the php-sorted-collections package https://github.com/chdemko/php-sorted-collections
  */
 
-$loader = require __DIR__ . "/../vendor/autoload.php";
-$loader->addPsr4('chdemko\\SortedCollection\\', __DIR__ . '/SortedCollection');
-
+require __DIR__ . "/../vendor/autoload.php";
 date_default_timezone_set('UTC');

@@ -4,10 +4,6 @@
 	<property name="tests" value="tests" />
 	<property name="examples" value="examples" />
 
-	<condition property="script-suffix" value=".bat" else="">
-		<os family="windows" />
-	</condition>
-
 	<target name="clean" description="Clean up">
 		<delete dir="${basedir}/build" />
 		<mkdir dir="${basedir}/build" />
@@ -25,7 +21,7 @@
 	</target>
 
 	<target name="phpcs" description="Generate codestyle report using PHP_CodeSniffer">
-		<exec executable="phpcs${script-suffix}">
+		<exec executable="phpcs">
 			<arg value="--report=full" />
 			<arg value="--extensions=php" />
 			<arg value="--ignore=${basedir}/src/Joomla/String/phputf8" />
@@ -37,7 +33,7 @@
 	</target>
 
 	<target name="phpdoc" description="Generate API documentation using phpDocumentor">
-		<exec executable="phpdoc${script-suffix}" />
+		<exec executable="vendor/bin/phpdoc.php" />
 	</target>
 
 	<target name="composervalidate" description="Perform validation of composer.json files.">
