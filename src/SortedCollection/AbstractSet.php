@@ -198,6 +198,18 @@ abstract class AbstractSet implements SortedSet
 	 */
 	public function __toString()
 	{
+		return json_encode($this->toArray());
+	}
+
+	/**
+	 * Convert the object to an array
+	 *
+	 * @return  array  Array representation of the object
+	 *
+	 * @since   1.0.0
+	 */
+	public function toArray()
+	{
 		$array = [];
 
 		foreach ($this as $value)
@@ -205,7 +217,7 @@ abstract class AbstractSet implements SortedSet
 			$array[] = $value;
 		}
 
-		return json_encode($array);
+		return $array;
 	}
 
 	/**

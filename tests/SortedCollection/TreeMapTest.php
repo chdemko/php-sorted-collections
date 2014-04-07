@@ -780,6 +780,7 @@ class TreeMapTest extends \PHPUnit_Framework_TestCase
 	 * @return  void
 	 *
 	 * @covers  chdemko\SortedCollection\AbstractMap::__toString
+	 * @covers  chdemko\SortedCollection\AbstractMap::toArray
 	 * @covers  chdemko\SortedCollection\AbstractMap::getIterator
 	 * @covers  chdemko\SortedCollection\AbstractMap::jsonSerialize
 	 * @covers  chdemko\SortedCollection\Iterator::__construct

@@ -20,10 +20,10 @@ script:
   - ant phpunit
 
 after_script:
-  - ant phpdoc
+  - utility/initiate-publish.sh
 
 after_success:
-  - utility/initiate-publish.sh
+  - ant phpdoc
 
 env:
   global:

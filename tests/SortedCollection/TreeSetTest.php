@@ -609,6 +609,7 @@ class TreeSetTest extends \PHPUnit_Framework_TestCase
 	 * @return  void
 	 *
 	 * @covers  chdemko\SortedCollection\AbstractSet::__toString
+	 * @covers  chdemko\SortedCollection\AbstractSet::toArray
 	 * @covers  chdemko\SortedCollection\AbstractSet::jsonSerialize
 	 * @covers  chdemko\SortedCollection\AbstractSet::getIterator
 	 * @covers  chdemko\SortedCollection\Iterator::create
