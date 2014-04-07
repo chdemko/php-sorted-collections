@@ -10,9 +10,8 @@ before_install:
 before_script:
   - sudo apt-get install graphviz
   - composer update --dev
-  - pyrus channel-discover pear.phpunit.de
   - pyrus install -f pear/PHP_CodeSniffer
-  - sudo git clone https://github.com/joomla/coding-standards.git `pear config-get php_dir`/PHP/CodeSniffer/Standards/Joomla
+  - git clone https://github.com/joomla/coding-standards.git `pyrus config-get php_dir`/PHP/CodeSniffer/Standards/Joomla
   - phpenv rehash
 
 script:
