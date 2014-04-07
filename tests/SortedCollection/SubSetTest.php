@@ -62,7 +62,7 @@ class SubSetTest extends \PHPUnit_Framework_TestCase
 	 */
 	public function test_create($values, $from, $to, $fromInclusive, $toInclusive, $string)
 	{
-		$set = TreeSet::create($comparator)->initialise($values);
+		$set = TreeSet::create()->initialise($values);
 		$sub = SubSet::create($set, $from, $to, $fromInclusive, $toInclusive);
 		$this->assertEquals(
 			$string,
@@ -104,7 +104,7 @@ class SubSetTest extends \PHPUnit_Framework_TestCase
 	 */
 	public function test_head($values, $to, $toInclusive, $string)
 	{
-		$set = TreeSet::create($comparator)->initialise($values);
+		$set = TreeSet::create()->initialise($values);
 		$head = SubSet::head($set, $to, $toInclusive);
 		$this->assertEquals(
 			$string,
@@ -146,7 +146,7 @@ class SubSetTest extends \PHPUnit_Framework_TestCase
 	 */
 	public function test_tail($values, $from, $fromInclusive, $string)
 	{
-		$set = TreeSet::create($comparator)->initialise($values);
+		$set = TreeSet::create()->initialise($values);
 		$tail = SubSet::tail($set, $from, $fromInclusive);
 		$this->assertEquals(
 			$string,

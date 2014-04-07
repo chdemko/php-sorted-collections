@@ -10,6 +10,7 @@ before_install:
 before_script:
   - composer update --dev
   - sudo git clone https://github.com/joomla/coding-standards.git `pear config-get php_dir`/PHP/CodeSniffer/Standards/Joomla
+  - sudo apt-get install php-codesniffer
 
 script:
   - ant composervalidate
