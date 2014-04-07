@@ -16,6 +16,38 @@ This project uses:
 * [PHPUnit](http://phpunit.de/) for unit test (100% covered)
 * [phpDocumentor](http://http://www.phpdoc.org/) for api documentation
 
+Installation
+------------
+
+Using composer: create a `composer.json` file containing
+~~~json
+{
+	"require": {
+		"chdemko/sorted-collections": "dev-master"
+	}
+}
+~~~
+and run
+~~~
+$ composer install
+~~~
+
+Create a `test.php` file containg
+~~~php
+<?php
+$loader = require __DIR__ . "/vendor/autoload.php";
+$loader->addPsr4('chdemko\\SortedCollection\\', __DIR__ . '/SortedCollection');
+
+use chdemko\SortedCollection\TreeMap;
+
+$tree = TreeMap::create()->put(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
+echo $tree . PHP_EOL;
+~~~
+This should print
+~~~
+[0,1,2,3,4,5,6,7,8,9]
+~~~
+
 Documentation
 -------------
 
