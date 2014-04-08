@@ -2,7 +2,7 @@
 	"name": "chdemko/sorted-collections",
 	"type": "library",
 	"description": "Sorted Collections for PHP >= 5.4",
-	"keywords": ["set","tree","map","sorted","ordered","iterator"],
+	"keywords": ["collection","set","tree","map","sorted","ordered","iterator"],
 	"homepage": "http://github.com/chdemko/php-sorted-collections",
 	"license": "CECILL-B",
 	"authors": [
