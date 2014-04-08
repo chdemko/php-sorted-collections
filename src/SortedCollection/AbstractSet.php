@@ -223,7 +223,7 @@ abstract class AbstractSet implements SortedSet
 	/**
 	 * Create an iterator
 	 *
-	 * @return  A new iterator
+	 * @return  Iterator  A new iterator
 	 *
 	 * @since  1.0.0
 	 */

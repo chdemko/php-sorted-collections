@@ -376,7 +376,7 @@ class SubMap extends AbstractMap
 	/**
 	 * Get the comparator
 	 *
-	 * @return  The comparator
+	 * @return  callable  The comparator
 	 *
 	 * @since   1.0.0
 	 */
