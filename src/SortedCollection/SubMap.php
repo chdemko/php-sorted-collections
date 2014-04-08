@@ -31,8 +31,8 @@ namespace chdemko\SortedCollection;
  * @property-read  mixed      $firstKey       The first key of the map
  * @property-read  TreeNode   $last           The last element of the map
  * @property-read  mixed      $lastKey        The last key of the map
- * @property-read  generator  $keys           The keys generator
- * @property-read  generator  $values         The values generator
+ * @property-read  Iterator   $keys           The keys iterator
+ * @property-read  Iterator   $values         The values iterator
  * @property-read  integer    $count          The number of elements in the map
  * @property-read  SortedMap  $map            The underlying map
  */
