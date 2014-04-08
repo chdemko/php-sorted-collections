@@ -259,11 +259,11 @@ class TreeNode implements \Countable
 	 * @param   mixed     $key         The key
 	 * @param   Callable  $comparator  The comparator function
 	 * @param   integer   $type        The operation type
-	 *                                     -2 for the greatest key less than the given key
-	 *                                     -1 for the greatest key less than or equal to the given key
+	 *                                     -2 for the greatest key lesser than the given key
+	 *                                     -1 for the greatest key lesser than or equal to the given key
 	 *                                      0 for the given key
-	 *                                     +1 for the lowest key less than or equal to the given key
-	 *                                     +2 for the lowest key less than the given key
+	 *                                     +1 for the lowest key greater than or equal to the given key
+	 *                                     +2 for the lowest key greater than the given key
 	 *
 	 * @return  mixed  The node or null if not found
 	 *
