@@ -40,7 +40,7 @@ require __DIR__ . "/vendor/autoload.php";
 
 use chdemko\SortedCollection\TreeMap;
 
-$tree = TreeMap::create()->put(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
+$tree = TreeMap::create()->put([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
 echo $tree . PHP_EOL;
 ~~~
 This should print

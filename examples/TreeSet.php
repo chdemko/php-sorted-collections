@@ -18,7 +18,7 @@ require __DIR__ . "/../vendor/autoload.php";
 
 use chdemko\SortedCollection\TreeSet;
 
-$set = TreeSet::create()->put(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
+$set = TreeSet::create()->put([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
 
 // Print [0,1,2,3,4,5,6,7,8,9]
 echo $set . PHP_EOL;
