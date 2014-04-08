@@ -47,7 +47,7 @@ This should print
 ~~~
 [0,1,2,3,4,5,6,7,8,9]
 ~~~
-See the examples folder for more information.
+See the [examples](https://github.com/chdemko/php-sorted-collections/tree/master/examples) folder for more information.
 
 Documentation
 -------------
