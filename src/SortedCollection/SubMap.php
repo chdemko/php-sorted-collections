@@ -22,18 +22,20 @@ namespace chdemko\SortedCollection;
  *
  * @since       1.0.0
  *
+ * @property-read  callable   $comparator     The key comparison function
+ * @property-read  TreeNode   $first          The first element of the map
+ * @property-read  mixed      $firstKey       The first key of the map
+ * @property-read  mixed      $firstValue     The first value of the map
+ * @property-read  TreeNode   $last           The last element of the map
+ * @property-read  mixed      $lastKey        The last key of the map
+ * @property-read  mixed      $lastValue      The last value of the map
+ * @property-read  Iterator   $keys           The keys iterator
+ * @property-read  Iterator   $values         The values iterator
+ * @property-read  integer    $count          The number of elements in the map
  * @property       mixed      $fromKey        The from key
  * @property       boolean    $fromInclusive  The from inclusive flag
  * @property       mixed      $toKey          The to key
  * @property       boolean    $toInclusive    The to inclusive flag
- * @property-read  callable   $comparator     The key comparison function
- * @property-read  TreeNode   $first          The first element of the map
- * @property-read  mixed      $firstKey       The first key of the map
- * @property-read  TreeNode   $last           The last element of the map
- * @property-read  mixed      $lastKey        The last key of the map
- * @property-read  Iterator   $keys           The keys iterator
- * @property-read  Iterator   $values         The values iterator
- * @property-read  integer    $count          The number of elements in the map
  * @property-read  SortedMap  $map            The underlying map
  */
 class SubMap extends AbstractMap
