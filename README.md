@@ -20,7 +20,14 @@ This project uses:
 Installation
 ------------
 
-Using composer: create a `composer.json` file containing
+Using composer: either
+
+~~~
+$ composer create-project chdemko/sorted-collections dev-master
+~~~
+
+or create a `composer.json` file containing
+
 ~~~json
 {
 	"require": {
