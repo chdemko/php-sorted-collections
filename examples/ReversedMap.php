@@ -14,7 +14,7 @@
  * This file is part of the php-sorted-collections package https://github.com/chdemko/php-sorted-collections
  */
 
-require __DIR__ . "/../vendor/autoload.php";
+require __DIR__ . '/../vendor/autoload.php';
 
 use chdemko\SortedCollection\TreeMap;
 use chdemko\SortedCollection\ReversedMap;

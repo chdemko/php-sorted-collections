@@ -43,7 +43,7 @@ $ composer install
 Create a `test.php` file containg
 ~~~php
 <?php
-require __DIR__ . "/vendor/autoload.php";
+require __DIR__ . '/vendor/autoload.php';
 
 use chdemko\SortedCollection\TreeMap;
 
