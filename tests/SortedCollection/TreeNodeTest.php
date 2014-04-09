@@ -997,8 +997,8 @@ class TreeNodeTest extends \PHPUnit_Framework_TestCase
 			),
 			array(
 				array(0 => 0, 2 => 2, 4 => 4, 1 => 1, 3 => 3, 5 => 5),
-				 1,
-				 '(2,2,1,(0,0,0,,),(4,4,0,(3,3,0,,),(5,5,0,,)))',
+				1,
+				'(2,2,1,(0,0,0,,),(4,4,0,(3,3,0,,),(5,5,0,,)))',
 				'{"0":0,"2":2,"3":3,"4":4,"5":5}',
 				'{"5":5,"4":4,"3":3,"2":2,"0":0}'
 			),
@@ -1098,7 +1098,9 @@ class TreeNodeTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @param   array   $values  Initial values array
 	 * @param   mixed   $key     Key to remove
-	 * @param   string  $string  String representation of the tree
+	 * @param   string  $string  Local string representation of the tree
+	 * @param   string  $s1      String representation of the tree
+	 * @param   string  $s2      String representation of the reversed tree
 	 *
 	 * @return  void
 	 *
