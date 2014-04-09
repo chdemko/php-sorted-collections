@@ -557,20 +557,24 @@ class TreeNode implements \Countable
 			if ($this->information & 1)
 			{
 				$this->right->left = $this->left;
+
+				return $this->right;
 			}
 			else
 			{
 				if ($this->left->right == $this)
 				{
 					$this->left->information &= ~ 1;
+
+					return $this->right;
 				}
 				else
 				{
 					$this->right->information &= ~ 2;
+
+					return $this->left;
 				}
 			}
-
-			return $this->right;
 		}
 	}
 
