@@ -18,14 +18,13 @@ require __DIR__ . '/../vendor/autoload.php';
 
 use chdemko\SortedCollection\TreeMap;
 
-$tree = TreeMap::create();
+printf('%10s %10s %10s' . PHP_EOL, 'Operation', 'n', 'time (ms)');
+printf('---------------------------------' . PHP_EOL);
 
-echo 'Insertion' . PHP_EOL;
+$tree = TreeMap::create();
 
 foreach (array(100, 1000, 10000, 100000) as $count)
 {
-	$tree->clear();
-
 	$start = microtime(true);
 
 	for ($i = 0; $i < $count; $i++)
@@ -35,16 +34,13 @@ foreach (array(100, 1000, 10000, 100000) as $count)
 
 	$end = microtime(true);
 
-	echo $count . ': ' . ($end - $start) . ' ms' . PHP_EOL;
-}
+	printf('%10s %10d %10.2f' . PHP_EOL, 'Insertion', $count, ($end - $start));
 
-echo PHP_EOL;
-echo 'Search' . PHP_EOL;
+	$tree->clear();
+}
 
 foreach (array(100, 1000, 10000, 100000) as $count)
 {
-	$tree->clear();
-
 	for ($i = 0; $i < $count; $i++)
 	{
 		$tree[$i] = $i;
@@ -59,11 +55,10 @@ foreach (array(100, 1000, 10000, 100000) as $count)
 
 	$end = microtime(true);
 
-	echo $count . ': ' . ($end - $start) . ' ms' . PHP_EOL;
-}
+	printf('%10s %10d %10.2f' . PHP_EOL, 'Search', $count, ($end - $start));
 
-echo PHP_EOL;
-echo 'Remove' . PHP_EOL;
+	$tree->clear();
+}
 
 foreach (array(100, 1000, 10000, 100000) as $count)
 {
@@ -83,5 +78,5 @@ foreach (array(100, 1000, 10000, 100000) as $count)
 
 	$end = microtime(true);
 
-	echo $count . ': ' . ($end - $start) . ' ms' . PHP_EOL;
+	printf('%10s %10d %10.2f' . PHP_EOL, 'Removal', $count, ($end - $start));
 }
