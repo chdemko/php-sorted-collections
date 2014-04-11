@@ -18,17 +18,11 @@
 	},
 	"require-dev": {
 		"phpdocumentor/phpdocumentor": "2.5.*@dev",
-		"satooshi/php-coveralls": "dev-master",
-		"devster/ubench": "1.1.*@dev"
+		"satooshi/php-coveralls": "dev-master"
 	},
 	"autoload": {
 		"psr-4": {
 			"chdemko\\SortedCollection\\": "src/SortedCollection"
 		}
-	},
-	"extra": {
-        "branch-alias": {
-            "dev-master": "1.0.x-dev"
-        }
-    }
+	}
 }
