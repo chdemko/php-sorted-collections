@@ -23,7 +23,7 @@ Installation
 Using composer: either
 
 ~~~
-$ composer create-project chdemko/sorted-collections php-sorted-collections dev-master
+$ composer create-project chdemko/sorted-collections:1.0.x-dev --dev; cd sorted-collections
 ~~~
 
 or create a `composer.json` file containing
