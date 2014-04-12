@@ -20,7 +20,7 @@ use chdemko\SortedCollection\TreeMap;
 
 printf('TreeMap benchmarking run on ' . date('r') . PHP_EOL . PHP_EOL);
 printf('%25s %10s %10s' . PHP_EOL, 'Operation', '#elements', 'seconds');
-printf('----------------------------------------------------' . PHP_EOL);
+printf('-----------------------------------------------' . PHP_EOL);
 
 $tree = TreeMap::create();
 
@@ -84,8 +84,6 @@ foreach ([100, 1000, 10000, 100000] as $count)
 
 foreach ([100, 1000, 10000, 100000] as $count)
 {
-	$tree->clear();
-
 	for ($i = 0; $i < $count; $i++)
 	{
 		$tree[$i] = $i;
@@ -100,6 +98,8 @@ foreach ([100, 1000, 10000, 100000] as $count)
 	$end = microtime(true);
 
 	printf('%25s %10d %10.2f' . PHP_EOL, 'Loop on all elements', $count, ($end - $start));
+
+	$tree->clear();
 }
 
 foreach ([100, 1000, 10000, 100000] as $count)
