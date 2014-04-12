@@ -51,12 +51,12 @@ foreach ([100, 1000, 10000, 100000] as $count)
 
 	for ($i = 0; $i < $count; $i++)
 	{
-		$value = $tree[$i];
+		unset($tree[$i]);
 	}
 
 	$end = microtime(true);
 
-	printf('%25s %10d %10.2f' . PHP_EOL, 'Search all elements', $count, ($end - $start));
+	printf('%25s %10d %10.2f' . PHP_EOL, 'Remove all elements', $count, ($end - $start));
 
 	$tree->clear();
 }
@@ -72,12 +72,12 @@ foreach ([100, 1000, 10000, 100000] as $count)
 
 	for ($i = 0; $i < $count; $i++)
 	{
-		unset($tree[$i]);
+		$value = $tree[$i];
 	}
 
 	$end = microtime(true);
 
-	printf('%25s %10d %10.2f' . PHP_EOL, 'Remove all elements', $count, ($end - $start));
+	printf('%25s %10d %10.2f' . PHP_EOL, 'Search all elements', $count, ($end - $start));
 
 	$tree->clear();
 }
