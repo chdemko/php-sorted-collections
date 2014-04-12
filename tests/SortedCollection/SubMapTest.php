@@ -31,6 +31,7 @@ class SubMapTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @covers  chdemko\SortedCollection\SubMap::create
 	 * @covers  chdemko\SortedCollection\SubMap::__construct
+	 * @covers  chdemko\SortedCollection\SubMap::setEmpty
 	 * @covers  chdemko\SortedCollection\SubMap::__get
 	 * @covers  chdemko\SortedCollection\SubMap::__set
 	 *
@@ -1338,6 +1339,7 @@ class SubMapTest extends \PHPUnit_Framework_TestCase
 	 * @return  void
 	 *
 	 * @covers  chdemko\SortedCollection\SubMap::jsonSerialize
+	 * @covers  chdemko\SortedCollection\SubMap::setEmpty
 	 *
 	 * @dataProvider  cases_jsonSerialize
 	 *

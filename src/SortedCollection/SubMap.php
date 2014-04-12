@@ -223,6 +223,8 @@ class SubMap extends AbstractMap
 				throw new \OutOfBoundsException('Undefined property');
 			break;
 		}
+
+		$this->setEmpty();
 	}
 
 	/**
@@ -298,12 +300,23 @@ class SubMap extends AbstractMap
 		$this->fromOption = $fromOption;
 		$this->toKey = $toKey;
 		$this->toOption = $toOption;
+		$this->setEmpty();
+	}
 
-		if ($fromOption != self::UNUSED && $toOption != self::UNUSED)
+	/**
+	 * Set the empty flag
+	 *
+	 * @return  void
+	 *
+	 * @since   1.0.0
+	 */
+	protected function setEmpty()
+	{
+		if ($this->fromOption != self::UNUSED && $this->toOption != self::UNUSED)
 		{
-			$cmp = call_user_func($map->comparator(), $fromKey, $toKey);
+			$cmp = call_user_func($this->map->comparator(), $this->fromKey, $this->toKey);
 
-			$this->empty = $cmp > 0 || $cmp == 0 && ($fromOption == self::EXCLUSIVE || $toOption == self::EXCLUSIVE);
+			$this->empty = $cmp > 0 || $cmp == 0 && ($this->fromOption == self::EXCLUSIVE || $this->toOption == self::EXCLUSIVE);
 		}
 		else
 		{
