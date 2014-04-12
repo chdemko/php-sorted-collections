@@ -1,7 +1,7 @@
 <?php
 
 /**
- * TreeMap beanchmark
+ * ReversedMap beanchmark
  *
  * @package     SortedCollection
  * @subpackage  Map
@@ -17,28 +17,14 @@
 require __DIR__ . '/../vendor/autoload.php';
 
 use chdemko\SortedCollection\TreeMap;
+use chdemko\SortedCollection\ReversedMap;
 
-printf('TreeMap benchmarking run on ' . date('r') . PHP_EOL . PHP_EOL);
+printf('ReversedMap benchmarking run on ' . date('r') . PHP_EOL . PHP_EOL);
 printf('%25s %10s %10s' . PHP_EOL, 'Operation', '#elements', 'seconds');
-printf('----------------------------------------------------' . PHP_EOL);
+printf('-----------------------------------------------' . PHP_EOL);
 
 $tree = TreeMap::create();
-
-foreach ([100, 1000, 10000, 100000] as $count)
-{
-	$start = microtime(true);
-
-	for ($i = 0; $i < $count; $i++)
-	{
-		$tree[$i] = $i;
-	}
-
-	$end = microtime(true);
-
-	printf('%25s %10d %10.2f' . PHP_EOL, 'Insert all elements', $count, ($end - $start));
-
-	$tree->clear();
-}
+$reversed = ReversedMap::create($tree);
 
 foreach ([100, 1000, 10000, 100000] as $count)
 {
@@ -51,7 +37,7 @@ foreach ([100, 1000, 10000, 100000] as $count)
 
 	for ($i = 0; $i < $count; $i++)
 	{
-		$value = $tree[$i];
+		$value = $reversed[$i];
 	}
 
 	$end = microtime(true);
@@ -70,36 +56,15 @@ foreach ([100, 1000, 10000, 100000] as $count)
 
 	$start = microtime(true);
 
-	for ($i = 0; $i < $count; $i++)
-	{
-		unset($tree[$i]);
-	}
-
-	$end = microtime(true);
-
-	printf('%25s %10d %10.2f' . PHP_EOL, 'Remove all elements', $count, ($end - $start));
-
-	$tree->clear();
-}
-
-foreach ([100, 1000, 10000, 100000] as $count)
-{
-	$tree->clear();
-
-	for ($i = 0; $i < $count; $i++)
-	{
-		$tree[$i] = $i;
-	}
-
-	$start = microtime(true);
-
-	foreach ($tree as $key => $value)
+	foreach ($reversed as $key => $value)
 	{
 	}
 
 	$end = microtime(true);
 
 	printf('%25s %10d %10.2f' . PHP_EOL, 'Loop on all elements', $count, ($end - $start));
+
+	$tree->clear();
 }
 
 foreach ([100, 1000, 10000, 100000] as $count)
@@ -111,7 +76,7 @@ foreach ([100, 1000, 10000, 100000] as $count)
 
 	$start = microtime(true);
 
-	$value = count($tree);
+	$value = count($reversed);
 
 	$end = microtime(true);
 

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * TreeMap beanchmark
+ * ReversedMap beanchmark
  *
  * @package     SortedCollection
  * @subpackage  Map
@@ -17,31 +17,46 @@
 require __DIR__ . '/../vendor/autoload.php';
 
 use chdemko\SortedCollection\TreeMap;
+use chdemko\SortedCollection\SubMap;
 
-printf('TreeMap benchmarking run on ' . date('r') . PHP_EOL . PHP_EOL);
+printf('SubMap benchmarking run on ' . date('r') . PHP_EOL . PHP_EOL);
 printf('%25s %10s %10s' . PHP_EOL, 'Operation', '#elements', 'seconds');
-printf('----------------------------------------------------' . PHP_EOL);
+printf('-----------------------------------------------' . PHP_EOL);
 
 $tree = TreeMap::create();
+$sub = SubMap::create($tree);
 
 foreach ([100, 1000, 10000, 100000] as $count)
 {
-	$start = microtime(true);
+	$count = 2 * $count;
+	$sub->fromKey = 0.25 * $count;
+	$sub->toKey = 0.75 * $count;
 
 	for ($i = 0; $i < $count; $i++)
 	{
 		$tree[$i] = $i;
 	}
 
+	$start = microtime(true);
+
+	for ($i = $sub->fromKey; $i < $sub->toKey; $i++)
+	{
+		$value = $sub[$i];
+	}
+
 	$end = microtime(true);
 
-	printf('%25s %10d %10.2f' . PHP_EOL, 'Insert all elements', $count, ($end - $start));
+	printf('%25s %10d %10.2f' . PHP_EOL, 'Search all elements', $count / 2, ($end - $start));
 
 	$tree->clear();
 }
 
 foreach ([100, 1000, 10000, 100000] as $count)
 {
+	$count = 2 * $count;
+	$sub->fromKey = (int) (0.25 * $count);
+	$sub->toKey = (int) (0.75 * $count);
+
 	for ($i = 0; $i < $count; $i++)
 	{
 		$tree[$i] = $i;
@@ -49,42 +64,22 @@ foreach ([100, 1000, 10000, 100000] as $count)
 
 	$start = microtime(true);
 
-	for ($i = 0; $i < $count; $i++)
+	foreach ($sub as $key => $value)
 	{
-		$value = $tree[$i];
 	}
 
 	$end = microtime(true);
 
-	printf('%25s %10d %10.2f' . PHP_EOL, 'Search all elements', $count, ($end - $start));
+	printf('%25s %10d %10.2f' . PHP_EOL, 'Loop on all elements', $count / 2, ($end - $start));
 
 	$tree->clear();
 }
 
 foreach ([100, 1000, 10000, 100000] as $count)
 {
-	for ($i = 0; $i < $count; $i++)
-	{
-		$tree[$i] = $i;
-	}
-
-	$start = microtime(true);
-
-	for ($i = 0; $i < $count; $i++)
-	{
-		unset($tree[$i]);
-	}
-
-	$end = microtime(true);
-
-	printf('%25s %10d %10.2f' . PHP_EOL, 'Remove all elements', $count, ($end - $start));
-
-	$tree->clear();
-}
-
-foreach ([100, 1000, 10000, 100000] as $count)
-{
-	$tree->clear();
+	$count = 2 * $count;
+	$sub->fromKey = 0.25 * $count;
+	$sub->toKey = 0.75 * $count;
 
 	for ($i = 0; $i < $count; $i++)
 	{
@@ -93,29 +88,11 @@ foreach ([100, 1000, 10000, 100000] as $count)
 
 	$start = microtime(true);
 
-	foreach ($tree as $key => $value)
-	{
-	}
+	$value = count($sub);
 
 	$end = microtime(true);
 
-	printf('%25s %10d %10.2f' . PHP_EOL, 'Loop on all elements', $count, ($end - $start));
-}
-
-foreach ([100, 1000, 10000, 100000] as $count)
-{
-	for ($i = 0; $i < $count; $i++)
-	{
-		$tree[$i] = $i;
-	}
-
-	$start = microtime(true);
-
-	$value = count($tree);
-
-	$end = microtime(true);
-
-	printf('%25s %10d %10.2f' . PHP_EOL, 'Count all elements', $count, ($end - $start));
+	printf('%25s %10d %10.2f' . PHP_EOL, 'Count all elements', $count / 2, ($end - $start));
 
 	$tree->clear();
 }
