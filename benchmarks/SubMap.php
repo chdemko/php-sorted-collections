@@ -29,8 +29,8 @@ $sub = SubMap::create($tree);
 foreach ([100, 1000, 10000, 100000] as $count)
 {
 	$count = 2 * $count;
-	$sub->fromKey = 0.25 * $count;
-	$sub->toKey = 0.75 * $count;
+	$sub->fromKey = (int) (0.25 * $count);
+	$sub->toKey = (int) (0.75 * $count);
 
 	for ($i = 0; $i < $count; $i++)
 	{
@@ -78,8 +78,8 @@ foreach ([100, 1000, 10000, 100000] as $count)
 foreach ([100, 1000, 10000, 100000] as $count)
 {
 	$count = 2 * $count;
-	$sub->fromKey = 0.25 * $count;
-	$sub->toKey = 0.75 * $count;
+	$sub->fromKey = (int) (0.25 * $count);
+	$sub->toKey = (int) (0.75 * $count);
 
 	for ($i = 0; $i < $count; $i++)
 	{
