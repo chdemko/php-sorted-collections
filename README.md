@@ -30,9 +30,9 @@ or create a `composer.json` file containing
 
 ~~~json
 {
-	"require": {
-		"chdemko/sorted-collections": "dev-master"
-	}
+    "require": {
+        "chdemko/sorted-collections": "1.0.x-dev"
+    }
 }
 ~~~
 and run
