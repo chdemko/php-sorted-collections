@@ -18,7 +18,7 @@
 	},
 	"require-dev": {
 		"phpdocumentor/phpdocumentor": "2.5.*@dev",
-		"satooshi/php-coveralls": "dev-master",
+		"satooshi/php-coveralls": "dev-master"
 	},
 	"autoload": {
 		"psr-4": {
