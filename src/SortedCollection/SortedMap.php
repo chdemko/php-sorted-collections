@@ -116,7 +116,7 @@ interface SortedMap extends SortedCollection
 	 *
 	 * @param   TreeNode  $node  A tree node member of the underlying TreeMap
 	 *
-	 * @return  mixed  The predecessor node or null
+	 * @return  mixed  The predecessor node
 	 *
 	 * @since   1.0.0
 	 */
@@ -127,7 +127,7 @@ interface SortedMap extends SortedCollection
 	 *
 	 * @param   TreeNode  $node  A tree node member of the underlying TreeMap
 	 *
-	 * @return  mixed  The successor node or null
+	 * @return  mixed  The successor node
 	 *
 	 * @since   1.0.0
 	 */

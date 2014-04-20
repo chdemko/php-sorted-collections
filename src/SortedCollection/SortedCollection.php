@@ -72,7 +72,7 @@ interface SortedCollection extends \ArrayAccess, \Countable, \IteratorAggregate,
 	 *
 	 * @param   mixed  $key  The searched key
 	 *
-	 * @return  mixed  The found node or null
+	 * @return  mixed  The found node
 	 *
 	 * @throws  \OutOfBoundsException  If there is no floor element
 	 *
@@ -85,7 +85,7 @@ interface SortedCollection extends \ArrayAccess, \Countable, \IteratorAggregate,
 	 *
 	 * @param   mixed  $key  The searched key
 	 *
-	 * @return  mixed  The found node or null
+	 * @return  mixed  The found node
 	 *
 	 * @throws  \OutOfBoundsException  If there is no such element
 	 *
@@ -98,7 +98,7 @@ interface SortedCollection extends \ArrayAccess, \Countable, \IteratorAggregate,
 	 *
 	 * @param   mixed  $key  The searched key
 	 *
-	 * @return  mixed  The found node or null
+	 * @return  mixed  The found node
 	 *
 	 * @throws  \OutOfBoundsException  If there is no ceiling element
 	 *
@@ -111,7 +111,7 @@ interface SortedCollection extends \ArrayAccess, \Countable, \IteratorAggregate,
 	 *
 	 * @param   mixed  $key  The searched key
 	 *
-	 * @return  mixed  The found node or null
+	 * @return  mixed  The found node
 	 *
 	 * @throws  \OutOfBoundsException  If there is no higher element
 	 *
