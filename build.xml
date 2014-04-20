@@ -3,6 +3,7 @@
 	<property name="source" value="src" />
 	<property name="tests" value="tests" />
 	<property name="examples" value="examples" />
+	<property name="benchmarks" value="benchmarks" />
 
 	<target name="clean" description="Clean up">
 		<delete dir="${basedir}/build" />
@@ -29,6 +30,7 @@
 			<arg path="${source}" />
 			<arg path="${tests}" />
 			<arg path="${examples}" />
+			<arg path="${benchmarks}" />
 		</exec>
 	</target>
 

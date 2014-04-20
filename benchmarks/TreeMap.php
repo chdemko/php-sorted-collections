@@ -35,7 +35,13 @@ foreach ([100, 1000, 10000, 100000] as $count)
 
 	$end = microtime(true);
 
-	printf('%25s %10d %10.2f %10.2f' . PHP_EOL, 'Insert all elements', $count, ($end - $start), ($end - $start) / ($count * log($count)) * 1000000);
+	printf(
+		'%25s %10d %10.2f %10.2f' . PHP_EOL,
+		'Insert all elements',
+		$count,
+		$end - $start,
+		($end - $start) / ($count * log($count)) * 1000000
+	);
 
 	$tree->clear();
 }
@@ -56,7 +62,13 @@ foreach ([100, 1000, 10000, 100000] as $count)
 
 	$end = microtime(true);
 
-	printf('%25s %10d %10.2f %10.2f' . PHP_EOL, 'Remove all elements', $count, ($end - $start), ($end - $start) / ($count * log($count)) * 1000000);
+	printf(
+		'%25s %10d %10.2f %10.2f' . PHP_EOL,
+		'Remove all elements',
+		$count,
+		$end - $start,
+		($end - $start) / ($count * log($count)) * 1000000
+	);
 
 	$tree->clear();
 }
@@ -77,7 +89,13 @@ foreach ([100, 1000, 10000, 100000] as $count)
 
 	$end = microtime(true);
 
-	printf('%25s %10d %10.2f %10.2f' . PHP_EOL, 'Search all elements', $count, ($end - $start), ($end - $start) / ($count * log($count)) * 1000000);
+	printf(
+		'%25s %10d %10.2f %10.2f' . PHP_EOL,
+		'Search all elements',
+		$count,
+		$end - $start,
+		($end - $start) / ($count * log($count)) * 1000000
+	);
 
 	$tree->clear();
 }
@@ -97,7 +115,13 @@ foreach ([100, 1000, 10000, 100000] as $count)
 
 	$end = microtime(true);
 
-	printf('%25s %10d %10.2f %10.2f' . PHP_EOL, 'Loop on all elements', $count, ($end - $start), ($end - $start) / ($count * log($count)) * 1000000);
+	printf(
+		'%25s %10d %10.2f %10.2f' . PHP_EOL,
+		'Loop on all elements',
+		$count,
+		$end - $start,
+		($end - $start) / ($count * log($count)) * 1000000
+	);
 
 	$tree->clear();
 }
@@ -115,7 +139,13 @@ foreach ([100, 1000, 10000, 100000] as $count)
 
 	$end = microtime(true);
 
-	printf('%25s %10d %10.2f %10.2f' . PHP_EOL, 'Count all elements', $count, ($end - $start), ($end - $start) / ($count * log($count)) * 1000000);
+	printf(
+		'%25s %10d %10.2f %10.2f' . PHP_EOL,
+		'Count all elements',
+		$count,
+		$end - $start,
+		($end - $start) / ($count * log($count)) * 1000000
+	);
 
 	$tree->clear();
 }
