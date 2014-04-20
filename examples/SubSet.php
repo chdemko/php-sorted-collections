@@ -20,7 +20,7 @@ use chdemko\SortedCollection\TreeSet;
 use chdemko\SortedCollection\ReversedSet;
 use chdemko\SortedCollection\SubSet;
 
-$set = TreeSet::create()->put([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+$set = TreeSet::create()->put([1, 9, 5, 2, 6, 3, 0, 8, 7, 4]);
 $reversed = ReversedSet::create($set);
 $sub = SubSet::create($reversed, 7, 2);
 
