@@ -25,7 +25,7 @@ namespace chdemko\SortedCollection;
  * @property-read  TreeNode  $last         The last node of the tree
  * @property-read  TreeNode  $predecessor  The predecessor node
  * @property-read  TreeNode  $successor    The successor node
- * @property-read  TreeNode  $key          The key
+ * @property-read  mixed     $key          The key
  * @property-read  integer   $count        The number of elements in the tree
  */
 class TreeNode implements \Countable
