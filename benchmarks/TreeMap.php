@@ -19,8 +19,8 @@ require __DIR__ . '/../vendor/autoload.php';
 use chdemko\SortedCollection\TreeMap;
 
 printf('TreeMap benchmarking run on ' . date('r') . PHP_EOL . PHP_EOL);
-printf('%25s %10s %10s' . PHP_EOL, 'Operation', '#elements', 'seconds');
-printf('-----------------------------------------------' . PHP_EOL);
+printf('%25s %10s %10s %10s' . PHP_EOL, 'Operation', 'n', 'seconds', 'μs/(n log(n))');
+printf('-------------------------------------------------------------' . PHP_EOL);
 
 $tree = TreeMap::create();
 
@@ -35,7 +35,7 @@ foreach ([100, 1000, 10000, 100000] as $count)
 
 	$end = microtime(true);
 
-	printf('%25s %10d %10.2f' . PHP_EOL, 'Insert all elements', $count, ($end - $start));
+	printf('%25s %10d %10.2f %10.2f' . PHP_EOL, 'Insert all elements', $count, ($end - $start), ($end - $start) / ($count * log($count)) * 1000000);
 
 	$tree->clear();
 }
@@ -56,7 +56,7 @@ foreach ([100, 1000, 10000, 100000] as $count)
 
 	$end = microtime(true);
 
-	printf('%25s %10d %10.2f' . PHP_EOL, 'Remove all elements', $count, ($end - $start));
+	printf('%25s %10d %10.2f %10.2f' . PHP_EOL, 'Remove all elements', $count, ($end - $start), ($end - $start) / ($count * log($count)) * 1000000);
 
 	$tree->clear();
 }
@@ -77,7 +77,7 @@ foreach ([100, 1000, 10000, 100000] as $count)
 
 	$end = microtime(true);
 
-	printf('%25s %10d %10.2f' . PHP_EOL, 'Search all elements', $count, ($end - $start));
+	printf('%25s %10d %10.2f %10.2f' . PHP_EOL, 'Search all elements', $count, ($end - $start), ($end - $start) / ($count * log($count)) * 1000000);
 
 	$tree->clear();
 }
@@ -97,7 +97,7 @@ foreach ([100, 1000, 10000, 100000] as $count)
 
 	$end = microtime(true);
 
-	printf('%25s %10d %10.2f' . PHP_EOL, 'Loop on all elements', $count, ($end - $start));
+	printf('%25s %10d %10.2f %10.2f' . PHP_EOL, 'Loop on all elements', $count, ($end - $start), ($end - $start) / ($count * log($count)) * 1000000);
 
 	$tree->clear();
 }
@@ -115,7 +115,7 @@ foreach ([100, 1000, 10000, 100000] as $count)
 
 	$end = microtime(true);
 
-	printf('%25s %10d %10.2f' . PHP_EOL, 'Count all elements', $count, ($end - $start));
+	printf('%25s %10d %10.2f %10.2f' . PHP_EOL, 'Count all elements', $count, ($end - $start), ($end - $start) / ($count * log($count)) * 1000000);
 
 	$tree->clear();
 }
