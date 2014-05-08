@@ -25,7 +25,6 @@
 		<exec executable="phpcs">
 			<arg value="--report=full" />
 			<arg value="--extensions=php" />
-			<arg value="--ignore=${basedir}/src/Joomla/String/phputf8" />
 			<arg value="--standard=Joomla" />
 			<arg path="${source}" />
 			<arg path="${tests}" />
