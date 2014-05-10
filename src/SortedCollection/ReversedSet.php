@@ -95,6 +95,6 @@ class ReversedSet extends AbstractSet
 	 */
 	public function jsonSerialize()
 	{
-		return array('ReversedSet' => $this->set->jsonSerialize());
+		return ['ReversedSet' => $this->set->jsonSerialize()];
 	}
 }

@@ -64,7 +64,7 @@ class TreeSet extends AbstractSet
 	 *
 	 * @since   1.0.0
 	 */
-	public function put($iterable = array())
+	public function put($iterable = [])
 	{
 		foreach ($iterable as $value)
 		{
@@ -97,7 +97,7 @@ class TreeSet extends AbstractSet
 	 *
 	 * @since   1.0.0
 	 */
-	public function initialise($iterable = array())
+	public function initialise($iterable = [])
 	{
 		return $this->clear()->put($iterable);
 	}
@@ -152,7 +152,7 @@ class TreeSet extends AbstractSet
 			$array[] = $value;
 		}
 
-		return array('TreeSet' => $array);
+		return ['TreeSet' => $array];
 	}
 
 	/**

@@ -857,46 +857,46 @@ class SubMap extends AbstractMap
 		{
 			if ($this->toOption == self::UNUSED)
 			{
-				return array(
-					'ViewMap' => array(
+				return [
+					'ViewMap' => [
 						'map' => $this->map->jsonSerialize(),
-					)
-				);
+					]
+				];
 			}
 			else
 			{
-				return array(
-					'HeadMap' => array(
+				return [
+					'HeadMap' => [
 						'map' => $this->map->jsonSerialize(),
 						'toKey' => $this->toKey,
 						'toInclusive' => $this->toOption == self::INCLUSIVE,
-					)
-				);
+					]
+				];
 			}
 		}
 		else
 		{
 			if ($this->toOption == self::UNUSED)
 			{
-				return array(
-					'TailMap' => array(
+				return [
+					'TailMap' => [
 						'map' => $this->map->jsonSerialize(),
 						'fromKey' => $this->fromKey,
 						'fromInclusive' => $this->fromOption == self::INCLUSIVE,
-					)
-				);
+					]
+				];
 			}
 			else
 			{
-				return array(
-					'SubMap' => array(
+				return [
+					'SubMap' => [
 						'map' => $this->map->jsonSerialize(),
 						'fromKey' => $this->fromKey,
 						'fromInclusive' => $this->fromOption == self::INCLUSIVE,
 						'toKey' => $this->toKey,
 						'toInclusive' => $this->toOption == self::INCLUSIVE,
-					)
-				);
+					]
+				];
 			}
 		}
 	}

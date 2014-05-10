@@ -33,19 +33,19 @@ class ReversedSetTest extends \PHPUnit_Framework_TestCase
 	 */
 	public function cases_create()
 	{
-		return array(
-			array(array(), null, null, '[]'),
-			array(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9), 3, null, '[9,8,7,6,5,4,3,2,1,0]'),
-			array(
-				array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9),
+		return [
+			[[], null, null, '[]'],
+			[[0, 1, 2, 3, 4, 5, 6, 7, 8, 9], 3, null, '[9,8,7,6,5,4,3,2,1,0]'],
+			[
+				[0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
 				3,
 				function ($key1, $key2)
 				{
 					return $key1 - $key2;
 				},
 				'[9,8,7,6,5,4,3,2,1,0]'
-			)
-		);
+			]
+		];
 	}
 
 	/**
@@ -87,7 +87,7 @@ class ReversedSetTest extends \PHPUnit_Framework_TestCase
 	 */
 	public function test___get()
 	{
-		$set = TreeSet::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 8, 9));
+		$set = TreeSet::create()->initialise([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
 		$reversed = ReversedSet::create($set);
 		$this->assertEquals(
 			$set,
@@ -130,7 +130,7 @@ class ReversedSetTest extends \PHPUnit_Framework_TestCase
 	{
 		$this->setExpectedException('RuntimeException');
 
-		$set = TreeSet::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
+		$set = TreeSet::create()->initialise([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
 		$reversed = ReversedSet::create($set);
 		unset($reversed[0]);
 	}
@@ -154,7 +154,7 @@ class ReversedSetTest extends \PHPUnit_Framework_TestCase
 			json_encode($reversed)
 		);
 
-		$set->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
+		$set->initialise([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
 
 		$this->assertEquals(
 			'{"ReversedSet":{"TreeSet":[0,1,2,3,4,5,6,7,8,9]}}',

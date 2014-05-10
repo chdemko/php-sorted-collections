@@ -38,7 +38,7 @@ class ReversedMapTest extends \PHPUnit_Framework_TestCase
 	 */
 	public function test___construct()
 	{
-		$tree = TreeMap::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
+		$tree = TreeMap::create()->initialise([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
 		$reversed = ReversedMap::create($tree);
 
 		$this->assertEquals(
@@ -75,7 +75,7 @@ class ReversedMapTest extends \PHPUnit_Framework_TestCase
 	 */
 	public function test_first()
 	{
-		$tree = TreeMap::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
+		$tree = TreeMap::create()->initialise([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
 		$reversed = ReversedMap::create($tree);
 
 		$this->assertEquals(
@@ -95,7 +95,7 @@ class ReversedMapTest extends \PHPUnit_Framework_TestCase
 	 */
 	public function test_last()
 	{
-		$tree = TreeMap::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
+		$tree = TreeMap::create()->initialise([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
 		$reversed = ReversedMap::create($tree);
 
 		$this->assertEquals(
@@ -116,7 +116,7 @@ class ReversedMapTest extends \PHPUnit_Framework_TestCase
 	 */
 	public function test_predecessor()
 	{
-		$tree = TreeMap::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
+		$tree = TreeMap::create()->initialise([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
 		$reversed = ReversedMap::create($tree);
 		$this->assertEquals(
 			1,
@@ -138,7 +138,7 @@ class ReversedMapTest extends \PHPUnit_Framework_TestCase
 	 */
 	public function test_successor()
 	{
-		$tree = TreeMap::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
+		$tree = TreeMap::create()->initialise([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
 		$reversed = ReversedMap::create($tree);
 		$this->assertEquals(
 			8,
@@ -157,14 +157,14 @@ class ReversedMapTest extends \PHPUnit_Framework_TestCase
 	 */
 	public function cases_lowerKey()
 	{
-		return array(
-			array(array(), 10, null, 'OutOfBoundsException'),
-			array(array(1 => 1), 1, null, 'OutOfBoundsException'),
-			array(array(1 => 1, 0 => 0), 0, 1, null),
-			array(array(2 => 2, 1 => 1), 0, 1, null),
-			array(array(0 => 0, 1 => 1), 1, null, 'OutOfBoundsException'),
-			array(array(0 => 0, 1 => 1), 2, null, 'OutOfBoundsException'),
-		);
+		return [
+			[[], 10, null, 'OutOfBoundsException'],
+			[[1 => 1], 1, null, 'OutOfBoundsException'],
+			[[1 => 1, 0 => 0], 0, 1, null],
+			[[2 => 2, 1 => 1], 0, 1, null],
+			[[0 => 0, 1 => 1], 1, null, 'OutOfBoundsException'],
+			[[0 => 0, 1 => 1], 2, null, 'OutOfBoundsException'],
+		];
 	}
 
 	/**
@@ -209,14 +209,14 @@ class ReversedMapTest extends \PHPUnit_Framework_TestCase
 	 */
 	public function cases_floorKey()
 	{
-		return array(
-			array(array(), 10, null, 'OutOfBoundsException'),
-			array(array(1 => 1), 1, 1, null),
-			array(array(1 => 1, 0 => 0), 0, 0, null),
-			array(array(2 => 2, 1 => 1), 0, 1, null),
-			array(array(0 => 0, 1 => 1), 1, 1, null),
-			array(array(0 => 0, 1 => 1), 2, null, 'OutOfBoundsException'),
-		);
+		return [
+			[[], 10, null, 'OutOfBoundsException'],
+			[[1 => 1], 1, 1, null],
+			[[1 => 1, 0 => 0], 0, 0, null],
+			[[2 => 2, 1 => 1], 0, 1, null],
+			[[0 => 0, 1 => 1], 1, 1, null],
+			[[0 => 0, 1 => 1], 2, null, 'OutOfBoundsException'],
+		];
 	}
 
 	/**
@@ -264,7 +264,7 @@ class ReversedMapTest extends \PHPUnit_Framework_TestCase
 	 */
 	public function test_findKey()
 	{
-		$tree = TreeMap::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
+		$tree = TreeMap::create()->initialise([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
 		$reversed = ReversedMap::create($tree);
 
 		$this->assertEquals(
@@ -287,14 +287,14 @@ class ReversedMapTest extends \PHPUnit_Framework_TestCase
 	 */
 	public function cases_ceilingKey()
 	{
-		return array(
-			array(array(), 10, null, 'OutOfBoundsException'),
-			array(array(1 => 1), 1, 1, null),
-			array(array(1 => 1, 0 => 0), 0, 0, null),
-			array(array(2 => 2, 1 => 1), 0, null, 'OutOfBoundsException'),
-			array(array(0 => 0, 1 => 1), 1, 1, null),
-			array(array(0 => 0, 1 => 1), 2, 1, null),
-		);
+		return [
+			[[], 10, null, 'OutOfBoundsException'],
+			[[1 => 1], 1, 1, null],
+			[[1 => 1, 0 => 0], 0, 0, null],
+			[[2 => 2, 1 => 1], 0, null, 'OutOfBoundsException'],
+			[[0 => 0, 1 => 1], 1, 1, null],
+			[[0 => 0, 1 => 1], 2, 1, null],
+		];
 	}
 
 	/**
@@ -339,14 +339,14 @@ class ReversedMapTest extends \PHPUnit_Framework_TestCase
 	 */
 	public function cases_higherKey()
 	{
-		return array(
-			array(array(), 10, null, 'OutOfBoundsException'),
-			array(array(1 => 1), 1, null, 'OutOfBoundsException'),
-			array(array(1 => 1, 0 => 0), 0, null, 'OutOfBoundsException'),
-			array(array(2 => 2, 1 => 1), 0, null, 'OutOfBoundsException'),
-			array(array(0 => 0, 1 => 1), 1, 0, null),
-			array(array(0 => 0, 1 => 1), 2, 1, null),
-		);
+		return [
+			[[], 10, null, 'OutOfBoundsException'],
+			[[1 => 1], 1, null, 'OutOfBoundsException'],
+			[[1 => 1, 0 => 0], 0, null, 'OutOfBoundsException'],
+			[[2 => 2, 1 => 1], 0, null, 'OutOfBoundsException'],
+			[[0 => 0, 1 => 1], 1, 0, null],
+			[[0 => 0, 1 => 1], 2, 1, null],
+		];
 	}
 
 	/**
@@ -405,7 +405,7 @@ class ReversedMapTest extends \PHPUnit_Framework_TestCase
 
 		$this->assertEquals(true, $empty);
 
-		$tree = TreeMap::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
+		$tree = TreeMap::create()->initialise([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
 		$reversed = ReversedMap::create($tree);
 		$i = 9;
 
@@ -439,7 +439,7 @@ class ReversedMapTest extends \PHPUnit_Framework_TestCase
 
 		$this->assertEquals(true, $empty);
 
-		$tree = TreeMap::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
+		$tree = TreeMap::create()->initialise([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
 		$reversed = ReversedMap::create($tree);
 		$i = 9;
 
@@ -459,14 +459,14 @@ class ReversedMapTest extends \PHPUnit_Framework_TestCase
 	 */
 	public function cases_offsetGet()
 	{
-		return array(
-			array(array(), 10, null, 'OutOfRangeException'),
-			array(array(1 => 1), 1, 1, null),
-			array(array(1 => 1, 0 => 0), 0, 0, null),
-			array(array(2 => 2, 1 => 1), 0, null, 'OutOfRangeException'),
-			array(array(0 => 0, 1 => 1), 1, 1, null),
-			array(array(0 => 0, 1 => 1), 2, null, 'OutOfRangeException'),
-		);
+		return [
+			[[], 10, null, 'OutOfRangeException'],
+			[[1 => 1], 1, 1, null],
+			[[1 => 1, 0 => 0], 0, 0, null],
+			[[2 => 2, 1 => 1], 0, null, 'OutOfRangeException'],
+			[[0 => 0, 1 => 1], 1, 1, null],
+			[[0 => 0, 1 => 1], 2, null, 'OutOfRangeException'],
+		];
 	}
 
 	/**
@@ -537,7 +537,7 @@ class ReversedMapTest extends \PHPUnit_Framework_TestCase
 			isset($reversed[10])
 		);
 
-		$tree->put(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
+		$tree->put([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
 
 		$this->assertTrue(
 			isset($reversed[5])
@@ -560,7 +560,7 @@ class ReversedMapTest extends \PHPUnit_Framework_TestCase
 	{
 		$this->setExpectedException('RuntimeException');
 
-		$tree = TreeMap::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
+		$tree = TreeMap::create()->initialise([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
 		$reversed = ReversedMap::create($tree);
 		unset($reversed[0]);
 	}
@@ -585,7 +585,7 @@ class ReversedMapTest extends \PHPUnit_Framework_TestCase
 			$reversed->count
 		);
 
-		$tree->put(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
+		$tree->put([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
 
 		$this->assertEquals(
 			10,
@@ -612,7 +612,7 @@ class ReversedMapTest extends \PHPUnit_Framework_TestCase
 			json_encode($reversed)
 		);
 
-		$tree->put(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
+		$tree->put([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
 
 		$this->assertEquals(
 			'{"ReversedMap":{"TreeMap":[0,1,2,3,4,5,6,7,8,9]}}',

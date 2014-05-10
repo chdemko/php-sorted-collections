@@ -365,7 +365,7 @@ class TreeMap extends AbstractMap
 	 *
 	 * @since   1.0.0
 	 */
-	public function put($iterable = array())
+	public function put($iterable = [])
 	{
 		foreach ($iterable as $key => $value)
 		{
@@ -398,7 +398,7 @@ class TreeMap extends AbstractMap
 	 *
 	 * @since   1.0.0
 	 */
-	public function initialise($iterable = array())
+	public function initialise($iterable = [])
 	{
 		return $this->clear()->put($iterable);
 	}
@@ -435,14 +435,14 @@ class TreeMap extends AbstractMap
 	 */
 	public function jsonSerialize()
 	{
-		$array = array();
+		$array = [];
 
 		foreach ($this as $key => $value)
 		{
 			$array[$key] = $value;
 		}
 
-		return array('TreeMap' => $array);
+		return ['TreeMap' => $array];
 	}
 
 	/**

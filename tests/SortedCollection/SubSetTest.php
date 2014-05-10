@@ -33,12 +33,12 @@ class SubSetTest extends \PHPUnit_Framework_TestCase
 	 */
 	public function cases_create()
 	{
-		return array(
-			array(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9), 2, 7, true, false, '[2,3,4,5,6]'),
-			array(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9), 2, 7, true, true, '[2,3,4,5,6,7]'),
-			array(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9), 2, 7, false, false, '[3,4,5,6]'),
-			array(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9), 2, 7, false, true, '[3,4,5,6,7]'),
-		);
+		return [
+			[[0, 1, 2, 3, 4, 5, 6, 7, 8, 9], 2, 7, true, false, '[2,3,4,5,6]'],
+			[[0, 1, 2, 3, 4, 5, 6, 7, 8, 9], 2, 7, true, true, '[2,3,4,5,6,7]'],
+			[[0, 1, 2, 3, 4, 5, 6, 7, 8, 9], 2, 7, false, false, '[3,4,5,6]'],
+			[[0, 1, 2, 3, 4, 5, 6, 7, 8, 9], 2, 7, false, true, '[3,4,5,6,7]'],
+		];
 	}
 
 	/**
@@ -79,10 +79,10 @@ class SubSetTest extends \PHPUnit_Framework_TestCase
 	 */
 	public function cases_head()
 	{
-		return array(
-			array(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9), 7, false, '[0,1,2,3,4,5,6]'),
-			array(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9), 7, true, '[0,1,2,3,4,5,6,7]'),
-		);
+		return [
+			[[0, 1, 2, 3, 4, 5, 6, 7, 8, 9], 7, false, '[0,1,2,3,4,5,6]'],
+			[[0, 1, 2, 3, 4, 5, 6, 7, 8, 9], 7, true, '[0,1,2,3,4,5,6,7]'],
+		];
 	}
 
 	/**
@@ -121,10 +121,10 @@ class SubSetTest extends \PHPUnit_Framework_TestCase
 	 */
 	public function cases_tail()
 	{
-		return array(
-			array(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9), 2, false, '[3,4,5,6,7,8,9]'),
-			array(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9), 2, true, '[2,3,4,5,6,7,8,9]'),
-		);
+		return [
+			[[0, 1, 2, 3, 4, 5, 6, 7, 8, 9], 2, false, '[3,4,5,6,7,8,9]'],
+			[[0, 1, 2, 3, 4, 5, 6, 7, 8, 9], 2, true, '[2,3,4,5,6,7,8,9]'],
+		];
 	}
 
 	/**
@@ -166,7 +166,7 @@ class SubSetTest extends \PHPUnit_Framework_TestCase
 	 */
 	public function test_view()
 	{
-		$set = TreeSet::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
+		$set = TreeSet::create()->initialise([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
 		$view = SubSet::view($set);
 		$this->assertEquals(
 			(string) $set,
@@ -186,7 +186,7 @@ class SubSetTest extends \PHPUnit_Framework_TestCase
 	 */
 	public function test___get()
 	{
-		$set = TreeSet::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 8, 9));
+		$set = TreeSet::create()->initialise([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
 		$sub = SubSet::create($set, 2, 7);
 		$this->assertEquals(
 			$set,
@@ -225,7 +225,7 @@ class SubSetTest extends \PHPUnit_Framework_TestCase
 	 */
 	public function test___set()
 	{
-		$set = TreeSet::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 8, 9));
+		$set = TreeSet::create()->initialise([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
 		$sub = SubSet::create($set, 2, 7);
 		$sub->from = 3;
 		$sub->fromInclusive = false;
@@ -266,7 +266,7 @@ class SubSetTest extends \PHPUnit_Framework_TestCase
 	 */
 	protected function createSub($from, $to, $fromInclusive, $toInclusive)
 	{
-		$set = TreeSet::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
+		$set = TreeSet::create()->initialise([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
 
 		if ($fromInclusive === null)
 		{
@@ -303,7 +303,7 @@ class SubSetTest extends \PHPUnit_Framework_TestCase
 	 */
 	public function test___unset_isset()
 	{
-		$set = TreeSet::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 8, 9));
+		$set = TreeSet::create()->initialise([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
 		$sub = SubSet::create($set, 2, 7);
 		unset($sub->from);
 		unset($sub->fromInclusive);
@@ -340,64 +340,64 @@ class SubSetTest extends \PHPUnit_Framework_TestCase
 	 */
 	public function cases_jsonSerialize()
 	{
-		return array(
-			array(
+		return [
+			[
 				2,
 				7,
 				true,
 				false,
 				'{"SubSet":{"set":{"TreeSet":[0,1,2,3,4,5,6,7,8,9]},"from":2,"fromInclusive":true,"to":7,"toInclusive":false}}'
-			),
-			array(
+			],
+			[
 				2,
 				7,
 				false,
 				false,
 				'{"SubSet":{"set":{"TreeSet":[0,1,2,3,4,5,6,7,8,9]},"from":2,"fromInclusive":false,"to":7,"toInclusive":false}}'
-			),
-			array(
+			],
+			[
 				2,
 				7,
 				false,
 				true,
 				'{"SubSet":{"set":{"TreeSet":[0,1,2,3,4,5,6,7,8,9]},"from":2,"fromInclusive":false,"to":7,"toInclusive":true}}'
-			),
-			array(
+			],
+			[
 				2,
 				7,
 				true,
 				true,
 				'{"SubSet":{"set":{"TreeSet":[0,1,2,3,4,5,6,7,8,9]},"from":2,"fromInclusive":true,"to":7,"toInclusive":true}}'
-			),
-			array(
+			],
+			[
 				9,
 				-1,
 				true,
 				false,
 				'{"SubSet":{"set":{"TreeSet":[0,1,2,3,4,5,6,7,8,9]},"from":9,"fromInclusive":true,"to":-1,"toInclusive":false}}'
-			),
-			array(
+			],
+			[
 				null,
 				7,
 				null,
 				true,
 				'{"HeadSet":{"set":{"TreeSet":[0,1,2,3,4,5,6,7,8,9]},"to":7,"toInclusive":true}}'
-			),
-			array(
+			],
+			[
 				2,
 				null,
 				true,
 				null,
 				'{"TailSet":{"set":{"TreeSet":[0,1,2,3,4,5,6,7,8,9]},"from":2,"fromInclusive":true}}'
-			),
-			array(
+			],
+			[
 				null,
 				null,
 				null,
 				null,
 				'{"ViewSet":{"set":{"TreeSet":[0,1,2,3,4,5,6,7,8,9]}}}'
-			),
-		);
+			],
+		];
 	}
 
 	/**

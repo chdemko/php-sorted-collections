@@ -306,46 +306,46 @@ class SubSet extends AbstractSet
 		{
 			if (isset($this->to))
 			{
-				return array(
-					'SubSet' => array(
+				return [
+					'SubSet' => [
 						'set' => $this->set->jsonSerialize(),
 						'from' => $this->from,
 						'fromInclusive' => $this->fromInclusive,
 						'to' => $this->to,
 						'toInclusive' => $this->toInclusive,
-					)
-				);
+					]
+				];
 			}
 			else
 			{
-				return array(
-					'TailSet' => array(
+				return [
+					'TailSet' => [
 						'set' => $this->set->jsonSerialize(),
 						'from' => $this->from,
 						'fromInclusive' => $this->fromInclusive,
-					)
-				);
+					]
+				];
 			}
 		}
 		else
 		{
 			if (isset($this->to))
 			{
-				return array(
-					'HeadSet' => array(
+				return [
+					'HeadSet' => [
 						'set' => $this->set->jsonSerialize(),
 						'to' => $this->to,
 						'toInclusive' => $this->toInclusive,
-					)
-				);
+					]
+				];
 			}
 			else
 			{
-				return array(
-					'ViewSet' => array(
+				return [
+					'ViewSet' => [
 						'set' => $this->set->jsonSerialize(),
-					)
-				);
+					]
+				];
 			}
 		}
 	}
