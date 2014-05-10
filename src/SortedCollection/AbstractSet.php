@@ -34,7 +34,35 @@ abstract class AbstractSet implements SortedSet
 	 *
 	 * @since   1.0.0
 	 */
-	protected $map;
+	private $map;
+
+	/**
+	 * Get the map
+	 *
+	 * @return  SortedMap  The underlying map
+	 *
+	 * @since   1.0.0
+	 */
+	protected function getMap()
+	{
+		return $this->map;
+	}
+
+	/**
+	 * Set the map
+	 *
+	 * @param   SortedMap  $map  The underlying map
+	 *
+	 * @return  AbstractSet  $this for chaining
+	 *
+	 * @since   1.0.0
+	 */
+	protected function setMap(SortedMap $map)
+	{
+		$this->map = $map;
+
+		return $this;
+	}
 
 	/**
 	 * Magic get method

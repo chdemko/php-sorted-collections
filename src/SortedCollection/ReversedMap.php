@@ -41,7 +41,7 @@ class ReversedMap extends AbstractMap
 	 *
 	 * @since   1.0.0
 	 */
-	protected $map;
+	private $map;
 
 	/**
 	 * @var     Callable  Comparator function
@@ -55,7 +55,7 @@ class ReversedMap extends AbstractMap
 	 *
 	 * @since   1.0.0
 	 */
-	protected $comparator;
+	private $comparator;
 
 	/**
 	 * Constructor

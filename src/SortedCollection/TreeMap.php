@@ -40,7 +40,7 @@ class TreeMap extends AbstractMap
 	 *
 	 * @since   1.0.0
 	 */
-	protected $root;
+	private $root;
 
 	/**
 	 * @var     Callable  Comparator function
@@ -54,7 +54,7 @@ class TreeMap extends AbstractMap
 	 *
 	 * @since   1.0.0
 	 */
-	protected $comparator;
+	private $comparator;
 
 	/**
 	 * Constructor

@@ -84,9 +84,9 @@ class TreeSetTest extends \PHPUnit_Framework_TestCase
 		}
 
 		// Set the map property accessible
-		$map = (new \ReflectionClass($set))->getProperty('map');
+		$map = (new \ReflectionClass($set))->getMethod('getMap');
 		$map->setAccessible(true);
-		$map2 = $map->getValue($set);
+		$map2 = $map->invoke($set);
 
 		// Set the root property accessible
 		$root = (new \ReflectionClass($map2))->getProperty('root');
@@ -122,9 +122,9 @@ class TreeSetTest extends \PHPUnit_Framework_TestCase
 		$set = TreeSet::create()->put([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
 
 		// Set the map property accessible
-		$map = (new \ReflectionClass($set))->getProperty('map');
+		$map = (new \ReflectionClass($set))->getMethod('getMap');
 		$map->setAccessible(true);
-		$map2 = $map->getValue($set);
+		$map2 = $map->invoke($set);
 
 		// Set the root property accessible
 		$root = (new \ReflectionClass($map2))->getProperty('root');

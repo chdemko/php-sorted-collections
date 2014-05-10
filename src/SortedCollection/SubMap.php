@@ -66,42 +66,42 @@ class SubMap extends AbstractMap
 	 *
 	 * @since   1.0.0
 	 */
-	protected $map;
+	private $map;
 
 	/**
 	 * @var     integer  from option
 	 *
 	 * @since  1.0.0
 	 */
-	protected $fromOption;
+	private $fromOption;
 
 	/**
 	 * @var     mixed  from key
 	 *
 	 * @since  1.0.0
 	 */
-	protected $fromKey;
+	private $fromKey;
 
 	/**
 	 * @var     integer  to option
 	 *
 	 * @since  1.0.0
 	 */
-	protected $toOption;
+	private $toOption;
 
 	/**
 	 * @var     mixed  to key
 	 *
 	 * @since  1.0.0
 	 */
-	protected $toKey;
+	private $toKey;
 
 	/**
 	 * @var     boolean  Empty flag
 	 *
 	 * @since  1.0.0
 	 */
-	protected $empty;
+	private $empty;
 
 	/**
 	 * Magic get method

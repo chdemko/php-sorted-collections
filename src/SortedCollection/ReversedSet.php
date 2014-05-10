@@ -35,7 +35,7 @@ class ReversedSet extends AbstractSet
 	 *
 	 * @since   1.0.0
 	 */
-	protected $set;
+	private $set;
 
 	/**
 	 * Constructor
@@ -46,8 +46,7 @@ class ReversedSet extends AbstractSet
 	 */
 	protected function __construct(SortedSet $set)
 	{
-		$this->map = ReversedMap::create($set->map);
-		$this->set = $set;
+		$this->setMap(ReversedMap::create($set->getMap()))->set = $set;
 	}
 
 	/**

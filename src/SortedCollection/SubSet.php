@@ -60,7 +60,7 @@ class SubSet extends AbstractSet
 	 *
 	 * @since   1.0.0
 	 */
-	protected $set;
+	private $set;
 
 	/**
 	 * Magic get method
@@ -76,16 +76,16 @@ class SubSet extends AbstractSet
 		switch ($property)
 		{
 			case 'from':
-				return $this->map->fromKey;
+				return $this->getMap()->fromKey;
 			break;
 			case 'to':
-				return $this->map->toKey;
+				return $this->getMap()->toKey;
 			break;
 			case 'fromInclusive':
-				return $this->map->fromInclusive;
+				return $this->getMap()->fromInclusive;
 			break;
 			case 'toInclusive':
-				return $this->map->toInclusive;
+				return $this->getMap()->toInclusive;
 			break;
 			case 'set':
 				return $this->set;
@@ -113,16 +113,16 @@ class SubSet extends AbstractSet
 		switch ($property)
 		{
 			case 'from':
-				$this->map->fromKey = $value;
+				$this->getMap()->fromKey = $value;
 			break;
 			case 'to':
-				$this->map->toKey = $value;
+				$this->getMap()->toKey = $value;
 			break;
 			case 'fromInclusive':
-				$this->map->fromInclusive = $value;
+				$this->getMap()->fromInclusive = $value;
 			break;
 			case 'toInclusive':
-				$this->map->toInclusive = $value;
+				$this->getMap()->toInclusive = $value;
 			break;
 			default:
 				throw new \OutOfBoundsException('Undefined property');
@@ -146,16 +146,16 @@ class SubSet extends AbstractSet
 		switch ($property)
 		{
 			case 'from':
-				unset($this->map->fromKey);
+				unset($this->getMap()->fromKey);
 			break;
 			case 'to':
-				unset($this->map->toKey);
+				unset($this->getMap()->toKey);
 			break;
 			case 'fromInclusive':
-				unset($this->map->fromInclusive);
+				unset($this->getMap()->fromInclusive);
 			break;
 			case 'toInclusive':
-				unset($this->map->toInclusive);
+				unset($this->getMap()->toInclusive);
 			break;
 		}
 	}
@@ -176,16 +176,16 @@ class SubSet extends AbstractSet
 		switch ($property)
 		{
 			case 'from':
-				return isset($this->map->fromKey);
+				return isset($this->getMap()->fromKey);
 			break;
 			case 'to':
-				return isset($this->map->toKey);
+				return isset($this->getMap()->toKey);
 			break;
 			case 'fromInclusive':
-				return isset($this->map->fromInclusive);
+				return isset($this->getMap()->fromInclusive);
 			break;
 			case 'toInclusive':
-				return isset($this->map->toInclusive);
+				return isset($this->getMap()->toInclusive);
 			break;
 			default:
 				return false;
@@ -210,20 +210,20 @@ class SubSet extends AbstractSet
 		{
 			if ($toOption == self::UNUSED)
 			{
-				$this->map = SubMap::view($set->map);
+				$this->setMap(SubMap::view($set->getMap()));
 			}
 			else
 			{
-				$this->map = SubMap::head($set->map, $to, $toOption == self::INCLUSIVE);
+				$this->setMap(SubMap::head($set->getMap(), $to, $toOption == self::INCLUSIVE));
 			}
 		}
 		elseif ($toOption == self::UNUSED)
 		{
-			$this->map = SubMap::tail($set->map, $from, $fromOption == self::INCLUSIVE);
+			$this->setMap(SubMap::tail($set->getMap(), $from, $fromOption == self::INCLUSIVE));
 		}
 		else
 		{
-			$this->map = SubMap::create($set->map, $from, $to, $fromOption == self::INCLUSIVE, $toOption == self::INCLUSIVE);
+			$this->setMap(SubMap::create($set->getMap(), $from, $to, $fromOption == self::INCLUSIVE, $toOption == self::INCLUSIVE));
 		}
 
 		$this->set = $set;

@@ -37,28 +37,28 @@ class TreeNode implements \Countable
 	 *
 	 * @since   1.0.0
 	 */
-	protected $information = 0;
+	private $information = 0;
 
 	/**
 	 * @var     TreeNode  Left|Predecessor node
 	 *
 	 * @since   1.0.0
 	 */
-	protected $left;
+	private $left;
 
 	/**
 	 * @var     TreeNode  Right|Successor node
 	 *
 	 * @since   1.0.0
 	 */
-	protected $right;
+	private $right;
 
 	/**
 	 * @var     mixed  Node key
 	 *
 	 * @since   1.0.0
 	 */
-	protected $key;
+	private $key;
 
 	/**
 	 * @var     mixed  Node value

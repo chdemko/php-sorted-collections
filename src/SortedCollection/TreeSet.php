@@ -38,7 +38,7 @@ class TreeSet extends AbstractSet
 	 */
 	protected function __construct($comparator = null)
 	{
-		$this->map = TreeMap::create($comparator);
+		$this->setMap(TreeMap::create($comparator));
 	}
 
 	/**
@@ -83,7 +83,7 @@ class TreeSet extends AbstractSet
 	 */
 	public function clear()
 	{
-		$this->map->clear();
+		$this->getMap()->clear();
 
 		return $this;
 	}
@@ -111,7 +111,7 @@ class TreeSet extends AbstractSet
 	 */
 	public function __clone()
 	{
-		$this->map = clone $this->map;
+		$this->setMap(clone $this->getMap());
 	}
 
 	/**
@@ -126,13 +126,15 @@ class TreeSet extends AbstractSet
 	 */
 	public function offsetSet($element, $value)
 	{
+		$map = $this->getMap();
+
 		if ($value)
 		{
-			$this->map[$element] = true;
+			$map[$element] = true;
 		}
 		else
 		{
-			unset($this->map[$element]);
+			unset($map[$element]);
 		}
 	}
 
@@ -166,6 +168,7 @@ class TreeSet extends AbstractSet
 	 */
 	public function offsetUnset($element)
 	{
-		unset($this->map[$element]);
+		$map = $this->getMap();
+		unset($map[$element]);
 	}
 }

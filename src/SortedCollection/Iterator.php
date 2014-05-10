@@ -49,21 +49,21 @@ class Iterator implements \Iterator
 	 *
 	 * @since   1.0.0
 	 */
-	protected $type;
+	private $type;
 
 	/**
 	 * @var     integer  Index
 	 *
 	 * @since   1.0.0
 	 */
-	protected $index;
+	private $index;
 
 	/**
 	 * @var     SortedMap  Map
 	 *
 	 * @since   1.0.0
 	 */
-	protected $map;
+	private $map;
 
 	/**
 	 * Constructor
