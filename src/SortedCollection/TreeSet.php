@@ -58,15 +58,15 @@ class TreeSet extends AbstractSet
 	/**
 	 * Put values in the set
 	 *
-	 * @param   \Iterable  $iterable  Values to put in the set
+	 * @param   \Traversable  $traversable  Values to put in the set
 	 *
 	 * @return  TreeSet  $this for chaining
 	 *
 	 * @since   1.0.0
 	 */
-	public function put($iterable = [])
+	public function put($traversable = [])
 	{
-		foreach ($iterable as $value)
+		foreach ($traversable as $value)
 		{
 			$this[$value] = true;
 		}
@@ -91,15 +91,15 @@ class TreeSet extends AbstractSet
 	/**
 	 * Initialise the set
 	 *
-	 * @param   \Iterable  $iterable  Values to initialise the set
+	 * @param   \Traversable  $traversable  Values to initialise the set
 	 *
 	 * @return  TreeSet  $this for chaining
 	 *
 	 * @since   1.0.0
 	 */
-	public function initialise($iterable = [])
+	public function initialise($traversable = [])
 	{
-		return $this->clear()->put($iterable);
+		return $this->clear()->put($traversable);
 	}
 
 	/**

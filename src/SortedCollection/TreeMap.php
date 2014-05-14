@@ -359,15 +359,15 @@ class TreeMap extends AbstractMap
 	/**
 	 * Put values in the map
 	 *
-	 * @param   \Iterable  $iterable  Values to put in the map
+	 * @param   \Traversable  $traversable  Values to put in the map
 	 *
 	 * @return  TreeMap  $this for chaining
 	 *
 	 * @since   1.0.0
 	 */
-	public function put($iterable = [])
+	public function put($traversable = [])
 	{
-		foreach ($iterable as $key => $value)
+		foreach ($traversable as $key => $value)
 		{
 			$this[$key] = $value;
 		}
@@ -392,15 +392,15 @@ class TreeMap extends AbstractMap
 	/**
 	 * Initialise the map
 	 *
-	 * @param   \Iterable  $iterable  Values to initialise the map
+	 * @param   \Traversable  $traversable  Values to initialise the map
 	 *
 	 * @return  TreeMap  $this for chaining
 	 *
 	 * @since   1.0.0
 	 */
-	public function initialise($iterable = [])
+	public function initialise($traversable = [])
 	{
-		return $this->clear()->put($iterable);
+		return $this->clear()->put($traversable);
 	}
 
 	/**
