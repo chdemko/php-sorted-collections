@@ -26,21 +26,21 @@ class Iterator implements \Iterator
 	/**
 	 * Iterate on pairs
 	 *
-	 * @since  1.0.0
+	 * @since   1.0.0
 	 */
 	const PAIRS = 0;
 
 	/**
 	 * Iterate on keys
 	 *
-	 * @since  1.0.0
+	 * @since   1.0.0
 	 */
 	const KEYS = 1;
 
 	/**
 	 * Iterate on values
 	 *
-	 * @since  1.0.0
+	 * @since   1.0.0
 	 */
 	const VALUES = 2;
 

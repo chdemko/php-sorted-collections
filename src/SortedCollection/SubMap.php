@@ -43,21 +43,21 @@ class SubMap extends AbstractMap
 	/**
 	 * When the from or to key is unused
 	 *
-	 * @since  1.0.0
+	 * @since   1.0.0
 	 */
 	const UNUSED = 0;
 
 	/**
 	 * When the from or to key is inclusive
 	 *
-	 * @since  1.0.0
+	 * @since   1.0.0
 	 */
 	const INCLUSIVE = 1;
 
 	/**
 	 * When the from or to key is exclusive
 	 *
-	 * @since  1.0.0
+	 * @since   1.0.0
 	 */
 	const EXCLUSIVE = 2;
 
@@ -71,35 +71,35 @@ class SubMap extends AbstractMap
 	/**
 	 * @var     integer  from option
 	 *
-	 * @since  1.0.0
+	 * @since   1.0.0
 	 */
 	private $fromOption;
 
 	/**
 	 * @var     mixed  from key
 	 *
-	 * @since  1.0.0
+	 * @since   1.0.0
 	 */
 	private $fromKey;
 
 	/**
 	 * @var     integer  to option
 	 *
-	 * @since  1.0.0
+	 * @since   1.0.0
 	 */
 	private $toOption;
 
 	/**
 	 * @var     mixed  to key
 	 *
-	 * @since  1.0.0
+	 * @since   1.0.0
 	 */
 	private $toKey;
 
 	/**
 	 * @var     boolean  Empty flag
 	 *
-	 * @since  1.0.0
+	 * @since   1.0.0
 	 */
 	private $empty;
 
@@ -112,7 +112,7 @@ class SubMap extends AbstractMap
 	 *
 	 * @return  mixed  The value associated to the property
 	 *
-	 * @since  1.0.0
+	 * @since   1.0.0
 	 */
 	public function __get($property)
 	{
@@ -177,7 +177,7 @@ class SubMap extends AbstractMap
 	 *
 	 * @return  void
 	 *
-	 * @since  1.0.0
+	 * @since   1.0.0
 	 */
 	public function __set($property, $value)
 	{
@@ -236,7 +236,7 @@ class SubMap extends AbstractMap
 	 *
 	 * @return  void
 	 *
-	 * @since  1.0.0
+	 * @since   1.0.0
 	 */
 	public function __unset($property)
 	{
@@ -262,7 +262,7 @@ class SubMap extends AbstractMap
 	 *
 	 * @return  void
 	 *
-	 * @since  1.0.0
+	 * @since   1.0.0
 	 */
 	public function __isset($property)
 	{
@@ -335,7 +335,7 @@ class SubMap extends AbstractMap
 	 *
 	 * @return  SubMap  A new sub map
 	 *
-	 * @since  1.0.0
+	 * @since   1.0.0
 	 */
 	static public function create(SortedMap $map, $fromKey, $toKey, $fromInclusive = true, $toInclusive = false)
 	{
@@ -351,7 +351,7 @@ class SubMap extends AbstractMap
 	 *
 	 * @return  SubMap  A new head map
 	 *
-	 * @since  1.0.0
+	 * @since   1.0.0
 	 */
 	static public function head(SortedMap $map, $toKey, $toInclusive = false)
 	{
@@ -367,7 +367,7 @@ class SubMap extends AbstractMap
 	 *
 	 * @return  SubMap  A new tail map
 	 *
-	 * @since  1.0.0
+	 * @since   1.0.0
 	 */
 	static public function tail(SortedMap $map, $fromKey, $fromInclusive = true)
 	{
@@ -381,7 +381,7 @@ class SubMap extends AbstractMap
 	 *
 	 * @return  SubMap  A new sub map
 	 *
-	 * @since  1.0.0
+	 * @since   1.0.0
 	 */
 	static public function view(SortedMap $map)
 	{

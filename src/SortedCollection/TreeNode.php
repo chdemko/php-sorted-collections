@@ -144,7 +144,7 @@ class TreeNode implements \Countable
 	 *
 	 * @return  the first node
 	 *
-	 * @since  1.0.0
+	 * @since   1.0.0
 	 */
 	public function first()
 	{
@@ -163,7 +163,7 @@ class TreeNode implements \Countable
 	 *
 	 * @return  the last node
 	 *
-	 * @since  1.0.0
+	 * @since   1.0.0
 	 */
 	public function last()
 	{
@@ -182,7 +182,7 @@ class TreeNode implements \Countable
 	 *
 	 * @return  the predecessor node
 	 *
-	 * @since  1.0.0
+	 * @since   1.0.0
 	 */
 	public function predecessor()
 	{
@@ -208,7 +208,7 @@ class TreeNode implements \Countable
 	 *
 	 * @return  the successor node
 	 *
-	 * @since  1.0.0
+	 * @since   1.0.0
 	 */
 	public function successor()
 	{

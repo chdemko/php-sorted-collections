@@ -73,7 +73,7 @@ abstract class AbstractSet implements SortedSet
 	 *
 	 * @return  mixed  The value associated to the property
 	 *
-	 * @since  1.0.0
+	 * @since   1.0.0
 	 */
 	public function __get($property)
 	{
@@ -253,7 +253,7 @@ abstract class AbstractSet implements SortedSet
 	 *
 	 * @return  Iterator  A new iterator
 	 *
-	 * @since  1.0.0
+	 * @since   1.0.0
 	 */
 	public function getIterator()
 	{

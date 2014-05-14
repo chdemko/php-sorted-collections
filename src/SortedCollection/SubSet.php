@@ -37,21 +37,21 @@ class SubSet extends AbstractSet
 	/**
 	 * When the from or to value is unused
 	 *
-	 * @since  1.0.0
+	 * @since   1.0.0
 	 */
 	const UNUSED = 0;
 
 	/**
 	 * When the from or to value is inclusive
 	 *
-	 * @since  1.0.0
+	 * @since   1.0.0
 	 */
 	const INCLUSIVE = 1;
 
 	/**
 	 * When the from or to value is exclusive
 	 *
-	 * @since  1.0.0
+	 * @since   1.0.0
 	 */
 	const EXCLUSIVE = 2;
 
@@ -106,7 +106,7 @@ class SubSet extends AbstractSet
 	 *
 	 * @return  void
 	 *
-	 * @since  1.0.0
+	 * @since   1.0.0
 	 */
 	public function __set($property, $value)
 	{
@@ -139,7 +139,7 @@ class SubSet extends AbstractSet
 	 *
 	 * @return  void
 	 *
-	 * @since  1.0.0
+	 * @since   1.0.0
 	 */
 	public function __unset($property)
 	{
@@ -169,7 +169,7 @@ class SubSet extends AbstractSet
 	 *
 	 * @return  void
 	 *
-	 * @since  1.0.0
+	 * @since   1.0.0
 	 */
 	public function __isset($property)
 	{
