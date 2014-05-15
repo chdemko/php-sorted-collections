@@ -108,7 +108,7 @@ class SubMap extends AbstractMap
 	 *
 	 * @param   string  $property  The property
 	 *
-	 * @throws  \OutOfBoundsException  If the property does not exist
+	 * @throws  \RuntimeException  If the property does not exist
 	 *
 	 * @return  mixed  The value associated to the property
 	 *
@@ -121,7 +121,7 @@ class SubMap extends AbstractMap
 			case 'fromKey':
 				if ($this->fromOption == self::UNUSED)
 				{
-					throw new \OutOfBoundsException('Undefined property');
+					throw new \RuntimeException('Undefined property');
 				}
 				else
 				{
@@ -131,7 +131,7 @@ class SubMap extends AbstractMap
 			case 'toKey':
 				if ($this->toOption == self::UNUSED)
 				{
-					throw new \OutOfBoundsException('Undefined property');
+					throw new \RuntimeException('Undefined property');
 				}
 				else
 				{
@@ -141,7 +141,7 @@ class SubMap extends AbstractMap
 			case 'fromInclusive':
 				if ($this->fromOption == self::UNUSED)
 				{
-					throw new \OutOfBoundsException('Undefined property');
+					throw new \RuntimeException('Undefined property');
 				}
 				else
 				{
@@ -151,7 +151,7 @@ class SubMap extends AbstractMap
 			case 'toInclusive':
 				if ($this->toOption == self::UNUSED)
 				{
-					throw new \OutOfBoundsException('Undefined property');
+					throw new \RuntimeException('Undefined property');
 				}
 				else
 				{
@@ -173,7 +173,7 @@ class SubMap extends AbstractMap
 	 * @param   string  $property  The property
 	 * @param   mixed   $value     The new value
 	 *
-	 * @throws  \OutOfBoundsException  If the property does not exist
+	 * @throws  \RuntimeException  If the property does not exist
 	 *
 	 * @return  void
 	 *
@@ -202,7 +202,7 @@ class SubMap extends AbstractMap
 			case 'fromInclusive':
 				if ($this->fromOption == self::UNUSED)
 				{
-					throw new \OutOfBoundsException('Undefined property');
+					throw new \RuntimeException('Undefined property');
 				}
 				else
 				{
@@ -212,7 +212,7 @@ class SubMap extends AbstractMap
 			case 'toInclusive':
 				if ($this->toOption == self::UNUSED)
 				{
-					throw new \OutOfBoundsException('Undefined property');
+					throw new \RuntimeException('Undefined property');
 				}
 				else
 				{
@@ -220,7 +220,7 @@ class SubMap extends AbstractMap
 				}
 			break;
 			default:
-				throw new \OutOfBoundsException('Undefined property');
+				throw new \RuntimeException('Undefined property');
 			break;
 		}
 
@@ -232,7 +232,7 @@ class SubMap extends AbstractMap
 	 *
 	 * @param   string  $property  The property
 	 *
-	 * @throws  \OutOfBoundsException  If the property does not exist
+	 * @throws  \RuntimeException  If the property does not exist
 	 *
 	 * @return  void
 	 *
@@ -250,6 +250,9 @@ class SubMap extends AbstractMap
 			case 'toInclusive':
 				$this->toOption = self::UNUSED;
 			break;
+			default:
+				throw new \RuntimeException('Undefined property');
+			break;
 		}
 	}
 
@@ -257,8 +260,6 @@ class SubMap extends AbstractMap
 	 * Magic isset method
 	 *
 	 * @param   string  $property  The property
-	 *
-	 * @throws  \OutOfBoundsException  If the property does not exist
 	 *
 	 * @return  void
 	 *

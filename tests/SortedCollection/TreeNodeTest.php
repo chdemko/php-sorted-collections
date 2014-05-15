@@ -205,7 +205,7 @@ class TreeNodeTest extends \PHPUnit_Framework_TestCase
 		$root = (new \ReflectionClass($tree))->getProperty('root');
 		$root->setAccessible(true);
 
-		$this->setExpectedException('OutOfBoundsException');
+		$this->setExpectedException('RuntimeException');
 		$unexisting = $root->getValue($tree)->unexisting;
 	}
 

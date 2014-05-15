@@ -102,7 +102,7 @@ class SubSet extends AbstractSet
 	 * @param   string  $property  The property
 	 * @param   mixed   $value     The new value
 	 *
-	 * @throws  \OutOfBoundsException  If the property does not exist
+	 * @throws  \RuntimeException  If the property does not exist
 	 *
 	 * @return  void
 	 *
@@ -125,7 +125,7 @@ class SubSet extends AbstractSet
 				$this->getMap()->toInclusive = $value;
 			break;
 			default:
-				throw new \OutOfBoundsException('Undefined property');
+				throw new \RuntimeException('Undefined property');
 			break;
 		}
 	}
@@ -135,7 +135,7 @@ class SubSet extends AbstractSet
 	 *
 	 * @param   string  $property  The property
 	 *
-	 * @throws  \OutOfBoundsException  If the property does not exist
+	 * @throws  \RuntimeException  If the property does not exist
 	 *
 	 * @return  void
 	 *
@@ -157,6 +157,9 @@ class SubSet extends AbstractSet
 			case 'toInclusive':
 				unset($this->getMap()->toInclusive);
 			break;
+			default:
+				throw new \RuntimeException('Undefined property');
+			break;
 		}
 	}
 
@@ -164,8 +167,6 @@ class SubSet extends AbstractSet
 	 * Magic isset method
 	 *
 	 * @param   string  $property  The property
-	 *
-	 * @throws  \OutOfBoundsException  If the property does not exist
 	 *
 	 * @return  void
 	 *

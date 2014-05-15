@@ -177,7 +177,7 @@ class SubMapTest extends \PHPUnit_Framework_TestCase
 		$tree = TreeMap::create()->initialise([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
 		$head = SubMap::head($tree, 7);
 
-		$this->setExpectedException('OutOfBoundsException');
+		$this->setExpectedException('RuntimeException');
 		$fromKey = $head->fromKey;
 	}
 
@@ -195,7 +195,7 @@ class SubMapTest extends \PHPUnit_Framework_TestCase
 		$tree = TreeMap::create()->initialise([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
 		$tail = SubMap::tail($tree, 2);
 
-		$this->setExpectedException('OutOfBoundsException');
+		$this->setExpectedException('RuntimeException');
 		$toKey = $tail->toKey;
 	}
 
@@ -213,7 +213,7 @@ class SubMapTest extends \PHPUnit_Framework_TestCase
 		$tree = TreeMap::create()->initialise([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
 		$head = SubMap::head($tree, 7);
 
-		$this->setExpectedException('OutOfBoundsException');
+		$this->setExpectedException('RuntimeException');
 		$fromInclusive = $head->fromInclusive;
 	}
 
@@ -231,7 +231,7 @@ class SubMapTest extends \PHPUnit_Framework_TestCase
 		$tree = TreeMap::create()->initialise([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
 		$tail = SubMap::tail($tree, 2);
 
-		$this->setExpectedException('OutOfBoundsException');
+		$this->setExpectedException('RuntimeException');
 		$toInclusive = $tail->toInclusive;
 	}
 
@@ -296,7 +296,7 @@ class SubMapTest extends \PHPUnit_Framework_TestCase
 	{
 		$tree = TreeMap::create()->initialise([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
 		$sub = SubMap::head($tree, 7);
-		$this->setExpectedException('OutOfBoundsException');
+		$this->setExpectedException('RuntimeException');
 		$sub->fromInclusive = true;
 	}
 
@@ -313,7 +313,7 @@ class SubMapTest extends \PHPUnit_Framework_TestCase
 	{
 		$tree = TreeMap::create()->initialise([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
 		$sub = SubMap::tail($tree, 2);
-		$this->setExpectedException('OutOfBoundsException');
+		$this->setExpectedException('RuntimeException');
 		$sub->toInclusive = true;
 	}
 
@@ -330,7 +330,7 @@ class SubMapTest extends \PHPUnit_Framework_TestCase
 	{
 		$tree = TreeMap::create()->initialise([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
 		$sub = SubMap::head($tree, 7);
-		$this->setExpectedException('OutOfBoundsException');
+		$this->setExpectedException('RuntimeException');
 		$sub->unexisting = true;
 	}
 
@@ -348,7 +348,7 @@ class SubMapTest extends \PHPUnit_Framework_TestCase
 		$tree = TreeMap::create()->initialise([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
 		$sub = SubMap::tail($tree, 2);
 		unset($sub->fromKey);
-		$this->setExpectedException('OutOfBoundsException');
+		$this->setExpectedException('RuntimeException');
 		$fromKey = $sub->fromKey;
 	}
 
@@ -366,7 +366,7 @@ class SubMapTest extends \PHPUnit_Framework_TestCase
 		$tree = TreeMap::create()->initialise([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
 		$sub = SubMap::head($tree, 7);
 		unset($sub->toKey);
-		$this->setExpectedException('OutOfBoundsException');
+		$this->setExpectedException('RuntimeException');
 		$toKey = $sub->toKey;
 	}
 
@@ -384,7 +384,7 @@ class SubMapTest extends \PHPUnit_Framework_TestCase
 		$tree = TreeMap::create()->initialise([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
 		$sub = SubMap::head($tree, 7);
 		unset($sub->fromInclusive);
-		$this->setExpectedException('OutOfBoundsException');
+		$this->setExpectedException('RuntimeException');
 		$fromKey = $sub->fromKey;
 	}
 
@@ -402,7 +402,7 @@ class SubMapTest extends \PHPUnit_Framework_TestCase
 		$tree = TreeMap::create()->initialise([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
 		$sub = SubMap::head($tree, 7);
 		unset($sub->toInclusive);
-		$this->setExpectedException('OutOfBoundsException');
+		$this->setExpectedException('RuntimeException');
 		$toKey = $sub->toKey;
 	}
 

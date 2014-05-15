@@ -240,7 +240,7 @@ class TreeSetTest extends \PHPUnit_Framework_TestCase
 	public function test___get_unexisting()
 	{
 		$set = TreeSet::create()->put([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
-		$this->setExpectedException('OutOfBoundsException');
+		$this->setExpectedException('RuntimeException');
 		$unexisting = $set->unexisting;
 	}
 

@@ -107,7 +107,7 @@ class TreeNode implements \Countable
 	 *
 	 * @return  mixed  The value associated to the property
 	 *
-	 * @throws  \OutOfBoundsException  If the property is undefined
+	 * @throws  \RuntimeException  If the property is undefined
 	 *
 	 * @since   1.0.0
 	 */
@@ -134,7 +134,7 @@ class TreeNode implements \Countable
 			return $this->count();
 		break;
 		default:
-			throw new \OutOfBoundsException('Undefined property');
+			throw new \RuntimeException('Undefined property');
 		break;
 		}
 	}

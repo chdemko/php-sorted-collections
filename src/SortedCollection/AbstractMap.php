@@ -40,7 +40,7 @@ abstract class AbstractMap implements SortedMap
 	 *
 	 * @param   string  $property  The property
 	 *
-	 * @throws  \OutOfBoundsException  If the property does not exist
+	 * @throws  \RuntimeException  If the property does not exist
 	 *
 	 * @return  mixed  The value associated to the property
 	 *
@@ -81,7 +81,7 @@ abstract class AbstractMap implements SortedMap
 				return $this->count();
 			break;
 			default:
-				throw new \OutOfBoundsException('Undefined property');
+				throw new \RuntimeException('Undefined property');
 			break;
 		}
 	}

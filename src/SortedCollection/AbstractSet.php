@@ -69,7 +69,7 @@ abstract class AbstractSet implements SortedSet
 	 *
 	 * @param   string  $property  The property
 	 *
-	 * @throws  \OutOfBoundsException  If the property does not exist
+	 * @throws  \RuntimeException  If the property does not exist
 	 *
 	 * @return  mixed  The value associated to the property
 	 *
@@ -92,7 +92,7 @@ abstract class AbstractSet implements SortedSet
 				return $this->count();
 			break;
 			default:
-				throw new \OutOfBoundsException('Undefined property');
+				throw new \RuntimeException('Undefined property');
 			break;
 		}
 	}

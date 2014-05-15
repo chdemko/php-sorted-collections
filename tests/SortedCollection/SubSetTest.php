@@ -248,7 +248,7 @@ class SubSetTest extends \PHPUnit_Framework_TestCase
 			$sub->toInclusive
 		);
 
-		$this->setExpectedException('OutOfBoundsException');
+		$this->setExpectedException('RuntimeException');
 		$sub->unexisting = true;
 	}
 
