@@ -84,28 +84,80 @@ class TreeSetTest extends \PHPUnit_Framework_TestCase
 		}
 
 		// Set the map property accessible
-		$map = (new \ReflectionClass($set))->getMethod('getMap');
-		$map->setAccessible(true);
-		$map2 = $map->invoke($set);
+		$getMap = (new \ReflectionClass($set))->getMethod('getMap');
+		$getMap->setAccessible(true);
+		$map = $getMap->invoke($set);
 
 		// Set the root property accessible
-		$root = (new \ReflectionClass($map2))->getProperty('root');
+		$root = (new \ReflectionClass($map))->getProperty('root');
 		$root->setAccessible(true);
 
 		if ($values)
 		{
 			$this->assertEquals(
 				$key,
-				$root->getValue($map2)->key
+				$root->getValue($map)->key
 			);
 		}
 		else
 		{
 			$this->assertEquals(
 				null,
-				$root->getValue($map2)
+				$root->getValue($map)
 			);
 		}
+	}
+
+	/**
+	 * Tests  TreeSet::getMap
+	 *
+	 * @return  void
+	 *
+	 * @covers  chdemko\SortedCollection\AbstractSet::getMap
+	 *
+	 * @since   1.0.0
+	 */
+	public function test_getMap()
+	{
+		$set = TreeSet::create()->initialise([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+
+		// Set the map property accessible
+		$getMap = (new \ReflectionClass($set))->getMethod('getMap');
+		$getMap->setAccessible(true);
+		$map = $getMap->invoke($set);
+
+		$this->assertEquals(
+			'[true,true,true,true,true,true,true,true,true,true]',
+			(string) $map
+		);
+	}
+
+	/**
+	 * Tests  TreeSet::setMap
+	 *
+	 * @return  void
+	 *
+	 * @covers  chdemko\SortedCollection\AbstractSet::setMap
+	 *
+	 * @since   1.0.0
+	 */
+	public function test_setMap()
+	{
+		$set = TreeSet::create();
+
+		// Set the map property accessible
+		$setMap = (new \ReflectionClass($set))->getMethod('setMap');
+		$setMap->setAccessible(true);
+		$setMap->invoke($set, TreeMap::create()->put([true, true, true]));
+
+		$getMap = (new \ReflectionClass($set))->getMethod('getMap');
+		$getMap->setAccessible(true);
+		$map = $getMap->invoke($set);
+
+		$this->assertEquals(
+			'[true,true,true]',
+			(string) $map
+		);
 	}
 
 	/**
@@ -122,12 +174,12 @@ class TreeSetTest extends \PHPUnit_Framework_TestCase
 		$set = TreeSet::create()->put([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
 
 		// Set the map property accessible
-		$map = (new \ReflectionClass($set))->getMethod('getMap');
-		$map->setAccessible(true);
-		$map2 = $map->invoke($set);
+		$getMap = (new \ReflectionClass($set))->getMethod('getMap');
+		$getMap->setAccessible(true);
+		$map = $getMap->invoke($set);
 
 		// Set the root property accessible
-		$root = (new \ReflectionClass($map2))->getProperty('root');
+		$root = (new \ReflectionClass($map))->getProperty('root');
 		$root->setAccessible(true);
 
 		$this->assertEquals(
@@ -137,7 +189,7 @@ class TreeSetTest extends \PHPUnit_Framework_TestCase
 
 		$this->assertEquals(
 			null,
-			$root->getValue($map2)
+			$root->getValue($map)
 		);
 	}
 

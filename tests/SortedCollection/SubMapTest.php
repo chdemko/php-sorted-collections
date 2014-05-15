@@ -407,6 +407,23 @@ class SubMapTest extends \PHPUnit_Framework_TestCase
 	}
 
 	/**
+	 * Tests  SubMap::__unset
+	 *
+	 * @return  void
+	 *
+	 * @covers  chdemko\SortedCollection\SubMap::__unset
+	 *
+	 * @since   1.0.0
+	 */
+	public function test___unset_unexisting()
+	{
+		$tree = TreeMap::create()->initialise([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+		$sub = SubMap::tail($tree, 2);
+		$this->setExpectedException('RuntimeException');
+		unset($sub->unexisting);
+	}
+
+	/**
 	 * Tests  SubMap::__isset
 	 *
 	 * @return  void
