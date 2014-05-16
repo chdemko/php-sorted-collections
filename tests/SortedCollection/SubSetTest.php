@@ -330,7 +330,7 @@ class SubSetTest extends \PHPUnit_Framework_TestCase
 			isset($sub->unexisting)
 		);
 		$this->setExpectedException('RuntimeException');
-		unset($sub->unexisting);		
+		unset($sub->unexisting);
 	}
 
 	/**
