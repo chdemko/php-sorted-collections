@@ -34,7 +34,7 @@
 	</target>
 
 	<target name="phpdoc" description="Generate API documentation using phpDocumentor">
-		<exec executable="vendor/bin/phpdoc.php" />
+		<exec executable="vendor/bin/phpdoc" />
 	</target>
 
 	<target name="composervalidate" description="Perform validation of composer.json files.">
