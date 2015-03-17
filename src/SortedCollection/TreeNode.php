@@ -275,13 +275,13 @@ class TreeNode implements \Countable
 
 		while (true)
 		{
-			$cmp = call_user_func($comparator, $node->key, $key);
+			$cmp = call_user_func($comparator, $key, $node->key);
 
-			if ($cmp > 0 && $node->information & 2)
+			if ($cmp < 0 && $node->information & 2)
 			{
 				$node = $node->left;
 			}
-			elseif ($cmp < 0 && $node->information & 1)
+			elseif ($cmp > 0 && $node->information & 1)
 			{
 				$node = $node->right;
 			}
@@ -291,7 +291,7 @@ class TreeNode implements \Countable
 			}
 		}
 
-		if ($cmp > 0)
+		if ($cmp < 0)
 		{
 			if ($type < 0)
 			{
@@ -306,7 +306,7 @@ class TreeNode implements \Countable
 				return null;
 			}
 		}
-		elseif ($cmp < 0)
+		elseif ($cmp > 0)
 		{
 			if ($type < 0)
 			{
@@ -478,9 +478,9 @@ class TreeNode implements \Countable
 	public function insert($key, $value, $comparator)
 	{
 		$node = $this;
-		$cmp = call_user_func($comparator, $this->key, $key);
+		$cmp = call_user_func($comparator, $key, $this->key);
 
-		if ($cmp > 0)
+		if ($cmp < 0)
 		{
 			if ($this->information & 2)
 			{
@@ -499,7 +499,7 @@ class TreeNode implements \Countable
 				$node = $this->_decBalance();
 			}
 		}
-		elseif ($cmp < 0)
+		elseif ($cmp > 0)
 		{
 			if ($this->information & 1)
 			{
@@ -540,7 +540,7 @@ class TreeNode implements \Countable
 			$leftBalance = $this->left->information & ~3;
 			$this->left = $this->left->_pullUpLeftMost();
 
-			if (!($this->information & 2) || ($this->left->information & ~3) != $leftBalance && ($this->left->information & ~3) == 0)
+			if (!($this->information & 2) || $leftBalance != 0 && ($this->left->information & ~3) == 0)
 			{
 				return $this->_incBalance();
 			}
@@ -590,29 +590,29 @@ class TreeNode implements \Countable
 	 */
 	public function remove($key, $comparator)
 	{
-		$cmp = call_user_func($comparator, $this->key, $key);
+		$cmp = call_user_func($comparator, $key, $this->key);
 
-		if ($cmp > 0)
+		if ($cmp < 0)
 		{
 			if ($this->information & 2)
 			{
-				$oldLeftBalance = $this->left->information & ~3;
+				$leftBalance = $this->left->information & ~3;
 				$this->left = $this->left->remove($key, $comparator);
 
-				if (!($this->information & 2) || ($this->left->information & ~3) != $oldLeftBalance && ($this->left->information & ~3) == 0)
+				if (!($this->information & 2) || $leftBalance != 0 && ($this->left->information & ~3) == 0)
 				{
 					return $this->_incBalance();
 				}
 			}
 		}
-		elseif ($cmp < 0)
+		elseif ($cmp > 0)
 		{
 			if ($this->information & 1)
 			{
-				$oldRightBalance = $this->right->information & ~3;
+				$rightBalance = $this->right->information & ~3;
 				$this->right = $this->right->remove($key, $comparator);
 
-				if (!($this->information & 1) || ($this->right->information & ~3) != $oldRightBalance && ($this->right->information & ~3) == 0)
+				if (!($this->information & 1) || $rightBalance != 0 && ($this->right->information & ~3) == 0)
 				{
 					return $this->_decBalance();
 				}
@@ -622,10 +622,10 @@ class TreeNode implements \Countable
 		{
 			if ($this->information & 1)
 			{
-				$oldRightBalance = $this->right->information & ~3;
+				$rightBalance = $this->right->information & ~3;
 				$this->right = $this->right->_pullUpLeftMost();
 
-				if (!($this->information & 1) || ($this->right->information & ~3) != $oldRightBalance && ($this->right->information & ~3) == 0)
+				if (!($this->information & 1) || $rightBalance != 0 && ($this->right->information & ~3) == 0)
 				{
 					return $this->_decBalance();
 				}
