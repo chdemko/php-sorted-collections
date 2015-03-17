@@ -19,12 +19,13 @@ require __DIR__ . '/../vendor/autoload.php';
 use chdemko\SortedCollection\TreeMap;
 use chdemko\SortedCollection\SubMap;
 
+date_default_timezone_set('UTC');
 printf('SubMap benchmarking run on ' . date('r') . PHP_EOL . PHP_EOL);
 printf('%25s %10s %10s %10s' . PHP_EOL, 'Operation', 'n', 'seconds', 'μs/(n log(n))');
 printf('-------------------------------------------------------------' . PHP_EOL);
 
 $tree = TreeMap::create();
-$sub = SubMap::create($tree);
+$sub = SubMap::create($tree, null, null);
 
 foreach ([100, 1000, 10000, 100000] as $count)
 {

@@ -19,6 +19,7 @@ require __DIR__ . '/../vendor/autoload.php';
 use chdemko\SortedCollection\TreeMap;
 use chdemko\SortedCollection\ReversedMap;
 
+date_default_timezone_set('UTC');
 printf('ReversedMap benchmarking run on ' . date('r') . PHP_EOL . PHP_EOL);
 printf('%25s %10s %10s %10s' . PHP_EOL, 'Operation', 'n', 'seconds', 'μs/(n log(n))');
 printf('-------------------------------------------------------------' . PHP_EOL);
