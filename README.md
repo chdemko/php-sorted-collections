@@ -73,3 +73,4 @@ If you are using this project including publication in research activities, you 
 * year: 2014
 * how published: http://chdemko.github.io/php-sorted-collections
 
+All releases can be found [here](https://github.com/chdemko/php-sorted-collections/releases)
