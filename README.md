@@ -1,6 +1,6 @@
 PHP Sorted Collections
 ======================
-[![Flattr this git repo](http://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=chdemko&url=https://github.com/chdemko/php-sorted-collections&title=PHP Sorted Collections&language=&tags=github&category=software)
+[![Flattr this git repo](http://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=chdemko&url=https://github.com/chdemko/php-sorted-collections&title=PHP Sorted Collections&language=PHP&tags=github&category=software)
 [![Build Status](https://secure.travis-ci.org/chdemko/php-sorted-collections.png)](http://travis-ci.org/chdemko/php-sorted-collections)
 [![Code coverage](https://coveralls.io/repos/chdemko/php-sorted-collections/badge.png?branch=master)](https://coveralls.io/r/chdemko/php-sorted-collections?branch=master)
 [![Dependency Status](https://www.versioneye.com/package/php--chdemko--sorted-collections/badge.svg)](https://www.versioneye.com/package/php--chdemko--sorted-collections)
