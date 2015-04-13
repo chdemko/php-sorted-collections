@@ -26,7 +26,7 @@ Installation
 Using composer: either
 
 ~~~
-$ composer create-project chdemko/sorted-collections:1.0.x-dev --dev; cd sorted-collections
+$ composer create-project chdemko/sorted-collections:1.0.*@dev; cd sorted-collections
 ~~~
 
 or create a `composer.json` file containing
@@ -34,7 +34,7 @@ or create a `composer.json` file containing
 ~~~json
 {
     "require": {
-        "chdemko/sorted-collections": "1.0.x-dev"
+        "chdemko/sorted-collections": "1.0.*@dev"
     }
 }
 ~~~
