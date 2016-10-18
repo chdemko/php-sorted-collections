@@ -4,7 +4,7 @@
  * chdemko\SortedCollection\ReversedSet class
  *
  * @author     Christophe Demko <chdemko@gmail.com>
- * @copyright  Copyright (C) 2012-2015 Christophe Demko. All rights reserved.
+ * @copyright  Copyright (C) 2012-2016 Christophe Demko. All rights reserved.
  *
  * @license    http://www.cecill.info/licences/Licence_CeCILL-B_V1-en.html The CeCILL B license
  *
@@ -58,7 +58,7 @@ class ReversedSet extends AbstractSet
 	 *
 	 * @since   1.0.0
 	 */
-	static public function create(SortedSet $set)
+	public static function create(SortedSet $set)
 	{
 		return new static($set);
 	}
@@ -78,10 +78,8 @@ class ReversedSet extends AbstractSet
 		{
 			case 'set':
 				return $this->set;
-			break;
 			default:
 				return parent::__get($property);
-			break;
 		}
 	}
 

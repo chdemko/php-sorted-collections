@@ -4,7 +4,7 @@
  * chdemko\SortedCollection\SubMap class
  *
  * @author     Christophe Demko <chdemko@gmail.com>
- * @copyright  Copyright (C) 2012-2015 Christophe Demko. All rights reserved.
+ * @copyright  Copyright (C) 2012-2016 Christophe Demko. All rights reserved.
  *
  * @license    http://www.cecill.info/licences/Licence_CeCILL-B_V1-en.html The CeCILL B license
  *
@@ -127,7 +127,7 @@ class SubMap extends AbstractMap
 				{
 					return $this->fromKey;
 				}
-			break;
+
 			case 'toKey':
 				if ($this->toOption == self::UNUSED)
 				{
@@ -137,7 +137,7 @@ class SubMap extends AbstractMap
 				{
 					return $this->toKey;
 				}
-			break;
+
 			case 'fromInclusive':
 				if ($this->fromOption == self::UNUSED)
 				{
@@ -147,7 +147,7 @@ class SubMap extends AbstractMap
 				{
 					return $this->fromOption == self::INCLUSIVE;
 				}
-			break;
+
 			case 'toInclusive':
 				if ($this->toOption == self::UNUSED)
 				{
@@ -157,13 +157,11 @@ class SubMap extends AbstractMap
 				{
 					return $this->toOption == self::INCLUSIVE;
 				}
-			break;
+
 			case 'map':
 				return $this->map;
-			break;
 			default:
 				return parent::__get($property);
-			break;
 		}
 	}
 
@@ -354,7 +352,7 @@ class SubMap extends AbstractMap
 	 *
 	 * @since   1.0.0
 	 */
-	static public function head(SortedMap $map, $toKey, $toInclusive = false)
+	public static function head(SortedMap $map, $toKey, $toInclusive = false)
 	{
 		return new static($map, null, self::UNUSED, $toKey, $toInclusive ? self::INCLUSIVE : self::EXCLUSIVE);
 	}
@@ -370,7 +368,7 @@ class SubMap extends AbstractMap
 	 *
 	 * @since   1.0.0
 	 */
-	static public function tail(SortedMap $map, $fromKey, $fromInclusive = true)
+	public static function tail(SortedMap $map, $fromKey, $fromInclusive = true)
 	{
 		return new static($map, $fromKey, $fromInclusive ? self::INCLUSIVE : self::EXCLUSIVE, null, self::UNUSED);
 	}

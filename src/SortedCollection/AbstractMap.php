@@ -4,7 +4,7 @@
  * chdemko\SortedCollection\AbstractMap class
  *
  * @author     Christophe Demko <chdemko@gmail.com>
- * @copyright  Copyright (C) 2012-2015 Christophe Demko. All rights reserved.
+ * @copyright  Copyright (C) 2012-2016 Christophe Demko. All rights reserved.
  *
  * @license    http://www.cecill.info/licences/Licence_CeCILL-B_V1-en.html The CeCILL B license
  *
@@ -52,37 +52,26 @@ abstract class AbstractMap implements SortedMap
 		{
 			case 'comparator':
 				return $this->comparator();
-			break;
 			case 'firstKey':
 				return $this->firstKey();
-			break;
 			case 'lastKey':
 				return $this->lastKey();
-			break;
 			case 'firstValue':
 				return $this->firstValue();
-			break;
 			case 'lastValue':
 				return $this->lastValue();
-			break;
 			case 'first':
 				return $this->first();
-			break;
 			case 'last':
 				return $this->last();
-			break;
 			case 'keys':
 				return $this->keys();
-			break;
 			case 'values':
 				return $this->values();
-			break;
 			case 'count':
 				return $this->count();
-			break;
 			default:
 				throw new \RuntimeException('Undefined property');
-			break;
 		}
 	}
 

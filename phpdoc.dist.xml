@@ -17,8 +17,8 @@
 		<visibility></visibility>
 	</parser>
 	<files>
-		<ignore-hidden>on</ignore-hidden>
-		<ignore-symlinks>on</ignore-symlinks>
+		<ignore-hidden>true</ignore-hidden>
+		<ignore-symlinks>true</ignore-symlinks>
 		<directory>src</directory>
 	</files>
 	<transformer>

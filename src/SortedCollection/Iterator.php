@@ -4,7 +4,7 @@
  * chdemko\SortedCollection\Iterator class
  *
  * @author     Christophe Demko <chdemko@gmail.com>
- * @copyright  Copyright (C) 2012-2015 Christophe Demko. All rights reserved.
+ * @copyright  Copyright (C) 2012-2016 Christophe Demko. All rights reserved.
  *
  * @license    http://www.cecill.info/licences/Licence_CeCILL-B_V1-en.html The CeCILL B license
  *
@@ -89,7 +89,7 @@ class Iterator implements \Iterator
 	 *
 	 * @since   1.0.0
 	 */
-	static public function create(SortedMap $map)
+	public static function create(SortedMap $map)
 	{
 		return new static($map, self::PAIRS);
 	}
@@ -103,7 +103,7 @@ class Iterator implements \Iterator
 	 *
 	 * @since   1.0.0
 	 */
-	static public function keys(SortedMap $map)
+	public static function keys(SortedMap $map)
 	{
 		return new static($map, self::KEYS);
 	}
@@ -117,7 +117,7 @@ class Iterator implements \Iterator
 	 *
 	 * @since   1.0.0
 	 */
-	static public function values(SortedMap $map)
+	public static function values(SortedMap $map)
 	{
 		return new static($map, self::VALUES);
 	}

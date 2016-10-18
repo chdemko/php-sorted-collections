@@ -6,7 +6,7 @@
  * @package    SortedCollection
  *
  * @author     Christophe Demko <chdemko@gmail.com>
- * @copyright  Copyright (C) 2012-2015 Christophe Demko. All rights reserved.
+ * @copyright  Copyright (C) 2012-2016 Christophe Demko. All rights reserved.
  *
  * @license    http://www.cecill.info/licences/Licence_CeCILL-B_V1-en.html The CeCILL B license
  *

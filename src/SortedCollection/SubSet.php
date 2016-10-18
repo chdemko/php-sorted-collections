@@ -4,7 +4,7 @@
  * chdemko\SortedCollection\SubSet class
  *
  * @author     Christophe Demko <chdemko@gmail.com>
- * @copyright  Copyright (C) 2012-2015 Christophe Demko. All rights reserved.
+ * @copyright  Copyright (C) 2012-2016 Christophe Demko. All rights reserved.
  *
  * @license    http://www.cecill.info/licences/Licence_CeCILL-B_V1-en.html The CeCILL B license
  *
@@ -77,22 +77,16 @@ class SubSet extends AbstractSet
 		{
 			case 'from':
 				return $this->getMap()->fromKey;
-			break;
 			case 'to':
 				return $this->getMap()->toKey;
-			break;
 			case 'fromInclusive':
 				return $this->getMap()->fromInclusive;
-			break;
 			case 'toInclusive':
 				return $this->getMap()->toInclusive;
-			break;
 			case 'set':
 				return $this->set;
-			break;
 			default:
 				return parent::__get($property);
-			break;
 		}
 	}
 
@@ -126,7 +120,6 @@ class SubSet extends AbstractSet
 			break;
 			default:
 				throw new \RuntimeException('Undefined property');
-			break;
 		}
 	}
 
@@ -159,7 +152,6 @@ class SubSet extends AbstractSet
 			break;
 			default:
 				throw new \RuntimeException('Undefined property');
-			break;
 		}
 	}
 
@@ -178,19 +170,14 @@ class SubSet extends AbstractSet
 		{
 			case 'from':
 				return isset($this->getMap()->fromKey);
-			break;
 			case 'to':
 				return isset($this->getMap()->toKey);
-			break;
 			case 'fromInclusive':
 				return isset($this->getMap()->fromInclusive);
-			break;
 			case 'toInclusive':
 				return isset($this->getMap()->toInclusive);
-			break;
 			default:
 				return false;
-			break;
 		}
 	}
 
@@ -243,7 +230,7 @@ class SubSet extends AbstractSet
 	 *
 	 * @since   1.0.0
 	 */
-	static public function create(SortedSet $set, $from, $to, $fromInclusive = true, $toInclusive = false)
+	public static function create(SortedSet $set, $from, $to, $fromInclusive = true, $toInclusive = false)
 	{
 		return new static($set, $from, $fromInclusive ? self::INCLUSIVE : self::EXCLUSIVE, $to, $toInclusive ? self::INCLUSIVE : self::EXCLUSIVE);
 	}
@@ -259,7 +246,7 @@ class SubSet extends AbstractSet
 	 *
 	 * @since   1.0.0
 	 */
-	static public function head(SortedSet $set, $to, $toInclusive = false)
+	public static function head(SortedSet $set, $to, $toInclusive = false)
 	{
 		return new static($set, null, self::UNUSED, $to, $toInclusive ? self::INCLUSIVE : self::EXCLUSIVE);
 	}
@@ -275,7 +262,7 @@ class SubSet extends AbstractSet
 	 *
 	 * @since   1.0.0
 	 */
-	static public function tail(SortedSet $set, $from, $fromInclusive = true)
+	public static function tail(SortedSet $set, $from, $fromInclusive = true)
 	{
 		return new static($set, $from, $fromInclusive ? self::INCLUSIVE : self::EXCLUSIVE, null, self::UNUSED);
 	}
@@ -289,7 +276,7 @@ class SubSet extends AbstractSet
 	 *
 	 * @since   1.0.0
 	 */
-	static public function view(SortedSet $set)
+	public static function view(SortedSet $set)
 	{
 		return new static($set, null, self::UNUSED, null, self::UNUSED);
 	}
