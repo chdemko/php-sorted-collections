@@ -219,7 +219,6 @@ class SubMap extends AbstractMap
 			break;
 			default:
 				throw new \RuntimeException('Undefined property');
-			break;
 		}
 
 		$this->setEmpty();
@@ -250,7 +249,6 @@ class SubMap extends AbstractMap
 			break;
 			default:
 				throw new \RuntimeException('Undefined property');
-			break;
 		}
 	}
 
@@ -270,14 +268,11 @@ class SubMap extends AbstractMap
 			case 'fromKey':
 			case 'fromInclusive':
 				return $this->fromOption != self::UNUSED;
-			break;
 			case 'toKey':
 			case 'toInclusive':
 				return $this->toOption != self::UNUSED;
-			break;
 			default:
 				return false;
-			break;
 		}
 	}
 
@@ -336,7 +331,7 @@ class SubMap extends AbstractMap
 	 *
 	 * @since   1.0.0
 	 */
-	static public function create(SortedMap $map, $fromKey, $toKey, $fromInclusive = true, $toInclusive = false)
+	public static function create(SortedMap $map, $fromKey, $toKey, $fromInclusive = true, $toInclusive = false)
 	{
 		return new static($map, $fromKey, $fromInclusive ? self::INCLUSIVE : self::EXCLUSIVE, $toKey, $toInclusive ? self::INCLUSIVE : self::EXCLUSIVE);
 	}
@@ -382,7 +377,7 @@ class SubMap extends AbstractMap
 	 *
 	 * @since   1.0.0
 	 */
-	static public function view(SortedMap $map)
+	public static function view(SortedMap $map)
 	{
 		return new static($map, null, self::UNUSED, null, self::UNUSED);
 	}
