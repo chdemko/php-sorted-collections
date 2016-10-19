@@ -1,12 +1,12 @@
 PHP Sorted Collections
 ======================
 [![Flattr this git repo](http://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=chdemko&url=https://github.com/chdemko/php-sorted-collections&title=PHP Sorted Collections&language=&tags=github&category=software)
-[![Build Status](https://secure.travis-ci.org/chdemko/php-sorted-collections.png)](http://travis-ci.org/chdemko/php-sorted-collections)
-[![Code coverage](https://coveralls.io/repos/chdemko/php-sorted-collections/badge.png?branch=master)](https://coveralls.io/r/chdemko/php-sorted-collections?branch=master)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/chdemko/php-sorted-collections/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/chdemko/php-sorted-collections/?branch=master)
+[![Travis](https://img.shields.io/travis/chdemko/php-sorted-collections.svg)](http://travis-ci.org/chdemko/php-sorted-collections)
+[![Coveralls](https://img.shields.io/coveralls/jekyll/jekyll.svg)](https://coveralls.io/r/chdemko/php-sorted-collections?branch=master)
+[![Scrutinizer](https://img.shields.io/scrutinizer/g/chdemko/php-sorted-collections.svg)](https://scrutinizer-ci.com/g/chdemko/php-sorted-collections/?branch=master)
 [![Dependency Status](https://www.versioneye.com/package/php--chdemko--sorted-collections/badge.svg)](https://www.versioneye.com/package/php--chdemko--sorted-collections)
-[![Latest Stable Version](https://poser.pugx.org/chdemko/sorted-collections/v/stable.svg)](https://packagist.org/packages/chdemko/sorted-collections)
-[![Total Downloads](https://poser.pugx.org/chdemko/sorted-collections/downloads.svg)](https://packagist.org/packages/chdemko/sorted-collections)
+[![Latest Stable Version](https://img.shields.io/packagist/v/chdemko/sorted-collections.svg)](https://packagist.org/packages/chdemko/sorted-collections)
+[![Packagist](https://img.shields.io/packagist/dt/chdemko/sorted-collections.svg)](https://packagist.org/packages/chdemko/sorted-collections)
 [![Latest Unstable Version](https://poser.pugx.org/chdemko/sorted-collections/v/unstable.svg)](https://packagist.org/packages/chdemko/sorted-collections)
 [![License](https://poser.pugx.org/chdemko/sorted-collections/license.svg)](https://packagist.org/packages/chdemko/sorted-collections)
 
