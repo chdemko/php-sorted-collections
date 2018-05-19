@@ -4,9 +4,9 @@
  * chdemko\SortedCollection\TreeNode class
  *
  * @author     Christophe Demko <chdemko@gmail.com>
- * @copyright  Copyright (C) 2012-2016 Christophe Demko. All rights reserved.
+ * @copyright  Copyright (C) 2012-2018 Christophe Demko. All rights reserved.
  *
- * @license    http://www.cecill.info/licences/Licence_CeCILL-B_V1-en.html The CeCILL B license
+ * @license    BSD 3-Clause License
  *
  * This file is part of the php-sorted-collections package https://github.com/chdemko/php-sorted-collections
  */
@@ -115,19 +115,19 @@ class TreeNode implements \Countable
 	{
 		switch ($property)
 		{
-		case 'first':
+			case 'first':
 			return $this->first();
-		case 'last':
+			case 'last':
 			return $this->last();
-		case 'predecessor':
+			case 'predecessor':
 			return $this->predecessor();
-		case 'successor':
+			case 'successor':
 			return $this->successor();
-		case 'key':
+			case 'key':
 			return $this->key;
-		case 'count':
+			case 'count':
 			return $this->count();
-		default:
+			default:
 			throw new \RuntimeException('Undefined property');
 		}
 	}
@@ -338,7 +338,7 @@ class TreeNode implements \Countable
 	 *
 	 * @since   1.0.0
 	 */
-	private function _rotateLeft()
+	private function rotateLeft()
 	{
 		$right = $this->right;
 
@@ -377,7 +377,7 @@ class TreeNode implements \Countable
 	 *
 	 * @since   1.0.0
 	 */
-	private function _rotateRight()
+	private function rotateRight()
 	{
 		$left = $this->left;
 
@@ -416,7 +416,7 @@ class TreeNode implements \Countable
 	 *
 	 * @since   1.0.0
 	 */
-	private function _incBalance()
+	private function incBalance()
 	{
 		$this->information += 4;
 
@@ -424,10 +424,10 @@ class TreeNode implements \Countable
 		{
 			if ($this->right->information < 0)
 			{
-				$this->right = $this->right->_rotateRight();
+				$this->right = $this->right->rotateRight();
 			}
 
-			return $this->_rotateLeft();
+			return $this->rotateLeft();
 		}
 
 		return $this;
@@ -440,7 +440,7 @@ class TreeNode implements \Countable
 	 *
 	 * @since   1.0.0
 	 */
-	private function _decBalance()
+	private function decBalance()
 	{
 		$this->information -= 4;
 
@@ -448,10 +448,10 @@ class TreeNode implements \Countable
 		{
 			if ($this->left->information >= 4)
 			{
-				$this->left = $this->left->_rotateLeft();
+				$this->left = $this->left->rotateLeft();
 			}
 
-			return $this->_rotateRight();
+			return $this->rotateRight();
 		}
 
 		return $this;
@@ -482,14 +482,14 @@ class TreeNode implements \Countable
 
 				if (($this->left->information & ~3) && ($this->left->information & ~3) != $leftBalance)
 				{
-					$node = $this->_decBalance();
+					$node = $this->decBalance();
 				}
 			}
 			else
 			{
 				$this->left = new static($key, $value, $this->left, $this);
-				$this->information|= 2;
-				$node = $this->_decBalance();
+				$this->information |= 2;
+				$node = $this->decBalance();
 			}
 		}
 		elseif ($cmp > 0)
@@ -501,14 +501,14 @@ class TreeNode implements \Countable
 
 				if (($this->right->information & ~3) && ($this->right->information & ~3) != $rightBalance)
 				{
-					$node = $this->_incBalance();
+					$node = $this->incBalance();
 				}
 			}
 			else
 			{
 				$this->right = new static($key, $value, $this, $this->right);
-				$this->information|= 1;
-				$node = $this->_incBalance();
+				$this->information |= 1;
+				$node = $this->incBalance();
 			}
 		}
 		else
@@ -526,16 +526,16 @@ class TreeNode implements \Countable
 	 *
 	 * @since   1.0.0
 	 */
-	private function _pullUpLeftMost()
+	private function pullUpLeftMost()
 	{
 		if ($this->information & 2)
 		{
 			$leftBalance = $this->left->information & ~3;
-			$this->left = $this->left->_pullUpLeftMost();
+			$this->left = $this->left->pullUpLeftMost();
 
 			if (!($this->information & 2) || $leftBalance != 0 && ($this->left->information & ~3) == 0)
 			{
-				return $this->_incBalance();
+				return $this->incBalance();
 			}
 			else
 			{
@@ -594,7 +594,7 @@ class TreeNode implements \Countable
 
 				if (!($this->information & 2) || $leftBalance != 0 && ($this->left->information & ~3) == 0)
 				{
-					return $this->_incBalance();
+					return $this->incBalance();
 				}
 			}
 		}
@@ -607,7 +607,7 @@ class TreeNode implements \Countable
 
 				if (!($this->information & 1) || $rightBalance != 0 && ($this->right->information & ~3) == 0)
 				{
-					return $this->_decBalance();
+					return $this->decBalance();
 				}
 			}
 		}
@@ -616,11 +616,11 @@ class TreeNode implements \Countable
 			if ($this->information & 1)
 			{
 				$rightBalance = $this->right->information & ~3;
-				$this->right = $this->right->_pullUpLeftMost();
+				$this->right = $this->right->pullUpLeftMost();
 
 				if (!($this->information & 1) || $rightBalance != 0 && ($this->right->information & ~3) == 0)
 				{
-					return $this->_decBalance();
+					return $this->decBalance();
 				}
 			}
 			else

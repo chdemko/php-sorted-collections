@@ -4,15 +4,17 @@
  * chdemko\SortedCollection\SubSetTest class
  *
  * @author     Christophe Demko <chdemko@gmail.com>
- * @copyright  Copyright (C) 2012-2016 Christophe Demko. All rights reserved.
+ * @copyright  Copyright (C) 2012-2018 Christophe Demko. All rights reserved.
  *
- * @license    http://www.cecill.info/licences/Licence_CeCILL-B_V1-en.html The CeCILL B license
+ * @license    BSD 3-Clause License
  *
  * This file is part of the php-sorted-collections package https://github.com/chdemko/php-sorted-collections
  */
 
 // Declare chdemko\SortedCollection namespace
 namespace chdemko\SortedCollection;
+
+use PHPUnit\Framework\TestCase;
 
 /**
  * SubSet class test
@@ -22,23 +24,23 @@ namespace chdemko\SortedCollection;
  *
  * @since       1.0.0
  */
-class SubSetTest extends \PHPUnit_Framework_TestCase
+class SubSetTest extends TestCase
 {
 	/**
-	 * Data provider for test_create
+	 * Data provider for testCreate
 	 *
 	 * @return  array
 	 *
 	 * @since   1.0.0
 	 */
-	public function cases_create()
+	public function casesCreate()
 	{
-		return [
-			[[0, 1, 2, 3, 4, 5, 6, 7, 8, 9], 2, 7, true, false, '[2,3,4,5,6]'],
-			[[0, 1, 2, 3, 4, 5, 6, 7, 8, 9], 2, 7, true, true, '[2,3,4,5,6,7]'],
-			[[0, 1, 2, 3, 4, 5, 6, 7, 8, 9], 2, 7, false, false, '[3,4,5,6]'],
-			[[0, 1, 2, 3, 4, 5, 6, 7, 8, 9], 2, 7, false, true, '[3,4,5,6,7]'],
-		];
+		return array(
+			array(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9), 2, 7, true, false, '[2,3,4,5,6]'),
+			array(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9), 2, 7, true, true, '[2,3,4,5,6,7]'),
+			array(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9), 2, 7, false, false, '[3,4,5,6]'),
+			array(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9), 2, 7, false, true, '[3,4,5,6,7]'),
+		);
 	}
 
 	/**
@@ -56,11 +58,11 @@ class SubSetTest extends \PHPUnit_Framework_TestCase
 	 * @covers  chdemko\SortedCollection\SubSet::__construct
 	 * @covers  chdemko\SortedCollection\SubSet::create
 	 *
-	 * @dataProvider  cases_create
+	 * @dataProvider  casesCreate
 	 *
 	 * @since   1.0.0
 	 */
-	public function test_create($values, $from, $to, $fromInclusive, $toInclusive, $string)
+	public function testCreate($values, $from, $to, $fromInclusive, $toInclusive, $string)
 	{
 		$set = TreeSet::create()->initialise($values);
 		$sub = SubSet::create($set, $from, $to, $fromInclusive, $toInclusive);
@@ -71,18 +73,18 @@ class SubSetTest extends \PHPUnit_Framework_TestCase
 	}
 
 	/**
-	 * Data provider for test_head
+	 * Data provider for testHead
 	 *
 	 * @return  array
 	 *
 	 * @since   1.0.0
 	 */
-	public function cases_head()
+	public function casesHead()
 	{
-		return [
-			[[0, 1, 2, 3, 4, 5, 6, 7, 8, 9], 7, false, '[0,1,2,3,4,5,6]'],
-			[[0, 1, 2, 3, 4, 5, 6, 7, 8, 9], 7, true, '[0,1,2,3,4,5,6,7]'],
-		];
+		return array(
+			array(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9), 7, false, '[0,1,2,3,4,5,6]'),
+			array(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9), 7, true, '[0,1,2,3,4,5,6,7]'),
+		);
 	}
 
 	/**
@@ -98,11 +100,11 @@ class SubSetTest extends \PHPUnit_Framework_TestCase
 	 * @covers  chdemko\SortedCollection\SubSet::__construct
 	 * @covers  chdemko\SortedCollection\SubSet::head
 	 *
-	 * @dataProvider  cases_head
+	 * @dataProvider  casesHead
 	 *
 	 * @since   1.0.0
 	 */
-	public function test_head($values, $to, $toInclusive, $string)
+	public function testHead($values, $to, $toInclusive, $string)
 	{
 		$set = TreeSet::create()->initialise($values);
 		$head = SubSet::head($set, $to, $toInclusive);
@@ -113,18 +115,18 @@ class SubSetTest extends \PHPUnit_Framework_TestCase
 	}
 
 	/**
-	 * Data provider for test_tail
+	 * Data provider for testTail
 	 *
 	 * @return  array
 	 *
 	 * @since   1.0.0
 	 */
-	public function cases_tail()
+	public function casesTail()
 	{
-		return [
-			[[0, 1, 2, 3, 4, 5, 6, 7, 8, 9], 2, false, '[3,4,5,6,7,8,9]'],
-			[[0, 1, 2, 3, 4, 5, 6, 7, 8, 9], 2, true, '[2,3,4,5,6,7,8,9]'],
-		];
+		return array(
+			array(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9), 2, false, '[3,4,5,6,7,8,9]'),
+			array(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9), 2, true, '[2,3,4,5,6,7,8,9]'),
+		);
 	}
 
 	/**
@@ -140,11 +142,11 @@ class SubSetTest extends \PHPUnit_Framework_TestCase
 	 * @covers  chdemko\SortedCollection\SubSet::__construct
 	 * @covers  chdemko\SortedCollection\SubSet::tail
 	 *
-	 * @dataProvider  cases_tail
+	 * @dataProvider  casesTail
 	 *
 	 * @since   1.0.0
 	 */
-	public function test_tail($values, $from, $fromInclusive, $string)
+	public function testTail($values, $from, $fromInclusive, $string)
 	{
 		$set = TreeSet::create()->initialise($values);
 		$tail = SubSet::tail($set, $from, $fromInclusive);
@@ -164,9 +166,9 @@ class SubSetTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @since   1.0.0
 	 */
-	public function test_view()
+	public function testView()
 	{
-		$set = TreeSet::create()->initialise([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+		$set = TreeSet::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
 		$view = SubSet::view($set);
 		$this->assertEquals(
 			(string) $set,
@@ -184,9 +186,9 @@ class SubSetTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @since   1.0.0
 	 */
-	public function test___get()
+	public function testGet()
 	{
-		$set = TreeSet::create()->initialise([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+		$set = TreeSet::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
 		$sub = SubSet::create($set, 2, 7);
 		$this->assertEquals(
 			$set,
@@ -223,9 +225,9 @@ class SubSetTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @since   1.0.0
 	 */
-	public function test___set()
+	public function testSet()
 	{
-		$set = TreeSet::create()->initialise([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+		$set = TreeSet::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
 		$sub = SubSet::create($set, 2, 7);
 		$sub->from = 3;
 		$sub->fromInclusive = false;
@@ -248,7 +250,7 @@ class SubSetTest extends \PHPUnit_Framework_TestCase
 			$sub->toInclusive
 		);
 
-		$this->setExpectedException('RuntimeException');
+		$this->expectException('RuntimeException');
 		$sub->unexisting = true;
 	}
 
@@ -258,7 +260,7 @@ class SubSetTest extends \PHPUnit_Framework_TestCase
 	 * @param   mixed  $from           The from element
 	 * @param   mixed  $to             The to element
 	 * @param   mixed  $fromInclusive  The from inclusive flag
-	 * @param   mixed  $toInclusive    The to inclusive flag	 
+	 * @param   mixed  $toInclusive    The to inclusive flag
 	 *
 	 * @return  SubMap  A sub map
 	 *
@@ -266,7 +268,7 @@ class SubSetTest extends \PHPUnit_Framework_TestCase
 	 */
 	protected function createSub($from, $to, $fromInclusive, $toInclusive)
 	{
-		$set = TreeSet::create()->initialise([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+		$set = TreeSet::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
 
 		if ($fromInclusive === null)
 		{
@@ -301,9 +303,9 @@ class SubSetTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @since   1.0.0
 	 */
-	public function test___unset_isset()
+	public function testUnsetIsset()
 	{
-		$set = TreeSet::create()->initialise([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+		$set = TreeSet::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
 		$sub = SubSet::create($set, 2, 7);
 		unset($sub->from);
 		unset($sub->fromInclusive);
@@ -329,77 +331,77 @@ class SubSetTest extends \PHPUnit_Framework_TestCase
 			false,
 			isset($sub->unexisting)
 		);
-		$this->setExpectedException('RuntimeException');
+		$this->expectException('RuntimeException');
 		unset($sub->unexisting);
 	}
 
 	/**
-	 * Data provider for test_jsonSerialize
+	 * Data provider for testJsonSerialize
 	 *
 	 * @return  array
 	 *
 	 * @since   1.0.0
 	 */
-	public function cases_jsonSerialize()
+	public function casesJsonSerialize()
 	{
-		return [
-			[
+		return array(
+			array(
 				2,
 				7,
 				true,
 				false,
 				'{"SubSet":{"set":{"TreeSet":[0,1,2,3,4,5,6,7,8,9]},"from":2,"fromInclusive":true,"to":7,"toInclusive":false}}'
-			],
-			[
+			),
+			array(
 				2,
 				7,
 				false,
 				false,
 				'{"SubSet":{"set":{"TreeSet":[0,1,2,3,4,5,6,7,8,9]},"from":2,"fromInclusive":false,"to":7,"toInclusive":false}}'
-			],
-			[
+			),
+			array(
 				2,
 				7,
 				false,
 				true,
 				'{"SubSet":{"set":{"TreeSet":[0,1,2,3,4,5,6,7,8,9]},"from":2,"fromInclusive":false,"to":7,"toInclusive":true}}'
-			],
-			[
+			),
+			array(
 				2,
 				7,
 				true,
 				true,
 				'{"SubSet":{"set":{"TreeSet":[0,1,2,3,4,5,6,7,8,9]},"from":2,"fromInclusive":true,"to":7,"toInclusive":true}}'
-			],
-			[
+			),
+			array(
 				9,
 				-1,
 				true,
 				false,
 				'{"SubSet":{"set":{"TreeSet":[0,1,2,3,4,5,6,7,8,9]},"from":9,"fromInclusive":true,"to":-1,"toInclusive":false}}'
-			],
-			[
+			),
+			array(
 				null,
 				7,
 				null,
 				true,
 				'{"HeadSet":{"set":{"TreeSet":[0,1,2,3,4,5,6,7,8,9]},"to":7,"toInclusive":true}}'
-			],
-			[
+			),
+			array(
 				2,
 				null,
 				true,
 				null,
 				'{"TailSet":{"set":{"TreeSet":[0,1,2,3,4,5,6,7,8,9]},"from":2,"fromInclusive":true}}'
-			],
-			[
+			),
+			array(
 				null,
 				null,
 				null,
 				null,
 				'{"ViewSet":{"set":{"TreeSet":[0,1,2,3,4,5,6,7,8,9]}}}'
-			],
-		];
+			),
+		);
 	}
 
 	/**
@@ -415,11 +417,11 @@ class SubSetTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @covers  chdemko\SortedCollection\SubSet::jsonSerialize
 	 *
-	 * @dataProvider  cases_jsonSerialize
+	 * @dataProvider  casesJsonSerialize
 	 *
 	 * @since   1.0.0
 	 */
-	public function test_jsonSerialize($fromKey, $toKey, $fromInclusive, $toInclusive, $string)
+	public function testJsonSerialize($fromKey, $toKey, $fromInclusive, $toInclusive, $string)
 	{
 		$sub = $this->createSub($fromKey, $toKey, $fromInclusive, $toInclusive);
 		$this->assertEquals(

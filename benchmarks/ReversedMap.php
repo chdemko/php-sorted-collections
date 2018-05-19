@@ -7,9 +7,9 @@
  * @subpackage  Map
  *
  * @author      Christophe Demko <chdemko@gmail.com>
- * @copyright   Copyright (C) 2012-2016 Christophe Demko. All rights reserved.
+ * @copyright   Copyright (C) 2012-2018 Christophe Demko. All rights reserved.
  *
- * @license     http://www.cecill.info/licences/Licence_CeCILL-B_V1-en.html The CeCILL B license
+ * @license     BSD 3-Clause License
  *
  * This file is part of the php-sorted-collections package https://github.com/chdemko/php-sorted-collections
  */
@@ -27,7 +27,7 @@ printf('-------------------------------------------------------------' . PHP_EOL
 $tree = TreeMap::create();
 $reversed = ReversedMap::create($tree);
 
-foreach ([100, 1000, 10000, 100000] as $count)
+foreach (array(100, 1000, 10000, 100000) as $count)
 {
 	for ($i = 0; $i < $count; $i++)
 	{
@@ -54,7 +54,7 @@ foreach ([100, 1000, 10000, 100000] as $count)
 	$tree->clear();
 }
 
-foreach ([100, 1000, 10000, 100000] as $count)
+foreach (array(100, 1000, 10000, 100000) as $count)
 {
 	for ($i = 0; $i < $count; $i++)
 	{
@@ -80,7 +80,7 @@ foreach ([100, 1000, 10000, 100000] as $count)
 	$tree->clear();
 }
 
-foreach ([100, 1000, 10000, 100000] as $count)
+foreach (array(100, 1000, 10000, 100000) as $count)
 {
 	for ($i = 0; $i < $count; $i++)
 	{

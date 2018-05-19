@@ -4,9 +4,9 @@
  * chdemko\SortedCollection\TreeNodeTest class
  *
  * @author     Christophe Demko <chdemko@gmail.com>
- * @copyright  Copyright (C) 2012-2016 Christophe Demko. All rights reserved.
+ * @copyright  Copyright (C) 2012-2018 Christophe Demko. All rights reserved.
  *
- * @license    http://www.cecill.info/licences/Licence_CeCILL-B_V1-en.html The CeCILL B license
+ * @license    BSD 3-Clause License
  *
  * This file is part of the php-sorted-collections package https://github.com/chdemko/php-sorted-collections
  */
@@ -14,14 +14,16 @@
 // Declare chdemko\SortedCollection namespace
 namespace chdemko\SortedCollection;
 
+use PHPUnit\Framework\TestCase;
+
 /**
  * TreeNode class test
  *
  * @package  SortedCollection
  *
- * @since    0,0,1
+ * @since    1.0.0
  */
-class TreeNodeTest extends \PHPUnit_Framework_TestCase
+class TreeNodeTest extends TestCase
 {
 	/**
 	 * Transform a tree map node to a string
@@ -89,26 +91,30 @@ class TreeNodeTest extends \PHPUnit_Framework_TestCase
 	}
 
 	/**
-	 * Data provider for test_create
+	 * Data provider for testCreate
 	 *
 	 * @return  array
 	 *
 	 * @since   1.0.0
 	 */
-	public function cases_create()
+	public function casesCreate()
 	{
-		return [
-			[[], null, '()'],
-			[
-				[],
+		return array(
+			array(array(), null, '()'),
+			array(
+				array(),
 				function ($key1, $key2)
 				{
 					return $key1 - $key2;
 				},
 				'()'
-			],
-			[[0, 1, 2, 3, 4, 5, 6, 7, 8, 9], null, '(3,3,1,(1,1,0,(0,0,0,,),(2,2,0,,)),(7,7,0,(5,5,0,(4,4,0,,),(6,6,0,,)),(8,8,1,,(9,9,0,,))))'],
-		];
+			),
+			array(
+				array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9),
+				null,
+				'(3,3,1,(1,1,0,(0,0,0,,),(2,2,0,,)),(7,7,0,(5,5,0,(4,4,0,,),(6,6,0,,)),(8,8,1,,(9,9,0,,))))'
+			),
+		);
 	}
 
 	/**
@@ -122,11 +128,11 @@ class TreeNodeTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @covers  chdemko\SortedCollection\TreeNode::create
 	 *
-	 * @dataProvider  cases_create
+	 * @dataProvider  casesCreate
 	 *
 	 * @since   1.0.0
 	 */
-	public function test_create($values, $comparator, $string)
+	public function testCreate($values, $comparator, $string)
 	{
 		$tree = TreeMap::create($comparator)->initialise($values);
 
@@ -150,9 +156,9 @@ class TreeNodeTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @since   1.0.0
 	 */
-	public function test_first()
+	public function testFirst()
 	{
-		$tree = TreeMap::create()->initialise([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+		$tree = TreeMap::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
 
 		// Set the root property accessible
 		$root = (new \ReflectionClass($tree))->getProperty('root');
@@ -174,9 +180,9 @@ class TreeNodeTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @since   1.0.0
 	 */
-	public function test_last()
+	public function testLast()
 	{
-		$tree = TreeMap::create()->initialise([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+		$tree = TreeMap::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
 
 		// Set the root property accessible
 		$root = (new \ReflectionClass($tree))->getProperty('root');
@@ -197,15 +203,15 @@ class TreeNodeTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @since   1.0.0
 	 */
-	public function test___get_unexisting()
+	public function testGetUnexisting()
 	{
-		$tree = TreeMap::create()->initialise([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+		$tree = TreeMap::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
 
 		// Set the root property accessible
 		$root = (new \ReflectionClass($tree))->getProperty('root');
 		$root->setAccessible(true);
 
-		$this->setExpectedException('RuntimeException');
+		$this->expectException('RuntimeException');
 		$unexisting = $root->getValue($tree)->unexisting;
 	}
 
@@ -222,9 +228,9 @@ class TreeNodeTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @since   1.0.0
 	 */
-	public function test__get()
+	public function testGet()
 	{
-		$tree = TreeMap::create()->initialise([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+		$tree = TreeMap::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
 
 		// Set the root property accessible
 		$root = (new \ReflectionClass($tree))->getProperty('root');
@@ -276,9 +282,9 @@ class TreeNodeTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @since   1.0.0
 	 */
-	public function test_count()
+	public function testCount()
 	{
-		$tree = TreeMap::create()->initialise([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+		$tree = TreeMap::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
 
 		// Set the root property accessible
 		$root = (new \ReflectionClass($tree))->getProperty('root');
@@ -291,67 +297,67 @@ class TreeNodeTest extends \PHPUnit_Framework_TestCase
 	}
 
 	/**
-	 * Data provider for test_find
+	 * Data provider for testFind
 	 *
 	 * @return  array
 	 *
 	 * @since   1.0.0
 	 */
-	public function cases_find()
+	public function casesFind()
 	{
-		return [
-			[[1, 3], -2, 0, null],
-			[[1, 3], -1, 0, null],
-			[[1, 3],  0, 0, null],
-			[[1, 3],  1, 0, 1],
-			[[1, 3],  2, 0, 1],
-			[[1, 3], -2, 1, null],
-			[[1, 3], -1, 1, 1],
-			[[1, 3],  0, 1, 1],
-			[[1, 3],  1, 1, 1],
-			[[1, 3],  2, 1, 3],
-			[[1, 3], -2, 2, 1],
-			[[1, 3], -1, 2, 1],
-			[[1, 3],  0, 2, null],
-			[[1, 3],  1, 2, 3],
-			[[1, 3],  2, 2, 3],
-			[[1, 3], -2, 3, 1],
-			[[1, 3], -1, 3, 3],
-			[[1, 3],  0, 3, 3],
-			[[1, 3],  1, 3, 3],
-			[[1, 3],  2, 3, null],
-			[[1, 3], -2, 4, 3],
-			[[1, 3], -1, 4, 3],
-			[[1, 3],  0, 4, null],
-			[[1, 3],  1, 4, null],
-			[[1, 3],  2, 4, null],
+		return array(
+			array(array(1, 3), -2, 0, null),
+			array(array(1, 3), -1, 0, null),
+			array(array(1, 3),  0, 0, null),
+			array(array(1, 3),  1, 0, 1),
+			array(array(1, 3),  2, 0, 1),
+			array(array(1, 3), -2, 1, null),
+			array(array(1, 3), -1, 1, 1),
+			array(array(1, 3),  0, 1, 1),
+			array(array(1, 3),  1, 1, 1),
+			array(array(1, 3),  2, 1, 3),
+			array(array(1, 3), -2, 2, 1),
+			array(array(1, 3), -1, 2, 1),
+			array(array(1, 3),  0, 2, null),
+			array(array(1, 3),  1, 2, 3),
+			array(array(1, 3),  2, 2, 3),
+			array(array(1, 3), -2, 3, 1),
+			array(array(1, 3), -1, 3, 3),
+			array(array(1, 3),  0, 3, 3),
+			array(array(1, 3),  1, 3, 3),
+			array(array(1, 3),  2, 3, null),
+			array(array(1, 3), -2, 4, 3),
+			array(array(1, 3), -1, 4, 3),
+			array(array(1, 3),  0, 4, null),
+			array(array(1, 3),  1, 4, null),
+			array(array(1, 3),  2, 4, null),
 
-			[[3, 1], -2, 0, null],
-			[[3, 1], -1, 0, null],
-			[[3, 1],  0, 0, null],
-			[[3, 1],  1, 0, 1],
-			[[3, 1],  2, 0, 1],
-			[[3, 1], -2, 1, null],
-			[[3, 1], -1, 1, 1],
-			[[3, 1],  0, 1, 1],
-			[[3, 1],  1, 1, 1],
-			[[3, 1],  2, 1, 3],
-			[[3, 1], -2, 2, 1],
-			[[3, 1], -1, 2, 1],
-			[[3, 1],  0, 2, null],
-			[[3, 1],  1, 2, 3],
-			[[3, 1],  2, 2, 3],
-			[[3, 1], -2, 3, 1],
-			[[3, 1], -1, 3, 3],
-			[[3, 1],  0, 3, 3],
-			[[3, 1],  1, 3, 3],
-			[[3, 1],  2, 3, null],
-			[[3, 1], -2, 4, 3],
-			[[3, 1], -1, 4, 3],
-			[[3, 1],  0, 4, null],
-			[[3, 1],  1, 4, null],
-			[[3, 1],  2, 4, null],
-		];
+			array(array(3, 1), -2, 0, null),
+			array(array(3, 1), -1, 0, null),
+			array(array(3, 1),  0, 0, null),
+			array(array(3, 1),  1, 0, 1),
+			array(array(3, 1),  2, 0, 1),
+			array(array(3, 1), -2, 1, null),
+			array(array(3, 1), -1, 1, 1),
+			array(array(3, 1),  0, 1, 1),
+			array(array(3, 1),  1, 1, 1),
+			array(array(3, 1),  2, 1, 3),
+			array(array(3, 1), -2, 2, 1),
+			array(array(3, 1), -1, 2, 1),
+			array(array(3, 1),  0, 2, null),
+			array(array(3, 1),  1, 2, 3),
+			array(array(3, 1),  2, 2, 3),
+			array(array(3, 1), -2, 3, 1),
+			array(array(3, 1), -1, 3, 3),
+			array(array(3, 1),  0, 3, 3),
+			array(array(3, 1),  1, 3, 3),
+			array(array(3, 1),  2, 3, null),
+			array(array(3, 1), -2, 4, 3),
+			array(array(3, 1), -1, 4, 3),
+			array(array(3, 1),  0, 4, null),
+			array(array(3, 1),  1, 4, null),
+			array(array(3, 1),  2, 4, null),
+		);
 	}
 
 	/**
@@ -366,11 +372,11 @@ class TreeNodeTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @covers  chdemko\SortedCollection\TreeNode::find
 	 *
-	 * @dataProvider  cases_find
+	 * @dataProvider  casesFind
 	 *
 	 * @since   1.0.0
 	 */
-	public function test_find($values, $type, $key, $node)
+	public function testFind($values, $type, $key, $node)
 	{
 		$tree = TreeMap::create();
 
@@ -476,256 +482,256 @@ class TreeNodeTest extends \PHPUnit_Framework_TestCase
 	}
 
 	/**
-	 * Data provider for test_insert and test_remove
+	 * Data provider for testInsert and testRemove
 	 *
 	 * @return  array
 	 *
 	 * @since   1.0.0
 	 */
-	public function cases_modify()
+	public function casesModify()
 	{
-		return [
+		return array(
 			// 1 node
-			[[1]],
+			array(array(1)),
 
 			// 2 nodes
-			[[1, 1]],
-			[[1, 0]],
+			array(array(1, 1)),
+			array(array(1, 0)),
 
 			// 3 nodes
-			[[0, 1, 2]],
-			[[0, 2, 1]],
-			[[1, 2, 0]],
-			[[1, 0, 2]],
-			[[2, 0, 1]],
-			[[2, 1, 0]],
+			array(array(0, 1, 2)),
+			array(array(0, 2, 1)),
+			array(array(1, 2, 0)),
+			array(array(1, 0, 2)),
+			array(array(2, 0, 1)),
+			array(array(2, 1, 0)),
 
 			// 4 nodes
-			[[1, 2, 3, 0]],
-			[[0, 2, 3, 1]],
-			[[0, 1, 3, 2]],
-			[[0, 1, 2, 3]],
+			array(array(1, 2, 3, 0)),
+			array(array(0, 2, 3, 1)),
+			array(array(0, 1, 3, 2)),
+			array(array(0, 1, 2, 3)),
 
 			// 5 nodes
-			[[2, 3, 4, 1, 0]],
-			[[1, 3, 4, 2, 0]],
-			[[1, 2, 4, 3, 0]],
-			[[1, 2, 3, 4, 0]],
+			array(array(2, 3, 4, 1, 0)),
+			array(array(1, 3, 4, 2, 0)),
+			array(array(1, 2, 4, 3, 0)),
+			array(array(1, 2, 3, 4, 0)),
 
 			// 5 nodes
-			[[2, 3, 4, 0, 1]],
-			[[0, 3, 4, 2, 1]],
-			[[0, 2, 4, 3, 1]],
-			[[0, 2, 3, 4, 1]],
+			array(array(2, 3, 4, 0, 1)),
+			array(array(0, 3, 4, 2, 1)),
+			array(array(0, 2, 4, 3, 1)),
+			array(array(0, 2, 3, 4, 1)),
 
 			// 5 nodes
-			[[1, 3, 4, 0, 2]],
-			[[0, 3, 4, 1, 2]],
-			[[0, 1, 4, 3, 2]],
-			[[0, 1, 3, 4, 2]],
+			array(array(1, 3, 4, 0, 2)),
+			array(array(0, 3, 4, 1, 2)),
+			array(array(0, 1, 4, 3, 2)),
+			array(array(0, 1, 3, 4, 2)),
 
 			// 5 nodes
-			[[1, 2, 4, 0, 3]],
-			[[0, 2, 4, 1, 3]],
-			[[0, 1, 4, 2, 3]],
-			[[0, 1, 2, 4, 3]],
+			array(array(1, 2, 4, 0, 3)),
+			array(array(0, 2, 4, 1, 3)),
+			array(array(0, 1, 4, 2, 3)),
+			array(array(0, 1, 2, 4, 3)),
 
 			// 5 nodes
-			[[1, 2, 3, 0, 4]],
-			[[0, 2, 3, 1, 4]],
-			[[0, 1, 3, 2, 4]],
-			[[0, 1, 2, 3, 4]],
+			array(array(1, 2, 3, 0, 4)),
+			array(array(0, 2, 3, 1, 4)),
+			array(array(0, 1, 3, 2, 4)),
+			array(array(0, 1, 2, 3, 4)),
 
 			// 6 nodes
-			[[3, 4, 5, 2, 1, 0]],
-			[[2, 3, 5, 4, 1, 0]],
-			[[2, 3, 4, 5, 1, 0]],
-			[[1, 3, 5, 4, 2, 0]],
-			[[1, 3, 4, 5, 2, 0]],
-			[[1, 2, 5, 4, 3, 0]],
+			array(array(3, 4, 5, 2, 1, 0)),
+			array(array(2, 3, 5, 4, 1, 0)),
+			array(array(2, 3, 4, 5, 1, 0)),
+			array(array(1, 3, 5, 4, 2, 0)),
+			array(array(1, 3, 4, 5, 2, 0)),
+			array(array(1, 2, 5, 4, 3, 0)),
 
 			// 6 nodes
-			[[3, 4, 5, 2, 0, 1]],
-			[[2, 3, 5, 4, 0, 1]],
-			[[2, 3, 4, 5, 0, 1]],
-			[[0, 3, 5, 4, 2, 1]],
-			[[0, 3, 4, 5, 2, 1]],
-			[[0, 2, 5, 4, 3, 1]],
+			array(array(3, 4, 5, 2, 0, 1)),
+			array(array(2, 3, 5, 4, 0, 1)),
+			array(array(2, 3, 4, 5, 0, 1)),
+			array(array(0, 3, 5, 4, 2, 1)),
+			array(array(0, 3, 4, 5, 2, 1)),
+			array(array(0, 2, 5, 4, 3, 1)),
 
 			// 6 nodes
-			[[3, 4, 5, 1, 0, 2]],
-			[[1, 3, 5, 4, 0, 2]],
-			[[1, 3, 4, 5, 0, 2]],
-			[[0, 3, 5, 4, 1, 2]],
-			[[0, 3, 4, 5, 1, 2]],
-			[[0, 1, 5, 4, 3, 2]],
+			array(array(3, 4, 5, 1, 0, 2)),
+			array(array(1, 3, 5, 4, 0, 2)),
+			array(array(1, 3, 4, 5, 0, 2)),
+			array(array(0, 3, 5, 4, 1, 2)),
+			array(array(0, 3, 4, 5, 1, 2)),
+			array(array(0, 1, 5, 4, 3, 2)),
 
 			// 6 nodes
-			[[2, 4, 5, 1, 0, 3]],
-			[[1, 2, 5, 4, 0, 3]],
-			[[1, 2, 4, 5, 0, 3]],
-			[[0, 2, 5, 4, 1, 3]],
-			[[0, 2, 4, 5, 1, 3]],
-			[[0, 1, 5, 4, 2, 3]],
+			array(array(2, 4, 5, 1, 0, 3)),
+			array(array(1, 2, 5, 4, 0, 3)),
+			array(array(1, 2, 4, 5, 0, 3)),
+			array(array(0, 2, 5, 4, 1, 3)),
+			array(array(0, 2, 4, 5, 1, 3)),
+			array(array(0, 1, 5, 4, 2, 3)),
 
 			// 6 nodes
-			[[2, 3, 5, 1, 0, 4]],
-			[[1, 2, 5, 3, 0, 4]],
-			[[1, 2, 3, 5, 0, 4]],
-			[[0, 2, 5, 3, 1, 4]],
-			[[0, 2, 3, 5, 1, 4]],
-			[[0, 1, 5, 3, 2, 4]],
+			array(array(2, 3, 5, 1, 0, 4)),
+			array(array(1, 2, 5, 3, 0, 4)),
+			array(array(1, 2, 3, 5, 0, 4)),
+			array(array(0, 2, 5, 3, 1, 4)),
+			array(array(0, 2, 3, 5, 1, 4)),
+			array(array(0, 1, 5, 3, 2, 4)),
 
 			// 6 nodes
-			[[2, 3, 4, 1, 0, 5]],
-			[[1, 2, 4, 3, 0, 5]],
-			[[1, 2, 3, 4, 0, 5]],
-			[[0, 2, 4, 3, 1, 5]],
-			[[0, 2, 3, 4, 1, 5]],
-			[[0, 1, 4, 3, 2, 5]],
+			array(array(2, 3, 4, 1, 0, 5)),
+			array(array(1, 2, 4, 3, 0, 5)),
+			array(array(1, 2, 3, 4, 0, 5)),
+			array(array(0, 2, 4, 3, 1, 5)),
+			array(array(0, 2, 3, 4, 1, 5)),
+			array(array(0, 1, 4, 3, 2, 5)),
 
 			// 7 nodes
-			[[4, 5, 6, 3, 2, 1, 0]],
-			[[3, 4, 6, 5, 2, 1, 0]],
-			[[3, 4, 5, 6, 2, 1, 0]],
-			[[4, 5, 6, 3, 1, 2, 0]],
+			array(array(4, 5, 6, 3, 2, 1, 0)),
+			array(array(3, 4, 6, 5, 2, 1, 0)),
+			array(array(3, 4, 5, 6, 2, 1, 0)),
+			array(array(4, 5, 6, 3, 1, 2, 0)),
 
 			// 7 nodes
-			[[4, 5, 6, 3, 2, 0, 1]],
-			[[3, 4, 6, 5, 2, 0, 1]],
-			[[3, 4, 5, 6, 2, 0, 1]],
-			[[4, 5, 6, 3, 0, 2, 1]],
+			array(array(4, 5, 6, 3, 2, 0, 1)),
+			array(array(3, 4, 6, 5, 2, 0, 1)),
+			array(array(3, 4, 5, 6, 2, 0, 1)),
+			array(array(4, 5, 6, 3, 0, 2, 1)),
 
 			// 7 nodes
-			[[4, 5, 6, 3, 1, 0, 2]],
-			[[3, 4, 6, 5, 1, 0, 2]],
-			[[3, 4, 5, 6, 1, 0, 2]],
-			[[4, 5, 6, 3, 0, 1, 2]],
+			array(array(4, 5, 6, 3, 1, 0, 2)),
+			array(array(3, 4, 6, 5, 1, 0, 2)),
+			array(array(3, 4, 5, 6, 1, 0, 2)),
+			array(array(4, 5, 6, 3, 0, 1, 2)),
 
 			// 7 nodes
-			[[4, 5, 6, 2, 1, 0, 3]],
-			[[2, 4, 6, 5, 1, 0, 3]],
-			[[2, 4, 5, 6, 1, 0, 3]],
-			[[4, 5, 6, 2, 0, 1, 3]],
+			array(array(4, 5, 6, 2, 1, 0, 3)),
+			array(array(2, 4, 6, 5, 1, 0, 3)),
+			array(array(2, 4, 5, 6, 1, 0, 3)),
+			array(array(4, 5, 6, 2, 0, 1, 3)),
 
 			// 7 nodes
-			[[3, 5, 6, 2, 1, 0, 4]],
-			[[2, 3, 6, 5, 1, 0, 4]],
-			[[2, 3, 5, 6, 1, 0, 4]],
-			[[3, 5, 6, 2, 0, 1, 4]],
+			array(array(3, 5, 6, 2, 1, 0, 4)),
+			array(array(2, 3, 6, 5, 1, 0, 4)),
+			array(array(2, 3, 5, 6, 1, 0, 4)),
+			array(array(3, 5, 6, 2, 0, 1, 4)),
 
 			// 7 nodes
-			[[3, 4, 6, 2, 1, 0, 5]],
-			[[2, 3, 6, 4, 1, 0, 5]],
-			[[2, 3, 4, 6, 1, 0, 5]],
-			[[3, 4, 6, 2, 0, 1, 5]],
+			array(array(3, 4, 6, 2, 1, 0, 5)),
+			array(array(2, 3, 6, 4, 1, 0, 5)),
+			array(array(2, 3, 4, 6, 1, 0, 5)),
+			array(array(3, 4, 6, 2, 0, 1, 5)),
 
 			// 7 nodes
-			[[3, 4, 5, 2, 1, 0, 6]],
-			[[2, 3, 5, 4, 1, 0, 6]],
-			[[2, 3, 4, 5, 1, 0, 6]],
-			[[3, 4, 5, 2, 0, 1, 6]],
+			array(array(3, 4, 5, 2, 1, 0, 6)),
+			array(array(2, 3, 5, 4, 1, 0, 6)),
+			array(array(2, 3, 4, 5, 1, 0, 6)),
+			array(array(3, 4, 5, 2, 0, 1, 6)),
 
 			// 8 nodes
-			[[1, 2, 3, 4, 5, 6, 7, 0]],
-			[[0, 2, 3, 4, 5, 6, 7, 1]],
-			[[0, 1, 3, 4, 5, 6, 7, 2]],
-			[[0, 1, 2, 4, 5, 6, 7, 3]],
-			[[0, 1, 2, 3, 5, 6, 7, 4]],
-			[[0, 1, 2, 3, 4, 6, 7, 5]],
-			[[0, 1, 2, 3, 4, 5, 7, 6]],
-			[[0, 1, 2, 3, 4, 5, 6, 7]],
+			array(array(1, 2, 3, 4, 5, 6, 7, 0)),
+			array(array(0, 2, 3, 4, 5, 6, 7, 1)),
+			array(array(0, 1, 3, 4, 5, 6, 7, 2)),
+			array(array(0, 1, 2, 4, 5, 6, 7, 3)),
+			array(array(0, 1, 2, 3, 5, 6, 7, 4)),
+			array(array(0, 1, 2, 3, 4, 6, 7, 5)),
+			array(array(0, 1, 2, 3, 4, 5, 7, 6)),
+			array(array(0, 1, 2, 3, 4, 5, 6, 7)),
 
 			// 9 nodes
-			[[2, 3, 4, 5, 6, 7, 8, 0, 1]],
-			[[1, 3, 4, 5, 6, 7, 8, 0, 2]],
-			[[1, 2, 4, 5, 6, 7, 8, 0, 3]],
-			[[1, 2, 3, 5, 6, 7, 8, 0, 4]],
-			[[1, 2, 3, 4, 6, 7, 8, 0, 5]],
-			[[1, 2, 3, 4, 5, 7, 8, 0, 6]],
-			[[1, 2, 3, 4, 5, 6, 8, 0, 7]],
-			[[1, 2, 3, 4, 5, 6, 7, 0, 8]],
+			array(array(2, 3, 4, 5, 6, 7, 8, 0, 1)),
+			array(array(1, 3, 4, 5, 6, 7, 8, 0, 2)),
+			array(array(1, 2, 4, 5, 6, 7, 8, 0, 3)),
+			array(array(1, 2, 3, 5, 6, 7, 8, 0, 4)),
+			array(array(1, 2, 3, 4, 6, 7, 8, 0, 5)),
+			array(array(1, 2, 3, 4, 5, 7, 8, 0, 6)),
+			array(array(1, 2, 3, 4, 5, 6, 8, 0, 7)),
+			array(array(1, 2, 3, 4, 5, 6, 7, 0, 8)),
 
 			// 9 nodes
-			[[2, 3, 4, 5, 6, 7, 8, 1, 0]],
-			[[0, 3, 4, 5, 6, 7, 8, 1, 2]],
-			[[0, 2, 4, 5, 6, 7, 8, 1, 3]],
-			[[0, 2, 3, 5, 6, 7, 8, 1, 4]],
-			[[0, 2, 3, 4, 6, 7, 8, 1, 5]],
-			[[0, 2, 3, 4, 5, 7, 8, 1, 6]],
-			[[0, 2, 3, 4, 5, 6, 8, 1, 7]],
-			[[0, 2, 3, 4, 5, 6, 7, 1, 8]],
+			array(array(2, 3, 4, 5, 6, 7, 8, 1, 0)),
+			array(array(0, 3, 4, 5, 6, 7, 8, 1, 2)),
+			array(array(0, 2, 4, 5, 6, 7, 8, 1, 3)),
+			array(array(0, 2, 3, 5, 6, 7, 8, 1, 4)),
+			array(array(0, 2, 3, 4, 6, 7, 8, 1, 5)),
+			array(array(0, 2, 3, 4, 5, 7, 8, 1, 6)),
+			array(array(0, 2, 3, 4, 5, 6, 8, 1, 7)),
+			array(array(0, 2, 3, 4, 5, 6, 7, 1, 8)),
 
 			// 9 nodes
-			[[1, 3, 4, 5, 6, 7, 8, 2, 0]],
-			[[0, 3, 4, 5, 6, 7, 8, 2, 1]],
-			[[0, 1, 4, 5, 6, 7, 8, 2, 3]],
-			[[0, 1, 3, 5, 6, 7, 8, 2, 4]],
-			[[0, 1, 3, 4, 6, 7, 8, 2, 5]],
-			[[0, 1, 3, 4, 5, 7, 8, 2, 6]],
-			[[0, 1, 3, 4, 5, 6, 8, 2, 7]],
-			[[0, 1, 3, 4, 5, 6, 7, 2, 8]],
+			array(array(1, 3, 4, 5, 6, 7, 8, 2, 0)),
+			array(array(0, 3, 4, 5, 6, 7, 8, 2, 1)),
+			array(array(0, 1, 4, 5, 6, 7, 8, 2, 3)),
+			array(array(0, 1, 3, 5, 6, 7, 8, 2, 4)),
+			array(array(0, 1, 3, 4, 6, 7, 8, 2, 5)),
+			array(array(0, 1, 3, 4, 5, 7, 8, 2, 6)),
+			array(array(0, 1, 3, 4, 5, 6, 8, 2, 7)),
+			array(array(0, 1, 3, 4, 5, 6, 7, 2, 8)),
 
 			// 9 nodes
-			[[1, 2, 4, 5, 6, 7, 8, 3, 0]],
-			[[0, 2, 4, 5, 6, 7, 8, 3, 1]],
-			[[0, 1, 4, 5, 6, 7, 8, 3, 2]],
-			[[0, 1, 2, 5, 6, 7, 8, 3, 4]],
-			[[0, 1, 2, 4, 6, 7, 8, 3, 5]],
-			[[0, 1, 2, 4, 5, 7, 8, 3, 6]],
-			[[0, 1, 2, 4, 5, 6, 8, 3, 7]],
-			[[0, 1, 2, 4, 5, 6, 7, 3, 8]],
+			array(array(1, 2, 4, 5, 6, 7, 8, 3, 0)),
+			array(array(0, 2, 4, 5, 6, 7, 8, 3, 1)),
+			array(array(0, 1, 4, 5, 6, 7, 8, 3, 2)),
+			array(array(0, 1, 2, 5, 6, 7, 8, 3, 4)),
+			array(array(0, 1, 2, 4, 6, 7, 8, 3, 5)),
+			array(array(0, 1, 2, 4, 5, 7, 8, 3, 6)),
+			array(array(0, 1, 2, 4, 5, 6, 8, 3, 7)),
+			array(array(0, 1, 2, 4, 5, 6, 7, 3, 8)),
 
 			// 9 nodes
-			[[1, 2, 3, 5, 6, 7, 8, 4, 0]],
-			[[0, 2, 3, 5, 6, 7, 8, 4, 1]],
-			[[0, 1, 3, 5, 6, 7, 8, 4, 2]],
-			[[0, 1, 2, 5, 6, 7, 8, 4, 3]],
-			[[0, 1, 2, 3, 6, 7, 8, 4, 5]],
-			[[0, 1, 2, 3, 5, 7, 8, 4, 6]],
-			[[0, 1, 2, 3, 5, 6, 8, 4, 7]],
-			[[0, 1, 2, 3, 5, 6, 7, 4, 8]],
+			array(array(1, 2, 3, 5, 6, 7, 8, 4, 0)),
+			array(array(0, 2, 3, 5, 6, 7, 8, 4, 1)),
+			array(array(0, 1, 3, 5, 6, 7, 8, 4, 2)),
+			array(array(0, 1, 2, 5, 6, 7, 8, 4, 3)),
+			array(array(0, 1, 2, 3, 6, 7, 8, 4, 5)),
+			array(array(0, 1, 2, 3, 5, 7, 8, 4, 6)),
+			array(array(0, 1, 2, 3, 5, 6, 8, 4, 7)),
+			array(array(0, 1, 2, 3, 5, 6, 7, 4, 8)),
 
 			// 9 nodes
-			[[1, 2, 3, 4, 6, 7, 8, 5, 0]],
-			[[0, 2, 3, 4, 6, 7, 8, 5, 1]],
-			[[0, 1, 3, 4, 6, 7, 8, 5, 2]],
-			[[0, 1, 2, 4, 6, 7, 8, 5, 3]],
-			[[0, 1, 2, 3, 6, 7, 8, 5, 4]],
-			[[0, 1, 2, 3, 4, 7, 8, 5, 6]],
-			[[0, 1, 2, 3, 4, 6, 8, 5, 7]],
-			[[0, 1, 2, 3, 4, 6, 7, 5, 8]],
+			array(array(1, 2, 3, 4, 6, 7, 8, 5, 0)),
+			array(array(0, 2, 3, 4, 6, 7, 8, 5, 1)),
+			array(array(0, 1, 3, 4, 6, 7, 8, 5, 2)),
+			array(array(0, 1, 2, 4, 6, 7, 8, 5, 3)),
+			array(array(0, 1, 2, 3, 6, 7, 8, 5, 4)),
+			array(array(0, 1, 2, 3, 4, 7, 8, 5, 6)),
+			array(array(0, 1, 2, 3, 4, 6, 8, 5, 7)),
+			array(array(0, 1, 2, 3, 4, 6, 7, 5, 8)),
 
 			// 9 nodes
-			[[1, 2, 3, 4, 5, 7, 8, 6, 0]],
-			[[0, 2, 3, 4, 5, 7, 8, 6, 1]],
-			[[0, 1, 3, 4, 5, 7, 8, 6, 2]],
-			[[0, 1, 2, 4, 5, 7, 8, 6, 3]],
-			[[0, 1, 2, 3, 5, 7, 8, 6, 4]],
-			[[0, 1, 2, 3, 4, 7, 8, 6, 5]],
-			[[0, 1, 2, 3, 4, 5, 8, 6, 7]],
-			[[0, 1, 2, 3, 4, 5, 7, 6, 8]],
+			array(array(1, 2, 3, 4, 5, 7, 8, 6, 0)),
+			array(array(0, 2, 3, 4, 5, 7, 8, 6, 1)),
+			array(array(0, 1, 3, 4, 5, 7, 8, 6, 2)),
+			array(array(0, 1, 2, 4, 5, 7, 8, 6, 3)),
+			array(array(0, 1, 2, 3, 5, 7, 8, 6, 4)),
+			array(array(0, 1, 2, 3, 4, 7, 8, 6, 5)),
+			array(array(0, 1, 2, 3, 4, 5, 8, 6, 7)),
+			array(array(0, 1, 2, 3, 4, 5, 7, 6, 8)),
 
 			// 9 nodes
-			[[1, 2, 3, 4, 5, 6, 8, 7, 0]],
-			[[0, 2, 3, 4, 5, 6, 8, 7, 1]],
-			[[0, 1, 3, 4, 5, 6, 8, 7, 2]],
-			[[0, 1, 2, 4, 5, 6, 8, 7, 3]],
-			[[0, 1, 2, 3, 5, 6, 8, 7, 4]],
-			[[0, 1, 2, 3, 4, 6, 8, 7, 5]],
-			[[0, 1, 2, 3, 4, 5, 8, 7, 6]],
-			[[0, 1, 2, 3, 4, 5, 6, 7, 8]],
+			array(array(1, 2, 3, 4, 5, 6, 8, 7, 0)),
+			array(array(0, 2, 3, 4, 5, 6, 8, 7, 1)),
+			array(array(0, 1, 3, 4, 5, 6, 8, 7, 2)),
+			array(array(0, 1, 2, 4, 5, 6, 8, 7, 3)),
+			array(array(0, 1, 2, 3, 5, 6, 8, 7, 4)),
+			array(array(0, 1, 2, 3, 4, 6, 8, 7, 5)),
+			array(array(0, 1, 2, 3, 4, 5, 8, 7, 6)),
+			array(array(0, 1, 2, 3, 4, 5, 6, 7, 8)),
 
 			// 9 nodes
-			[[1, 2, 3, 4, 5, 6, 7, 8, 0]],
-			[[0, 2, 3, 4, 5, 6, 7, 8, 1]],
-			[[0, 1, 3, 4, 5, 6, 7, 8, 2]],
-			[[0, 1, 2, 4, 5, 6, 7, 8, 3]],
-			[[0, 1, 2, 3, 5, 6, 7, 8, 4]],
-			[[0, 1, 2, 3, 4, 6, 7, 8, 5]],
-			[[0, 1, 2, 3, 4, 5, 7, 8, 6]],
-			[[0, 1, 2, 3, 4, 5, 6, 8, 7]],
-		];
+			array(array(1, 2, 3, 4, 5, 6, 7, 8, 0)),
+			array(array(0, 2, 3, 4, 5, 6, 7, 8, 1)),
+			array(array(0, 1, 3, 4, 5, 6, 7, 8, 2)),
+			array(array(0, 1, 2, 4, 5, 6, 7, 8, 3)),
+			array(array(0, 1, 2, 3, 5, 6, 7, 8, 4)),
+			array(array(0, 1, 2, 3, 4, 6, 7, 8, 5)),
+			array(array(0, 1, 2, 3, 4, 5, 7, 8, 6)),
+			array(array(0, 1, 2, 3, 4, 5, 6, 8, 7)),
+		);
 	}
 
 	/**
@@ -742,15 +748,15 @@ class TreeNodeTest extends \PHPUnit_Framework_TestCase
 	 * @covers  chdemko\SortedCollection\TreeNode::_rotateLeft
 	 * @covers  chdemko\SortedCollection\TreeNode::_rotateRight
 	 *
-	 * @dataProvider  cases_modify
+	 * @dataProvider  casesModify
 	 *
 	 * @since   1.0.0
 	 */
-	public function test_insert($values)
+	public function testInsert($values)
 	{
 		$tree = TreeMap::create();
 
-		$array = [];
+		$array = array();
 
 		foreach ($values as $value)
 		{
@@ -785,13 +791,13 @@ class TreeNodeTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @since   1.0.0
 	 */
-	public function test_replace()
+	public function testReplace()
 	{
-		$tree = TreeMap::create()->initialise([0]);
+		$tree = TreeMap::create()->initialise(array(0));
 		$tree[0] = 1;
 
 		$this->assertEquals(
-			[0 => 1],
+			array(0 => 1),
 			$tree->toArray()
 		);
 	}
@@ -810,17 +816,17 @@ class TreeNodeTest extends \PHPUnit_Framework_TestCase
 	 * @covers  chdemko\SortedCollection\TreeNode::_rotateLeft
 	 * @covers  chdemko\SortedCollection\TreeNode::_rotateRight
 	 *
-	 * @dataProvider  cases_modify
+	 * @dataProvider  casesModify
 	 *
 	 * @since   1.0.0
 	 */
-	public function test_remove($values)
+	public function testRemove($values)
 	{
 		foreach ($values as $remove)
 		{
 			$tree = TreeMap::create();
 
-			$array = [];
+			$array = array();
 
 			foreach ($values as $value)
 			{

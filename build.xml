@@ -17,14 +17,14 @@
 	</target>
 
 	<target name="phpunit" description="Run unit tests using PHPUnit">
-		<exec executable="phpunit" />
+		<exec executable="vendor/bin/phpunit" />
 	</target>
 
 	<target name="phpcs" description="Generate codestyle report using PHP_CodeSniffer">
-		<exec executable="phpcs">
+		<exec executable="vendor/bin/phpcs">
 			<arg value="--report=full" />
 			<arg value="--extensions=php" />
-			<arg value="--standard=Joomla" />
+			<arg value="--standard=vendor/joomla/coding-standards/Joomla" />
 			<arg path="${source}" />
 			<arg path="${tests}" />
 			<arg path="${examples}" />

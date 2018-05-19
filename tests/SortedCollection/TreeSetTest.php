@@ -4,15 +4,17 @@
  * chdemko\SortedCollection\TreeSetTest class
  *
  * @author     Christophe Demko <chdemko@gmail.com>
- * @copyright  Copyright (C) 2012-2016 Christophe Demko. All rights reserved.
+ * @copyright  Copyright (C) 2012-2018 Christophe Demko. All rights reserved.
  *
- * @license    http://www.cecill.info/licences/Licence_CeCILL-B_V1-en.html The CeCILL B license
+ * @license    BSD 3-Clause License
  *
  * This file is part of the php-sorted-collections package https://github.com/chdemko/php-sorted-collections
  */
 
 // Declare chdemko\SortedCollection namespace
 namespace chdemko\SortedCollection;
+
+use PHPUnit\Framework\TestCase;
 
 /**
  * TreeSet class test
@@ -22,29 +24,29 @@ namespace chdemko\SortedCollection;
  *
  * @since       1.0.0
  */
-class TreeSetTest extends \PHPUnit_Framework_TestCase
+class TreeSetTest extends TestCase
 {
 	/**
-	 * Data provider for test_create
+	 * Data provider for testCreate
 	 *
 	 * @return  array
 	 *
 	 * @since   1.0.0
 	 */
-	public function cases_create()
+	public function casesCreate()
 	{
-		return [
-			[[], null, null],
-			[[0, 1, 2, 3, 4, 5, 6, 7, 8, 9], 3, null],
-			[
-				[0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+		return array(
+			array(array(), null, null),
+			array(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9), 3, null),
+			array(
+				array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9),
 				3,
 				function ($key1, $key2)
 				{
 					return $key1 - $key2;
 				}
-			]
-		];
+			)
+		);
 	}
 
 	/**
@@ -61,11 +63,11 @@ class TreeSetTest extends \PHPUnit_Framework_TestCase
 	 * @covers  chdemko\SortedCollection\TreeSet::put
 	 * @covers  chdemko\SortedCollection\TreeSet::initialise
 	 *
-	 * @dataProvider  cases_create
+	 * @dataProvider  casesCreate
 	 *
 	 * @since   1.0.0
 	 */
-	public function test_create($values, $key, $comparator)
+	public function testCreate($values, $key, $comparator)
 	{
 		$set = TreeSet::create($comparator)->initialise($values);
 
@@ -117,9 +119,9 @@ class TreeSetTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @since   1.0.0
 	 */
-	public function test_getMap()
+	public function testGetMap()
 	{
-		$set = TreeSet::create()->initialise([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+		$set = TreeSet::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
 
 		// Set the map property accessible
 		$getMap = (new \ReflectionClass($set))->getMethod('getMap');
@@ -141,14 +143,14 @@ class TreeSetTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @since   1.0.0
 	 */
-	public function test_setMap()
+	public function testSetMap()
 	{
 		$set = TreeSet::create();
 
 		// Set the map property accessible
 		$setMap = (new \ReflectionClass($set))->getMethod('setMap');
 		$setMap->setAccessible(true);
-		$setMap->invoke($set, TreeMap::create()->put([true, true, true]));
+		$setMap->invoke($set, TreeMap::create()->put(array(true, true, true)));
 
 		$getMap = (new \ReflectionClass($set))->getMethod('getMap');
 		$getMap->setAccessible(true);
@@ -169,9 +171,9 @@ class TreeSetTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @since   1.0.0
 	 */
-	public function test_clear()
+	public function testClear()
 	{
-		$set = TreeSet::create()->put([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+		$set = TreeSet::create()->put(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
 
 		// Set the map property accessible
 		$getMap = (new \ReflectionClass($set))->getMethod('getMap');
@@ -202,9 +204,9 @@ class TreeSetTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @since   1.0.0
 	 */
-	public function test_clone()
+	public function testClone()
 	{
-		$set = TreeSet::create()->put([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+		$set = TreeSet::create()->put(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
 		$clone = clone $set;
 		$set->clear();
 		$this->assertEquals(
@@ -223,13 +225,13 @@ class TreeSetTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @since   1.0.0
 	 */
-	public function test_comparator()
+	public function testComparator()
 	{
 		$comparator = function ($key1, $key2)
 		{
 			return $key1 - $key2;
 		};
-		$set = TreeSet::create($comparator)->put([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+		$set = TreeSet::create($comparator)->put(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
 		$this->assertEquals(
 			$comparator,
 			$set->comparator
@@ -246,15 +248,15 @@ class TreeSetTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @since   1.0.0
 	 */
-	public function test_first()
+	public function testFirst()
 	{
-		$set = TreeSet::create()->put([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+		$set = TreeSet::create()->put(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
 		$this->assertEquals(
 			0,
 			$set->first
 		);
 		$set->clear();
-		$this->setExpectedException('OutOfBoundsException');
+		$this->expectException('OutOfBoundsException');
 		$key = $set->first;
 	}
 
@@ -268,15 +270,15 @@ class TreeSetTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @since   1.0.0
 	 */
-	public function test_last()
+	public function testLast()
 	{
-		$set = TreeSet::create()->put([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+		$set = TreeSet::create()->put(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
 		$this->assertEquals(
 			9,
 			$set->last
 		);
 		$set->clear();
-		$this->setExpectedException('OutOfBoundsException');
+		$this->expectException('OutOfBoundsException');
 		$key = $set->last;
 	}
 
@@ -289,37 +291,37 @@ class TreeSetTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @since   1.0.0
 	 */
-	public function test___get_unexisting()
+	public function testGetUnexisting()
 	{
-		$set = TreeSet::create()->put([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
-		$this->setExpectedException('RuntimeException');
+		$set = TreeSet::create()->put(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
+		$this->expectException('RuntimeException');
 		$unexisting = $set->unexisting;
 	}
 
 	/**
-	 * Data provider for test_lower
+	 * Data provider for testLower
 	 *
 	 * @return  array
 	 *
 	 * @since   1.0.0
 	 */
-	public function cases_lower()
+	public function casesLower()
 	{
-		return [
-			[[], 10, null, 'OutOfBoundsException'],
-			[[1], 1, null, 'OutOfBoundsException'],
-			[[0, 1], 0, null, 'OutOfBoundsException'],
-			[[1, 2], 0, null, 'OutOfBoundsException'],
-			[[0, 1], 1, 0, null],
-			[[0, 1], 2, 1, null],
-		];
+		return array(
+			array(array(), 10, null, 'OutOfBoundsException'),
+			array(array(1), 1, null, 'OutOfBoundsException'),
+			array(array(0, 1), 0, null, 'OutOfBoundsException'),
+			array(array(1, 2), 0, null, 'OutOfBoundsException'),
+			array(array(0, 1), 1, 0, null),
+			array(array(0, 1), 2, 1, null),
+		);
 	}
 
 	/**
 	 * Tests  AbstractSet::lower
 	 *
 	 * @param   array  $values     Values array
-	 * @param   mixed  $key        Key to search for     
+	 * @param   mixed  $key        Key to search for
 	 * @param   mixed  $expected   Expected key
 	 * @param   mixed  $exception  Exception to be thrown
 	 *
@@ -327,15 +329,15 @@ class TreeSetTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @covers  chdemko\SortedCollection\AbstractSet::lower
 	 *
-	 * @dataProvider  cases_lower
+	 * @dataProvider  casesLower
 	 *
 	 * @since   1.0.0
 	 */
-	public function test_lower($values, $key, $expected, $exception)
+	public function testLower($values, $key, $expected, $exception)
 	{
 		if ($exception)
 		{
-			$this->setExpectedException($exception);
+			$this->expectException($exception);
 		}
 
 		$set = TreeSet::create()->initialise($values);
@@ -347,29 +349,29 @@ class TreeSetTest extends \PHPUnit_Framework_TestCase
 	}
 
 	/**
-	 * Data provider for test_floor
+	 * Data provider for testFloor
 	 *
 	 * @return  array
 	 *
 	 * @since   1.0.0
 	 */
-	public function cases_floor()
+	public function casesFloor()
 	{
-		return [
-			[[], 10, null, 'OutOfBoundsException'],
-			[[1], 1, 1, null],
-			[[0, 1], 0, 0, null],
-			[[1, 2], 0, null, 'OutOfBoundsException'],
-			[[0, 1], 1, 1, null],
-			[[0, 1], 2, 1, null],
-		];
+		return array(
+			array(array(), 10, null, 'OutOfBoundsException'),
+			array(array(1), 1, 1, null),
+			array(array(0, 1), 0, 0, null),
+			array(array(1, 2), 0, null, 'OutOfBoundsException'),
+			array(array(0, 1), 1, 1, null),
+			array(array(0, 1), 2, 1, null),
+		);
 	}
 
 	/**
 	 * Tests  AbstractSet::floor
 	 *
 	 * @param   array  $values     Values array
-	 * @param   mixed  $key        Key to search for     
+	 * @param   mixed  $key        Key to search for
 	 * @param   mixed  $expected   Expected key
 	 * @param   mixed  $exception  Exception to be thrown
 	 *
@@ -377,15 +379,15 @@ class TreeSetTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @covers  chdemko\SortedCollection\AbstractSet::floor
 	 *
-	 * @dataProvider  cases_floor
+	 * @dataProvider  casesFloor
 	 *
 	 * @since   1.0.0
 	 */
-	public function test_floor($values, $key, $expected, $exception)
+	public function testFloor($values, $key, $expected, $exception)
 	{
 		if ($exception)
 		{
-			$this->setExpectedException($exception);
+			$this->expectException($exception);
 		}
 
 		$set = TreeSet::create()->initialise($values);
@@ -405,9 +407,9 @@ class TreeSetTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @since   1.0.0
 	 */
-	public function test_find()
+	public function testFind()
 	{
-		$set = TreeSet::create()->initialise([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+		$set = TreeSet::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
 
 		$this->assertEquals(
 			0,
@@ -415,35 +417,35 @@ class TreeSetTest extends \PHPUnit_Framework_TestCase
 		);
 
 		$set->clear();
-		$this->setExpectedException('OutOfBoundsException');
+		$this->expectException('OutOfBoundsException');
 
 		$key = $set->find(10);
 	}
 
 	/**
-	 * Data provider for test_ceiling
+	 * Data provider for testCeiling
 	 *
 	 * @return  array
 	 *
 	 * @since   1.0.0
 	 */
-	public function cases_ceiling()
+	public function casesCeiling()
 	{
-		return [
-			[[], 10, null, 'OutOfBoundsException'],
-			[[1], 1, 1, null],
-			[[0, 1], 0, 0, null],
-			[[1, 2], 0, 1, null],
-			[[0, 1], 1, 1, null],
-			[[0, 1], 2, null, 'OutOfBoundsException'],
-		];
+		return array(
+			array(array(), 10, null, 'OutOfBoundsException'),
+			array(array(1), 1, 1, null),
+			array(array(0, 1), 0, 0, null),
+			array(array(1, 2), 0, 1, null),
+			array(array(0, 1), 1, 1, null),
+			array(array(0, 1), 2, null, 'OutOfBoundsException'),
+		);
 	}
 
 	/**
 	 * Tests  AbstractSet::ceiling
 	 *
 	 * @param   array  $values     Values array
-	 * @param   mixed  $key        Key to search for     
+	 * @param   mixed  $key        Key to search for
 	 * @param   mixed  $expected   Expected key
 	 * @param   mixed  $exception  Exception to be thrown
 	 *
@@ -451,15 +453,15 @@ class TreeSetTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @covers  chdemko\SortedCollection\AbstractSet::ceiling
 	 *
-	 * @dataProvider  cases_ceiling
+	 * @dataProvider  casesCeiling
 	 *
 	 * @since   1.0.0
 	 */
-	public function test_ceiling($values, $key, $expected, $exception)
+	public function testCeiling($values, $key, $expected, $exception)
 	{
 		if ($exception)
 		{
-			$this->setExpectedException($exception);
+			$this->expectException($exception);
 		}
 
 		$set = TreeSet::create()->initialise($values);
@@ -471,29 +473,29 @@ class TreeSetTest extends \PHPUnit_Framework_TestCase
 	}
 
 	/**
-	 * Data provider for test_higher
+	 * Data provider for testHigher
 	 *
 	 * @return  array
 	 *
 	 * @since   1.0.0
 	 */
-	public function cases_higher()
+	public function casesHigher()
 	{
-		return [
-			[[], 10, null, 'OutOfBoundsException'],
-			[[1], 1, null, 'OutOfBoundsException'],
-			[[0, 1], 0, 1, null],
-			[[1, 2], 0, 1, null],
-			[[0, 1], 1, null, 'OutOfBoundsException'],
-			[[0, 1], 2, null, 'OutOfBoundsException'],
-		];
+		return array(
+			array(array(), 10, null, 'OutOfBoundsException'),
+			array(array(1), 1, null, 'OutOfBoundsException'),
+			array(array(0, 1), 0, 1, null),
+			array(array(1, 2), 0, 1, null),
+			array(array(0, 1), 1, null, 'OutOfBoundsException'),
+			array(array(0, 1), 2, null, 'OutOfBoundsException'),
+		);
 	}
 
 	/**
 	 * Tests  AbstractSet::higher
 	 *
 	 * @param   array  $values     Values array
-	 * @param   mixed  $key        Key to search for     
+	 * @param   mixed  $key        Key to search for
 	 * @param   mixed  $expected   Expected key
 	 * @param   mixed  $exception  Exception to be thrown
 	 *
@@ -501,15 +503,15 @@ class TreeSetTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @covers  chdemko\SortedCollection\AbstractSet::higher
 	 *
-	 * @dataProvider  cases_higher
+	 * @dataProvider  casesHigher
 	 *
 	 * @since   1.0.0
 	 */
-	public function test_higher($values, $key, $expected, $exception)
+	public function testHigher($values, $key, $expected, $exception)
 	{
 		if ($exception)
 		{
-			$this->setExpectedException($exception);
+			$this->expectException($exception);
 		}
 
 		$set = TreeSet::create()->initialise($values);
@@ -521,40 +523,40 @@ class TreeSetTest extends \PHPUnit_Framework_TestCase
 	}
 
 	/**
-	 * Data provider for test_offsetGet
+	 * Data provider for testOffsetGet
 	 *
 	 * @return  array
 	 *
 	 * @since   1.0.0
 	 */
-	public function cases_offsetGet()
+	public function casesOffsetGet()
 	{
-		return [
-			[[], 0, false],
-			[[0], 1, false],
-			[[1], 1, true],
-			[[0, 1], 0, true],
-			[[0, 1], 1, true],
-			[[0, 1], 2, false],
-		];
+		return array(
+			array(array(), 0, false),
+			array(array(0), 1, false),
+			array(array(1), 1, true),
+			array(array(0, 1), 0, true),
+			array(array(0, 1), 1, true),
+			array(array(0, 1), 2, false),
+		);
 	}
 
 	/**
 	 * Tests  AbstractSet::offsetGet
 	 *
 	 * @param   array  $values  Values array
-	 * @param   mixed  $key     Key to search for     
+	 * @param   mixed  $key     Key to search for
 	 * @param   mixed  $value   Expected value
 	 *
 	 * @return  void
 	 *
 	 * @covers  chdemko\SortedCollection\AbstractSet::offsetGet
 	 *
-	 * @dataProvider  cases_offsetGet
+	 * @dataProvider  casesOffsetGet
 	 *
 	 * @since   1.0.0
 	 */
-	public function test_offsetGet($values, $key, $value)
+	public function testOffsetGet($values, $key, $value)
 	{
 		$set = TreeSet::create()->initialise($values);
 
@@ -573,9 +575,9 @@ class TreeSetTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @since   1.0.0
 	 */
-	public function test_offsetSet()
+	public function testOffsetSet()
 	{
-		$set = TreeSet::create()->initialise([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+		$set = TreeSet::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
 		$set[5] = false;
 
 		$this->assertEquals(
@@ -597,7 +599,7 @@ class TreeSetTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @since   1.0.0
 	 */
-	public function test_offsetExists()
+	public function testOffsetExists()
 	{
 		$set = TreeSet::create();
 
@@ -605,7 +607,7 @@ class TreeSetTest extends \PHPUnit_Framework_TestCase
 			isset($set[10])
 		);
 
-		$set = TreeSet::create()->initialise([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+		$set = TreeSet::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
 
 		$this->assertTrue(
 			isset($set[5])
@@ -624,9 +626,9 @@ class TreeSetTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @since   1.0.0
 	 */
-	public function test_offsetUnset()
+	public function testOffsetUnset()
 	{
-		$set = TreeSet::create()->initialise([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+		$set = TreeSet::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
 		unset($set[5]);
 
 		$this->assertEquals(
@@ -645,9 +647,9 @@ class TreeSetTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @since   1.0.0
 	 */
-	public function test_count()
+	public function testCount()
 	{
-		$set = TreeSet::create()->initialise([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+		$set = TreeSet::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
 
 		$this->assertEquals(
 			10,
@@ -673,7 +675,7 @@ class TreeSetTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @since   1.0.0
 	 */
-	public function test___toString()
+	public function testToString()
 	{
 		$set = TreeSet::create();
 
@@ -682,7 +684,7 @@ class TreeSetTest extends \PHPUnit_Framework_TestCase
 			(string) $set
 		);
 
-		$set = TreeSet::create()->initialise([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+		$set = TreeSet::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
 
 		$this->assertEquals(
 			'[0,1,2,3,4,5,6,7,8,9]',
@@ -699,7 +701,7 @@ class TreeSetTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @since   1.0.0
 	 */
-	public function test_jsonSerialize()
+	public function testJsonSerialize()
 	{
 		$set = TreeSet::create();
 
@@ -708,7 +710,7 @@ class TreeSetTest extends \PHPUnit_Framework_TestCase
 			json_encode($set)
 		);
 
-		$set = TreeSet::create()->initialise([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+		$set = TreeSet::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
 
 		$this->assertEquals(
 			'{"TreeSet":[0,1,2,3,4,5,6,7,8,9]}',

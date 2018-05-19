@@ -8,7 +8,7 @@ PHP Sorted Collections
 [![Latest Stable Version](https://img.shields.io/packagist/v/chdemko/sorted-collections.svg)](https://packagist.org/packages/chdemko/sorted-collections)
 [![Packagist](https://img.shields.io/packagist/dt/chdemko/sorted-collections.svg)](https://packagist.org/packages/chdemko/sorted-collections)
 [![Latest Unstable Version](https://poser.pugx.org/chdemko/sorted-collections/v/unstable.svg)](https://packagist.org/packages/chdemko/sorted-collections)
-[![License](https://poser.pugx.org/chdemko/sorted-collections/license.svg)](http://www.cecill.info/licences/Licence_CeCILL-B_V1-en.html)
+[![License](https://poser.pugx.org/chdemko/sorted-collections/license.svg)](https://raw.githubusercontent.com/chdemko/sorted-collections/master/LICENSE)
 
 Sorted Collection for PHP. Insertion, search, and removal compute in `log(n)` time where `n` is the number of items present in the collection. It uses AVL threaded tree [see @Knuth97, 1:320, Sect. 2.3.1] as internal structure.
 
@@ -16,7 +16,7 @@ Sorted Collection for PHP. Insertion, search, and removal compute in `log(n)` ti
 
 This project uses:
 
-* [PHP Code Sniffer](http://pear.php.net/package/PHP_CodeSniffer) for checking PHP code style using [Joomla Coding Standards](https://github.com/joomla/coding-standards)
+* [PHP Code Sniffer](https://github.com/squizlabs/php_codesniffer) for checking PHP code style using [Joomla Coding Standards](https://github.com/joomla/coding-standards)
 * [PHPUnit](http://phpunit.de/) for unit test (100% covered)
 * [phpDocumentor](http://http://www.phpdoc.org/) for api documentation
 

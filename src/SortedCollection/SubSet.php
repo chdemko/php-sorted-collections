@@ -4,9 +4,9 @@
  * chdemko\SortedCollection\SubSet class
  *
  * @author     Christophe Demko <chdemko@gmail.com>
- * @copyright  Copyright (C) 2012-2016 Christophe Demko. All rights reserved.
+ * @copyright  Copyright (C) 2012-2018 Christophe Demko. All rights reserved.
  *
- * @license    http://www.cecill.info/licences/Licence_CeCILL-B_V1-en.html The CeCILL B license
+ * @license    BSD 3-Clause License
  *
  * This file is part of the php-sorted-collections package https://github.com/chdemko/php-sorted-collections
  */
@@ -160,7 +160,7 @@ class SubSet extends AbstractSet
 	 *
 	 * @param   string  $property  The property
 	 *
-	 * @return  void
+	 * @return  boolean
 	 *
 	 * @since   1.0.0
 	 */
@@ -294,46 +294,46 @@ class SubSet extends AbstractSet
 		{
 			if (isset($this->to))
 			{
-				return [
-					'SubSet' => [
+				return array(
+					'SubSet' => array(
 						'set' => $this->set->jsonSerialize(),
 						'from' => $this->from,
 						'fromInclusive' => $this->fromInclusive,
 						'to' => $this->to,
 						'toInclusive' => $this->toInclusive,
-					]
-				];
+					)
+				);
 			}
 			else
 			{
-				return [
-					'TailSet' => [
+				return array(
+					'TailSet' => array(
 						'set' => $this->set->jsonSerialize(),
 						'from' => $this->from,
 						'fromInclusive' => $this->fromInclusive,
-					]
-				];
+					)
+				);
 			}
 		}
 		else
 		{
 			if (isset($this->to))
 			{
-				return [
-					'HeadSet' => [
+				return array(
+					'HeadSet' => array(
 						'set' => $this->set->jsonSerialize(),
 						'to' => $this->to,
 						'toInclusive' => $this->toInclusive,
-					]
-				];
+					)
+				);
 			}
 			else
 			{
-				return [
-					'ViewSet' => [
+				return array(
+					'ViewSet' => array(
 						'set' => $this->set->jsonSerialize(),
-					]
-				];
+					)
+				);
 			}
 		}
 	}

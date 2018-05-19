@@ -4,15 +4,17 @@
  * chdemko\SortedCollection\TreeMapTest class
  *
  * @author     Christophe Demko <chdemko@gmail.com>
- * @copyright  Copyright (C) 2012-2016 Christophe Demko. All rights reserved.
+ * @copyright  Copyright (C) 2012-2018 Christophe Demko. All rights reserved.
  *
- * @license    http://www.cecill.info/licences/Licence_CeCILL-B_V1-en.html The CeCILL B license
+ * @license    BSD 3-Clause License
  *
  * This file is part of the php-sorted-collections package https://github.com/chdemko/php-sorted-collections
  */
 
 // Declare chdemko\SortedCollection namespace
 namespace chdemko\SortedCollection;
+
+use PHPUnit\Framework\TestCase;
 
 /**
  * TreeMap class test
@@ -22,29 +24,29 @@ namespace chdemko\SortedCollection;
  *
  * @since       1.0.0
  */
-class TreeMapTest extends \PHPUnit_Framework_TestCase
+class TreeMapTest extends TestCase
 {
 	/**
-	 * Data provider for test_create
+	 * Data provider for testCreate
 	 *
 	 * @return  array
 	 *
 	 * @since   1.0.0
 	 */
-	public function cases_create()
+	public function casesCreate()
 	{
-		return [
-			[[], null, null],
-			[[0, 1, 2, 3, 4, 5, 6, 7, 8, 9], 3, null],
-			[
-				[0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+		return array(
+			array(array(), null, null),
+			array(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9), 3, null),
+			array(
+				array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9),
 				3,
 				function ($key1, $key2)
 				{
 					return $key1 - $key2;
 				}
-			]
-		];
+			)
+		);
 	}
 
 	/**
@@ -61,11 +63,11 @@ class TreeMapTest extends \PHPUnit_Framework_TestCase
 	 * @covers  chdemko\SortedCollection\TreeMap::put
 	 * @covers  chdemko\SortedCollection\TreeMap::initialise
 	 *
-	 * @dataProvider  cases_create
+	 * @dataProvider  casesCreate
 	 *
 	 * @since   1.0.0
 	 */
-	public function test_create($values, $key, $comparator)
+	public function testCreate($values, $key, $comparator)
 	{
 		$tree = TreeMap::create($comparator)->initialise($values);
 
@@ -112,9 +114,9 @@ class TreeMapTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @since   1.0.0
 	 */
-	public function test_clear()
+	public function testClear()
 	{
-		$tree = TreeMap::create()->put([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+		$tree = TreeMap::create()->put(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
 
 		// Set the root property accessible
 		$root = (new \ReflectionClass($tree))->getProperty('root');
@@ -140,9 +142,9 @@ class TreeMapTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @since   1.0.0
 	 */
-	public function test_clone()
+	public function testClone()
 	{
-		$tree = TreeMap::create()->put([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+		$tree = TreeMap::create()->put(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
 		$clone = clone $tree;
 		$tree->clear();
 		$this->assertEquals(
@@ -161,13 +163,13 @@ class TreeMapTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @since   1.0.0
 	 */
-	public function test_comparator()
+	public function testComparator()
 	{
 		$comparator = function ($key1, $key2)
 		{
 			return $key1 - $key2;
 		};
-		$tree = TreeMap::create($comparator)->put([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+		$tree = TreeMap::create($comparator)->put(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
 		$this->assertEquals(
 			$comparator,
 			$tree->comparator
@@ -186,9 +188,9 @@ class TreeMapTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @since   1.0.0
 	 */
-	public function test_first()
+	public function testFirst()
 	{
-		$tree = TreeMap::create()->put([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+		$tree = TreeMap::create()->put(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
 		$this->assertEquals(
 			0,
 			$tree->firstKey
@@ -202,7 +204,7 @@ class TreeMapTest extends \PHPUnit_Framework_TestCase
 			$tree->first->key
 		);
 		$tree->clear();
-		$this->setExpectedException('OutOfBoundsException');
+		$this->expectException('OutOfBoundsException');
 		$key = $tree->firstKey;
 	}
 
@@ -218,9 +220,9 @@ class TreeMapTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @since   1.0.0
 	 */
-	public function test_last()
+	public function testLast()
 	{
-		$tree = TreeMap::create()->put([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+		$tree = TreeMap::create()->put(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
 		$this->assertEquals(
 			9,
 			$tree->lastKey
@@ -234,7 +236,7 @@ class TreeMapTest extends \PHPUnit_Framework_TestCase
 			$tree->last->key
 		);
 		$tree->clear();
-		$this->setExpectedException('OutOfBoundsException');
+		$this->expectException('OutOfBoundsException');
 		$key = $tree->lastKey;
 	}
 
@@ -248,14 +250,14 @@ class TreeMapTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @since   1.0.0
 	 */
-	public function test_predecessor()
+	public function testPredecessor()
 	{
-		$tree = TreeMap::create()->put([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+		$tree = TreeMap::create()->put(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
 		$this->assertEquals(
 			8,
 			$tree->predecessor($tree->last)->key
 		);
-		$this->setExpectedException('OutOfBoundsException');
+		$this->expectException('OutOfBoundsException');
 		$predecessor = $tree->predecessor($tree->first);
 	}
 
@@ -269,14 +271,14 @@ class TreeMapTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @since   1.0.0
 	 */
-	public function test_successor()
+	public function testSuccessor()
 	{
-		$tree = TreeMap::create()->put([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+		$tree = TreeMap::create()->put(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
 		$this->assertEquals(
 			1,
 			$tree->successor($tree->first)->key
 		);
-		$this->setExpectedException('OutOfBoundsException');
+		$this->expectException('OutOfBoundsException');
 		$successor = $tree->successor($tree->last);
 	}
 
@@ -296,7 +298,7 @@ class TreeMapTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @since   1.0.0
 	 */
-	public function test_keys()
+	public function testKeys()
 	{
 		$empty = true;
 		$tree = TreeMap::create();
@@ -308,7 +310,7 @@ class TreeMapTest extends \PHPUnit_Framework_TestCase
 
 		$this->assertEquals(true, $empty);
 
-		$tree = TreeMap::create()->put([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+		$tree = TreeMap::create()->put(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
 		$i = 0;
 
 		foreach ($tree->keys as $index => $key)
@@ -335,7 +337,7 @@ class TreeMapTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @since   1.0.0
 	 */
-	public function test_values()
+	public function testValues()
 	{
 		$empty = true;
 		$tree = TreeMap::create();
@@ -347,7 +349,7 @@ class TreeMapTest extends \PHPUnit_Framework_TestCase
 
 		$this->assertEquals(true, $empty);
 
-		$tree = TreeMap::create()->put([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+		$tree = TreeMap::create()->put(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
 		$i = 0;
 
 		foreach ($tree->values as $value)
@@ -366,37 +368,37 @@ class TreeMapTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @since   1.0.0
 	 */
-	public function test___get_unexisting()
+	public function testGetUnexisting()
 	{
-		$tree = TreeMap::create()->put([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
-		$this->setExpectedException('RuntimeException');
+		$tree = TreeMap::create()->put(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
+		$this->expectException('RuntimeException');
 		$unexisting = $tree->unexisting;
 	}
 
 	/**
-	 * Data provider for test_lower
+	 * Data provider for testLower
 	 *
 	 * @return  array
 	 *
 	 * @since   1.0.0
 	 */
-	public function cases_lower()
+	public function casesLower()
 	{
-		return [
-			[[], 10, null, 'OutOfBoundsException'],
-			[[1 => 1], 1, null, 'OutOfBoundsException'],
-			[[1 => 1, 0 => 0], 0, null, 'OutOfBoundsException'],
-			[[2 => 2, 1 => 1], 0, null, 'OutOfBoundsException'],
-			[[0 => 0, 1 => 1], 1, 0, null],
-			[[0 => 0, 1 => 1], 2, 1, null],
-		];
+		return array(
+			array(array(), 10, null, 'OutOfBoundsException'),
+			array(array(1 => 1), 1, null, 'OutOfBoundsException'),
+			array(array(1 => 1, 0 => 0), 0, null, 'OutOfBoundsException'),
+			array(array(2 => 2, 1 => 1), 0, null, 'OutOfBoundsException'),
+			array(array(0 => 0, 1 => 1), 1, 0, null),
+			array(array(0 => 0, 1 => 1), 2, 1, null),
+		);
 	}
 
 	/**
 	 * Tests  TreeMap::lower
 	 *
 	 * @param   array  $values     Values array
-	 * @param   mixed  $key        Key to search for     
+	 * @param   mixed  $key        Key to search for
 	 * @param   mixed  $expected   Expected key/value
 	 * @param   mixed  $exception  Exception to be thrown
 	 *
@@ -406,15 +408,15 @@ class TreeMapTest extends \PHPUnit_Framework_TestCase
 	 * @covers  chdemko\SortedCollection\AbstractMap::lowerKey
 	 * @covers  chdemko\SortedCollection\AbstractMap::lowerValue
 	 *
-	 * @dataProvider  cases_lower
+	 * @dataProvider  casesLower
 	 *
 	 * @since   1.0.0
 	 */
-	public function test_lower($values, $key, $expected, $exception)
+	public function testLower($values, $key, $expected, $exception)
 	{
 		if ($exception)
 		{
-			$this->setExpectedException($exception);
+			$this->expectException($exception);
 		}
 
 		$tree = TreeMap::create()->initialise($values);
@@ -430,29 +432,29 @@ class TreeMapTest extends \PHPUnit_Framework_TestCase
 	}
 
 	/**
-	 * Data provider for test_floor
+	 * Data provider for testFloor
 	 *
 	 * @return  array
 	 *
 	 * @since   1.0.0
 	 */
-	public function cases_floor()
+	public function casesFloor()
 	{
-		return [
-			[[], 10, null, 'OutOfBoundsException'],
-			[[1 => 1], 1, 1, null],
-			[[1 => 1, 0 => 0], 0, 0, null],
-			[[2 => 2, 1 => 1], 0, null, 'OutOfBoundsException'],
-			[[0 => 0, 1 => 1], 1, 1, null],
-			[[0 => 0, 1 => 1], 2, 1, null],
-		];
+		return array(
+			array(array(), 10, null, 'OutOfBoundsException'),
+			array(array(1 => 1), 1, 1, null),
+			array(array(1 => 1, 0 => 0), 0, 0, null),
+			array(array(2 => 2, 1 => 1), 0, null, 'OutOfBoundsException'),
+			array(array(0 => 0, 1 => 1), 1, 1, null),
+			array(array(0 => 0, 1 => 1), 2, 1, null),
+		);
 	}
 
 	/**
 	 * Tests  TreeMap::floor
 	 *
 	 * @param   array  $values     Values array
-	 * @param   mixed  $key        Key to search for     
+	 * @param   mixed  $key        Key to search for
 	 * @param   mixed  $expected   Expected key/value
 	 * @param   mixed  $exception  Exception to be thrown
 	 *
@@ -462,15 +464,15 @@ class TreeMapTest extends \PHPUnit_Framework_TestCase
 	 * @covers  chdemko\SortedCollection\AbstractMap::floorKey
 	 * @covers  chdemko\SortedCollection\AbstractMap::floorValue
 	 *
-	 * @dataProvider  cases_floor
+	 * @dataProvider  casesFloor
 	 *
 	 * @since   1.0.0
 	 */
-	public function test_floor($values, $key, $expected, $exception)
+	public function testFloor($values, $key, $expected, $exception)
 	{
 		if ($exception)
 		{
-			$this->setExpectedException($exception);
+			$this->expectException($exception);
 		}
 
 		$tree = TreeMap::create()->initialise($values);
@@ -496,9 +498,9 @@ class TreeMapTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @since   1.0.0
 	 */
-	public function test_find()
+	public function testFind()
 	{
-		$tree = TreeMap::create()->initialise([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+		$tree = TreeMap::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
 
 		$this->assertEquals(
 			0,
@@ -510,35 +512,35 @@ class TreeMapTest extends \PHPUnit_Framework_TestCase
 		);
 
 		$tree->clear();
-		$this->setExpectedException('OutOfBoundsException');
+		$this->expectException('OutOfBoundsException');
 
 		$key = $tree->findKey(10);
 	}
 
 	/**
-	 * Data provider for test_ceiling
+	 * Data provider for testCeiling
 	 *
 	 * @return  array
 	 *
 	 * @since   1.0.0
 	 */
-	public function cases_ceiling()
+	public function casesCeiling()
 	{
-		return [
-			[[], 10, null, 'OutOfBoundsException'],
-			[[1 => 1], 1, 1, null],
-			[[1 => 1, 0 => 0], 0, 0, null],
-			[[2 => 2, 1 => 1], 0, 1, null],
-			[[0 => 0, 1 => 1], 1, 1, null],
-			[[0 => 0, 1 => 1], 2, null, 'OutOfBoundsException'],
-		];
+		return array(
+			array(array(), 10, null, 'OutOfBoundsException'),
+			array(array(1 => 1), 1, 1, null),
+			array(array(1 => 1, 0 => 0), 0, 0, null),
+			array(array(2 => 2, 1 => 1), 0, 1, null),
+			array(array(0 => 0, 1 => 1), 1, 1, null),
+			array(array(0 => 0, 1 => 1), 2, null, 'OutOfBoundsException'),
+		);
 	}
 
 	/**
 	 * Tests  TreeMap::ceiling
 	 *
 	 * @param   array  $values     Values array
-	 * @param   mixed  $key        Key to search for     
+	 * @param   mixed  $key        Key to search for
 	 * @param   mixed  $expected   Expected key/value
 	 * @param   mixed  $exception  Exception to be thrown
 	 *
@@ -548,15 +550,15 @@ class TreeMapTest extends \PHPUnit_Framework_TestCase
 	 * @covers  chdemko\SortedCollection\AbstractMap::ceilingKey
 	 * @covers  chdemko\SortedCollection\AbstractMap::ceilingValue
 	 *
-	 * @dataProvider  cases_ceiling
+	 * @dataProvider  casesCeiling
 	 *
 	 * @since   1.0.0
 	 */
-	public function test_ceiling($values, $key, $expected, $exception)
+	public function testCeiling($values, $key, $expected, $exception)
 	{
 		if ($exception)
 		{
-			$this->setExpectedException($exception);
+			$this->expectException($exception);
 		}
 
 		$tree = TreeMap::create()->initialise($values);
@@ -572,29 +574,29 @@ class TreeMapTest extends \PHPUnit_Framework_TestCase
 	}
 
 	/**
-	 * Data provider for test_higher
+	 * Data provider for testHigher
 	 *
 	 * @return  array
 	 *
 	 * @since   1.0.0
 	 */
-	public function cases_higher()
+	public function casesHigher()
 	{
-		return [
-			[[], 10, null, 'OutOfBoundsException'],
-			[[1 => 1], 1, null, 'OutOfBoundsException'],
-			[[1 => 1, 0 => 0], 0, 1, null],
-			[[2 => 2, 1 => 1], 0, 1, null],
-			[[0 => 0, 1 => 1], 1, null, 'OutOfBoundsException'],
-			[[0 => 0, 1 => 1], 2, null, 'OutOfBoundsException'],
-		];
+		return array(
+			array(array(), 10, null, 'OutOfBoundsException'),
+			array(array(1 => 1), 1, null, 'OutOfBoundsException'),
+			array(array(1 => 1, 0 => 0), 0, 1, null),
+			array(array(2 => 2, 1 => 1), 0, 1, null),
+			array(array(0 => 0, 1 => 1), 1, null, 'OutOfBoundsException'),
+			array(array(0 => 0, 1 => 1), 2, null, 'OutOfBoundsException'),
+		);
 	}
 
 	/**
 	 * Tests  TreeMap::higher
 	 *
 	 * @param   array  $values     Values array
-	 * @param   mixed  $key        Key to search for     
+	 * @param   mixed  $key        Key to search for
 	 * @param   mixed  $expected   Expected key/value
 	 * @param   mixed  $exception  Exception to be thrown
 	 *
@@ -604,15 +606,15 @@ class TreeMapTest extends \PHPUnit_Framework_TestCase
 	 * @covers  chdemko\SortedCollection\AbstractMap::higherKey
 	 * @covers  chdemko\SortedCollection\AbstractMap::higherValue
 	 *
-	 * @dataProvider  cases_higher
+	 * @dataProvider  casesHigher
 	 *
 	 * @since   1.0.0
 	 */
-	public function test_higher($values, $key, $expected, $exception)
+	public function testHigher($values, $key, $expected, $exception)
 	{
 		if ($exception)
 		{
-			$this->setExpectedException($exception);
+			$this->expectException($exception);
 		}
 
 		$tree = TreeMap::create()->initialise($values);
@@ -628,29 +630,29 @@ class TreeMapTest extends \PHPUnit_Framework_TestCase
 	}
 
 	/**
-	 * Data provider for test_offsetGet
+	 * Data provider for testOffsetGet
 	 *
 	 * @return  array
 	 *
 	 * @since   1.0.0
 	 */
-	public function cases_offsetGet()
+	public function casesOffsetGet()
 	{
-		return [
-			[[], 10, null, 'OutOfRangeException'],
-			[[1 => 1], 1, 1, null],
-			[[1 => 1, 0 => 0], 0, 0, null],
-			[[2 => 2, 1 => 1], 0, null, 'OutOfRangeException'],
-			[[0 => 0, 1 => 1], 1, 1, null],
-			[[0 => 0, 1 => 1], 2, null, 'OutOfRangeException'],
-		];
+		return array(
+			array(array(), 10, null, 'OutOfRangeException'),
+			array(array(1 => 1), 1, 1, null),
+			array(array(1 => 1, 0 => 0), 0, 0, null),
+			array(array(2 => 2, 1 => 1), 0, null, 'OutOfRangeException'),
+			array(array(0 => 0, 1 => 1), 1, 1, null),
+			array(array(0 => 0, 1 => 1), 2, null, 'OutOfRangeException'),
+		);
 	}
 
 	/**
 	 * Tests  TreeMap::offsetGet
 	 *
 	 * @param   array  $values     Values array
-	 * @param   mixed  $key        Key to search for     
+	 * @param   mixed  $key        Key to search for
 	 * @param   mixed  $value      Expected value
 	 * @param   mixed  $exception  Exception to be thrown
 	 *
@@ -658,15 +660,15 @@ class TreeMapTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @covers  chdemko\SortedCollection\TreeMap::offsetGet
 	 *
-	 * @dataProvider  cases_offsetGet
+	 * @dataProvider  casesOffsetGet
 	 *
 	 * @since   1.0.0
 	 */
-	public function test_offsetGet($values, $key, $value, $exception)
+	public function testOffsetGet($values, $key, $value, $exception)
 	{
 		if ($exception)
 		{
-			$this->setExpectedException($exception);
+			$this->expectException($exception);
 		}
 
 		$tree = TreeMap::create()->initialise($values);
@@ -686,9 +688,9 @@ class TreeMapTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @since   1.0.0
 	 */
-	public function test_offsetSet()
+	public function testOffsetSet()
 	{
-		$tree = TreeMap::create()->initialise([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+		$tree = TreeMap::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
 		$tree[5] = 6;
 
 		$this->assertEquals(
@@ -706,7 +708,7 @@ class TreeMapTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @since   1.0.0
 	 */
-	public function test_offsetExists()
+	public function testOffsetExists()
 	{
 		$tree = TreeMap::create();
 
@@ -714,7 +716,7 @@ class TreeMapTest extends \PHPUnit_Framework_TestCase
 			isset($tree[10])
 		);
 
-		$tree = TreeMap::create()->initialise([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+		$tree = TreeMap::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
 
 		$this->assertTrue(
 			isset($tree[5])
@@ -733,9 +735,9 @@ class TreeMapTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @since   1.0.0
 	 */
-	public function test_offsetUnset()
+	public function testOffsetUnset()
 	{
-		$tree = TreeMap::create()->initialise([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+		$tree = TreeMap::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
 		unset($tree[3]);
 
 		$this->assertEquals(
@@ -743,7 +745,7 @@ class TreeMapTest extends \PHPUnit_Framework_TestCase
 			count($tree)
 		);
 
-		$this->setExpectedException('OutOfRangeException');
+		$this->expectException('OutOfRangeException');
 		$value = $tree[3];
 	}
 
@@ -757,7 +759,7 @@ class TreeMapTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @since   1.0.0
 	 */
-	public function test_count()
+	public function testCount()
 	{
 		$tree = TreeMap::create();
 
@@ -766,7 +768,7 @@ class TreeMapTest extends \PHPUnit_Framework_TestCase
 			$tree->count
 		);
 
-		$tree = TreeMap::create()->initialise([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+		$tree = TreeMap::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
 
 		$this->assertEquals(
 			10,
@@ -793,7 +795,7 @@ class TreeMapTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @since   1.0.0
 	 */
-	public function test___toString()
+	public function testToString()
 	{
 		$tree = TreeMap::create();
 
@@ -802,7 +804,7 @@ class TreeMapTest extends \PHPUnit_Framework_TestCase
 			(string) $tree
 		);
 
-		$tree = TreeMap::create()->initialise([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+		$tree = TreeMap::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
 
 		$this->assertEquals(
 			'[0,1,2,3,4,5,6,7,8,9]',
@@ -819,7 +821,7 @@ class TreeMapTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @since   1.0.0
 	 */
-	public function test_jsonSerialize()
+	public function testJsonSerialize()
 	{
 		$tree = TreeMap::create();
 
@@ -828,7 +830,7 @@ class TreeMapTest extends \PHPUnit_Framework_TestCase
 			json_encode($tree)
 		);
 
-		$tree = TreeMap::create()->initialise([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+		$tree = TreeMap::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
 
 		$this->assertEquals(
 			'{"TreeMap":[0,1,2,3,4,5,6,7,8,9]}',

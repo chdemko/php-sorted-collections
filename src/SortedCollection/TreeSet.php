@@ -4,9 +4,9 @@
  * chdemko\SortedCollection\TreeSet class
  *
  * @author     Christophe Demko <chdemko@gmail.com>
- * @copyright  Copyright (C) 2012-2016 Christophe Demko. All rights reserved.
+ * @copyright  Copyright (C) 2012-2018 Christophe Demko. All rights reserved.
  *
- * @license    http://www.cecill.info/licences/Licence_CeCILL-B_V1-en.html The CeCILL B license
+ * @license    BSD 3-Clause License
  *
  * This file is part of the php-sorted-collections package https://github.com/chdemko/php-sorted-collections
  */
@@ -47,7 +47,7 @@ class TreeSet extends AbstractSet
 	 * @param   Callable  $comparator  Comparison function
 	 *
 	 * @return  TreeSet  A new TreeSet
-	 * 
+	 *
 	 * @since   1.0.0
 	 */
 	public static function create($comparator = null)
@@ -64,7 +64,7 @@ class TreeSet extends AbstractSet
 	 *
 	 * @since   1.0.0
 	 */
-	public function put($traversable = [])
+	public function put($traversable = array())
 	{
 		foreach ($traversable as $value)
 		{
@@ -97,7 +97,7 @@ class TreeSet extends AbstractSet
 	 *
 	 * @since   1.0.0
 	 */
-	public function initialise($traversable = [])
+	public function initialise($traversable = array())
 	{
 		return $this->clear()->put($traversable);
 	}
@@ -147,14 +147,14 @@ class TreeSet extends AbstractSet
 	 */
 	public function jsonSerialize()
 	{
-		$array = [];
+		$array = array();
 
 		foreach ($this as $value)
 		{
 			$array[] = $value;
 		}
 
-		return ['TreeSet' => $array];
+		return array('TreeSet' => $array);
 	}
 
 	/**

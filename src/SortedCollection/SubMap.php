@@ -4,9 +4,9 @@
  * chdemko\SortedCollection\SubMap class
  *
  * @author     Christophe Demko <chdemko@gmail.com>
- * @copyright  Copyright (C) 2012-2016 Christophe Demko. All rights reserved.
+ * @copyright  Copyright (C) 2012-2018 Christophe Demko. All rights reserved.
  *
- * @license    http://www.cecill.info/licences/Licence_CeCILL-B_V1-en.html The CeCILL B license
+ * @license    BSD 3-Clause License
  *
  * This file is part of the php-sorted-collections package https://github.com/chdemko/php-sorted-collections
  */
@@ -257,7 +257,7 @@ class SubMap extends AbstractMap
 	 *
 	 * @param   string  $property  The property
 	 *
-	 * @return  void
+	 * @return  boolean
 	 *
 	 * @since   1.0.0
 	 */
@@ -333,7 +333,13 @@ class SubMap extends AbstractMap
 	 */
 	public static function create(SortedMap $map, $fromKey, $toKey, $fromInclusive = true, $toInclusive = false)
 	{
-		return new static($map, $fromKey, $fromInclusive ? self::INCLUSIVE : self::EXCLUSIVE, $toKey, $toInclusive ? self::INCLUSIVE : self::EXCLUSIVE);
+		return new static(
+			$map,
+			$fromKey,
+			$fromInclusive ? self::INCLUSIVE : self::EXCLUSIVE,
+			$toKey,
+			$toInclusive ? self::INCLUSIVE : self::EXCLUSIVE
+		);
 	}
 
 	/**
@@ -810,7 +816,7 @@ class SubMap extends AbstractMap
 
 					if ($this->toOption == self::EXCLUSIVE && call_user_func($this->map->comparator(), $higher->key, $this->toKey) >= 0)
 					{
-					throw new \OutOfBoundsException('Higher element unexisting');
+						throw new \OutOfBoundsException('Higher element unexisting');
 					}
 				}
 			break;
@@ -851,46 +857,46 @@ class SubMap extends AbstractMap
 		{
 			if ($this->toOption == self::UNUSED)
 			{
-				return [
-					'ViewMap' => [
+				return array(
+					'ViewMap' => array(
 						'map' => $this->map->jsonSerialize(),
-					]
-				];
+					)
+				);
 			}
 			else
 			{
-				return [
-					'HeadMap' => [
+				return array(
+					'HeadMap' => array(
 						'map' => $this->map->jsonSerialize(),
 						'toKey' => $this->toKey,
 						'toInclusive' => $this->toOption == self::INCLUSIVE,
-					]
-				];
+					)
+				);
 			}
 		}
 		else
 		{
 			if ($this->toOption == self::UNUSED)
 			{
-				return [
-					'TailMap' => [
+				return array(
+					'TailMap' => array(
 						'map' => $this->map->jsonSerialize(),
 						'fromKey' => $this->fromKey,
 						'fromInclusive' => $this->fromOption == self::INCLUSIVE,
-					]
-				];
+					)
+				);
 			}
 			else
 			{
-				return [
-					'SubMap' => [
+				return array(
+					'SubMap' => array(
 						'map' => $this->map->jsonSerialize(),
 						'fromKey' => $this->fromKey,
 						'fromInclusive' => $this->fromOption == self::INCLUSIVE,
 						'toKey' => $this->toKey,
 						'toInclusive' => $this->toOption == self::INCLUSIVE,
-					]
-				];
+					)
+				);
 			}
 		}
 	}

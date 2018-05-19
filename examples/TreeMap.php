@@ -7,9 +7,9 @@
  * @subpackage  Map
  *
  * @author      Christophe Demko <chdemko@gmail.com>
- * @copyright   Copyright (C) 2012-2016 Christophe Demko. All rights reserved.
+ * @copyright   Copyright (C) 2012-2018 Christophe Demko. All rights reserved.
  *
- * @license     http://www.cecill.info/licences/Licence_CeCILL-B_V1-en.html The CeCILL B license
+ * @license     BSD 3-Clause License
  *
  * This file is part of the php-sorted-collections package https://github.com/chdemko/php-sorted-collections
  */
@@ -18,7 +18,7 @@ require __DIR__ . '/../vendor/autoload.php';
 
 use chdemko\SortedCollection\TreeMap;
 
-$tree = TreeMap::create()->put([1 => 1, 9 => 9, 5 => 5, 2 => 2, 6 => 6, 3 => 3, 0 => 0, 8 => 8, 7 => 7, 4 => 4]);
+$tree = TreeMap::create()->put(array(1 => 1, 9 => 9, 5 => 5, 2 => 2, 6 => 6, 3 => 3, 0 => 0, 8 => 8, 7 => 7, 4 => 4));
 
 // Print [0,1,2,3,4,5,6,7,8,9]
 echo $tree . PHP_EOL;

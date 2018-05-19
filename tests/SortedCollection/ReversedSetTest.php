@@ -4,15 +4,17 @@
  * chdemko\SortedCollection\ReversedSetTest class
  *
  * @author     Christophe Demko <chdemko@gmail.com>
- * @copyright  Copyright (C) 2012-2016 Christophe Demko. All rights reserved.
+ * @copyright  Copyright (C) 2012-2018 Christophe Demko. All rights reserved.
  *
- * @license    http://www.cecill.info/licences/Licence_CeCILL-B_V1-en.html The CeCILL B license
+ * @license    BSD 3-Clause License
  *
  * This file is part of the php-sorted-collections package https://github.com/chdemko/php-sorted-collections
  */
 
 // Declare chdemko\SortedCollection namespace
 namespace chdemko\SortedCollection;
+
+use PHPUnit\Framework\TestCase;
 
 /**
  * ReversedSet class test
@@ -22,30 +24,30 @@ namespace chdemko\SortedCollection;
  *
  * @since       1.0.0
  */
-class ReversedSetTest extends \PHPUnit_Framework_TestCase
+class ReversedSetTest extends TestCase
 {
 	/**
-	 * Data provider for test_create
+	 * Data provider for testCreate
 	 *
 	 * @return  array
 	 *
 	 * @since   1.0.0
 	 */
-	public function cases_create()
+	public function casesCreate()
 	{
-		return [
-			[[], null, null, '[]'],
-			[[0, 1, 2, 3, 4, 5, 6, 7, 8, 9], 3, null, '[9,8,7,6,5,4,3,2,1,0]'],
-			[
-				[0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+		return array(
+			array(array(), null, null, '[]'),
+			array(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9), 3, null, '[9,8,7,6,5,4,3,2,1,0]'),
+			array(
+				array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9),
 				3,
 				function ($key1, $key2)
 				{
 					return $key1 - $key2;
 				},
 				'[9,8,7,6,5,4,3,2,1,0]'
-			]
-		];
+			)
+		);
 	}
 
 	/**
@@ -61,11 +63,11 @@ class ReversedSetTest extends \PHPUnit_Framework_TestCase
 	 * @covers  chdemko\SortedCollection\ReversedSet::__construct
 	 * @covers  chdemko\SortedCollection\ReversedSet::create
 	 *
-	 * @dataProvider  cases_create
+	 * @dataProvider  casesCreate
 	 *
 	 * @since   1.0.0
 	 */
-	public function test_create($values, $key, $comparator, $string)
+	public function testCreate($values, $key, $comparator, $string)
 	{
 		$set = TreeSet::create($comparator)->initialise($values);
 		$reversed = ReversedSet::create($set);
@@ -85,9 +87,9 @@ class ReversedSetTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @since   1.0.0
 	 */
-	public function test___get()
+	public function testGet()
 	{
-		$set = TreeSet::create()->initialise([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+		$set = TreeSet::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
 		$reversed = ReversedSet::create($set);
 		$this->assertEquals(
 			$set,
@@ -108,9 +110,9 @@ class ReversedSetTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @since   1.0.0
 	 */
-	public function test_offsetSet()
+	public function testOffsetSet()
 	{
-		$this->setExpectedException('RuntimeException');
+		$this->expectException('RuntimeException');
 
 		$set = TreeSet::create();
 		$reversed = ReversedSet::create($set);
@@ -126,11 +128,11 @@ class ReversedSetTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @since   1.0.0
 	 */
-	public function test_offsetUnset()
+	public function testOffsetUnset()
 	{
-		$this->setExpectedException('RuntimeException');
+		$this->expectException('RuntimeException');
 
-		$set = TreeSet::create()->initialise([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+		$set = TreeSet::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
 		$reversed = ReversedSet::create($set);
 		unset($reversed[0]);
 	}
@@ -144,7 +146,7 @@ class ReversedSetTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @since   1.0.0
 	 */
-	public function test_jsonSerialize()
+	public function testJsonSerialize()
 	{
 		$set = TreeSet::create();
 		$reversed = ReversedSet::create($set);
@@ -154,7 +156,7 @@ class ReversedSetTest extends \PHPUnit_Framework_TestCase
 			json_encode($reversed)
 		);
 
-		$set->initialise([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+		$set->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
 
 		$this->assertEquals(
 			'{"ReversedSet":{"TreeSet":[0,1,2,3,4,5,6,7,8,9]}}',

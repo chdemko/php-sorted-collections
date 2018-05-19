@@ -4,15 +4,17 @@
  * chdemko\SortedCollection\SubMapTest class
  *
  * @author     Christophe Demko <chdemko@gmail.com>
- * @copyright  Copyright (C) 2012-2016 Christophe Demko. All rights reserved.
+ * @copyright  Copyright (C) 2012-2018 Christophe Demko. All rights reserved.
  *
- * @license    http://www.cecill.info/licences/Licence_CeCILL-B_V1-en.html The CeCILL B license
+ * @license    BSD 3-Clause License
  *
  * This file is part of the php-sorted-collections package https://github.com/chdemko/php-sorted-collections
  */
 
 // Declare chdemko\SortedCollection namespace
 namespace chdemko\SortedCollection;
+
+use PHPUnit\Framework\TestCase;
 
 /**
  * SubMap class test
@@ -22,7 +24,7 @@ namespace chdemko\SortedCollection;
  *
  * @since       1.0.0
  */
-class SubMapTest extends \PHPUnit_Framework_TestCase
+class SubMapTest extends TestCase
 {
 	/**
 	 * Tests  SubMap::create
@@ -37,9 +39,9 @@ class SubMapTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @since   1.0.0
 	 */
-	public function test_create()
+	public function testCreate()
 	{
-		$tree = TreeMap::create()->initialise([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+		$tree = TreeMap::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
 		$sub = SubMap::create($tree, 2, 7);
 
 		$this->assertEquals(
@@ -86,9 +88,9 @@ class SubMapTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @since   1.0.0
 	 */
-	public function test_head()
+	public function testHead()
 	{
-		$tree = TreeMap::create()->initialise([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+		$tree = TreeMap::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
 		$head = SubMap::head($tree, 7);
 
 		$this->assertEquals(
@@ -116,9 +118,9 @@ class SubMapTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @since   1.0.0
 	 */
-	public function test_tail()
+	public function testTail()
 	{
-		$tree = TreeMap::create()->initialise([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+		$tree = TreeMap::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
 		$tail = SubMap::tail($tree, 2);
 
 		$this->assertEquals(
@@ -146,9 +148,9 @@ class SubMapTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @since   1.0.0
 	 */
-	public function test_copy()
+	public function testCopy()
 	{
-		$tree = TreeMap::create()->initialise([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+		$tree = TreeMap::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
 		$view = SubMap::view($tree);
 
 		$this->assertEquals(
@@ -172,12 +174,12 @@ class SubMapTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @since   1.0.0
 	 */
-	public function test___get_fromKey()
+	public function testGetFromKey()
 	{
-		$tree = TreeMap::create()->initialise([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+		$tree = TreeMap::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
 		$head = SubMap::head($tree, 7);
 
-		$this->setExpectedException('RuntimeException');
+		$this->expectException('RuntimeException');
 		$fromKey = $head->fromKey;
 	}
 
@@ -190,12 +192,12 @@ class SubMapTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @since   1.0.0
 	 */
-	public function test___get_toKey()
+	public function testGetToKey()
 	{
-		$tree = TreeMap::create()->initialise([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+		$tree = TreeMap::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
 		$tail = SubMap::tail($tree, 2);
 
-		$this->setExpectedException('RuntimeException');
+		$this->expectException('RuntimeException');
 		$toKey = $tail->toKey;
 	}
 
@@ -208,12 +210,12 @@ class SubMapTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @since   1.0.0
 	 */
-	public function test___get_fromInclusive()
+	public function testGetFromInclusive()
 	{
-		$tree = TreeMap::create()->initialise([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+		$tree = TreeMap::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
 		$head = SubMap::head($tree, 7);
 
-		$this->setExpectedException('RuntimeException');
+		$this->expectException('RuntimeException');
 		$fromInclusive = $head->fromInclusive;
 	}
 
@@ -226,12 +228,12 @@ class SubMapTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @since   1.0.0
 	 */
-	public function test___get_toInclusive()
+	public function testGetToInclusive()
 	{
-		$tree = TreeMap::create()->initialise([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+		$tree = TreeMap::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
 		$tail = SubMap::tail($tree, 2);
 
-		$this->setExpectedException('RuntimeException');
+		$this->expectException('RuntimeException');
 		$toInclusive = $tail->toInclusive;
 	}
 
@@ -244,9 +246,9 @@ class SubMapTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @since   1.0.0
 	 */
-	public function test___set_fromKey()
+	public function testSetFromKey()
 	{
-		$tree = TreeMap::create()->initialise([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+		$tree = TreeMap::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
 		$sub = SubMap::head($tree, 7);
 		$sub->fromKey = 2;
 		$this->assertEquals(
@@ -268,9 +270,9 @@ class SubMapTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @since   1.0.0
 	 */
-	public function test___set_toKey()
+	public function testSetToKey()
 	{
-		$tree = TreeMap::create()->initialise([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+		$tree = TreeMap::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
 		$sub = SubMap::tail($tree, 2);
 		$sub->toKey = 7;
 		$this->assertEquals(
@@ -292,11 +294,11 @@ class SubMapTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @since   1.0.0
 	 */
-	public function test___set_fromInclusive()
+	public function testSetFromInclusive()
 	{
-		$tree = TreeMap::create()->initialise([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+		$tree = TreeMap::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
 		$sub = SubMap::head($tree, 7);
-		$this->setExpectedException('RuntimeException');
+		$this->expectException('RuntimeException');
 		$sub->fromInclusive = true;
 	}
 
@@ -309,11 +311,11 @@ class SubMapTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @since   1.0.0
 	 */
-	public function test___set_toInclusive()
+	public function testSetToInclusive()
 	{
-		$tree = TreeMap::create()->initialise([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+		$tree = TreeMap::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
 		$sub = SubMap::tail($tree, 2);
-		$this->setExpectedException('RuntimeException');
+		$this->expectException('RuntimeException');
 		$sub->toInclusive = true;
 	}
 
@@ -326,11 +328,11 @@ class SubMapTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @since   1.0.0
 	 */
-	public function test___set_unexisting()
+	public function testSetUnexisting()
 	{
-		$tree = TreeMap::create()->initialise([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+		$tree = TreeMap::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
 		$sub = SubMap::head($tree, 7);
-		$this->setExpectedException('RuntimeException');
+		$this->expectException('RuntimeException');
 		$sub->unexisting = true;
 	}
 
@@ -343,12 +345,12 @@ class SubMapTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @since   1.0.0
 	 */
-	public function test___unset_fromKey()
+	public function testUnsetFromKey()
 	{
-		$tree = TreeMap::create()->initialise([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+		$tree = TreeMap::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
 		$sub = SubMap::tail($tree, 2);
 		unset($sub->fromKey);
-		$this->setExpectedException('RuntimeException');
+		$this->expectException('RuntimeException');
 		$fromKey = $sub->fromKey;
 	}
 
@@ -361,12 +363,12 @@ class SubMapTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @since   1.0.0
 	 */
-	public function test___unset_toKey()
+	public function testUnsetToKey()
 	{
-		$tree = TreeMap::create()->initialise([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+		$tree = TreeMap::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
 		$sub = SubMap::head($tree, 7);
 		unset($sub->toKey);
-		$this->setExpectedException('RuntimeException');
+		$this->expectException('RuntimeException');
 		$toKey = $sub->toKey;
 	}
 
@@ -379,12 +381,12 @@ class SubMapTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @since   1.0.0
 	 */
-	public function test___unset_fromInclusive()
+	public function testUnsetFromInclusive()
 	{
-		$tree = TreeMap::create()->initialise([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+		$tree = TreeMap::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
 		$sub = SubMap::head($tree, 7);
 		unset($sub->fromInclusive);
-		$this->setExpectedException('RuntimeException');
+		$this->expectException('RuntimeException');
 		$fromKey = $sub->fromKey;
 	}
 
@@ -397,12 +399,12 @@ class SubMapTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @since   1.0.0
 	 */
-	public function test___unset_toInclusive()
+	public function testUnsetToInclusive()
 	{
-		$tree = TreeMap::create()->initialise([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+		$tree = TreeMap::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
 		$sub = SubMap::head($tree, 7);
 		unset($sub->toInclusive);
-		$this->setExpectedException('RuntimeException');
+		$this->expectException('RuntimeException');
 		$toKey = $sub->toKey;
 	}
 
@@ -415,11 +417,11 @@ class SubMapTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @since   1.0.0
 	 */
-	public function test___unset_unexisting()
+	public function testUnsetUnexisting()
 	{
-		$tree = TreeMap::create()->initialise([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+		$tree = TreeMap::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
 		$sub = SubMap::tail($tree, 2);
-		$this->setExpectedException('RuntimeException');
+		$this->expectException('RuntimeException');
 		unset($sub->unexisting);
 	}
 
@@ -432,9 +434,9 @@ class SubMapTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @since   1.0.0
 	 */
-	public function test___isset_from()
+	public function testIssetFrom()
 	{
-		$tree = TreeMap::create()->initialise([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+		$tree = TreeMap::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
 		$sub = SubMap::tail($tree, 2);
 		$this->assertTrue(
 			isset($sub->fromKey)
@@ -460,9 +462,9 @@ class SubMapTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @since   1.0.0
 	 */
-	public function test___isset_to()
+	public function testIssetTo()
 	{
-		$tree = TreeMap::create()->initialise([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+		$tree = TreeMap::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
 		$sub = SubMap::head($tree, 7);
 		$this->assertTrue(
 			isset($sub->toKey)
@@ -488,9 +490,9 @@ class SubMapTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @since   1.0.0
 	 */
-	public function test___isset_unexisting()
+	public function testIssetUnexisting()
 	{
-		$tree = TreeMap::create()->initialise([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+		$tree = TreeMap::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
 		$sub = SubMap::head($tree, 7);
 		$this->assertFalse(
 			isset($sub->unexisting)
@@ -508,9 +510,9 @@ class SubMapTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @since   1.0.0
 	 */
-	public function test_comparator()
+	public function testComparator()
 	{
-		$tree = TreeMap::create()->initialise([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+		$tree = TreeMap::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
 		$sub = SubMap::create($tree, 2, 7);
 		$this->assertEquals(
 			$tree->comparator,
@@ -524,7 +526,7 @@ class SubMapTest extends \PHPUnit_Framework_TestCase
 	 * @param   mixed  $fromKey        The from key
 	 * @param   mixed  $toKey          The to key
 	 * @param   mixed  $fromInclusive  The from inclusive flag
-	 * @param   mixed  $toInclusive    The to inclusive flag	 
+	 * @param   mixed  $toInclusive    The to inclusive flag
 	 *
 	 * @return  SubMap  A sub map
 	 *
@@ -532,7 +534,7 @@ class SubMapTest extends \PHPUnit_Framework_TestCase
 	 */
 	protected function createSub($fromKey, $toKey, $fromInclusive, $toInclusive)
 	{
-		$tree = TreeMap::create()->initialise([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+		$tree = TreeMap::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
 
 		if ($fromInclusive === null)
 		{
@@ -558,13 +560,13 @@ class SubMapTest extends \PHPUnit_Framework_TestCase
 	}
 
 	/**
-	 * Data provider for test_first
+	 * Data provider for testFirst
 	 *
 	 * @return  array
 	 *
 	 * @since   1.0.0
 	 */
-	public function cases_first()
+	public function casesFirst()
 	{
 		return array(
 			array(2, 7, true, false, 2, false),
@@ -591,15 +593,15 @@ class SubMapTest extends \PHPUnit_Framework_TestCase
 	 * @covers  chdemko\SortedCollection\SubMap::__get
 	 * @covers  chdemko\SortedCollection\AbstractMap::__get
 	 *
-	 * @dataProvider  cases_first
+	 * @dataProvider  casesFirst
 	 *
 	 * @since   1.0.0
 	 */
-	public function test_first($fromKey, $toKey, $fromInclusive, $toInclusive, $firstKey, $exception)
+	public function testFirst($fromKey, $toKey, $fromInclusive, $toInclusive, $firstKey, $exception)
 	{
 		if ($exception)
 		{
-			$this->setExpectedException('OutOfBoundsException');
+			$this->expectException('OutOfBoundsException');
 		}
 
 		$this->assertEquals(
@@ -609,13 +611,13 @@ class SubMapTest extends \PHPUnit_Framework_TestCase
 	}
 
 	/**
-	 * Data provider for test_last
+	 * Data provider for testLast
 	 *
 	 * @return  array
 	 *
 	 * @since   1.0.0
 	 */
-	public function cases_last()
+	public function casesLast()
 	{
 		return array(
 			array(2, 7, true, false, 6, false),
@@ -642,15 +644,15 @@ class SubMapTest extends \PHPUnit_Framework_TestCase
 	 * @covers  chdemko\SortedCollection\SubMap::__get
 	 * @covers  chdemko\SortedCollection\AbstractMap::__get
 	 *
-	 * @dataProvider  cases_last
+	 * @dataProvider  casesLast
 	 *
 	 * @since   1.0.0
 	 */
-	public function test_last($fromKey, $toKey, $fromInclusive, $toInclusive, $lastKey, $exception)
+	public function testLast($fromKey, $toKey, $fromInclusive, $toInclusive, $lastKey, $exception)
 	{
 		if ($exception)
 		{
-			$this->setExpectedException('OutOfBoundsException');
+			$this->expectException('OutOfBoundsException');
 		}
 
 		$this->assertEquals(
@@ -660,13 +662,13 @@ class SubMapTest extends \PHPUnit_Framework_TestCase
 	}
 
 	/**
-	 * Data provider for test_predecessor
+	 * Data provider for testPredecessor
 	 *
 	 * @return  array
 	 *
 	 * @since   1.0.0
 	 */
-	public function cases_predecessor()
+	public function casesPredecessor()
 	{
 		return array(
 			array(2, 7, true, false, 6, 5, false),
@@ -691,15 +693,15 @@ class SubMapTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @covers  chdemko\SortedCollection\SubMap::predecessor
 	 *
-	 * @dataProvider  cases_predecessor
+	 * @dataProvider  casesPredecessor
 	 *
 	 * @since   1.0.0
 	 */
-	public function test_predecessor($fromKey, $toKey, $fromInclusive, $toInclusive, $key, $predecessorKey, $exception)
+	public function testPredecessor($fromKey, $toKey, $fromInclusive, $toInclusive, $key, $predecessorKey, $exception)
 	{
 		if ($exception)
 		{
-			$this->setExpectedException('OutOfBoundsException');
+			$this->expectException('OutOfBoundsException');
 		}
 
 		$sub = $this->createSub($fromKey, $toKey, $fromInclusive, $toInclusive);
@@ -710,13 +712,13 @@ class SubMapTest extends \PHPUnit_Framework_TestCase
 	}
 
 	/**
-	 * Data provider for test_successor
+	 * Data provider for testSuccessor
 	 *
 	 * @return  array
 	 *
 	 * @since   1.0.0
 	 */
-	public function cases_successor()
+	public function casesSuccessor()
 	{
 		return array(
 			array(2, 7, false, true, 3, 4, false),
@@ -741,15 +743,15 @@ class SubMapTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @covers  chdemko\SortedCollection\SubMap::successor
 	 *
-	 * @dataProvider  cases_successor
+	 * @dataProvider  casesSuccessor
 	 *
 	 * @since   1.0.0
 	 */
-	public function test_successor($fromKey, $toKey, $fromInclusive, $toInclusive, $key, $successorKey, $exception)
+	public function testSuccessor($fromKey, $toKey, $fromInclusive, $toInclusive, $key, $successorKey, $exception)
 	{
 		if ($exception)
 		{
-			$this->setExpectedException('OutOfBoundsException');
+			$this->expectException('OutOfBoundsException');
 		}
 
 		$sub = $this->createSub($fromKey, $toKey, $fromInclusive, $toInclusive);
@@ -760,13 +762,13 @@ class SubMapTest extends \PHPUnit_Framework_TestCase
 	}
 
 	/**
-	 * Data provider for test_lower
+	 * Data provider for testLower
 	 *
 	 * @return  array
 	 *
 	 * @since   1.0.0
 	 */
-	public function cases_lower()
+	public function casesLower()
 	{
 		return array(
 			array(2, 7, true, false, 0, null, true),
@@ -816,15 +818,15 @@ class SubMapTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @covers  chdemko\SortedCollection\SubMap::lower
 	 *
-	 * @dataProvider  cases_lower
+	 * @dataProvider  casesLower
 	 *
 	 * @since   1.0.0
 	 */
-	public function test_lower($fromKey, $toKey, $fromInclusive, $toInclusive, $key, $lowerKey, $exception)
+	public function testLower($fromKey, $toKey, $fromInclusive, $toInclusive, $key, $lowerKey, $exception)
 	{
 		if ($exception)
 		{
-			$this->setExpectedException('OutOfBoundsException');
+			$this->expectException('OutOfBoundsException');
 		}
 
 		$sub = $this->createSub($fromKey, $toKey, $fromInclusive, $toInclusive);
@@ -835,13 +837,13 @@ class SubMapTest extends \PHPUnit_Framework_TestCase
 	}
 
 	/**
-	 * Data provider for test_floor
+	 * Data provider for testFloor
 	 *
 	 * @return  array
 	 *
 	 * @since   1.0.0
 	 */
-	public function cases_floor()
+	public function casesFloor()
 	{
 		return array(
 			array(2, 7, true, false, 0, null, true),
@@ -887,15 +889,15 @@ class SubMapTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @covers  chdemko\SortedCollection\SubMap::floor
 	 *
-	 * @dataProvider  cases_floor
+	 * @dataProvider  casesFloor
 	 *
 	 * @since   1.0.0
 	 */
-	public function test_floor($fromKey, $toKey, $fromInclusive, $toInclusive, $key, $floorKey, $exception)
+	public function testFloor($fromKey, $toKey, $fromInclusive, $toInclusive, $key, $floorKey, $exception)
 	{
 		if ($exception)
 		{
-			$this->setExpectedException('OutOfBoundsException');
+			$this->expectException('OutOfBoundsException');
 		}
 
 		$sub = $this->createSub($fromKey, $toKey, $fromInclusive, $toInclusive);
@@ -906,13 +908,13 @@ class SubMapTest extends \PHPUnit_Framework_TestCase
 	}
 
 	/**
-	 * Data provider for test_find
+	 * Data provider for testFind
 	 *
 	 * @return  array
 	 *
 	 * @since   1.0.0
 	 */
-	public function cases_find()
+	public function casesFind()
 	{
 		return array(
 			array(2, 7, true, false, 0, null, true),
@@ -957,15 +959,15 @@ class SubMapTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @covers  chdemko\SortedCollection\SubMap::find
 	 *
-	 * @dataProvider  cases_find
+	 * @dataProvider  casesFind
 	 *
 	 * @since   1.0.0
 	 */
-	public function test_find($fromKey, $toKey, $fromInclusive, $toInclusive, $key, $findKey, $exception)
+	public function testFind($fromKey, $toKey, $fromInclusive, $toInclusive, $key, $findKey, $exception)
 	{
 		if ($exception)
 		{
-			$this->setExpectedException('OutOfBoundsException');
+			$this->expectException('OutOfBoundsException');
 		}
 
 		$sub = $this->createSub($fromKey, $toKey, $fromInclusive, $toInclusive);
@@ -976,13 +978,13 @@ class SubMapTest extends \PHPUnit_Framework_TestCase
 	}
 
 	/**
-	 * Data provider for test_ceiling
+	 * Data provider for testCeiling
 	 *
 	 * @return  array
 	 *
 	 * @since   1.0.0
 	 */
-	public function cases_ceiling()
+	public function casesCeiling()
 	{
 		return array(
 			array(2, 7, false, true, 9, null, true),
@@ -1026,15 +1028,15 @@ class SubMapTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @covers  chdemko\SortedCollection\SubMap::ceiling
 	 *
-	 * @dataProvider  cases_ceiling
+	 * @dataProvider  casesCeiling
 	 *
 	 * @since   1.0.0
 	 */
-	public function test_ceiling($fromKey, $toKey, $fromInclusive, $toInclusive, $key, $ceilingKey, $exception)
+	public function testCeiling($fromKey, $toKey, $fromInclusive, $toInclusive, $key, $ceilingKey, $exception)
 	{
 		if ($exception)
 		{
-			$this->setExpectedException('OutOfBoundsException');
+			$this->expectException('OutOfBoundsException');
 		}
 
 		$sub = $this->createSub($fromKey, $toKey, $fromInclusive, $toInclusive);
@@ -1045,13 +1047,13 @@ class SubMapTest extends \PHPUnit_Framework_TestCase
 	}
 
 	/**
-	 * Data provider for test_higher
+	 * Data provider for testHigher
 	 *
 	 * @return  array
 	 *
 	 * @since   1.0.0
 	 */
-	public function cases_higher()
+	public function casesHigher()
 	{
 		return array(
 			array(2, 7, false, true, 9, null, true),
@@ -1098,15 +1100,15 @@ class SubMapTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @covers  chdemko\SortedCollection\SubMap::higher
 	 *
-	 * @dataProvider  cases_higher
+	 * @dataProvider  casesHigher
 	 *
 	 * @since   1.0.0
 	 */
-	public function test_higher($fromKey, $toKey, $fromInclusive, $toInclusive, $key, $higherKey, $exception)
+	public function testHigher($fromKey, $toKey, $fromInclusive, $toInclusive, $key, $higherKey, $exception)
 	{
 		if ($exception)
 		{
-			$this->setExpectedException('OutOfBoundsException');
+			$this->expectException('OutOfBoundsException');
 		}
 
 		$sub = $this->createSub($fromKey, $toKey, $fromInclusive, $toInclusive);
@@ -1117,13 +1119,13 @@ class SubMapTest extends \PHPUnit_Framework_TestCase
 	}
 
 	/**
-	 * Data provider for test_offsetGet
+	 * Data provider for testOffsetGet
 	 *
 	 * @return  array
 	 *
 	 * @since   1.0.0
 	 */
-	public function cases_offsetGet()
+	public function casesOffsetGet()
 	{
 		return array(
 			array(2, 7, true, false, 0, null, true),
@@ -1168,15 +1170,15 @@ class SubMapTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @covers  chdemko\SortedCollection\AbstractMap::offsetGet
 	 *
-	 * @dataProvider  cases_offsetGet
+	 * @dataProvider  casesOffsetGet
 	 *
 	 * @since   1.0.0
 	 */
-	public function test_offsetGet($fromKey, $toKey, $fromInclusive, $toInclusive, $key, $getValue, $exception)
+	public function testOffsetGet($fromKey, $toKey, $fromInclusive, $toInclusive, $key, $getValue, $exception)
 	{
 		if ($exception)
 		{
-			$this->setExpectedException('OutOfRangeException');
+			$this->expectException('OutOfRangeException');
 		}
 
 		$sub = $this->createSub($fromKey, $toKey, $fromInclusive, $toInclusive);
@@ -1187,13 +1189,13 @@ class SubMapTest extends \PHPUnit_Framework_TestCase
 	}
 
 	/**
-	 * Data provider for test_count
+	 * Data provider for testCount
 	 *
 	 * @return  array
 	 *
 	 * @since   1.0.0
 	 */
-	public function cases_count()
+	public function casesCount()
 	{
 		return array(
 			array(2, 7, true, false, 5),
@@ -1218,11 +1220,11 @@ class SubMapTest extends \PHPUnit_Framework_TestCase
 	 * @covers  chdemko\SortedCollection\SubMap::count
 	 * @covers  chdemko\SortedCollection\AbstractMap::__get
 	 *
-	 * @dataProvider  cases_count
+	 * @dataProvider  casesCount
 	 *
 	 * @since   1.0.0
 	 */
-	public function test_count($fromKey, $toKey, $fromInclusive, $toInclusive, $count)
+	public function testCount($fromKey, $toKey, $fromInclusive, $toInclusive, $count)
 	{
 		$sub = $this->createSub($fromKey, $toKey, $fromInclusive, $toInclusive);
 		$this->assertEquals(
@@ -1232,13 +1234,13 @@ class SubMapTest extends \PHPUnit_Framework_TestCase
 	}
 
 	/**
-	 * Data provider for test___toString
+	 * Data provider for testToString
 	 *
 	 * @return  array
 	 *
 	 * @since   1.0.0
 	 */
-	public function cases___toString()
+	public function casesToString()
 	{
 		return array(
 			array(2, 7, true, false, '{"2":2,"3":3,"4":4,"5":5,"6":6}'),
@@ -1262,11 +1264,11 @@ class SubMapTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @covers  chdemko\SortedCollection\AbstractMap::__toString
 	 *
-	 * @dataProvider  cases___toString
+	 * @dataProvider  casesToString
 	 *
 	 * @since   1.0.0
 	 */
-	public function test___toString($fromKey, $toKey, $fromInclusive, $toInclusive, $string)
+	public function testToString($fromKey, $toKey, $fromInclusive, $toInclusive, $string)
 	{
 		$sub = $this->createSub($fromKey, $toKey, $fromInclusive, $toInclusive);
 		$this->assertEquals(
@@ -1276,13 +1278,13 @@ class SubMapTest extends \PHPUnit_Framework_TestCase
 	}
 
 	/**
-	 * Data provider for test_jsonSerialize
+	 * Data provider for testJsonSerialize
 	 *
 	 * @return  array
 	 *
 	 * @since   1.0.0
 	 */
-	public function cases_jsonSerialize()
+	public function casesJsonSerialize()
 	{
 		return array(
 			array(
@@ -1358,11 +1360,11 @@ class SubMapTest extends \PHPUnit_Framework_TestCase
 	 * @covers  chdemko\SortedCollection\SubMap::jsonSerialize
 	 * @covers  chdemko\SortedCollection\SubMap::setEmpty
 	 *
-	 * @dataProvider  cases_jsonSerialize
+	 * @dataProvider  casesJsonSerialize
 	 *
 	 * @since   1.0.0
 	 */
-	public function test_jsonSerialize($fromKey, $toKey, $fromInclusive, $toInclusive, $string)
+	public function testJsonSerialize($fromKey, $toKey, $fromInclusive, $toInclusive, $string)
 	{
 		$sub = $this->createSub($fromKey, $toKey, $fromInclusive, $toInclusive);
 		$this->assertEquals(
