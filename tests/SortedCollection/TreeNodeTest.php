@@ -743,10 +743,10 @@ class TreeNodeTest extends TestCase
 	 *
 	 * @covers  chdemko\SortedCollection\TreeNode::insert
 	 * @covers  chdemko\SortedCollection\TreeNode::__construct
-	 * @covers  chdemko\SortedCollection\TreeNode::_decBalance
-	 * @covers  chdemko\SortedCollection\TreeNode::_incBalance
-	 * @covers  chdemko\SortedCollection\TreeNode::_rotateLeft
-	 * @covers  chdemko\SortedCollection\TreeNode::_rotateRight
+	 * @covers  chdemko\SortedCollection\TreeNode::decBalance
+	 * @covers  chdemko\SortedCollection\TreeNode::incBalance
+	 * @covers  chdemko\SortedCollection\TreeNode::rotateLeft
+	 * @covers  chdemko\SortedCollection\TreeNode::rotateRight
 	 *
 	 * @dataProvider  casesModify
 	 *
@@ -810,11 +810,11 @@ class TreeNodeTest extends TestCase
 	 * @return  void
 	 *
 	 * @covers  chdemko\SortedCollection\TreeNode::remove
-	 * @covers  chdemko\SortedCollection\TreeNode::_pullUpLeftMost
-	 * @covers  chdemko\SortedCollection\TreeNode::_decBalance
-	 * @covers  chdemko\SortedCollection\TreeNode::_incBalance
-	 * @covers  chdemko\SortedCollection\TreeNode::_rotateLeft
-	 * @covers  chdemko\SortedCollection\TreeNode::_rotateRight
+	 * @covers  chdemko\SortedCollection\TreeNode::pullUpLeftMost
+	 * @covers  chdemko\SortedCollection\TreeNode::decBalance
+	 * @covers  chdemko\SortedCollection\TreeNode::incBalance
+	 * @covers  chdemko\SortedCollection\TreeNode::rotateLeft
+	 * @covers  chdemko\SortedCollection\TreeNode::rotateRight
 	 *
 	 * @dataProvider  casesModify
 	 *
