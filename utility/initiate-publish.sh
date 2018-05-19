@@ -4,7 +4,7 @@ if [ "$TRAVIS_REPO_SLUG" == "chdemko/php-sorted-collections" ] && [ "$TRAVIS_PHP
 
   echo -e "Publishing code coverage to coveralls.io ...\n"
 
-  php vendor/bin/coveralls -v
+  php vendor/bin/php-coveralls -v
 
   echo -e "Published code coverage to coveralls.io\n"
   
