@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ "$TRAVIS_REPO_SLUG" == "chdemko/php-sorted-collections" ] && [ "$TRAVIS_PHP_VERSION" == "5.5" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_BRANCH" == "master" ]; then
+if [ "$TRAVIS_REPO_SLUG" == "chdemko/php-sorted-collections" ] && [ "$TRAVIS_PHP_VERSION" == "7.1" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_BRANCH" == "master" ]; then
 
   echo -e "Publishing code coverage to coveralls.io ...\n"
 
