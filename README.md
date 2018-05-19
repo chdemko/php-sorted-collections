@@ -8,7 +8,7 @@ PHP Sorted Collections
 [![Latest Stable Version](https://img.shields.io/packagist/v/chdemko/sorted-collections.svg)](https://packagist.org/packages/chdemko/sorted-collections)
 [![Packagist](https://img.shields.io/packagist/dt/chdemko/sorted-collections.svg)](https://packagist.org/packages/chdemko/sorted-collections)
 [![Latest Unstable Version](https://poser.pugx.org/chdemko/sorted-collections/v/unstable.svg)](https://packagist.org/packages/chdemko/sorted-collections)
-[![License](https://poser.pugx.org/chdemko/sorted-collections/license.svg)](https://raw.githubusercontent.com/chdemko/sorted-collections/master/LICENSE)
+[![License](https://poser.pugx.org/chdemko/sorted-collections/license.svg)](https://raw.githubusercontent.com/chdemko/php-sorted-collections/master/LICENSE)
 
 Sorted Collection for PHP. Insertion, search, and removal compute in `log(n)` time where `n` is the number of items present in the collection. It uses AVL threaded tree [see @Knuth97, 1:320, Sect. 2.3.1] as internal structure.
 
