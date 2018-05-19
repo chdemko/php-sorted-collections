@@ -24,4 +24,4 @@ after_success:
 
 env:
   global:
-    - secure: "dYLK4jNa/gAUiVTwxBE0wPVRK6EP1YgGRSOR9J/6r42vGgj6PniQpx6doOGdbagBZDa5pdiOSvJ33ZAThuvOVZZBoPdrHmqzioxYlfv6dCOi/Ytj2Lb9nyw+alc5yBHtlGBH7UDrn4dT7zkDssd5M4S/8s1JmqAb0Z1p1/qpV/o="
+    - secure: "e6GXg+z9VyQHBKWutwWJjb6xW7ec6ghUuVp7NFVbwT/94LwHkPpj9ZOYbPY7LmW036LVzq4AUxzglN+vO8TO+ijCwM4QjsazCajwSqyjLY70X8ZWWHwqXvODU2ILmEQ+MotmuT1towc8xdEnFdthAAB9C7AZ+5CwglWrRFt20V4="
