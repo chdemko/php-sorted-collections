@@ -19,7 +19,6 @@ if [ "$TRAVIS_REPO_SLUG" == "chdemko/php-sorted-collections" ] && [ "$TRAVIS_PHP
 
   cd gh-pages
   git rm -rf ./api
-  touch .nojekyll
   cp -Rf $HOME/api-latest ./api
 
   git add -f .
