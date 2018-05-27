@@ -4,7 +4,7 @@ PHP Sorted Collections
 [![Travis](https://img.shields.io/travis/chdemko/php-sorted-collections.svg)](http://travis-ci.org/chdemko/php-sorted-collections)
 [![Coveralls](https://img.shields.io/coveralls/chdemko/php-sorted-collections.svg)](https://coveralls.io/r/chdemko/php-sorted-collections?branch=master)
 [![Scrutinizer](https://img.shields.io/scrutinizer/g/chdemko/php-sorted-collections.svg)](https://scrutinizer-ci.com/g/chdemko/php-sorted-collections/?branch=master)
-[![Dependency Status](https://www.versioneye.com/package/php--chdemko--sorted-collections/badge.svg)](https://www.versioneye.com/package/php--chdemko--sorted-collections)
+[![PHP versions](https://img.shields.io/php-eye/chdemko/sorted-collections.svg)](https://packagist.org/packages/chdemko/sorted-collections)
 [![Latest Stable Version](https://img.shields.io/packagist/v/chdemko/sorted-collections.svg)](https://packagist.org/packages/chdemko/sorted-collections)
 [![Packagist](https://img.shields.io/packagist/dt/chdemko/sorted-collections.svg)](https://packagist.org/packages/chdemko/sorted-collections)
 [![Latest Unstable Version](https://poser.pugx.org/chdemko/sorted-collections/v/unstable.svg)](https://packagist.org/packages/chdemko/sorted-collections)
