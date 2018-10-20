@@ -43,25 +43,25 @@ class TreeMap extends AbstractMap
 	private $root;
 
 	/**
-	 * @var     Callable  Comparator function
+	 * @var     callable  Comparator function
 	 *
-	 * @param   mixed  $key1  First key
-	 * @param   mixed  $key2  Second key
+	 * @param mixed $key1 First key
+	 * @param mixed $key2 Second key
 	 *
-	 * @return  integer  negative if $key1 is lesser than $key2,
-	 *                   0 if $key1 is equal to $key2,
-	 *                   positive if $key1 is greater than $key2
+	 * @return integer negative if $key1 is lesser than $key2,
+	 *                  0 if $key1 is equal to $key2,
+	 *                  positive if $key1 is greater than $key2
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	private $comparator;
 
 	/**
 	 * Constructor
 	 *
-	 * @param   Callable  $comparator  Comparison function
+	 * @param callable $comparator Comparison function
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	protected function __construct($comparator = null)
 	{
@@ -81,11 +81,11 @@ class TreeMap extends AbstractMap
 	/**
 	 * Create
 	 *
-	 * @param   Callable  $comparator  Comparison function
+	 * @param callable $comparator Comparison function
 	 *
-	 * @return  TreeMap  A new TreeMap
+	 * @return TreeMap A new TreeMap
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public static function create($comparator = null)
 	{
@@ -95,9 +95,9 @@ class TreeMap extends AbstractMap
 	/**
 	 * Get the comparator
 	 *
-	 * @return  callable  The comparator
+	 * @return callable The comparator
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function comparator()
 	{
@@ -107,11 +107,11 @@ class TreeMap extends AbstractMap
 	/**
 	 * Get the first element or throw an exception if there is no such element
 	 *
-	 * @return  mixed  The first element
+	 * @return mixed The first element
 	 *
-	 * @throws  \OutOfBoundsException  If there is no element
+	 * @throws \OutOfBoundsException If there is no element
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function first()
 	{
@@ -128,11 +128,11 @@ class TreeMap extends AbstractMap
 	/**
 	 * Get the last element or throw an exception if there is no such element
 	 *
-	 * @return  mixed  The last element
+	 * @return mixed The last element
 	 *
-	 * @throws  \OutOfBoundsException  If there is no element
+	 * @throws \OutOfBoundsException If there is no element
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function last()
 	{
@@ -149,13 +149,13 @@ class TreeMap extends AbstractMap
 	/**
 	 * Get the predecessor element or throw an exception if there is no such element
 	 *
-	 * @param   TreeNode  $element  A tree node member of the underlying TreeMap
+	 * @param TreeNode $element A tree node member of the underlying TreeMap
 	 *
-	 * @return  mixed  The predecessor element
+	 * @return mixed The predecessor element
 	 *
-	 * @throws  \OutOfBoundsException  If there is no predecessor
+	 * @throws \OutOfBoundsException  If there is no predecessor
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function predecessor($element)
 	{
@@ -174,13 +174,13 @@ class TreeMap extends AbstractMap
 	/**
 	 * Get the successor element or throw an exception if there is no such element
 	 *
-	 * @param   TreeNode  $element  A tree node member of the underlying TreeMap
+	 * @param TreeNode $element A tree node member of the underlying TreeMap
 	 *
-	 * @return  mixed  The successor element
+	 * @return mixed The successor element
 	 *
-	 * @throws  \OutOfBoundsException  If there is no successor
+	 * @throws \OutOfBoundsException If there is no successor
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function successor($element)
 	{
@@ -199,13 +199,13 @@ class TreeMap extends AbstractMap
 	/**
 	 * Returns the element whose key is the greatest key lesser than the given key or throw an exception if there is no such element
 	 *
-	 * @param   mixed  $key  The searched key
+	 * @param mixed $key The searched key
 	 *
-	 * @return  mixed  The found element
+	 * @return mixed The found element
 	 *
-	 * @throws  \OutOfBoundsException  If there is no lower element
+	 * @throws \OutOfBoundsException If there is no lower element
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function lower($key)
 	{
@@ -231,13 +231,13 @@ class TreeMap extends AbstractMap
 	/**
 	 * Returns the element whose key is the greatest key lesser than or equal to the given key or throw an exception if there is no such element
 	 *
-	 * @param   mixed  $key  The searched key
+	 * @param mixed $key The searched key
 	 *
-	 * @return  mixed  The found element
+	 * @return mixed The found element
 	 *
-	 * @throws  \OutOfBoundsException  If there is no floor element
+	 * @throws \OutOfBoundsException If there is no floor element
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function floor($key)
 	{
@@ -263,13 +263,13 @@ class TreeMap extends AbstractMap
 	/**
 	 * Returns the element whose key is equal to the given key or throw an exception if there is no such element
 	 *
-	 * @param   mixed  $key  The searched key
+	 * @param mixed $key  The searched key
 	 *
-	 * @return  mixed  The found element
+	 * @return mixed The found element
 	 *
-	 * @throws  \OutOfBoundsException  If there is no such element
+	 * @throws \OutOfBoundsException If there is no such element
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function find($key)
 	{
@@ -295,13 +295,13 @@ class TreeMap extends AbstractMap
 	/**
 	 * Returns the element whose key is the lowest key greater than or equal to the given key or throw an exception if there is no such element
 	 *
-	 * @param   mixed  $key  The searched key
+	 * @param mixed $key The searched key
 	 *
-	 * @return  mixed  The found element
+	 * @return mixed The found element
 	 *
-	 * @throws  \OutOfBoundsException  If there is no ceiling element
+	 * @throws \OutOfBoundsException If there is no ceiling element
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function ceiling($key)
 	{
@@ -327,13 +327,13 @@ class TreeMap extends AbstractMap
 	/**
 	 * Returns the element whose key is the lowest key greater than to the given key or throw an exception if there is no such element
 	 *
-	 * @param   mixed  $key  The searched key
+	 * @param mixed $key  The searched key
 	 *
-	 * @return  mixed  The found element
+	 * @return mixed The found element
 	 *
-	 * @throws  \OutOfBoundsException  If there is no higher element
+	 * @throws \OutOfBoundsException If there is no higher element
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function higher($key)
 	{
@@ -359,11 +359,11 @@ class TreeMap extends AbstractMap
 	/**
 	 * Put values in the map
 	 *
-	 * @param   \Traversable  $traversable  Values to put in the map
+	 * @param \Traversable $traversable  Values to put in the map
 	 *
-	 * @return  TreeMap  $this for chaining
+	 * @return TreeMap $this for chaining
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function put($traversable = array())
 	{
@@ -378,9 +378,9 @@ class TreeMap extends AbstractMap
 	/**
 	 * Clear the map
 	 *
-	 * @return  TreeMap  $this for chaining
+	 * @return TreeMap $this for chaining
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function clear()
 	{
@@ -392,11 +392,11 @@ class TreeMap extends AbstractMap
 	/**
 	 * Initialise the map
 	 *
-	 * @param   \Traversable  $traversable  Values to initialise the map
+	 * @param \Traversable $traversable Values to initialise the map
 	 *
-	 * @return  TreeMap  $this for chaining
+	 * @return TreeMap $this for chaining
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function initialise($traversable = array())
 	{
@@ -406,9 +406,9 @@ class TreeMap extends AbstractMap
 	/**
 	 * Clone the map
 	 *
-	 * @return  void
+	 * @return void
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function __clone()
 	{
@@ -429,9 +429,9 @@ class TreeMap extends AbstractMap
 	/**
 	 * Serialize the object
 	 *
-	 * @return  array  Array of values
+	 * @return array Array of values
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function jsonSerialize()
 	{
@@ -448,12 +448,12 @@ class TreeMap extends AbstractMap
 	/**
 	 * Set the value for a key
 	 *
-	 * @param   mixed  $key    The key
-	 * @param   mixed  $value  The value
+	 * @param mixed $key The key
+	 * @param mixed $value The value
 	 *
-	 * @return  void
+	 * @return void
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function offsetSet($key, $value)
 	{
@@ -470,11 +470,11 @@ class TreeMap extends AbstractMap
 	/**
 	 * Unset the existence of a key
 	 *
-	 * @param   mixed  $key  The key
+	 * @param mixed $key The key
 	 *
-	 * @return  void
+	 * @return void
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function offsetUnset($key)
 	{
@@ -487,9 +487,9 @@ class TreeMap extends AbstractMap
 	/**
 	 * Count the number of key/value pairs
 	 *
-	 * @return  integer
+	 * @return integer
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function count()
 	{

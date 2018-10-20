@@ -38,13 +38,13 @@ abstract class AbstractMap implements SortedMap
 	/**
 	 * Magic get method
 	 *
-	 * @param   string  $property  The property
+	 * @param string $property The property
 	 *
-	 * @throws  \RuntimeException  If the property does not exist
+	 * @throws \RuntimeException If the property does not exist
 	 *
-	 * @return  mixed  The value associated to the property
+	 * @return mixed The value associated to the property
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function __get($property)
 	{
@@ -78,11 +78,11 @@ abstract class AbstractMap implements SortedMap
 	/**
 	 * Get the first key or throw an exception if there is no element
 	 *
-	 * @return  mixed  The first key
+	 * @return mixed The first key
 	 *
-	 * @throws  \OutOfBoundsException  If there is no element
+	 * @throws \OutOfBoundsException If there is no element
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function firstKey()
 	{
@@ -92,11 +92,11 @@ abstract class AbstractMap implements SortedMap
 	/**
 	 * Get the first value or throw an exception if there is no element
 	 *
-	 * @return  mixed  The first value
+	 * @return mixed The first value
 	 *
-	 * @throws  \OutOfBoundsException  If there is no element
+	 * @throws \OutOfBoundsException If there is no element
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function firstValue()
 	{
@@ -106,11 +106,11 @@ abstract class AbstractMap implements SortedMap
 	/**
 	 * Get the last key or throw an exception if there is no element
 	 *
-	 * @return  mixed  The last key
+	 * @return mixed The last key
 	 *
-	 * @throws  \OutOfBoundsException  If there is no element
+	 * @throws \OutOfBoundsException If there is no element
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function lastKey()
 	{
@@ -120,11 +120,11 @@ abstract class AbstractMap implements SortedMap
 	/**
 	 * Get the last value or throw an exception if there is no element
 	 *
-	 * @return  mixed  The last value
+	 * @return mixed The last value
 	 *
-	 * @throws  \OutOfBoundsException  If there is no element
+	 * @throws \OutOfBoundsException If there is no element
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function lastValue()
 	{
@@ -134,13 +134,13 @@ abstract class AbstractMap implements SortedMap
 	/**
 	 * Returns the greatest key lesser than the given key or throw an exception if there is no such key
 	 *
-	 * @param   mixed  $key  The searched key
+	 * @param mixed $key The searched key
 	 *
-	 * @return  mixed  The found key
+	 * @return mixed The found key
 	 *
-	 * @throws  \OutOfBoundsException  If there is no lower element
+	 * @throws \OutOfBoundsException If there is no lower element
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function lowerKey($key)
 	{
@@ -150,13 +150,13 @@ abstract class AbstractMap implements SortedMap
 	/**
 	 * Returns the value whose key is the greatest key lesser than the given key or throw an exception if there is no such key
 	 *
-	 * @param   mixed  $key  The searched key
+	 * @param mixed $key The searched key
 	 *
-	 * @return  mixed  The found value
+	 * @return mixed The found value
 	 *
-	 * @throws  \OutOfBoundsException  If there is no lower element
+	 * @throws \OutOfBoundsException If there is no lower element
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function lowerValue($key)
 	{
@@ -166,13 +166,13 @@ abstract class AbstractMap implements SortedMap
 	/**
 	 * Returns the greatest key lesser than or equal to the given key or throw an exception if there is no such key
 	 *
-	 * @param   mixed  $key  The searched key
+	 * @param mixed $key The searched key
 	 *
-	 * @return  mixed  The found key
+	 * @return mixed The found key
 	 *
-	 * @throws  \OutOfBoundsException  If there is no floor element
+	 * @throws \OutOfBoundsException If there is no floor element
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function floorKey($key)
 	{
@@ -182,13 +182,13 @@ abstract class AbstractMap implements SortedMap
 	/**
 	 * Returns the value whose key is the greatest key lesser than or equal to the given key or throw an exception if there is no such key
 	 *
-	 * @param   mixed  $key  The searched key
+	 * @param mixed $key The searched key
 	 *
-	 * @return  mixed  The found value
+	 * @return mixed The found value
 	 *
-	 * @throws  \OutOfBoundsException  If there is no floor element
+	 * @throws \OutOfBoundsException If there is no floor element
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function floorValue($key)
 	{
@@ -198,13 +198,13 @@ abstract class AbstractMap implements SortedMap
 	/**
 	 * Returns the key equal to the given key or throw an exception if there is no such key
 	 *
-	 * @param   mixed  $key  The searched key
+	 * @param mixed $key  The searched key
 	 *
-	 * @return  mixed  The found key
+	 * @return mixed The found key
 	 *
-	 * @throws  \OutOfBoundsException  If there is no such element
+	 * @throws \OutOfBoundsException If there is no such element
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function findKey($key)
 	{
@@ -214,13 +214,13 @@ abstract class AbstractMap implements SortedMap
 	/**
 	 * Returns the value whose key equal to the given key or throw an exception if there is no such key
 	 *
-	 * @param   mixed  $key  The searched key
+	 * @param mixed $key  The searched key
 	 *
-	 * @return  mixed  The found value
+	 * @return mixed The found value
 	 *
-	 * @throws  \OutOfBoundsException  If there is no such element
+	 * @throws \OutOfBoundsException If there is no such element
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function findValue($key)
 	{
@@ -230,13 +230,13 @@ abstract class AbstractMap implements SortedMap
 	/**
 	 * Returns the lowest key greater than or equal to the given key or throw an exception if there is no such key
 	 *
-	 * @param   mixed  $key  The searched key
+	 * @param mixed $key The searched key
 	 *
-	 * @return  mixed  The found key
+	 * @return mixed The found key
 	 *
-	 * @throws  \OutOfBoundsException  If there is no ceiling element
+	 * @throws \OutOfBoundsException If there is no ceiling element
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function ceilingKey($key)
 	{
@@ -246,13 +246,13 @@ abstract class AbstractMap implements SortedMap
 	/**
 	 * Returns the value whose key is the lowest key greater than or equal to the given key or throw an exception if there is no such key
 	 *
-	 * @param   mixed  $key  The searched key
+	 * @param mixed $key The searched key
 	 *
-	 * @return  mixed  The found value
+	 * @return mixed The found value
 	 *
-	 * @throws  \OutOfBoundsException  If there is no ceiling element
+	 * @throws \OutOfBoundsException If there is no ceiling element
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function ceilingValue($key)
 	{
@@ -262,13 +262,13 @@ abstract class AbstractMap implements SortedMap
 	/**
 	 * Returns the lowest key greater than to the given key or throw an exception if there is no such key
 	 *
-	 * @param   mixed  $key  The searched key
+	 * @param mixed $key The searched key
 	 *
-	 * @return  mixed  The found key
+	 * @return mixed The found key
 	 *
-	 * @throws  \OutOfBoundsException  If there is no higher element
+	 * @throws \OutOfBoundsException If there is no higher element
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function higherKey($key)
 	{
@@ -278,13 +278,13 @@ abstract class AbstractMap implements SortedMap
 	/**
 	 * Returns the value whose key is the lowest key greater than to the given key or throw an exception if there is no such key
 	 *
-	 * @param   mixed  $key  The searched key
+	 * @param mixed $key The searched key
 	 *
-	 * @return  mixed  The found value
+	 * @return mixed The found value
 	 *
-	 * @throws  \OutOfBoundsException  If there is no higher element
+	 * @throws \OutOfBoundsException If there is no higher element
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function higherValue($key)
 	{
@@ -294,9 +294,9 @@ abstract class AbstractMap implements SortedMap
 	/**
 	 * Keys iterator
 	 *
-	 * @return  Iterator  The keys iterator
+	 * @return Iterator The keys iterator
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function keys()
 	{
@@ -306,9 +306,9 @@ abstract class AbstractMap implements SortedMap
 	/**
 	 * Values iterator
 	 *
-	 * @return  Iterator  The values iterator
+	 * @return Iterator The values iterator
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function values()
 	{
@@ -318,9 +318,9 @@ abstract class AbstractMap implements SortedMap
 	/**
 	 * Convert the object to a string
 	 *
-	 * @return  string  String representation of the object
+	 * @return string String representation of the object
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function __toString()
 	{
@@ -330,9 +330,9 @@ abstract class AbstractMap implements SortedMap
 	/**
 	 * Convert the object to an array
 	 *
-	 * @return  array  Array representation of the object
+	 * @return array Array representation of the object
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function toArray()
 	{
@@ -349,9 +349,9 @@ abstract class AbstractMap implements SortedMap
 	/**
 	 * Create an iterator
 	 *
-	 * @return  Iterator  A new iterator
+	 * @return Iterator A new iterator
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function getIterator()
 	{
@@ -361,13 +361,13 @@ abstract class AbstractMap implements SortedMap
 	/**
 	 * Get the value for a key
 	 *
-	 * @param   mixed  $key  The key
+	 * @param mixed $key The key
 	 *
-	 * @return  mixed  The found value
+	 * @return mixed The found value
 	 *
-	 * @throws  \OutOfRangeException  If there is no such element
+	 * @throws \OutOfRangeException If there is no such element
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function offsetGet($key)
 	{
@@ -384,11 +384,11 @@ abstract class AbstractMap implements SortedMap
 	/**
 	 * Test the existence of a key
 	 *
-	 * @param   mixed  $key  The key
+	 * @param mixed $key  The key
 	 *
-	 * @return  boolean  TRUE if the key exists, false otherwise
+	 * @return boolean TRUE if the key exists, false otherwise
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function offsetExists($key)
 	{
@@ -405,14 +405,14 @@ abstract class AbstractMap implements SortedMap
 	/**
 	 * Set the value for a key
 	 *
-	 * @param   mixed  $key    The key
-	 * @param   mixed  $value  The value
+	 * @param mixed $key The key
+	 * @param mixed $value The value
 	 *
-	 * @return  void
+	 * @return void
 	 *
-	 * @throws  \RuntimeOperation  The operation is not supported by this class
+	 * @throws \RuntimeOperation The operation is not supported by this class
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function offsetSet($key, $value)
 	{
@@ -422,13 +422,13 @@ abstract class AbstractMap implements SortedMap
 	/**
 	 * Unset the existence of a key
 	 *
-	 * @param   mixed  $key  The key
+	 * @param mixed $key The key
 	 *
-	 * @return  void
+	 * @return void
 	 *
-	 * @throws  \RuntimeOperation  The operation is not supported by this class
+	 * @throws \RuntimeOperation The operation is not supported by this class
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function offsetUnset($key)
 	{

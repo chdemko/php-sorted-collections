@@ -106,13 +106,13 @@ class SubMap extends AbstractMap
 	/**
 	 * Magic get method
 	 *
-	 * @param   string  $property  The property
+	 * @param  string $property The property
 	 *
-	 * @throws  \RuntimeException  If the property does not exist
+	 * @throws \RuntimeException If the property does not exist
 	 *
-	 * @return  mixed  The value associated to the property
+	 * @return mixed The value associated to the property
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function __get($property)
 	{
@@ -168,14 +168,14 @@ class SubMap extends AbstractMap
 	/**
 	 * Magic set method
 	 *
-	 * @param   string  $property  The property
-	 * @param   mixed   $value     The new value
+	 * @param string $property The property
+	 * @param mixed $value The new value
 	 *
-	 * @throws  \RuntimeException  If the property does not exist
+	 * @throws \RuntimeException If the property does not exist
 	 *
-	 * @return  void
+	 * @return void
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function __set($property, $value)
 	{
@@ -227,13 +227,13 @@ class SubMap extends AbstractMap
 	/**
 	 * Magic unset method
 	 *
-	 * @param   string  $property  The property
+	 * @param string $property The property
 	 *
-	 * @throws  \RuntimeException  If the property does not exist
+	 * @throws \RuntimeException If the property does not exist
 	 *
-	 * @return  void
+	 * @return void
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function __unset($property)
 	{
@@ -255,11 +255,11 @@ class SubMap extends AbstractMap
 	/**
 	 * Magic isset method
 	 *
-	 * @param   string  $property  The property
+	 * @param string $property The property
 	 *
-	 * @return  boolean
+	 * @return boolean
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function __isset($property)
 	{
@@ -279,11 +279,11 @@ class SubMap extends AbstractMap
 	/**
 	 * Constructor
 	 *
-	 * @param   SortedMap  $map         Internal map
-	 * @param   mixed      $fromKey     The from key
-	 * @param   integer    $fromOption  The option for from (SubMap::UNUSED, SubMap::INCLUSIVE or SubMap::EXCLUSIVE)
-	 * @param   mixed      $toKey       The to key
-	 * @param   integer    $toOption    The option for to (SubMap::UNUSED, SubMap::INCLUSIVE or SubMap::EXCLUSIVE)
+	 * @param SortedMap $map Internal map
+	 * @param mixed $fromKey The from key
+	 * @param integer $fromOption The option for from (SubMap::UNUSED, SubMap::INCLUSIVE or SubMap::EXCLUSIVE)
+	 * @param mixed $toKey The to key
+	 * @param integer $toOption The option for to (SubMap::UNUSED, SubMap::INCLUSIVE or SubMap::EXCLUSIVE)
 	 *
 	 * @since   1.0.0
 	 */
@@ -300,9 +300,9 @@ class SubMap extends AbstractMap
 	/**
 	 * Set the empty flag
 	 *
-	 * @return  void
+	 * @return void
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	protected function setEmpty()
 	{
@@ -321,15 +321,15 @@ class SubMap extends AbstractMap
 	/**
 	 * Create
 	 *
-	 * @param   SortedMap  $map            A sorted map
-	 * @param   mixed      $fromKey        The from key
-	 * @param   mixed      $toKey          The to key
-	 * @param   boolean    $fromInclusive  The inclusive flag for from
-	 * @param   boolean    $toInclusive    The inclusive flag for to
+	 * @param SortedMap $map A sorted map
+	 * @param mixed $fromKey The from key
+	 * @param mixed $toKey The to key
+	 * @param boolean $fromInclusive The inclusive flag for from
+	 * @param boolean $toInclusive The inclusive flag for to
 	 *
-	 * @return  SubMap  A new sub map
+	 * @return SubMap A new sub map
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public static function create(SortedMap $map, $fromKey, $toKey, $fromInclusive = true, $toInclusive = false)
 	{
@@ -345,13 +345,13 @@ class SubMap extends AbstractMap
 	/**
 	 * Return a head portion of a sorted map
 	 *
-	 * @param   SortedMap  $map          A sorted map
-	 * @param   mixed      $toKey        The to key
-	 * @param   boolean    $toInclusive  The inclusive flag for to
+	 * @param SortedMap $map A sorted map
+	 * @param mixed $toKey The to key
+	 * @param boolean $toInclusive The inclusive flag for to
 	 *
-	 * @return  SubMap  A new head map
+	 * @return SubMap A new head map
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public static function head(SortedMap $map, $toKey, $toInclusive = false)
 	{
@@ -361,13 +361,13 @@ class SubMap extends AbstractMap
 	/**
 	 * Return a tail portion of a sorted map
 	 *
-	 * @param   SortedMap  $map            A sorted map
-	 * @param   mixed      $fromKey        The from key
-	 * @param   boolean    $fromInclusive  The inclusive flag for from
+	 * @param SortedMap $map A sorted map
+	 * @param mixed $fromKey The from key
+	 * @param boolean $fromInclusive The inclusive flag for from
 	 *
-	 * @return  SubMap  A new tail map
+	 * @return SubMap A new tail map
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public static function tail(SortedMap $map, $fromKey, $fromInclusive = true)
 	{
@@ -377,11 +377,11 @@ class SubMap extends AbstractMap
 	/**
 	 * Return a view of the map
 	 *
-	 * @param   SortedMap  $map  A sorted map
+	 * @param SortedMap $map A sorted map
 	 *
-	 * @return  SubMap  A new sub map
+	 * @return SubMap A new sub map
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public static function view(SortedMap $map)
 	{
@@ -391,9 +391,9 @@ class SubMap extends AbstractMap
 	/**
 	 * Get the comparator
 	 *
-	 * @return  callable  The comparator
+	 * @return callable The comparator
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function comparator()
 	{
@@ -403,11 +403,11 @@ class SubMap extends AbstractMap
 	/**
 	 * Get the first element or throw an exception if there is no such element
 	 *
-	 * @return  mixed  The first element
+	 * @return mixed The first element
 	 *
-	 * @throws  \OutOfBoundsException  If there is no element
+	 * @throws \OutOfBoundsException If there is no element
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function first()
 	{
@@ -435,11 +435,11 @@ class SubMap extends AbstractMap
 	/**
 	 * Get the last element or throw an exception if there is no such element
 	 *
-	 * @return  mixed  The last element
+	 * @return mixed The last element
 	 *
-	 * @throws  \OutOfBoundsException  If there is no element
+	 * @throws \OutOfBoundsException If there is no element
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function last()
 	{
@@ -467,13 +467,13 @@ class SubMap extends AbstractMap
 	/**
 	 * Get the predecessor element or throw an exception if there is no such element
 	 *
-	 * @param   TreeNode  $element  A tree node member of the underlying TreeMap
+	 * @param TreeNode $element A tree node member of the underlying TreeMap
 	 *
-	 * @return  mixed  The predecessor element
+	 * @return mixed The predecessor element
 	 *
-	 * @throws  \OutOfBoundsException  If there is no predecessor
+	 * @throws \OutOfBoundsException If there is no predecessor
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function predecessor($element)
 	{
@@ -504,13 +504,13 @@ class SubMap extends AbstractMap
 	/**
 	 * Get the successor element or throw an exception if there is no such element
 	 *
-	 * @param   TreeNode  $element  A tree node member of the underlying TreeMap
+	 * @param TreeNode $element A tree node member of the underlying TreeMap
 	 *
-	 * @return  mixed  The successor element
+	 * @return mixed The successor element
 	 *
-	 * @throws  \OutOfBoundsException  If there is no successor
+	 * @throws \OutOfBoundsException If there is no successor
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function successor($element)
 	{
@@ -541,13 +541,13 @@ class SubMap extends AbstractMap
 	/**
 	 * Returns the element whose key is the greatest key lesser than the given key or throw an exception if there is no such element
 	 *
-	 * @param   mixed  $key  The searched key
+	 * @param mixed $key The searched key
 	 *
-	 * @return  mixed  The found element
+	 * @return mixed The found element
 	 *
-	 * @throws  \OutOfBoundsException  If there is no lower element
+	 * @throws \OutOfBoundsException If there is no lower element
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function lower($key)
 	{
@@ -603,13 +603,13 @@ class SubMap extends AbstractMap
 	/**
 	 * Returns the element whose key is the greatest key lesser than or equal to the given key or throw an exception if there is no such element
 	 *
-	 * @param   mixed  $key  The searched key
+	 * @param mixed $key The searched key
 	 *
-	 * @return  mixed  The found element
+	 * @return mixed The found element
 	 *
-	 * @throws  \OutOfBoundsException  If there is no floor element
+	 * @throws \OutOfBoundsException If there is no floor element
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function floor($key)
 	{
@@ -670,13 +670,13 @@ class SubMap extends AbstractMap
 	/**
 	 * Returns the element whose key is equal to the given key or throw an exception if there is no such element
 	 *
-	 * @param   mixed  $key  The searched key
+	 * @param mixed $key The searched key
 	 *
-	 * @return  mixed  The found element
+	 * @return mixed The found element
 	 *
-	 * @throws  \OutOfBoundsException  If there is no such element
+	 * @throws \OutOfBoundsException  If there is no such element
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function find($key)
 	{
@@ -718,13 +718,13 @@ class SubMap extends AbstractMap
 	/**
 	 * Returns the element whose key is the lowest key greater than or equal to the given key or throw an exception if there is no such element
 	 *
-	 * @param   mixed  $key  The searched key
+	 * @param mixed $key The searched key
 	 *
-	 * @return  mixed  The found element
+	 * @return mixed The found element
 	 *
-	 * @throws  \OutOfBoundsException  If there is no ceiling element
+	 * @throws \OutOfBoundsException If there is no ceiling element
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function ceiling($key)
 	{
@@ -785,13 +785,13 @@ class SubMap extends AbstractMap
 	/**
 	 * Returns the element whose key is the lowest key greater than to the given key or throw an exception if there is no such element
 	 *
-	 * @param   mixed  $key  The searched key
+	 * @param mixed $key The searched key
 	 *
-	 * @return  mixed  The found element
+	 * @return mixed The found element
 	 *
-	 * @throws  \OutOfBoundsException  If there is no higher element
+	 * @throws \OutOfBoundsException If there is no higher element
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function higher($key)
 	{
@@ -847,9 +847,9 @@ class SubMap extends AbstractMap
 	/**
 	 * Serialize the object
 	 *
-	 * @return  array  Array of values
+	 * @return array Array of values
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function jsonSerialize()
 	{
@@ -904,9 +904,9 @@ class SubMap extends AbstractMap
 	/**
 	 * Count the number of key/value pairs
 	 *
-	 * @return  integer
+	 * @return integer
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function count()
 	{

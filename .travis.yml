@@ -2,26 +2,16 @@ language: php
 
 php:
   - 7.1
+  - 7.2
 
 before_install:
   - composer self-update
 
 before_script:
-  - sudo apt-get install graphviz
-  - sudo apt-get install php5-xdebug	
   - composer update
 
 script:
-  - ant composervalidate
-  - ant phpcs
-  - ant phpunit
+  - composer validate
+  - composer style
+  - composer test
 
-after_script:
-  - utility/initiate-publish.sh
-
-after_success:
-  - ant phpdoc
-
-env:
-  global:
-    - secure: "e6GXg+z9VyQHBKWutwWJjb6xW7ec6ghUuVp7NFVbwT/94LwHkPpj9ZOYbPY7LmW036LVzq4AUxzglN+vO8TO+ijCwM4QjsazCajwSqyjLY70X8ZWWHwqXvODU2ILmEQ+MotmuT1towc8xdEnFdthAAB9C7AZ+5CwglWrRFt20V4="

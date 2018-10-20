@@ -70,12 +70,12 @@ class TreeNode implements \Countable
 	/**
 	 * Create a node
 	 *
-	 * @param   mixed  $key    The node key
-	 * @param   mixed  $value  The node value
+	 * @param mixed $key The node key
+	 * @param mixed $value The node value
 	 *
-	 * @return  A new node
+	 * @return A new node
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public static function create($key, $value)
 	{
@@ -85,12 +85,12 @@ class TreeNode implements \Countable
 	/**
 	 * Constructor
 	 *
-	 * @param   mixed     $key          The node key
-	 * @param   mixed     $value        The node value
-	 * @param   TreeNode  $predecessor  The left node
-	 * @param   TreeNode  $successor    The right node
+	 * @param mixed $key The node key
+	 * @param mixed $value The node value
+	 * @param TreeNode $predecessor The left node
+	 * @param TreeNode $successor The right node
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	protected function __construct($key, $value, $predecessor = null, $successor = null)
 	{
@@ -103,13 +103,13 @@ class TreeNode implements \Countable
 	/**
 	 * Magic get method
 	 *
-	 * @param   string  $property  The node property
+	 * @param string $property The node property
 	 *
-	 * @return  mixed  The value associated to the property
+	 * @return mixed The value associated to the property
 	 *
-	 * @throws  \RuntimeException  If the property is undefined
+	 * @throws \RuntimeException If the property is undefined
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function __get($property)
 	{
@@ -135,9 +135,9 @@ class TreeNode implements \Countable
 	/**
 	 * Get the first node
 	 *
-	 * @return  the first node
+	 * @return the first node
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function first()
 	{
@@ -154,9 +154,9 @@ class TreeNode implements \Countable
 	/**
 	 * Get the last node
 	 *
-	 * @return  the last node
+	 * @return the last node
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function last()
 	{
@@ -173,9 +173,9 @@ class TreeNode implements \Countable
 	/**
 	 * Get the predecessor
 	 *
-	 * @return  the predecessor node
+	 * @return the predecessor node
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function predecessor()
 	{
@@ -199,9 +199,9 @@ class TreeNode implements \Countable
 	/**
 	 * Get the successor
 	 *
-	 * @return  the successor node
+	 * @return the successor node
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function successor()
 	{
@@ -225,9 +225,9 @@ class TreeNode implements \Countable
 	/**
 	 * Count the number of key/value pair
 	 *
-	 * @return  integer
+	 * @return integer
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function count()
 	{
@@ -249,18 +249,18 @@ class TreeNode implements \Countable
 	/**
 	 * Get the node for a key
 	 *
-	 * @param   mixed     $key         The key
-	 * @param   Callable  $comparator  The comparator function
-	 * @param   integer   $type        The operation type
-	 *                                     -2 for the greatest key lesser than the given key
-	 *                                     -1 for the greatest key lesser than or equal to the given key
-	 *                                      0 for the given key
-	 *                                     +1 for the lowest key greater than or equal to the given key
-	 *                                     +2 for the lowest key greater than the given key
+	 * @param mixed $key The key
+	 * @param callable $comparator The comparator function
+	 * @param integer $type The operation type
+	 *                      -2 for the greatest key lesser than the given key
+	 *                      -1 for the greatest key lesser than or equal to the given key
+	 *                       0 for the given key
+	 *                      +1 for the lowest key greater than or equal to the given key
+	 *                      +2 for the lowest key greater than the given key
 	 *
-	 * @return  mixed  The node or null if not found
+	 * @return mixed The node or null if not found
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function find($key, $comparator, $type = 0)
 	{
@@ -334,9 +334,9 @@ class TreeNode implements \Countable
 	/**
 	 * Rotate the node to the left
 	 *
-	 * @return  TreeNode  The rotated node
+	 * @return TreeNode The rotated node
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	private function rotateLeft()
 	{
@@ -373,9 +373,9 @@ class TreeNode implements \Countable
 	/**
 	 * Rotate the node to the right
 	 *
-	 * @return  TreeNode  The rotated node
+	 * @return TreeNode The rotated node
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	private function rotateRight()
 	{
@@ -412,9 +412,9 @@ class TreeNode implements \Countable
 	/**
 	 * Increment the balance of the node
 	 *
-	 * @return  TreeNode  $this or a rotated version of $this
+	 * @return TreeNode $this or a rotated version of $this
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	private function incBalance()
 	{
@@ -436,9 +436,9 @@ class TreeNode implements \Countable
 	/**
 	 * Decrement the balance of the node
 	 *
-	 * @return  TreeNode  $this or a rotated version of $this
+	 * @return TreeNode $this or a rotated version of $this
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	private function decBalance()
 	{
@@ -460,13 +460,13 @@ class TreeNode implements \Countable
 	/**
 	 * Insert a key/value pair
 	 *
-	 * @param   mixed     $key         The key
-	 * @param   mixed     $value       The value
-	 * @param   Callable  $comparator  The comparator function
+	 * @param mixed $key The key
+	 * @param mixed $value The value
+	 * @param callable $comparator The comparator function
 	 *
-	 * @return  TreeNode  The new root
+	 * @return TreeNode The new root
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function insert($key, $value, $comparator)
 	{
@@ -522,9 +522,9 @@ class TreeNode implements \Countable
 	/**
 	 * Pull up the left most node of a node
 	 *
-	 * @return  TreeNode  The new root
+	 * @return TreeNode The new root
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	private function pullUpLeftMost()
 	{
@@ -574,12 +574,12 @@ class TreeNode implements \Countable
 	/**
 	 * Remove a key
 	 *
-	 * @param   mixed     $key         The key
-	 * @param   Callable  $comparator  The comparator function
+	 * @param mixed $key The key
+	 * @param callable $comparator The comparator function
 	 *
-	 * @return  TreeNode  The new root
+	 * @return TreeNode The new root
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function remove($key, $comparator)
 	{

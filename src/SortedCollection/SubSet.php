@@ -65,11 +65,11 @@ class SubSet extends AbstractSet
 	/**
 	 * Magic get method
 	 *
-	 * @param   string  $property  The property
+	 * @param string $property The property
 	 *
-	 * @return  mixed  The value associated to the property
+	 * @return mixed The value associated to the property
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function __get($property)
 	{
@@ -93,14 +93,14 @@ class SubSet extends AbstractSet
 	/**
 	 * Magic set method
 	 *
-	 * @param   string  $property  The property
-	 * @param   mixed   $value     The new value
+	 * @param string $property The property
+	 * @param mixed $value The new value
 	 *
-	 * @throws  \RuntimeException  If the property does not exist
+	 * @throws \RuntimeException If the property does not exist
 	 *
-	 * @return  void
+	 * @return void
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function __set($property, $value)
 	{
@@ -126,13 +126,13 @@ class SubSet extends AbstractSet
 	/**
 	 * Magic unset method
 	 *
-	 * @param   string  $property  The property
+	 * @param string $property The property
 	 *
-	 * @throws  \RuntimeException  If the property does not exist
+	 * @throws \RuntimeException If the property does not exist
 	 *
-	 * @return  void
+	 * @return void
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function __unset($property)
 	{
@@ -158,11 +158,11 @@ class SubSet extends AbstractSet
 	/**
 	 * Magic isset method
 	 *
-	 * @param   string  $property  The property
+	 * @param string $property The property
 	 *
-	 * @return  boolean
+	 * @return boolean
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function __isset($property)
 	{
@@ -184,13 +184,13 @@ class SubSet extends AbstractSet
 	/**
 	 * Constructor
 	 *
-	 * @param   SortedSet  $set         Internal set
-	 * @param   mixed      $from        The from element
-	 * @param   integer    $fromOption  The option for from (SubSet::UNUSED, SubSet::INCLUSIVE or SubSet::EXCLUSIVE)
-	 * @param   mixed      $to          The to element
-	 * @param   integer    $toOption    The option for to (SubSet::UNUSED, SubSet::INCLUSIVE or SubSet::EXCLUSIVE)
+	 * @param SortedSet $set Internal set
+	 * @param mixed $from The from element
+	 * @param integer $fromOption The option for from (SubSet::UNUSED, SubSet::INCLUSIVE or SubSet::EXCLUSIVE)
+	 * @param mixed $to The to element
+	 * @param integer $toOption The option for to (SubSet::UNUSED, SubSet::INCLUSIVE or SubSet::EXCLUSIVE)
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	protected function __construct(SortedSet $set, $from, $fromOption, $to, $toOption)
 	{
@@ -220,15 +220,15 @@ class SubSet extends AbstractSet
 	/**
 	 * Create
 	 *
-	 * @param   SortedSet  $set            Internal set
-	 * @param   mixed      $from           The from element
-	 * @param   mixed      $to             The to element
-	 * @param   boolean    $fromInclusive  The inclusive flag for from
-	 * @param   boolean    $toInclusive    The inclusive flag for to
+	 * @param SortedSet $set Internal set
+	 * @param mixed $from The from element
+	 * @param mixed $to The to element
+	 * @param boolean $fromInclusive The inclusive flag for from
+	 * @param boolean $toInclusive The inclusive flag for to
 	 *
-	 * @return  SubSet  A new sub set
+	 * @return SubSet A new sub set
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public static function create(SortedSet $set, $from, $to, $fromInclusive = true, $toInclusive = false)
 	{
@@ -238,13 +238,13 @@ class SubSet extends AbstractSet
 	/**
 	 * Head
 	 *
-	 * @param   SortedSet  $set          Internal set
-	 * @param   mixed      $to           The to element
-	 * @param   boolean    $toInclusive  The inclusive flag for to
+	 * @param SortedSet $set Internal set
+	 * @param mixed $to The to element
+	 * @param boolean $toInclusive The inclusive flag for to
 	 *
-	 * @return  SubSet  A new head set
+	 * @return SubSet A new head set
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public static function head(SortedSet $set, $to, $toInclusive = false)
 	{
@@ -254,13 +254,13 @@ class SubSet extends AbstractSet
 	/**
 	 * Tail
 	 *
-	 * @param   SortedSet  $set            Internal set
-	 * @param   mixed      $from           The from element
-	 * @param   boolean    $fromInclusive  The inclusive flag for from
+	 * @param SortedSet $set Internal set
+	 * @param mixed $from The from element
+	 * @param boolean $fromInclusive The inclusive flag for from
 	 *
-	 * @return  SubSet  A new tail set
+	 * @return SubSet A new tail set
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public static function tail(SortedSet $set, $from, $fromInclusive = true)
 	{
@@ -270,11 +270,11 @@ class SubSet extends AbstractSet
 	/**
 	 * View
 	 *
-	 * @param   SortedSet  $set  Internal set
+	 * @param SortedSet $set Internal set
 	 *
-	 * @return  SubSet  A new sub set
+	 * @return SubSet A new sub set
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public static function view(SortedSet $set)
 	{
@@ -284,9 +284,9 @@ class SubSet extends AbstractSet
 	/**
 	 * Serialize the object
 	 *
-	 * @return  array  Array of values
+	 * @return array Array of values
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function jsonSerialize()
 	{

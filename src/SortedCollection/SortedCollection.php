@@ -15,29 +15,37 @@
 namespace chdemko\SortedCollection;
 
 /**
- * Sorted collection
+ * The SortedCollection interface is the root of the hierarchy. It extends:
+ * 
+ * * :php:class:`ArrayAccess`
+ * * :php:class:`IteratorAggregate`
+ * * :php:class:`JsonSerializable`
+ * * :php:class:`Countable`
  *
- * @package  SortedCollection
+ * And it is implemented by two classes: :php:class:`chdemko\\SortedCollection\\SortedMap`
+ * and :php:class:`chdemko\\SortedCollection\\SortedSet`
  *
- * @since    1.0.0
+ * @package SortedCollection
+ *
+ * @since 1.0.0
  */
 interface SortedCollection extends \ArrayAccess, \Countable, \IteratorAggregate, \JsonSerializable
 {
 	/**
 	 * Get the comparator
 	 *
-	 * @return  callable  The comparator
+	 * @return callable The comparator
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function comparator();
 
 	/**
 	 * Get the first element or throw an exception if there is no element
 	 *
-	 * @return  mixed  The first element
+	 * @return mixed The first element
 	 *
-	 * @throws  \OutOfBoundsException  If there is no element
+	 * @throws \OutOfBoundsException If there is no element
 	 *
 	 * @since   1.0.0
 	 */
@@ -46,76 +54,76 @@ interface SortedCollection extends \ArrayAccess, \Countable, \IteratorAggregate,
 	/**
 	 * Get the last element or throw an exception if there is no element
 	 *
-	 * @return  mixed  The last element
+	 * @return mixed The last element
 	 *
-	 * @throws  \OutOfBoundsException  If there is no element
+	 * @throws \OutOfBoundsException If there is no element
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function last();
 
 	/**
 	 * Returns the greatest element lesser than the given key or throw an exception if there is no such element
 	 *
-	 * @param   mixed  $key  The searched key
+	 * @param mixed $key The searched key
 	 *
-	 * @return  mixed  The found node
+	 * @return mixed The found node
 	 *
-	 * @throws  \OutOfBoundsException  If there is no lower element
+	 * @throws \OutOfBoundsException If there is no lower element
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function lower($key);
 
 	/**
 	 * Returns the greatest element lesser than or equal to the given key or throw an exception if there is no such element
 	 *
-	 * @param   mixed  $key  The searched key
+	 * @param mixed $key The searched key
 	 *
-	 * @return  mixed  The found node
+	 * @return mixed The found node
 	 *
-	 * @throws  \OutOfBoundsException  If there is no floor element
+	 * @throws \OutOfBoundsException If there is no floor element
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function floor($key);
 
 	/**
 	 * Returns the element equal to the given key or throw an exception if there is no such element
 	 *
-	 * @param   mixed  $key  The searched key
+	 * @param mixed $key The searched key
 	 *
-	 * @return  mixed  The found node
+	 * @return mixed The found node
 	 *
-	 * @throws  \OutOfBoundsException  If there is no such element
+	 * @throws \OutOfBoundsException If there is no such element
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function find($key);
 
 	/**
 	 * Returns the lowest element greater than or equal to the given key or throw an exception if there is no such element
 	 *
-	 * @param   mixed  $key  The searched key
+	 * @param mixed $key The searched key
 	 *
-	 * @return  mixed  The found node
+	 * @return mixed The found node
 	 *
-	 * @throws  \OutOfBoundsException  If there is no ceiling element
+	 * @throws \OutOfBoundsException If there is no ceiling element
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function ceiling($key);
 
 	/**
 	 * Returns the lowest element greater than to the given key or throw an exception if there is no such element
 	 *
-	 * @param   mixed  $key  The searched key
+	 * @param mixed $key The searched key
 	 *
-	 * @return  mixed  The found node
+	 * @return mixed The found node
 	 *
-	 * @throws  \OutOfBoundsException  If there is no higher element
+	 * @throws \OutOfBoundsException If there is no higher element
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function higher($key);
 }

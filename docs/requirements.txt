@@ -1,0 +1,4 @@
+Sphinx>=1.8.0
+sphinx_rtd_theme>=0.4
+sphinxcontrib-phpdomain
+m2r>=0.2

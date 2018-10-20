@@ -17,9 +17,9 @@ namespace chdemko\SortedCollection;
 /**
  * Iterator
  *
- * @package  SortedCollection
+ * @package SortedCollection
  *
- * @since    1.0.0
+ * @since 1.0.0
  */
 class Iterator implements \Iterator
 {
@@ -68,10 +68,10 @@ class Iterator implements \Iterator
 	/**
 	 * Constructor
 	 *
-	 * @param   SortedMap  $map   Sorted map
-	 * @param   integer    $type  Iterator type
+	 * @param SortedMap $map Sorted map
+	 * @param integer $type Iterator type
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	protected function __construct(SortedMap $map, $type)
 	{
@@ -83,11 +83,11 @@ class Iterator implements \Iterator
 	/**
 	 * Create a new iterator on pairs
 	 *
-	 * @param   SortedMap  $map  Sorted map
+	 * @param SortedMap $map Sorted map
 	 *
-	 * @return  Iterator  A new iterator on pairs
+	 * @return Iterator A new iterator on pairs
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public static function create(SortedMap $map)
 	{
@@ -97,11 +97,11 @@ class Iterator implements \Iterator
 	/**
 	 * Create a new iterator on keys
 	 *
-	 * @param   SortedMap  $map  Sorted map
+	 * @param SortedMap $map Sorted map
 	 *
-	 * @return  Iterator  A new iterator on keys
+	 * @return Iterator A new iterator on keys
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public static function keys(SortedMap $map)
 	{
@@ -111,11 +111,11 @@ class Iterator implements \Iterator
 	/**
 	 * Create a new iterator on values
 	 *
-	 * @param   SortedMap  $map  Sorted map
+	 * @param SortedMap $map  Sorted map
 	 *
-	 * @return  Iterator  A new iterator on values
+	 * @return Iterator A new iterator on values
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public static function values(SortedMap $map)
 	{
@@ -132,9 +132,9 @@ class Iterator implements \Iterator
 	/**
 	 * Rewind the Iterator to the first element
 	 *
-	 * @return  void
+	 * @return void
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function rewind()
 	{
@@ -153,9 +153,9 @@ class Iterator implements \Iterator
 	/**
 	 * Return the current key
 	 *
-	 * @return  mixed  The current key
+	 * @return mixed The current key
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function key()
 	{
@@ -172,9 +172,9 @@ class Iterator implements \Iterator
 	/**
 	 * Return the current value
 	 *
-	 * @return  mixed  The current value
+	 * @return mixed The current value
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function current()
 	{
@@ -191,9 +191,9 @@ class Iterator implements \Iterator
 	/**
 	 * Move forward to the next element
 	 *
-	 * @return  void
+	 * @return void
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function next()
 	{
@@ -212,9 +212,9 @@ class Iterator implements \Iterator
 	/**
 	 * Checks if current position is valid
 	 *
-	 * @return  boolean
+	 * @return boolean
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function valid()
 	{

@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<ruleset name="Custom Standard">
+	<rule ref="vendor/joomla/coding-standards/Joomla">
+		<exclude name="Joomla.Commenting.FunctionComment.BeforeParamType" />
+	</rule>
+</ruleset>

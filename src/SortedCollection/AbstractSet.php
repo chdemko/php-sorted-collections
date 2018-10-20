@@ -39,9 +39,9 @@ abstract class AbstractSet implements SortedSet
 	/**
 	 * Get the map
 	 *
-	 * @return  SortedMap  The underlying map
+	 * @return SortedMap The underlying map
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	protected function getMap()
 	{
@@ -51,11 +51,11 @@ abstract class AbstractSet implements SortedSet
 	/**
 	 * Set the map
 	 *
-	 * @param   SortedMap  $map  The underlying map
+	 * @param SortedMap $map The underlying map
 	 *
-	 * @return  AbstractSet  $this for chaining
+	 * @return AbstractSet $this for chaining
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	protected function setMap(SortedMap $map)
 	{
@@ -67,13 +67,13 @@ abstract class AbstractSet implements SortedSet
 	/**
 	 * Magic get method
 	 *
-	 * @param   string  $property  The property
+	 * @param string $property The property
 	 *
-	 * @throws  \RuntimeException  If the property does not exist
+	 * @throws \RuntimeException If the property does not exist
 	 *
-	 * @return  mixed  The value associated to the property
+	 * @return mixed The value associated to the property
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function __get($property)
 	{
@@ -95,9 +95,9 @@ abstract class AbstractSet implements SortedSet
 	/**
 	 * Get the comparator
 	 *
-	 * @return  callable  The comparator
+	 * @return callable The comparator
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function comparator()
 	{
@@ -107,11 +107,11 @@ abstract class AbstractSet implements SortedSet
 	/**
 	 * Get the first element or throw an exception if there is no such element
 	 *
-	 * @return  mixed  The first element
+	 * @return mixed The first element
 	 *
-	 * @throws  \OutOfBoundsException  If there is no element
+	 * @throws \OutOfBoundsException If there is no element
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function first()
 	{
@@ -121,11 +121,11 @@ abstract class AbstractSet implements SortedSet
 	/**
 	 * Get the last element or throw an exception if there is no such element
 	 *
-	 * @return  mixed  The last element
+	 * @return mixed The last element
 	 *
-	 * @throws  \OutOfBoundsException  If there is no element
+	 * @throws \OutOfBoundsException If there is no element
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function last()
 	{
@@ -135,13 +135,13 @@ abstract class AbstractSet implements SortedSet
 	/**
 	 * Returns the greatest element lesser than the given element or throw an exception if there is no such element
 	 *
-	 * @param   mixed  $element  The searched element
+	 * @param mixed $element The searched element
 	 *
-	 * @return  mixed  The found element
+	 * @return mixed The found element
 	 *
-	 * @throws  \OutOfBoundsException  If there is no lower element
+	 * @throws \OutOfBoundsException If there is no lower element
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function lower($element)
 	{
@@ -151,13 +151,13 @@ abstract class AbstractSet implements SortedSet
 	/**
 	 * Returns the greatest element lesser than or equal to the given element or throw an exception if there is no such element
 	 *
-	 * @param   mixed  $element  The searched element
+	 * @param mixed $element The searched element
 	 *
-	 * @return  mixed  The found element
+	 * @return mixed The found element
 	 *
-	 * @throws  \OutOfBoundsException  If there is no floor element
+	 * @throws \OutOfBoundsException If there is no floor element
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function floor($element)
 	{
@@ -167,13 +167,13 @@ abstract class AbstractSet implements SortedSet
 	/**
 	 * Returns the element equal to the given element or throw an exception if there is no such element
 	 *
-	 * @param   mixed  $element  The searched element
+	 * @param mixed $element The searched element
 	 *
-	 * @return  mixed  The found element
+	 * @return mixed The found element
 	 *
-	 * @throws  \OutOfBoundsException  If there is no such element
+	 * @throws \OutOfBoundsException If there is no such element
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function find($element)
 	{
@@ -183,13 +183,13 @@ abstract class AbstractSet implements SortedSet
 	/**
 	 * Returns the lowest element greater than or equal to the given element or throw an exception if there is no such element
 	 *
-	 * @param   mixed  $element  The searched element
+	 * @param mixed $element The searched element
 	 *
-	 * @return  mixed  The found element
+	 * @return mixed The found element
 	 *
-	 * @throws  \OutOfBoundsException  If there is no ceiling element
+	 * @throws \OutOfBoundsException If there is no ceiling element
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function ceiling($element)
 	{
@@ -199,13 +199,13 @@ abstract class AbstractSet implements SortedSet
 	/**
 	 * Returns the lowest element greater than to the given element or throw an exception if there is no such element
 	 *
-	 * @param   mixed  $element  The searched element
+	 * @param mixed $element The searched element
 	 *
-	 * @return  mixed  The found element
+	 * @return mixed The found element
 	 *
-	 * @throws  \OutOfBoundsException  If there is no higher element
+	 * @throws \OutOfBoundsException If there is no higher element
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function higher($element)
 	{
@@ -215,9 +215,9 @@ abstract class AbstractSet implements SortedSet
 	/**
 	 * Convert the object to a string
 	 *
-	 * @return  string  String representation of the object
+	 * @return string String representation of the object
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function __toString()
 	{
@@ -227,9 +227,9 @@ abstract class AbstractSet implements SortedSet
 	/**
 	 * Convert the object to an array
 	 *
-	 * @return  array  Array representation of the object
+	 * @return array Array representation of the object
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function toArray()
 	{
@@ -246,9 +246,9 @@ abstract class AbstractSet implements SortedSet
 	/**
 	 * Create an iterator
 	 *
-	 * @return  Iterator  A new iterator
+	 * @return Iterator A new iterator
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function getIterator()
 	{
@@ -258,11 +258,11 @@ abstract class AbstractSet implements SortedSet
 	/**
 	 * Get the value for an element
 	 *
-	 * @param   mixed  $element  The element
+	 * @param mixed $element The element
 	 *
-	 * @return  mixed  The found value
+	 * @return mixed The found value
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function offsetGet($element)
 	{
@@ -279,11 +279,11 @@ abstract class AbstractSet implements SortedSet
 	/**
 	 * Test the existence of an element
 	 *
-	 * @param   mixed  $element  The element
+	 * @param mixed $element The element
 	 *
-	 * @return  boolean  TRUE if the element exists, false otherwise
+	 * @return boolean TRUE if the element exists, false otherwise
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function offsetExists($element)
 	{
@@ -293,14 +293,14 @@ abstract class AbstractSet implements SortedSet
 	/**
 	 * Set the value for an element
 	 *
-	 * @param   mixed  $element  The element
-	 * @param   mixed  $value    The value
+	 * @param mixed $element The element
+	 * @param mixed $value The value
 	 *
-	 * @return  void
+	 * @return void
 	 *
-	 * @throws  \RuntimeOperation  The operation is not supported by this class
+	 * @throws \RuntimeOperation The operation is not supported by this class
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function offsetSet($element, $value)
 	{
@@ -310,13 +310,13 @@ abstract class AbstractSet implements SortedSet
 	/**
 	 * Unset the existence of an element
 	 *
-	 * @param   mixed  $element  The element
+	 * @param mixed $element The element
 	 *
-	 * @return  void
+	 * @return void
 	 *
-	 * @throws  \RuntimeOperation  The operation is not supported by this class
+	 * @throws \RuntimeOperation The operation is not supported by this class
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function offsetUnset($element)
 	{
@@ -326,9 +326,9 @@ abstract class AbstractSet implements SortedSet
 	/**
 	 * Count the number of elements
 	 *
-	 * @return  integer
+	 * @return integer
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function count()
 	{

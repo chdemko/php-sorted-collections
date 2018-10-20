@@ -18,14 +18,14 @@ This project uses:
 
 * [PHP Code Sniffer](https://github.com/squizlabs/php_codesniffer) for checking PHP code style using [Joomla Coding Standards](https://github.com/joomla/coding-standards)
 * [PHPUnit](http://phpunit.de/) for unit test (100% covered)
-* [phpDocumentor](http://http://www.phpdoc.org/) for api documentation
+* [phpDocumentor](http://http://www.phpdoc.org/) and [sphpdox](https://packagist.org/packages/sphpdox/sphpdox) for api documentation
 
-Installation
+Instructions
 ------------
 
 Using composer: either
 
-~~~
+~~~bash
 $ composer create-project chdemko/sorted-collections:1.0.*@dev; cd sorted-collections
 ~~~
 
@@ -38,12 +38,23 @@ or create a `composer.json` file containing
     }
 }
 ~~~
+
 and run
-~~~
+
+~~~bash
 $ composer install
 ~~~
 
+Run also
+
+~~~bash
+$ [sudo] pip install [--user] -r docs/requirements.txt
+~~~
+
+if you want to create local documentation.
+
 Create a `test.php` file containg
+
 ~~~php
 <?php
 require __DIR__ . '/vendor/autoload.php';
@@ -55,16 +66,14 @@ $tree = TreeMap::create()->put(
 );
 echo $tree . PHP_EOL;
 ~~~
+
 This should print
+
 ~~~
 [0,1,2,3,4,5,6,7,8,9]
 ~~~
-See the [examples](https://github.com/chdemko/php-sorted-collections/tree/master/examples) folder for more information.
 
-Documentation
--------------
-
-* [http://chdemko.github.io/php-sorted-collections](http://chdemko.github.io/php-sorted-collections)
+See the [examples](https://github.com/chdemko/php-sorted-collections/tree/master/examples) and [benchmarks](https://github.com/chdemko/php-sorted-collections/tree/master/benchmarks) folder for more information.
 
 Citation
 --------
@@ -73,6 +82,6 @@ If you are using this project including publication in research activities, you 
 * authors: Christophe Demko
 * title: php-sorted-collections: a PHP library for handling sorted collections
 * year: 2014
-* how published: http://chdemko.github.io/php-sorted-collections
+* how published: https://packagist.org/packages/chdemko/sorted-collections
 
 All releases can be found [here](https://github.com/chdemko/php-sorted-collections/releases)

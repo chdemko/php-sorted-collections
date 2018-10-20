@@ -40,9 +40,9 @@ class ReversedSet extends AbstractSet
 	/**
 	 * Constructor
 	 *
-	 * @param   SortedSet  $set  Internal set
+	 * @param SortedSet $set Internal set
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	protected function __construct(SortedSet $set)
 	{
@@ -52,11 +52,11 @@ class ReversedSet extends AbstractSet
 	/**
 	 * Create
 	 *
-	 * @param   SortedSet  $set  Internal set
+	 * @param SortedSet $set Internal set
 	 *
-	 * @return  ReversedSet  A new reversed set
+	 * @return ReversedSet A new reversed set
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public static function create(SortedSet $set)
 	{
@@ -66,11 +66,11 @@ class ReversedSet extends AbstractSet
 	/**
 	 * Magic get method
 	 *
-	 * @param   string  $property  The property
+	 * @param string $property The property
 	 *
-	 * @return  mixed  The value associated to the property
+	 * @return mixed The value associated to the property
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function __get($property)
 	{
@@ -86,9 +86,9 @@ class ReversedSet extends AbstractSet
 	/**
 	 * Serialize the object
 	 *
-	 * @return  array  Array of values
+	 * @return array Array of values
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function jsonSerialize()
 	{

@@ -32,9 +32,9 @@ class TreeSet extends AbstractSet
 	/**
 	 * Constructor
 	 *
-	 * @param   Callable  $comparator  Comparison function
+	 * @param callable $comparator Comparison function
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	protected function __construct($comparator = null)
 	{
@@ -44,11 +44,11 @@ class TreeSet extends AbstractSet
 	/**
 	 * Create
 	 *
-	 * @param   Callable  $comparator  Comparison function
+	 * @param callable $comparator Comparison function
 	 *
-	 * @return  TreeSet  A new TreeSet
+	 * @return TreeSet A new TreeSet
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public static function create($comparator = null)
 	{
@@ -58,11 +58,11 @@ class TreeSet extends AbstractSet
 	/**
 	 * Put values in the set
 	 *
-	 * @param   \Traversable  $traversable  Values to put in the set
+	 * @param \Traversable $traversable Values to put in the set
 	 *
-	 * @return  TreeSet  $this for chaining
+	 * @return TreeSet $this for chaining
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function put($traversable = array())
 	{
@@ -77,9 +77,9 @@ class TreeSet extends AbstractSet
 	/**
 	 * Clear the set
 	 *
-	 * @return  TreeSet  $this for chaining
+	 * @return TreeSet $this for chaining
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function clear()
 	{
@@ -91,11 +91,11 @@ class TreeSet extends AbstractSet
 	/**
 	 * Initialise the set
 	 *
-	 * @param   \Traversable  $traversable  Values to initialise the set
+	 * @param \Traversable $traversable Values to initialise the set
 	 *
-	 * @return  TreeSet  $this for chaining
+	 * @return TreeSet $this for chaining
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function initialise($traversable = array())
 	{
@@ -105,9 +105,9 @@ class TreeSet extends AbstractSet
 	/**
 	 * Clone the set
 	 *
-	 * @return  void
+	 * @return void
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function __clone()
 	{
@@ -117,12 +117,12 @@ class TreeSet extends AbstractSet
 	/**
 	 * Set the value for an element
 	 *
-	 * @param   mixed  $element  The element
-	 * @param   mixed  $value    The value
+	 * @param mixed $element The element
+	 * @param mixed $value The value
 	 *
-	 * @return  void
+	 * @return void
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function offsetSet($element, $value)
 	{
@@ -141,7 +141,7 @@ class TreeSet extends AbstractSet
 	/**
 	 * Serialize the object
 	 *
-	 * @return  array  Array of values
+	 * @return array Array of values
 	 *
 	 * @since   1.0.0
 	 */
@@ -160,11 +160,11 @@ class TreeSet extends AbstractSet
 	/**
 	 * Unset the existence of an element
 	 *
-	 * @param   mixed  $element  The element
+	 * @param mixed $element The element
 	 *
-	 * @return  void
+	 * @return void
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function offsetUnset($element)
 	{

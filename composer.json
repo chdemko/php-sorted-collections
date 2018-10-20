@@ -17,10 +17,10 @@
 		"php": ">=5.5.0"
 	},
 	"require-dev": {
-		"phpdocumentor/phpdocumentor": "2.9.*",
 		"php-coveralls/php-coveralls": "^2.0",
 		"joomla/coding-standards": "~2.0@alpha",
-		"phpunit/phpunit": "^7.0"
+		"phpunit/phpunit": "^7.0",
+		"sphpdox/sphpdox": "dev-master"
 	},
 	"autoload": {
 		"psr-4": {
@@ -31,5 +31,10 @@
         "branch-alias": {
             "dev-master": "1.0.x-dev"
         }
+    },
+    "scripts": {
+    	"style": "vendor/bin/phpcs --report=full --extensions=php --standard=ruleset.xml src tests examples benchmarks",
+    	"test": "vendor/bin/phpunit",
+    	"doc": "sphinx-build -b html docs/ html/"
     }
 }

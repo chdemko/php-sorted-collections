@@ -44,25 +44,25 @@ class ReversedMap extends AbstractMap
 	private $map;
 
 	/**
-	 * @var     Callable  Comparator function
+	 * @var     callable  Comparator function
 	 *
-	 * @param   mixed  $key1  First key
-	 * @param   mixed  $key2  Second key
+	 * @param mixed $key1 First key
+	 * @param mixed $key2 Second key
 	 *
-	 * @return  integer  negative if $key1 is lesser than $key2,
-	 *                   0 if $key1 is equal to $key2,
-	 *                   positive if $key1 is greater than $key2
+	 * @return integer negative if $key1 is lesser than $key2,
+	 *                 0 if $key1 is equal to $key2,
+	 *                 positive if $key1 is greater than $key2
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	private $comparator;
 
 	/**
 	 * Constructor
 	 *
-	 * @param   SortedMap  $map  Internal map
+	 * @param SortedMap $map Internal map
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	protected function __construct(SortedMap $map)
 	{
@@ -76,11 +76,11 @@ class ReversedMap extends AbstractMap
 	/**
 	 * Create
 	 *
-	 * @param   SortedMap  $map  Internal map
+	 * @param SortedMap $map Internal map
 	 *
-	 * @return  ReversedMap  A new reversed map
+	 * @return ReversedMap A new reversed map
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public static function create(SortedMap $map)
 	{
@@ -90,11 +90,11 @@ class ReversedMap extends AbstractMap
 	/**
 	 * Magic get method
 	 *
-	 * @param   string  $property  The property
+	 * @param string $property The property
 	 *
-	 * @return  mixed  The value associated to the property
+	 * @return mixed The value associated to the property
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function __get($property)
 	{
@@ -110,9 +110,9 @@ class ReversedMap extends AbstractMap
 	/**
 	 * Get the comparator
 	 *
-	 * @return  callable  The comparator
+	 * @return callable The comparator
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function comparator()
 	{
@@ -122,11 +122,11 @@ class ReversedMap extends AbstractMap
 	/**
 	 * Get the first element or throw an exception if there is no such element
 	 *
-	 * @return  mixed  The first element
+	 * @return mixed The first element
 	 *
-	 * @throws  \OutOfBoundsException  If there is no element
+	 * @throws \OutOfBoundsException If there is no element
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function first()
 	{
@@ -136,11 +136,11 @@ class ReversedMap extends AbstractMap
 	/**
 	 * Get the last element or throw an exception if there is no such element
 	 *
-	 * @return  mixed  The last element
+	 * @return mixed The last element
 	 *
-	 * @throws  \OutOfBoundsException  If there is no element
+	 * @throws \OutOfBoundsException If there is no element
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function last()
 	{
@@ -150,13 +150,13 @@ class ReversedMap extends AbstractMap
 	/**
 	 * Get the predecessor element or throw an exception if there is no such element
 	 *
-	 * @param   TreeNode  $element  A tree node member of the underlying TreeMap
+	 * @param TreeNode $element A tree node member of the underlying TreeMap
 	 *
-	 * @return  mixed  The predecessor element
+	 * @return mixed The predecessor element
 	 *
-	 * @throws  \OutOfBoundsException  If there is no predecessor
+	 * @throws \OutOfBoundsException If there is no predecessor
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function predecessor($element)
 	{
@@ -166,11 +166,11 @@ class ReversedMap extends AbstractMap
 	/**
 	 * Get the successor element or throw an exception if there is no such element
 	 *
-	 * @param   TreeNode  $element  A tree node member of the underlying TreeMap
+	 * @param TreeNode $element A tree node member of the underlying TreeMap
 	 *
-	 * @return  mixed  The successor element
+	 * @return mixed The successor element
 	 *
-	 * @throws  \OutOfBoundsException  If there is no successor
+	 * @throws \OutOfBoundsException If there is no successor
 	 */
 	public function successor($element)
 	{
@@ -180,13 +180,13 @@ class ReversedMap extends AbstractMap
 	/**
 	 * Returns the element whose key is the greatest key lesser than the given key or throw an exception if there is no such element
 	 *
-	 * @param   mixed  $key  The searched key
+	 * @param mixed $key The searched key
 	 *
-	 * @return  mixed  The found element
+	 * @return mixed The found element
 	 *
-	 * @throws  \OutOfBoundsException  If there is no lower element
+	 * @throws \OutOfBoundsException If there is no lower element
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function lower($key)
 	{
@@ -196,13 +196,13 @@ class ReversedMap extends AbstractMap
 	/**
 	 * Returns the element whose key is the greatest key lesser than or equal to the given key or throw an exception if there is no such element
 	 *
-	 * @param   mixed  $key  The searched key
+	 * @param mixed $key The searched key
 	 *
-	 * @return  mixed  The found element
+	 * @return mixed The found element
 	 *
-	 * @throws  \OutOfBoundsException  If there is no floor element
+	 * @throws \OutOfBoundsException If there is no floor element
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function floor($key)
 	{
@@ -212,13 +212,13 @@ class ReversedMap extends AbstractMap
 	/**
 	 * Returns the element whose key is equal to the given key or throw an exception if there is no such element
 	 *
-	 * @param   mixed  $key  The searched key
+	 * @param mixed $key The searched key
 	 *
-	 * @return  mixed  The found element
+	 * @return mixed The found element
 	 *
-	 * @throws  \OutOfBoundsException  If there is no such element
+	 * @throws \OutOfBoundsException If there is no such element
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function find($key)
 	{
@@ -228,13 +228,13 @@ class ReversedMap extends AbstractMap
 	/**
 	 * Returns the element whose key is the lowest key greater than or equal to the given key or throw an exception if there is no such element
 	 *
-	 * @param   mixed  $key  The searched key
+	 * @param mixed $key The searched key
 	 *
-	 * @return  mixed  The found element
+	 * @return mixed The found element
 	 *
-	 * @throws  \OutOfBoundsException  If there is no ceiling element
+	 * @throws \OutOfBoundsException If there is no ceiling element
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function ceiling($key)
 	{
@@ -244,13 +244,13 @@ class ReversedMap extends AbstractMap
 	/**
 	 * Returns the element whose key is the lowest key greater than to the given key or throw an exception if there is no such element
 	 *
-	 * @param   mixed  $key  The searched key
+	 * @param mixed $key The searched key
 	 *
-	 * @return  mixed  The found element
+	 * @return mixed The found element
 	 *
-	 * @throws  \OutOfBoundsException  If there is no higher element
+	 * @throws \OutOfBoundsException If there is no higher element
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function higher($key)
 	{
@@ -260,9 +260,9 @@ class ReversedMap extends AbstractMap
 	/**
 	 * Serialize the object
 	 *
-	 * @return  array  Array of values
+	 * @return array Array of values
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function jsonSerialize()
 	{
@@ -272,9 +272,9 @@ class ReversedMap extends AbstractMap
 	/**
 	 * Count the number of key/value pairs
 	 *
-	 * @return  integer
+	 * @return integer
 	 *
-	 * @since   1.0.0
+	 * @since 1.0.0
 	 */
 	public function count()
 	{
