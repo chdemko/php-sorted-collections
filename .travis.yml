@@ -15,3 +15,6 @@ script:
   - composer style
   - composer test
 
+after_script:
+  - vendor/bin/php-coveralls
+

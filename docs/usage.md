@@ -7,7 +7,6 @@ Creation
 The base class for storing sorted maps is the `TreeMap` class.
 
 ~~~php
-<?php
 require __DIR__ . '/vendor/autoload.php';
 use chdemko\SortedCollection\TreeMap;
 
@@ -21,7 +20,6 @@ $map = TreeMap::create()->put(
 There are two other classes to create maps which are in fact views on another sorted map.
 
 ~~~php
-<?php
 require __DIR__ . '/vendor/autoload.php';
 use chdemko\SortedCollection\TreeMap;
 use chdemko\SortedCollection\ReversedMap;
@@ -44,7 +42,6 @@ echo $sub . PHP_EOL;
 For sub maps there are other methods for creation
 
 ~~~php
-<?php
 require __DIR__ . '/vendor/autoload.php';
 use chdemko\SortedCollection\TreeMap;
 use chdemko\SortedCollection\SubMap;
@@ -71,7 +68,6 @@ echo $head . PHP_EOL;
 Sets are created using similar functions
 
 ~~~php
-<?php
 require __DIR__ . '/vendor/autoload.php';
 use chdemko\SortedCollection\TreeSet;
 use chdemko\SortedCollection\ReversedSet;
@@ -93,7 +89,6 @@ These collections support PHP iteration.
 Using maps
 
 ~~~php
-<?php
 require __DIR__ . '/vendor/autoload.php';
 use chdemko\SortedCollection\TreeMap;
 use chdemko\SortedCollection\ReversedMap;
@@ -116,7 +111,6 @@ echo PHP_EOL;
 Using sets
 
 ~~~php
-<?php
 require __DIR__ . '/vendor/autoload.php';
 use chdemko\SortedCollection\TreeSet;
 use chdemko\SortedCollection\ReversedSet;
@@ -134,7 +128,7 @@ foreach ($sub as $key => $value)
 echo PHP_EOL;
 ~~~
 
-_**The behavior is unpredictable if the current key of an iterator is removed of the collection.**_
+**The behavior is unpredictable if the current key of an iterator is removed of the collection.**
 
 Counting
 --------
@@ -142,7 +136,6 @@ Counting
 These collections support PHP counting
 
 ~~~php
-<?php
 require __DIR__ . '/vendor/autoload.php';
 use chdemko\SortedCollection\TreeMap;
 use chdemko\SortedCollection\ReversedMap;
@@ -166,7 +159,6 @@ Insertion, modification, access and removal has been designed to work using PHP 
 Using maps
 
 ~~~php
-<?php
 require __DIR__ . '/vendor/autoload.php';
 use chdemko\SortedCollection\TreeMap;
 
@@ -186,7 +178,6 @@ echo $map[2] . PHP_EOL;
 Using sets
 
 ~~~php
-<?php
 require __DIR__ . '/vendor/autoload.php';
 use chdemko\SortedCollection\TreeSet;
 

@@ -2,6 +2,7 @@ PHP Sorted Collections
 ======================
 [![Flattr this git repo](http://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=chdemko&url=https://github.com/chdemko/php-sorted-collections&title=PHP%20Sorted%20Collections&language=&tags=github&category=software)
 [![Travis](https://img.shields.io/travis/chdemko/php-sorted-collections.svg)](http://travis-ci.org/chdemko/php-sorted-collections)
+[![Documentation Status](https://img.shields.io/readthedocs/php-sorted-collections.svg)](http://php-sorted-collections.readthedocs.io/en/latest/?badge=latest)
 [![Coveralls](https://img.shields.io/coveralls/chdemko/php-sorted-collections.svg)](https://coveralls.io/r/chdemko/php-sorted-collections?branch=master)
 [![Scrutinizer](https://img.shields.io/scrutinizer/g/chdemko/php-sorted-collections.svg)](https://scrutinizer-ci.com/g/chdemko/php-sorted-collections/?branch=master)
 [![PHP versions](https://img.shields.io/php-eye/chdemko/sorted-collections.svg)](https://packagist.org/packages/chdemko/sorted-collections)
@@ -56,7 +57,6 @@ if you want to create local documentation.
 Create a `test.php` file containg
 
 ~~~php
-<?php
 require __DIR__ . '/vendor/autoload.php';
 
 use chdemko\SortedCollection\TreeMap;

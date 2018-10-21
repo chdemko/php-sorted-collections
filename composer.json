@@ -35,6 +35,9 @@
     "scripts": {
     	"style": "vendor/bin/phpcs --report=full --extensions=php --standard=ruleset.xml src tests examples benchmarks",
     	"test": "vendor/bin/phpunit",
-    	"doc": "sphinx-build -b html docs/ html/"
+		"doc": [
+			"vendor/bin/sphpdox process --output docs chdemko src",
+			"sphinx-build -b html docs/ html/"
+		]
     }
 }

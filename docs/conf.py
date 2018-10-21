@@ -20,8 +20,6 @@ import os
 
 on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
 
-os.system('cd ..; composer update; vendor/bin/sphpdox process --output build chdemko src')
-
 # -- Project information -----------------------------------------------------
 
 project = 'PHP Sorted Collections'
@@ -48,6 +46,12 @@ extensions = [
     "sphinxcontrib.phpdomain",
     "m2r"
 ]
+
+from sphinx.highlighting import lexers
+from pygments.lexers.web import PhpLexer
+lexers['php'] = PhpLexer(startinline=True, linenos=1)
+lexers['php-annotations'] = PhpLexer(startinline=True, linenos=1)
+primary_domain = 'php'
 
 # Add any paths that contain templates here, relative to this directory.
 #templates_path = ['_templates']

@@ -4,15 +4,15 @@ Application Programming Interface
 .. toctree::
    :maxdepth: 2
 
-   Sorted Collection <SortedCollection>
-   Sorted Set <SortedSet>
-   Abstract Set <AbstractSet>
-   Tree Set <TreeSet>
-   Sub Set <SubSet>
-   Reversed Set <ReversedSet>
-   Sorted Map <SortedMap>
-   Abstract Map <AbstractMap>
-   Tree Map <TreeMap>
-   Sub Map <SubMap>
-   Reversed Map <ReversedMap>
+   Sorted Collection <chdemko/SortedCollection/SortedCollection>
+   Sorted Set <chdemko/SortedCollection/SortedSet>
+   Abstract Set <chdemko/SortedCollection/AbstractSet>
+   Tree Set <chdemko/SortedCollection/TreeSet>
+   Sub Set <chdemko/SortedCollection/SubSet>
+   Reversed Set <chdemko/SortedCollection/ReversedSet>
+   Sorted Map <chdemko/SortedCollection/SortedMap>
+   Abstract Map <chdemko/SortedCollection/AbstractMap>
+   Tree Map <chdemko/SortedCollection/TreeMap>
+   Sub Map <chdemko/SortedCollection/SubMap>
+   Reversed Map <chdemko/SortedCollection/ReversedMap>
 
