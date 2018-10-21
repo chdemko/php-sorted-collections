@@ -2,5 +2,7 @@
 <ruleset name="Custom Standard">
 	<rule ref="vendor/joomla/coding-standards/Joomla">
 		<exclude name="Joomla.Commenting.FunctionComment.BeforeParamType" />
+		<exclude name="Joomla.Commenting.FunctionComment.ParameterNamesNotAligned" />
+		<exclude name="Joomla.Commenting.FunctionComment.ParameterCommentsNotAligned" />
 	</rule>
 </ruleset>
