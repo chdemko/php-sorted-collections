@@ -16,7 +16,7 @@ namespace chdemko\SortedCollection;
 
 /**
  * The SortedCollection interface is the root of the hierarchy. It extends:
- * 
+ *
  * * :php:class:`ArrayAccess`
  * * :php:class:`IteratorAggregate`
  * * :php:class:`JsonSerializable`
