@@ -29,17 +29,17 @@
 		}
 	},
 	"extra": {
-        "branch-alias": {
-            "dev-master": "1.0.x-dev"
-        }
-    },
-    "scripts": {
-    	"style": "vendor/bin/phpcs --report=full --extensions=php --standard=ruleset.xml src tests examples benchmarks",
-    	"test": "vendor/bin/phpunit",
+		"branch-alias": {
+			"dev-master": "1.0.x-dev"
+		}
+	},
+	"scripts": {
+		"style": "vendor/bin/phpcs --report=full --extensions=php --standard=ruleset.xml src tests examples benchmarks",
+		"test": "vendor/bin/phpunit",
 		"doc": [
 			"vendor/bin/sphpdox process --output docs chdemko src",
 			"sphinx-build -b html docs/ html/"
 		],
 		"benchmark": "vendor/bin/phpbench run --report=default"
-    }
+	}
 }
