@@ -20,7 +20,8 @@
 		"php-coveralls/php-coveralls": "^2.0",
 		"joomla/coding-standards": "~2.0@alpha",
 		"phpunit/phpunit": "^7.0",
-		"sphpdox/sphpdox": "dev-master"
+		"sphpdox/sphpdox": "dev-master",
+		"phpbench/phpbench": "^1.0@dev"
 	},
 	"autoload": {
 		"psr-4": {
@@ -38,6 +39,7 @@
 		"doc": [
 			"vendor/bin/sphpdox process --output docs chdemko src",
 			"sphinx-build -b html docs/ html/"
-		]
+		],
+		"benchmark": "vendor/bin/phpbench run --report=default"
     }
 }
