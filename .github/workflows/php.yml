@@ -43,4 +43,6 @@ jobs:
 
     - name: Coveralls
       uses: coverallsapp/github-action@v2
+      with:
+        file: build/logs/clover.xml
 
