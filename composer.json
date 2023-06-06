@@ -35,7 +35,7 @@
 	},
 	"scripts": {
 		"style": "vendor/bin/phpcs --report=full --extensions=php --standard=PSR12 src tests examples benchmarks",
-		"test": "XDEBUG_MODE=coverage vendor/bin/phpunit",
+		"test": "XDEBUG_MODE=coverage vendor/bin/phpunit --log-junit junit.xml",
 		"doc": [
 			"vendor/bin/sphpdox process --output docs chdemko src",
 			"sphinx-build -b html docs/ html/"
