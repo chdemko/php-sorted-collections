@@ -1,11 +1,10 @@
 PHP Sorted Collections
 ======================
-[![Flattr this git repo](http://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=chdemko&url=https://github.com/chdemko/php-sorted-collections&title=PHP%20Sorted%20Collections&language=&tags=github&category=software)
-[![Travis](https://img.shields.io/travis/chdemko/php-sorted-collections.svg)](http://travis-ci.org/chdemko/php-sorted-collections)
+![PHP package](https://github.com/chdemko/php-sorted-collections/workflows/PHP%20Composer/badge.svg?branch=develop)
 [![Documentation Status](https://img.shields.io/readthedocs/php-sorted-collections.svg)](http://php-sorted-collections.readthedocs.io/en/latest/?badge=latest)
 [![Coveralls](https://img.shields.io/coveralls/chdemko/php-sorted-collections.svg)](https://coveralls.io/r/chdemko/php-sorted-collections?branch=master)
 [![Scrutinizer](https://img.shields.io/scrutinizer/g/chdemko/php-sorted-collections.svg)](https://scrutinizer-ci.com/g/chdemko/php-sorted-collections/?branch=master)
-[![PHP versions](https://img.shields.io/php-eye/chdemko/sorted-collections.svg)](https://packagist.org/packages/chdemko/sorted-collections)
+[![PHP versions](https://img.shields.io/packagist/dependency-v/chdemko/sorted-collections/php)](https://packagist.org/packages/chdemko/sorted-collections)
 [![Latest Stable Version](https://img.shields.io/packagist/v/chdemko/sorted-collections.svg)](https://packagist.org/packages/chdemko/sorted-collections)
 [![Packagist](https://img.shields.io/packagist/dt/chdemko/sorted-collections.svg)](https://packagist.org/packages/chdemko/sorted-collections)
 [![Latest Unstable Version](https://poser.pugx.org/chdemko/sorted-collections/v/unstable.svg)](https://packagist.org/packages/chdemko/sorted-collections)
@@ -17,7 +16,7 @@ Sorted Collection for PHP. Insertion, search, and removal compute in `log(n)` ti
 
 This project uses:
 
-* [PHP Code Sniffer](https://github.com/squizlabs/php_codesniffer) for checking PHP code style using [Joomla Coding Standards](https://github.com/joomla/coding-standards)
+* [PHP Code Sniffer](https://github.com/squizlabs/php_codesniffer) for checking PHP code style
 * [PHPUnit](http://phpunit.de/) for unit test (100% covered)
 * [phpDocumentor](http://http://www.phpdoc.org/) and [sphpdox](https://packagist.org/packages/sphpdox/sphpdox) for [documentation](http://php-sorted-collections.readthedocs.io/en/latest/?badge=latest)
 

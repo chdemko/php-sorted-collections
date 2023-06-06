@@ -7,7 +7,7 @@
  * @subpackage  Map
  *
  * @author      Christophe Demko <chdemko@gmail.com>
- * @copyright   Copyright (C) 2012-2018 Christophe Demko. All rights reserved.
+ * @copyright   Copyright (C) 2012-2023 Christophe Demko. All rights reserved.
  *
  * @license     BSD 3-Clause License
  *
@@ -48,9 +48,8 @@ unset($tree[5]);
 echo $tree . PHP_EOL;
 
 // Print 0-0;1-1;2-2;3-3;4-4;6-6;7-7;8-8;9-9;
-foreach ($tree as $key => $value)
-{
-	echo $key . '-' . $value . ';';
+foreach ($tree as $key => $value) {
+    echo $key . '-' . $value . ';';
 }
 
 echo PHP_EOL;

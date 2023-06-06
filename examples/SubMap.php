@@ -7,7 +7,7 @@
  * @subpackage  Map
  *
  * @author      Christophe Demko <chdemko@gmail.com>
- * @copyright   Copyright (C) 2012-2018 Christophe Demko. All rights reserved.
+ * @copyright   Copyright (C) 2012-2023 Christophe Demko. All rights reserved.
  *
  * @license     BSD 3-Clause License
  *

@@ -1,27 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit bootstrap="tests/bootstrap.php" colors="true">
-	<testsuites>
-		<testsuite name="Sorted Collections Test Suite">
-			<directory>tests/SortedCollection</directory>
-		</testsuite>
-	</testsuites>
-
-	<logging>
-		<log
-			type="coverage-html"
-			target="build/coverage"
-			lowUpperBound="35"
-			highLowerBound="70"
-		/>
-		<log
-			type="coverage-clover"
-			target="build/logs/clover.xml"
-		/>
-	</logging>
-
-	<filter>
-		<whitelist>
-			<directory suffix=".php">src/SortedCollection/</directory>
-		</whitelist>
-	</filter>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" bootstrap="tests/bootstrap.php" colors="true" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.2/phpunit.xsd" cacheDirectory=".phpunit.cache">
+  <coverage>
+    <report>
+      <clover outputFile="build/logs/clover.xml"/>
+      <html outputDirectory="build/coverage" lowUpperBound="35" highLowerBound="70"/>
+    </report>
+  </coverage>
+  <testsuites>
+    <testsuite name="Sorted Collections Test Suite">
+      <directory>tests/SortedCollection</directory>
+    </testsuite>
+  </testsuites>
+  <logging/>
+  <source>
+    <include>
+      <directory suffix=".php">src/SortedCollection/</directory>
+    </include>
+  </source>
 </phpunit>

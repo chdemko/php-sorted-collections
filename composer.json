@@ -17,11 +17,11 @@
 		"php": ">=5.5.0"
 	},
 	"require-dev": {
-		"php-coveralls/php-coveralls": "^2.1",
-		"joomla/coding-standards": "~2.0@alpha",
-		"phpunit/phpunit": "^7.4",
+		"php-coveralls/php-coveralls": "^2.5",
+		"squizlabs/php_codesniffer": "3.*",
+		"phpunit/phpunit": "^10.2",
 		"sphpdox/sphpdox": "dev-master",
-		"phpbench/phpbench": "^1.0@dev"
+		"phpbench/phpbench": "^1.2"
 	},
 	"autoload": {
 		"psr-4": {
@@ -34,8 +34,8 @@
 		}
 	},
 	"scripts": {
-		"style": "vendor/bin/phpcs --report=full --extensions=php --standard=ruleset.xml src tests examples benchmarks",
-		"test": "vendor/bin/phpunit",
+		"style": "vendor/bin/phpcs --report=full --extensions=php --standard=PSR12 src tests examples benchmarks",
+		"test": "XDEBUG_MODE=coverage vendor/bin/phpunit",
 		"doc": [
 			"vendor/bin/sphpdox process --output docs chdemko src",
 			"sphinx-build -b html docs/ html/"
