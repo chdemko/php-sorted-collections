@@ -45,4 +45,5 @@ jobs:
       uses: coverallsapp/github-action@v2
       with:
         file: junit.xml
+        format: xml
 
