@@ -23,7 +23,7 @@ on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
 # -- Project information -----------------------------------------------------
 
 project = 'PHP Sorted Collections'
-copyright = '2018, Ch. Demko'
+copyright = '2023, Ch. Demko'
 author = 'Ch. Demko'
 
 # The short X.Y version

@@ -7,7 +7,7 @@
  * @subpackage  Set
  *
  * @author      Christophe Demko <chdemko@gmail.com>
- * @copyright   Copyright (C) 2012-2018 Christophe Demko. All rights reserved.
+ * @copyright   Copyright (C) 2012-2023 Christophe Demko. All rights reserved.
  *
  * @license     BSD 3-Clause License
  *
@@ -48,9 +48,8 @@ unset($set[6]);
 echo $set . PHP_EOL;
 
 // Print 0-0;1-1;2-2;3-3;4-4;5-7;6-8;7-9;
-foreach ($set as $key => $value)
-{
-	echo $key . '-' . $value . ';';
+foreach ($set as $key => $value) {
+    echo $key . '-' . $value . ';';
 }
 
 echo PHP_EOL;
