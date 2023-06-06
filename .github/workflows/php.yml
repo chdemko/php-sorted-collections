@@ -41,6 +41,6 @@ jobs:
     - name: Run test
       run: composer run test
 
-    - name: Coveralls
-      run: vendor/bin/php-coveralls --coverage_clover=build/logs/clover.xml -v
+#    - name: Coveralls
+#      run: vendor/bin/php-coveralls --coverage_clover=build/logs/clover.xml -v
 
