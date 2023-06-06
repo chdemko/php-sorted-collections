@@ -42,8 +42,5 @@ jobs:
       run: composer run test
 
     - name: Coveralls
-      uses: coverallsapp/github-action@v2
-      with:
-        file: junit.xml
-        format: xml
+      run: composer run php-coveralls --coverage_clover=build/logs/clover.xml -v
 
