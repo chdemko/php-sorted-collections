@@ -56,6 +56,8 @@ if you want to create local documentation.
 Create a `test.php` file containg
 
 ~~~php
+<?php
+
 require __DIR__ . '/vendor/autoload.php';
 
 use chdemko\SortedCollection\TreeMap;
@@ -64,6 +66,12 @@ $tree = TreeMap::create()->put(
     [1=>1, 9=>9, 5=>5, 2=>2, 6=>6, 3=>3, 0=>0, 8=>8, 7=>7, 4=>4]
 );
 echo $tree . PHP_EOL;
+~~~
+
+And run
+
+~~~bash
+$ php test.php
 ~~~
 
 This should print
