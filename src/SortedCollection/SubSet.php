@@ -289,37 +289,37 @@ class SubSet extends AbstractSet
         if (isset($this->from)) {
             if (isset($this->to)) {
                 return array(
-                 'SubSet' => array(
-                  'set' => $this->set->jsonSerialize(),
-                  'from' => $this->from,
-                  'fromInclusive' => $this->fromInclusive,
-                  'to' => $this->to,
-                  'toInclusive' => $this->toInclusive,
-                 )
+                    'SubSet' => array(
+                        'set' => $this->set->jsonSerialize(),
+                        'from' => $this->from,
+                        'fromInclusive' => $this->fromInclusive,
+                        'to' => $this->to,
+                        'toInclusive' => $this->toInclusive,
+                    )
                 );
             } else {
                 return array(
-                'TailSet' => array(
-                'set' => $this->set->jsonSerialize(),
-                'from' => $this->from,
-                'fromInclusive' => $this->fromInclusive,
-                )
+                    'TailSet' => array(
+                        'set' => $this->set->jsonSerialize(),
+                        'from' => $this->from,
+                        'fromInclusive' => $this->fromInclusive,
+                    )
                 );
             }
         } else {
             if (isset($this->to)) {
                 return array(
-                'HeadSet' => array(
-                'set' => $this->set->jsonSerialize(),
-                'to' => $this->to,
-                'toInclusive' => $this->toInclusive,
-                )
+                    'HeadSet' => array(
+                        'set' => $this->set->jsonSerialize(),
+                        'to' => $this->to,
+                        'toInclusive' => $this->toInclusive,
+                    )
                 );
             } else {
                 return array(
-                'ViewSet' => array(
-                'set' => $this->set->jsonSerialize(),
-                )
+                    'ViewSet' => array(
+                        'set' => $this->set->jsonSerialize(),
+                    )
                 );
             }
         }

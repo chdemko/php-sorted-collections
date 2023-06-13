@@ -774,37 +774,37 @@ class SubMap extends AbstractMap
         if ($this->fromOption == self::UNUSED) {
             if ($this->toOption == self::UNUSED) {
                 return array(
-                 'ViewMap' => array(
-                  'map' => $this->map->jsonSerialize(),
-                 )
+                    'ViewMap' => array(
+                        'map' => $this->map->jsonSerialize(),
+                     )
                 );
             } else {
                 return array(
-                'HeadMap' => array(
-                'map' => $this->map->jsonSerialize(),
-                'toKey' => $this->toKey,
-                'toInclusive' => $this->toOption == self::INCLUSIVE,
-                )
+                    'HeadMap' => array(
+                        'map' => $this->map->jsonSerialize(),
+                        'toKey' => $this->toKey,
+                        'toInclusive' => $this->toOption == self::INCLUSIVE,
+                    )
                 );
             }
         } else {
             if ($this->toOption == self::UNUSED) {
                 return array(
-                'TailMap' => array(
-                'map' => $this->map->jsonSerialize(),
-                'fromKey' => $this->fromKey,
-                'fromInclusive' => $this->fromOption == self::INCLUSIVE,
-                )
+                    'TailMap' => array(
+                        'map' => $this->map->jsonSerialize(),
+                        'fromKey' => $this->fromKey,
+                        'fromInclusive' => $this->fromOption == self::INCLUSIVE,
+                    )
                 );
             } else {
                 return array(
-                'SubMap' => array(
-                'map' => $this->map->jsonSerialize(),
-                'fromKey' => $this->fromKey,
-                'fromInclusive' => $this->fromOption == self::INCLUSIVE,
-                'toKey' => $this->toKey,
-                'toInclusive' => $this->toOption == self::INCLUSIVE,
-                )
+                    'SubMap' => array(
+                        'map' => $this->map->jsonSerialize(),
+                        'fromKey' => $this->fromKey,
+                        'fromInclusive' => $this->fromOption == self::INCLUSIVE,
+                        'toKey' => $this->toKey,
+                        'toInclusive' => $this->toOption == self::INCLUSIVE,
+                    )
                 );
             }
         }
