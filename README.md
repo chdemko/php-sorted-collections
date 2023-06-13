@@ -18,7 +18,7 @@ This project uses:
 
 * [PHP Code Sniffer](https://github.com/squizlabs/php_codesniffer) for checking PHP code style
 * [PHPUnit](http://phpunit.de/) for unit test (100% covered)
-* [phpDocumentor](http://http://www.phpdoc.org/) and [sphpdox](https://packagist.org/packages/sphpdox/sphpdox) for [documentation](http://php-sorted-collections.readthedocs.io/en/latest/?badge=latest)
+* [sphpdox](https://packagist.org/packages/sphpdox/sphpdox) for [documentation](http://php-sorted-collections.readthedocs.io/en/latest/?badge=latest)
 
 Instructions
 ------------
