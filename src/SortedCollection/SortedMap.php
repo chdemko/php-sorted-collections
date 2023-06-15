@@ -29,7 +29,7 @@ interface SortedMap extends SortedCollection
      *
      * @return mixed The first key
      *
-     * @throws \OutOfBoundsException If there is no element
+     * @throws OutOfBoundsException If there is no element
      *
      * @since 1.0.0
      */
@@ -40,7 +40,7 @@ interface SortedMap extends SortedCollection
      *
      * @return mixed The last key
      *
-     * @throws \OutOfBoundsException If there is no element
+     * @throws OutOfBoundsException If there is no element
      *
      * @since 1.0.0
      */
@@ -53,7 +53,7 @@ interface SortedMap extends SortedCollection
      *
      * @return mixed The found key
      *
-     * @throws \OutOfBoundsException If there is no lower element
+     * @throws OutOfBoundsException If there is no lower element
      *
      * @since 1.0.0
      */
@@ -66,7 +66,7 @@ interface SortedMap extends SortedCollection
      *
      * @return mixed The found key
      *
-     * @throws \OutOfBoundsException If there is no floor element
+     * @throws OutOfBoundsException If there is no floor element
      *
      * @since 1.0.0
      */
@@ -79,7 +79,7 @@ interface SortedMap extends SortedCollection
      *
      * @return mixed The found key
      *
-     * @throws \OutOfBoundsException If there is no such element
+     * @throws OutOfBoundsException If there is no such element
      *
      * @since 1.0.0
      */
@@ -92,7 +92,7 @@ interface SortedMap extends SortedCollection
      *
      * @return mixed The found key
      *
-     * @throws \OutOfBoundsException If there is no ceiling element
+     * @throws OutOfBoundsException If there is no ceiling element
      *
      * @since 1.0.0
      */
@@ -105,7 +105,7 @@ interface SortedMap extends SortedCollection
      *
      * @return mixed The found key
      *
-     * @throws \OutOfBoundsException If there is no higher element
+     * @throws OutOfBoundsException If there is no higher element
      *
      * @since 1.0.0
      */

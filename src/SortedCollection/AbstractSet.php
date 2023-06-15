@@ -69,7 +69,7 @@ abstract class AbstractSet implements SortedSet
      *
      * @param string $property The property
      *
-     * @throws \RuntimeException If the property does not exist
+     * @throws RuntimeException If the property does not exist
      *
      * @return mixed The value associated to the property
      *
@@ -108,7 +108,7 @@ abstract class AbstractSet implements SortedSet
      *
      * @return mixed The first element
      *
-     * @throws \OutOfBoundsException If there is no element
+     * @throws OutOfBoundsException If there is no element
      *
      * @since 1.0.0
      */
@@ -122,7 +122,7 @@ abstract class AbstractSet implements SortedSet
      *
      * @return mixed The last element
      *
-     * @throws \OutOfBoundsException If there is no element
+     * @throws OutOfBoundsException If there is no element
      *
      * @since 1.0.0
      */
@@ -138,7 +138,7 @@ abstract class AbstractSet implements SortedSet
      *
      * @return mixed The found element
      *
-     * @throws \OutOfBoundsException If there is no lower element
+     * @throws OutOfBoundsException If there is no lower element
      *
      * @since 1.0.0
      */
@@ -154,7 +154,7 @@ abstract class AbstractSet implements SortedSet
      *
      * @return mixed The found element
      *
-     * @throws \OutOfBoundsException If there is no floor element
+     * @throws OutOfBoundsException If there is no floor element
      *
      * @since 1.0.0
      */
@@ -170,7 +170,7 @@ abstract class AbstractSet implements SortedSet
      *
      * @return mixed The found element
      *
-     * @throws \OutOfBoundsException If there is no such element
+     * @throws OutOfBoundsException If there is no such element
      *
      * @since 1.0.0
      */
@@ -186,7 +186,7 @@ abstract class AbstractSet implements SortedSet
      *
      * @return mixed The found element
      *
-     * @throws \OutOfBoundsException If there is no ceiling element
+     * @throws OutOfBoundsException If there is no ceiling element
      *
      * @since 1.0.0
      */
@@ -202,7 +202,7 @@ abstract class AbstractSet implements SortedSet
      *
      * @return mixed The found element
      *
-     * @throws \OutOfBoundsException If there is no higher element
+     * @throws OutOfBoundsException If there is no higher element
      *
      * @since 1.0.0
      */
@@ -293,7 +293,7 @@ abstract class AbstractSet implements SortedSet
      *
      * @return void
      *
-     * @throws \RuntimeOperation The operation is not supported by this class
+     * @throws RuntimeOperation The operation is not supported by this class
      *
      * @since 1.0.0
      */
@@ -309,7 +309,7 @@ abstract class AbstractSet implements SortedSet
      *
      * @return void
      *
-     * @throws \RuntimeOperation The operation is not supported by this class
+     * @throws RuntimeOperation The operation is not supported by this class
      *
      * @since 1.0.0
      */

@@ -18,6 +18,11 @@
 
 import os
 
+import subprocess
+
+# Doxygen
+subprocess.call('doxygen Doxyfile', shell=True)
+
 on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
 
 # -- Project information -----------------------------------------------------
@@ -29,7 +34,7 @@ author = 'Ch. Demko'
 # The short X.Y version
 version = '1.0'
 # The full version, including alpha/beta/rc tags
-release = '1.0.4'
+release = '1.0.6'
 
 
 # -- General configuration ---------------------------------------------------
@@ -37,15 +42,28 @@ release = '1.0.4'
 # If your documentation needs a minimal Sphinx version, state it here.
 #
 # needs_sphinx = '1.0'
-needs_sphinx = '1.8'
+needs_sphinx = '6.0'
 
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
+
 extensions = [
-    "sphinxcontrib.phpdomain",
-    "m2r"
+    'sphinx.ext.autodoc',
+    'sphinxcontrib.phpdomain',
+    'breathe',
+    'myst_parser'
 ]
+
+# Add any paths that contain templates here, relative to this directory.
+templates_path = ['_templates']
+
+# List of patterns, relative to source directory, that match files and
+# directories to ignore when looking for source files.
+# This pattern also affects html_static_path and html_extra_path.
+exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
+
+highlight_language = 'php'
 
 from sphinx.highlighting import lexers
 from pygments.lexers.web import PhpLexer
@@ -60,7 +78,10 @@ primary_domain = 'php'
 # You can specify multiple suffix as a list of string:
 #
 # source_suffix = ['.rst', '.md']
-source_suffix = ['.rst', '.md']
+source_suffix = {
+    '.rst': 'restructuredtext',
+    '.md': 'markdown',
+}
 
 # The master toctree document.
 master_doc = 'index'
@@ -70,7 +91,7 @@ master_doc = 'index'
 #
 # This is also used if you do content translation via gettext catalogs.
 # Usually you set "language" from the command line for these cases.
-language = None
+language = 'en'
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
@@ -92,6 +113,25 @@ if not on_rtd:  # only import and set the theme if we're building docs locally
     html_theme = 'sphinx_rtd_theme'
     html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 
+from sphinx.highlighting import lexers
+from pygments.lexers.web import PhpLexer
+lexers['php'] = PhpLexer(startinline=True, linenos=1)
+lexers['php-annotations'] = PhpLexer(startinline=True, linenos=1)
+
+# Set domain
+primary_domain = 'php'
+
+
+# -- Breathe configuration -------------------------------------------------
+
+breathe_projects = {
+    'SortedCollection': '_build/xml/'
+}
+breathe_default_project = 'SortedCollection'
+breathe_default_members = ('members', 'undoc-members')
+breathe_domain_by_extension = {
+    'php' : 'php',
+}
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the

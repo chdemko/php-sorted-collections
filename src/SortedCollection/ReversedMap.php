@@ -122,7 +122,7 @@ class ReversedMap extends AbstractMap
      *
      * @return mixed The first element
      *
-     * @throws \OutOfBoundsException If there is no element
+     * @throws OutOfBoundsException If there is no element
      *
      * @since 1.0.0
      */
@@ -136,7 +136,7 @@ class ReversedMap extends AbstractMap
      *
      * @return mixed The last element
      *
-     * @throws \OutOfBoundsException If there is no element
+     * @throws OutOfBoundsException If there is no element
      *
      * @since 1.0.0
      */
@@ -152,7 +152,7 @@ class ReversedMap extends AbstractMap
      *
      * @return mixed The predecessor element
      *
-     * @throws \OutOfBoundsException If there is no predecessor
+     * @throws OutOfBoundsException If there is no predecessor
      *
      * @since 1.0.0
      */
@@ -168,7 +168,7 @@ class ReversedMap extends AbstractMap
      *
      * @return mixed The successor element
      *
-     * @throws \OutOfBoundsException If there is no successor
+     * @throws OutOfBoundsException If there is no successor
      */
     public function successor($element)
     {
@@ -182,7 +182,7 @@ class ReversedMap extends AbstractMap
      *
      * @return mixed The found element
      *
-     * @throws \OutOfBoundsException If there is no lower element
+     * @throws OutOfBoundsException If there is no lower element
      *
      * @since 1.0.0
      */
@@ -198,7 +198,7 @@ class ReversedMap extends AbstractMap
      *
      * @return mixed The found element
      *
-     * @throws \OutOfBoundsException If there is no floor element
+     * @throws OutOfBoundsException If there is no floor element
      *
      * @since 1.0.0
      */
@@ -214,7 +214,7 @@ class ReversedMap extends AbstractMap
      *
      * @return mixed The found element
      *
-     * @throws \OutOfBoundsException If there is no such element
+     * @throws OutOfBoundsException If there is no such element
      *
      * @since 1.0.0
      */
@@ -230,7 +230,7 @@ class ReversedMap extends AbstractMap
      *
      * @return mixed The found element
      *
-     * @throws \OutOfBoundsException If there is no ceiling element
+     * @throws OutOfBoundsException If there is no ceiling element
      *
      * @since 1.0.0
      */
@@ -246,7 +246,7 @@ class ReversedMap extends AbstractMap
      *
      * @return mixed The found element
      *
-     * @throws \OutOfBoundsException If there is no higher element
+     * @throws OutOfBoundsException If there is no higher element
      *
      * @since 1.0.0
      */
