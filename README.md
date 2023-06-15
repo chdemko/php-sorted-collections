@@ -18,14 +18,15 @@ This project uses:
 
 * [PHP Code Sniffer](https://github.com/squizlabs/php_codesniffer) for checking PHP code style
 * [PHPUnit](http://phpunit.de/) for unit test (100% covered)
-* [sphpdox](https://packagist.org/packages/sphpdox/sphpdox) for [documentation](http://php-sorted-collections.readthedocs.io/en/latest/?badge=latest)
+* [Sphinx](https://www.sphinx-doc.org/) and [Doxygen](https://www.doxygen.nl/) for the
+  [documentation](http://php-sorted-collections.readthedocs.io/en/latest/?badge=latest)
 
 Instructions
 ------------
 
 Using composer: either
 
-~~~bash
+~~~shell
 $ composer create-project chdemko/sorted-collections:1.0.*@dev; cd sorted-collections
 ~~~
 
@@ -41,17 +42,9 @@ or create a `composer.json` file containing
 
 and run
 
-~~~bash
+~~~shell
 $ composer install
 ~~~
-
-Run also
-
-~~~bash
-$ [sudo] pip install [--user] -r docs/requirements.txt
-~~~
-
-if you want to create local documentation.
 
 Create a `test.php` file containg
 
@@ -70,7 +63,7 @@ echo $tree . PHP_EOL;
 
 And run
 
-~~~bash
+~~~shell
 $ php test.php
 ~~~
 
@@ -81,6 +74,24 @@ This should print
 ~~~
 
 See the [examples](https://github.com/chdemko/php-sorted-collections/tree/develop/examples) and [benchmarks](https://github.com/chdemko/php-sorted-collections/tree/develop/benchmarks) folder for more information.
+
+Documentation
+-------------
+
+Run
+
+~~~shell
+$ sudo apt install doxygen python3-pip python3-virtualenv
+$ virtualenv venv
+$ venv/bin/activate
+(venv) $ pip install -r docs/requirements.txt
+(venv) $ sphinx-build -b html docs/ html/
+(venv) $ deactivate
+$
+~~~
+
+if you want to create local documentation with Sphinx.
+
 
 Citation
 --------

@@ -45,7 +45,7 @@ interface SortedCollection extends \ArrayAccess, \Countable, \IteratorAggregate,
      *
      * @return mixed The first element
      *
-     * @throws \OutOfBoundsException If there is no element
+     * @throws OutOfBoundsException If there is no element
      *
      * @since 1.0.0
      */
@@ -56,7 +56,7 @@ interface SortedCollection extends \ArrayAccess, \Countable, \IteratorAggregate,
      *
      * @return mixed The last element
      *
-     * @throws \OutOfBoundsException If there is no element
+     * @throws OutOfBoundsException If there is no element
      *
      * @since 1.0.0
      */
@@ -69,7 +69,7 @@ interface SortedCollection extends \ArrayAccess, \Countable, \IteratorAggregate,
      *
      * @return mixed The found node
      *
-     * @throws \OutOfBoundsException If there is no lower element
+     * @throws OutOfBoundsException If there is no lower element
      *
      * @since 1.0.0
      */
@@ -82,7 +82,7 @@ interface SortedCollection extends \ArrayAccess, \Countable, \IteratorAggregate,
      *
      * @return mixed The found node
      *
-     * @throws \OutOfBoundsException If there is no floor element
+     * @throws OutOfBoundsException If there is no floor element
      *
      * @since 1.0.0
      */
@@ -95,7 +95,7 @@ interface SortedCollection extends \ArrayAccess, \Countable, \IteratorAggregate,
      *
      * @return mixed The found node
      *
-     * @throws \OutOfBoundsException If there is no such element
+     * @throws OutOfBoundsException If there is no such element
      *
      * @since 1.0.0
      */
@@ -108,7 +108,7 @@ interface SortedCollection extends \ArrayAccess, \Countable, \IteratorAggregate,
      *
      * @return mixed The found node
      *
-     * @throws \OutOfBoundsException If there is no ceiling element
+     * @throws OutOfBoundsException If there is no ceiling element
      *
      * @since 1.0.0
      */
@@ -121,7 +121,7 @@ interface SortedCollection extends \ArrayAccess, \Countable, \IteratorAggregate,
      *
      * @return mixed The found node
      *
-     * @throws \OutOfBoundsException If there is no higher element
+     * @throws OutOfBoundsException If there is no higher element
      *
      * @since 1.0.0
      */

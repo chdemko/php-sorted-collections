@@ -95,7 +95,7 @@ class SubSet extends AbstractSet
      * @param string $property The property
      * @param mixed  $value    The new value
      *
-     * @throws \RuntimeException If the property does not exist
+     * @throws RuntimeException If the property does not exist
      *
      * @return void
      *
@@ -126,7 +126,7 @@ class SubSet extends AbstractSet
      *
      * @param string $property The property
      *
-     * @throws \RuntimeException If the property does not exist
+     * @throws RuntimeException If the property does not exist
      *
      * @return void
      *

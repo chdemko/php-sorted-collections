@@ -107,7 +107,7 @@ class TreeNode implements \Countable
      *
      * @return mixed The value associated to the property
      *
-     * @throws \RuntimeException If the property is undefined
+     * @throws RuntimeException If the property is undefined
      *
      * @since 1.0.0
      */

@@ -40,7 +40,7 @@ abstract class AbstractMap implements SortedMap
      *
      * @param string $property The property
      *
-     * @throws \RuntimeException If the property does not exist
+     * @throws RuntimeException If the property does not exist
      *
      * @return mixed The value associated to the property
      *
@@ -79,7 +79,7 @@ abstract class AbstractMap implements SortedMap
      *
      * @return mixed The first key
      *
-     * @throws \OutOfBoundsException If there is no element
+     * @throws OutOfBoundsException If there is no element
      *
      * @since 1.0.0
      */
@@ -93,7 +93,7 @@ abstract class AbstractMap implements SortedMap
      *
      * @return mixed The first value
      *
-     * @throws \OutOfBoundsException If there is no element
+     * @throws OutOfBoundsException If there is no element
      *
      * @since 1.0.0
      */
@@ -107,7 +107,7 @@ abstract class AbstractMap implements SortedMap
      *
      * @return mixed The last key
      *
-     * @throws \OutOfBoundsException If there is no element
+     * @throws OutOfBoundsException If there is no element
      *
      * @since 1.0.0
      */
@@ -121,7 +121,7 @@ abstract class AbstractMap implements SortedMap
      *
      * @return mixed The last value
      *
-     * @throws \OutOfBoundsException If there is no element
+     * @throws OutOfBoundsException If there is no element
      *
      * @since 1.0.0
      */
@@ -137,7 +137,7 @@ abstract class AbstractMap implements SortedMap
      *
      * @return mixed The found key
      *
-     * @throws \OutOfBoundsException If there is no lower element
+     * @throws OutOfBoundsException If there is no lower element
      *
      * @since 1.0.0
      */
@@ -153,7 +153,7 @@ abstract class AbstractMap implements SortedMap
      *
      * @return mixed The found value
      *
-     * @throws \OutOfBoundsException If there is no lower element
+     * @throws OutOfBoundsException If there is no lower element
      *
      * @since 1.0.0
      */
@@ -169,7 +169,7 @@ abstract class AbstractMap implements SortedMap
      *
      * @return mixed The found key
      *
-     * @throws \OutOfBoundsException If there is no floor element
+     * @throws OutOfBoundsException If there is no floor element
      *
      * @since 1.0.0
      */
@@ -185,7 +185,7 @@ abstract class AbstractMap implements SortedMap
      *
      * @return mixed The found value
      *
-     * @throws \OutOfBoundsException If there is no floor element
+     * @throws OutOfBoundsException If there is no floor element
      *
      * @since 1.0.0
      */
@@ -201,7 +201,7 @@ abstract class AbstractMap implements SortedMap
      *
      * @return mixed The found key
      *
-     * @throws \OutOfBoundsException If there is no such element
+     * @throws OutOfBoundsException If there is no such element
      *
      * @since 1.0.0
      */
@@ -217,7 +217,7 @@ abstract class AbstractMap implements SortedMap
      *
      * @return mixed The found value
      *
-     * @throws \OutOfBoundsException If there is no such element
+     * @throws OutOfBoundsException If there is no such element
      *
      * @since 1.0.0
      */
@@ -233,7 +233,7 @@ abstract class AbstractMap implements SortedMap
      *
      * @return mixed The found key
      *
-     * @throws \OutOfBoundsException If there is no ceiling element
+     * @throws OutOfBoundsException If there is no ceiling element
      *
      * @since 1.0.0
      */
@@ -249,7 +249,7 @@ abstract class AbstractMap implements SortedMap
      *
      * @return mixed The found value
      *
-     * @throws \OutOfBoundsException If there is no ceiling element
+     * @throws OutOfBoundsException If there is no ceiling element
      *
      * @since 1.0.0
      */
@@ -265,7 +265,7 @@ abstract class AbstractMap implements SortedMap
      *
      * @return mixed The found key
      *
-     * @throws \OutOfBoundsException If there is no higher element
+     * @throws OutOfBoundsException If there is no higher element
      *
      * @since 1.0.0
      */
@@ -281,7 +281,7 @@ abstract class AbstractMap implements SortedMap
      *
      * @return mixed The found value
      *
-     * @throws \OutOfBoundsException If there is no higher element
+     * @throws OutOfBoundsException If there is no higher element
      *
      * @since 1.0.0
      */
@@ -363,7 +363,7 @@ abstract class AbstractMap implements SortedMap
      *
      * @return mixed The found value
      *
-     * @throws \OutOfRangeException If there is no such element
+     * @throws OutOfRangeException If there is no such element
      *
      * @since 1.0.0
      */
@@ -402,7 +402,7 @@ abstract class AbstractMap implements SortedMap
      *
      * @return void
      *
-     * @throws \RuntimeOperation The operation is not supported by this class
+     * @throws RuntimeOperation The operation is not supported by this class
      *
      * @since 1.0.0
      */
@@ -418,7 +418,7 @@ abstract class AbstractMap implements SortedMap
      *
      * @return void
      *
-     * @throws \RuntimeOperation The operation is not supported by this class
+     * @throws RuntimeOperation The operation is not supported by this class
      *
      * @since 1.0.0
      */

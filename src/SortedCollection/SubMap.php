@@ -108,7 +108,7 @@ class SubMap extends AbstractMap
      *
      * @param string $property The property
      *
-     * @throws \RuntimeException If the property does not exist
+     * @throws RuntimeException If the property does not exist
      *
      * @return mixed The value associated to the property
      *
@@ -158,7 +158,7 @@ class SubMap extends AbstractMap
      * @param string $property The property
      * @param mixed  $value    The new value
      *
-     * @throws \RuntimeException If the property does not exist
+     * @throws RuntimeException If the property does not exist
      *
      * @return void
      *
@@ -207,7 +207,7 @@ class SubMap extends AbstractMap
      *
      * @param string $property The property
      *
-     * @throws \RuntimeException If the property does not exist
+     * @throws RuntimeException If the property does not exist
      *
      * @return void
      *
@@ -379,7 +379,7 @@ class SubMap extends AbstractMap
      *
      * @return mixed The first element
      *
-     * @throws \OutOfBoundsException If there is no element
+     * @throws OutOfBoundsException If there is no element
      *
      * @since 1.0.0
      */
@@ -409,7 +409,7 @@ class SubMap extends AbstractMap
      *
      * @return mixed The last element
      *
-     * @throws \OutOfBoundsException If there is no element
+     * @throws OutOfBoundsException If there is no element
      *
      * @since 1.0.0
      */
@@ -441,7 +441,7 @@ class SubMap extends AbstractMap
      *
      * @return mixed The predecessor element
      *
-     * @throws \OutOfBoundsException If there is no predecessor
+     * @throws OutOfBoundsException If there is no predecessor
      *
      * @since 1.0.0
      */
@@ -474,7 +474,7 @@ class SubMap extends AbstractMap
      *
      * @return mixed The successor element
      *
-     * @throws \OutOfBoundsException If there is no successor
+     * @throws OutOfBoundsException If there is no successor
      *
      * @since 1.0.0
      */
@@ -507,7 +507,7 @@ class SubMap extends AbstractMap
      *
      * @return mixed The found element
      *
-     * @throws \OutOfBoundsException If there is no lower element
+     * @throws OutOfBoundsException If there is no lower element
      *
      * @since 1.0.0
      */
@@ -562,7 +562,7 @@ class SubMap extends AbstractMap
      *
      * @return mixed The found element
      *
-     * @throws \OutOfBoundsException If there is no floor element
+     * @throws OutOfBoundsException If there is no floor element
      *
      * @since 1.0.0
      */
@@ -617,7 +617,7 @@ class SubMap extends AbstractMap
      *
      * @return mixed The found element
      *
-     * @throws \OutOfBoundsException  If there is no such element
+     * @throws OutOfBoundsException  If there is no such element
      *
      * @since 1.0.0
      */
@@ -659,7 +659,7 @@ class SubMap extends AbstractMap
      *
      * @return mixed The found element
      *
-     * @throws \OutOfBoundsException If there is no ceiling element
+     * @throws OutOfBoundsException If there is no ceiling element
      *
      * @since 1.0.0
      */
@@ -714,7 +714,7 @@ class SubMap extends AbstractMap
      *
      * @return mixed The found element
      *
-     * @throws \OutOfBoundsException If there is no higher element
+     * @throws OutOfBoundsException If there is no higher element
      *
      * @since 1.0.0
      */
