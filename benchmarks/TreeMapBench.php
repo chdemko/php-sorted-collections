@@ -11,8 +11,8 @@
  * This file is part of the php-sorted-collections package https://github.com/chdemko/php-sorted-collections
  */
 
-// Declare chdemko\SortedCollection namespace
-namespace chdemko\SortedCollection;
+// Declare chdemko\SortedCollectionBenchmark namespace
+namespace chdemko\SortedCollectionBenchmark;
 
 use chdemko\SortedCollection\TreeMap;
 use chdemko\SortedCollection\ReversedMap;
