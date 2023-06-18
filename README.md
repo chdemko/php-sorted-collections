@@ -1,6 +1,7 @@
 PHP Sorted Collections
 ======================
-![PHP package](https://github.com/chdemko/php-sorted-collections/workflows/PHP%20Composer/badge.svg?branch=develop)
+
+[![PHP package](https://github.com/chdemko/php-sorted-collections/workflows/PHP%20Composer/badge.svg?branch=develop)](https://github.com/chdemko/php-bitarray/actions/workflows/php.yml)
 [![Documentation Status](https://img.shields.io/readthedocs/php-sorted-collections.svg)](http://php-sorted-collections.readthedocs.io/en/latest/?badge=latest)
 [![Coveralls](https://img.shields.io/coveralls/chdemko/php-sorted-collections.svg)](https://coveralls.io/r/chdemko/php-sorted-collections?branch=develop)
 [![Scrutinizer](https://img.shields.io/scrutinizer/g/chdemko/php-sorted-collections/develop.svg)](https://scrutinizer-ci.com/g/chdemko/php-sorted-collections/?branch=develop)
