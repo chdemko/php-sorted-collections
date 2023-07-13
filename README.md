@@ -10,7 +10,7 @@ PHP Sorted Collections
 [![Latest Stable Version](https://img.shields.io/packagist/v/chdemko/sorted-collections.svg)](https://packagist.org/packages/chdemko/sorted-collections)
 [![Packagist](https://img.shields.io/packagist/dt/chdemko/sorted-collections.svg)](https://packagist.org/packages/chdemko/sorted-collections)
 [![Latest Unstable Version](https://poser.pugx.org/chdemko/sorted-collections/v/unstable.svg)](https://packagist.org/packages/chdemko/sorted-collections)
-[![License](https://poser.pugx.org/chdemko/sorted-collections/license.svg)](https://raw.githubusercontent.com/chdemko/php-sorted-collections/develop/LICENSE)
+[![License](https://img.shields.io/github/license/chdemko/php-sorted-collections.svg)](https://raw.githubusercontent.com/chdemko/php-sorted-collections/develop/LICENSE)
 [![Repo Size](https://img.shields.io/github/repo-size/chdemko/php-sorted-collections.svg)](http://php-sorted-collections.readthedocs.io/en/latest/)
 [![Code Size](https://img.shields.io/github/languages/code-size/chdemko/php-sorted-collections.svg)](http://php-sorted-collections.readthedocs.io/en/latest/)
 [![Documentation Status](https://img.shields.io/readthedocs/php-sorted-collections.svg)](http://php-sorted-collections.readthedocs.io/en/latest/?badge=latest)
