@@ -3,7 +3,7 @@ PHP Sorted Collections
 
 [![PHP package](https://github.com/chdemko/php-sorted-collections/workflows/PHP%20Composer/badge.svg?branch=develop)](https://github.com/chdemko/php-sorted-collections/actions/workflows/php.yml)
 [![Coveralls](https://img.shields.io/coveralls/chdemko/php-sorted-collections.svg)](https://coveralls.io/r/chdemko/php-sorted-collections?branch=develop)
-[![Scrutinizer](https://img.shields.io/scrutinizer/g/chdemko/php-sorted-collections/develop.svg)](https://scrutinizer-ci.com/g/chdemko/php-sorted-collections/?branch=develop)
+[![Scrutinizer](https://img.shields.io/scrutinizer/g/chdemko/php-sorted-collections/develop.svg?logo=scrutinizer)](https://scrutinizer-ci.com/g/chdemko/php-sorted-collections/?branch=develop)
 [![Code Climate](https://codeclimate.com/github/chdemko/php-sorted-collections/badges/gpa.svg)](https://codeclimate.com/github/chdemko/php-sorted-collections/)
 [![CodeFactor](https://www.codefactor.io/repository/github/chdemko/php-sorted-collections/badge)](https://www.codefactor.io/repository/github/chdemko/php-sorted-collections)
 [![PHP versions](https://img.shields.io/packagist/dependency-v/chdemko/sorted-collections/php)](https://packagist.org/packages/chdemko/sorted-collections)
