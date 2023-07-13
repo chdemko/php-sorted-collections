@@ -5,7 +5,7 @@ PHP Sorted Collections
 [![Coveralls](https://img.shields.io/coveralls/chdemko/php-sorted-collections.svg)](https://coveralls.io/r/chdemko/php-sorted-collections?branch=develop)
 [![Scrutinizer](https://img.shields.io/scrutinizer/g/chdemko/php-sorted-collections/develop.svg?logo=scrutinizer)](https://scrutinizer-ci.com/g/chdemko/php-sorted-collections/?branch=develop)
 [![Code Climate](https://codeclimate.com/github/chdemko/php-sorted-collections/badges/gpa.svg)](https://codeclimate.com/github/chdemko/php-sorted-collections/)
-[![CodeFactor](https://www.codefactor.io/repository/github/chdemko/php-sorted-collections/badge)](https://www.codefactor.io/repository/github/chdemko/php-sorted-collections)
+[![CodeFactor]([https://www.codefactor.io/repository/github/chdemko/php-sorted-collections/badge](https://img.shields.io/codefactor/grade/github/chdemko/php-sorted-collections/develop?logo=codefactor))](https://www.codefactor.io/repository/github/chdemko/php-sorted-collections)
 [![PHP versions](https://img.shields.io/packagist/dependency-v/chdemko/sorted-collections/php)](https://packagist.org/packages/chdemko/sorted-collections)
 [![Latest Stable Version](https://img.shields.io/packagist/v/chdemko/sorted-collections.svg)](https://packagist.org/packages/chdemko/sorted-collections)
 [![Packagist](https://img.shields.io/packagist/dt/chdemko/sorted-collections.svg)](https://packagist.org/packages/chdemko/sorted-collections)
