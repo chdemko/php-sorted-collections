@@ -6,6 +6,7 @@ PHP Sorted Collections
 [![Scrutinizer](https://img.shields.io/scrutinizer/g/chdemko/php-sorted-collections/develop.svg)](https://scrutinizer-ci.com/g/chdemko/php-sorted-collections/?branch=develop)
 [![Code Climate](https://codeclimate.com/github/chdemko/php-sorted-collections/badges/gpa.svg)](https://codeclimate.com/github/chdemko/php-sorted-collections/)
 [![CodeFactor](https://www.codefactor.io/repository/github/chdemko/php-sorted-collections/badge)](https://www.codefactor.io/repository/github/chdemko/php-sorted-collections)
+[![Codacy](https://img.shields.io/codacy/grade/1307547b7a984fe19e98603a91a4cdb6.svg?logo=codacy)](https://app.codacy.com/gh/chdemko/php-sorted-collections/dashboard)
 [![PHP versions](https://img.shields.io/packagist/dependency-v/chdemko/sorted-collections/php)](https://packagist.org/packages/chdemko/sorted-collections)
 [![Latest Stable Version](https://img.shields.io/packagist/v/chdemko/sorted-collections.svg)](https://packagist.org/packages/chdemko/sorted-collections)
 [![Packagist](https://img.shields.io/packagist/dt/chdemko/sorted-collections.svg)](https://packagist.org/packages/chdemko/sorted-collections)
