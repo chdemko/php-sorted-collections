@@ -9,7 +9,7 @@ PHP Sorted Collections
 [![Codacy](https://img.shields.io/codacy/grade/1307547b7a984fe19e98603a91a4cdb6.svg?logo=codacy)](https://app.codacy.com/gh/chdemko/php-sorted-collections/dashboard)
 [![PHP versions](https://img.shields.io/packagist/dependency-v/chdemko/sorted-collections/php)](https://packagist.org/packages/chdemko/sorted-collections)
 [![Latest Stable Version](https://img.shields.io/packagist/v/chdemko/sorted-collections.svg)](https://packagist.org/packages/chdemko/sorted-collections)
-[![Packagist](https://img.shields.io/packagist/dt/chdemko/sorted-collections.svg)](https://packagist.org/packages/chdemko/sorted-collections)
+[![Downloads](https://img.shields.io/packagist/dt/chdemko/sorted-collections.svg)](https://packagist.org/packages/chdemko/sorted-collections)
 [![Latest Unstable Version](https://poser.pugx.org/chdemko/sorted-collections/v/unstable.svg)](https://packagist.org/packages/chdemko/sorted-collections)
 [![License](https://img.shields.io/github/license/chdemko/php-sorted-collections.svg)](https://raw.githubusercontent.com/chdemko/php-sorted-collections/develop/LICENSE)
 [![Repo Size](https://img.shields.io/github/repo-size/chdemko/php-sorted-collections.svg)](http://php-sorted-collections.readthedocs.io/en/latest/)
