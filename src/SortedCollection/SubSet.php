@@ -284,7 +284,7 @@ class SubSet extends AbstractSet
      *
      * @since 1.0.0
      */
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         if (isset($this->from)) {
             if (isset($this->to)) {

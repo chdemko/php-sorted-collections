@@ -384,7 +384,7 @@ class TreeMap extends AbstractMap
      *
      * @since 1.0.0
      */
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         $array = array();
 
@@ -405,7 +405,7 @@ class TreeMap extends AbstractMap
      *
      * @since 1.0.0
      */
-    public function offsetSet($key, $value)
+    public function offsetSet($key, $value): void
     {
         if ($this->root) {
             $this->root = $this->root->insert($key, $value, $this->comparator);
@@ -423,7 +423,7 @@ class TreeMap extends AbstractMap
      *
      * @since 1.0.0
      */
-    public function offsetUnset($key)
+    public function offsetUnset($key): void
     {
         if ($this->root) {
             $this->root = $this->root->remove($key, $this->comparator);
@@ -437,7 +437,7 @@ class TreeMap extends AbstractMap
      *
      * @since 1.0.0
      */
-    public function count()
+    public function count(): int
     {
         if ($this->root) {
             return count($this->root);

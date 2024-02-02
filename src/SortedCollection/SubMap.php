@@ -769,7 +769,7 @@ class SubMap extends AbstractMap
      *
      * @since 1.0.0
      */
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         if ($this->fromOption == self::UNUSED) {
             if ($this->toOption == self::UNUSED) {
@@ -817,7 +817,7 @@ class SubMap extends AbstractMap
      *
      * @since 1.0.0
      */
-    public function count()
+    public function count(): int
     {
         $count = 0;
 

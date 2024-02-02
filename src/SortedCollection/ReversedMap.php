@@ -262,7 +262,7 @@ class ReversedMap extends AbstractMap
      *
      * @since 1.0.0
      */
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         return array('ReversedMap' => $this->map->jsonSerialize());
     }
@@ -274,7 +274,7 @@ class ReversedMap extends AbstractMap
      *
      * @since 1.0.0
      */
-    public function count()
+    public function count(): int
     {
         return $this->map->count();
     }

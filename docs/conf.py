@@ -28,13 +28,13 @@ on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
 # -- Project information -----------------------------------------------------
 
 project = 'PHP Sorted Collections'
-copyright = '2023, Ch. Demko'
+copyright = '2024, Ch. Demko'
 author = 'Ch. Demko'
 
 # The short X.Y version
 version = '1.0'
 # The full version, including alpha/beta/rc tags
-release = '1.0.6'
+release = '1.0.8'
 
 
 # -- General configuration ---------------------------------------------------
