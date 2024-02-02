@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        php-versions: ['8.1', '8.2', '8.3']  # '7.2', '7.3', '7.4', '8.0', '8.1', '8.2', 
+        php-versions: ['8.0', '8.1', '8.2', '8.3']  # '7.2', '7.3', '7.4', '8.0', '8.1', '8.2', 
     name: PHP ${{ matrix.php-versions }}
 
     steps:
@@ -50,6 +50,16 @@ jobs:
 
     - name: Run test
       run: composer run test
+
+  coverage:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Install dependencies
+      run: composer install --no-progress
 
     - name: Upload coverage results to Coveralls
       env:
