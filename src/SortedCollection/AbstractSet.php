@@ -248,7 +248,7 @@ abstract class AbstractSet implements SortedSet
      *
      * @since 1.0.0
      */
-    public function getIterator()
+    public function getIterator(): Iterator
     {
         return Iterator::keys($this->map);
     }
@@ -262,7 +262,7 @@ abstract class AbstractSet implements SortedSet
      *
      * @since 1.0.0
      */
-    public function offsetGet($element)
+    public function offsetGet($element): mixed
     {
         try {
             return (bool) $this->map->find($element);
@@ -280,7 +280,7 @@ abstract class AbstractSet implements SortedSet
      *
      * @since 1.0.0
      */
-    public function offsetExists($element)
+    public function offsetExists($element): bool
     {
         return $this->offsetGet($element);
     }
@@ -297,7 +297,7 @@ abstract class AbstractSet implements SortedSet
      *
      * @since 1.0.0
      */
-    public function offsetSet($element, $value)
+    public function offsetSet($element, $value): void
     {
         throw new \RuntimeException('Unsupported operation');
     }
@@ -313,7 +313,7 @@ abstract class AbstractSet implements SortedSet
      *
      * @since 1.0.0
      */
-    public function offsetUnset($element)
+    public function offsetUnset($element): void
     {
         throw new \RuntimeException('Unsupported operation');
     }
@@ -325,7 +325,7 @@ abstract class AbstractSet implements SortedSet
      *
      * @since 1.0.0
      */
-    public function count()
+    public function count(): int
     {
         return count($this->map);
     }

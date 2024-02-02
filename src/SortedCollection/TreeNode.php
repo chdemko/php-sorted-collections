@@ -218,7 +218,7 @@ class TreeNode implements \Countable
      *
      * @since 1.0.0
      */
-    public function count()
+    public function count(): int
     {
         $count = 1;
 

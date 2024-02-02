@@ -351,7 +351,7 @@ abstract class AbstractMap implements SortedMap
      *
      * @since 1.0.0
      */
-    public function getIterator()
+    public function getIterator(): Iterator
     {
         return Iterator::create($this);
     }
@@ -367,7 +367,7 @@ abstract class AbstractMap implements SortedMap
      *
      * @since 1.0.0
      */
-    public function offsetGet($key)
+    public function offsetGet($key): mixed
     {
         try {
             return $this->find($key)->value;
@@ -385,7 +385,7 @@ abstract class AbstractMap implements SortedMap
      *
      * @since 1.0.0
      */
-    public function offsetExists($key)
+    public function offsetExists($key): bool
     {
         try {
             return (bool) $this->find($key);
@@ -406,7 +406,7 @@ abstract class AbstractMap implements SortedMap
      *
      * @since 1.0.0
      */
-    public function offsetSet($key, $value)
+    public function offsetSet($key, $value): void
     {
         throw new \RuntimeException('Unsupported operation');
     }
@@ -422,7 +422,7 @@ abstract class AbstractMap implements SortedMap
      *
      * @since 1.0.0
      */
-    public function offsetUnset($key)
+    public function offsetUnset($key): void
     {
         throw new \RuntimeException('Unsupported operation');
     }

@@ -123,7 +123,7 @@ class TreeSet extends AbstractSet
      *
      * @since 1.0.0
      */
-    public function offsetSet($element, $value)
+    public function offsetSet($element, $value): void
     {
         $map = $this->getMap();
 
@@ -141,7 +141,7 @@ class TreeSet extends AbstractSet
      *
      * @since 1.0.0
      */
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         $array = array();
 
@@ -161,7 +161,7 @@ class TreeSet extends AbstractSet
      *
      * @since 1.0.0
      */
-    public function offsetUnset($element)
+    public function offsetUnset($element): void
     {
         $map = $this->getMap();
         unset($map[$element]);
