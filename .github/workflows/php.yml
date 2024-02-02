@@ -61,6 +61,9 @@ jobs:
     - name: Install dependencies
       run: composer install --no-progress
 
+    - name: Run test
+      run: composer run test
+
     - name: Upload coverage results to Coveralls
       env:
         COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
