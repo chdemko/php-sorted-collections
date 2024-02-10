@@ -106,9 +106,7 @@ pygments_style = None
 # a list of builtin themes.
 #
 #html_theme = 'alabaster'
-import sphinx_rtd_theme
 html_theme = 'sphinx_rtd_theme'
-html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 
 from sphinx.highlighting import lexers
 from pygments.lexers.web import PhpLexer
