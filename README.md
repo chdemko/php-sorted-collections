@@ -1,5 +1,4 @@
-PHP Sorted Collections
-======================
+# PHP Sorted Collections
 
 [![PHP package](https://github.com/chdemko/php-sorted-collections/workflows/PHP%20Composer/badge.svg?branch=develop)](https://github.com/chdemko/php-sorted-collections/actions/workflows/php.yml)
 [![Coveralls](https://img.shields.io/coveralls/chdemko/php-sorted-collections.svg?logo=Codecov&logoColor=white)](https://coveralls.io/r/chdemko/php-sorted-collections?branch=develop)
@@ -17,24 +16,31 @@ PHP Sorted Collections
 [![Repo Size](https://img.shields.io/github/repo-size/chdemko/php-sorted-collections.svg?logo=data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjwhLS0gVXBsb2FkZWQgdG86IFNWRyBSZXBvLCB3d3cuc3ZncmVwby5jb20sIEdlbmVyYXRvcjogU1ZHIFJlcG8gTWl4ZXIgVG9vbHMgLS0+Cgo8c3ZnCiAgIGZpbGw9IiMwMDAwMDAiCiAgIHdpZHRoPSI4MDBweCIKICAgaGVpZ2h0PSI4MDBweCIKICAgdmlld0JveD0iMCAwIDI0IDI0IgogICBkYXRhLW5hbWU9IkxheWVyIDEiCiAgIHZlcnNpb249IjEuMSIKICAgaWQ9InN2ZzE0NzYiCiAgIHNvZGlwb2RpOmRvY25hbWU9IndlaWdodC1zdmdyZXBvLWNvbS5zdmciCiAgIGlua3NjYXBlOnZlcnNpb249IjEuMS4yICgwYTAwY2Y1MzM5LCAyMDIyLTAyLTA0KSIKICAgeG1sbnM6aW5rc2NhcGU9Imh0dHA6Ly93d3cuaW5rc2NhcGUub3JnL25hbWVzcGFjZXMvaW5rc2NhcGUiCiAgIHhtbG5zOnNvZGlwb2RpPSJodHRwOi8vc29kaXBvZGkuc291cmNlZm9yZ2UubmV0L0RURC9zb2RpcG9kaS0wLmR0ZCIKICAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogICB4bWxuczpzdmc9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8ZGVmcwogICAgIGlkPSJkZWZzMTQ4MCIgLz4KICA8c29kaXBvZGk6bmFtZWR2aWV3CiAgICAgaWQ9Im5hbWVkdmlldzE0NzgiCiAgICAgcGFnZWNvbG9yPSIjZmZmZmZmIgogICAgIGJvcmRlcmNvbG9yPSIjNjY2NjY2IgogICAgIGJvcmRlcm9wYWNpdHk9IjEuMCIKICAgICBpbmtzY2FwZTpwYWdlc2hhZG93PSIyIgogICAgIGlua3NjYXBlOnBhZ2VvcGFjaXR5PSIwLjAiCiAgICAgaW5rc2NhcGU6cGFnZWNoZWNrZXJib2FyZD0iMCIKICAgICBzaG93Z3JpZD0iZmFsc2UiCiAgICAgaW5rc2NhcGU6em9vbT0iMC44OTg3NSIKICAgICBpbmtzY2FwZTpjeD0iNDAwIgogICAgIGlua3NjYXBlOmN5PSIzOTkuNDQzNjciCiAgICAgaW5rc2NhcGU6d2luZG93LXdpZHRoPSIxOTIwIgogICAgIGlua3NjYXBlOndpbmRvdy1oZWlnaHQ9IjExNjMiCiAgICAgaW5rc2NhcGU6d2luZG93LXg9IjE5MjAiCiAgICAgaW5rc2NhcGU6d2luZG93LXk9IjAiCiAgICAgaW5rc2NhcGU6d2luZG93LW1heGltaXplZD0iMSIKICAgICBpbmtzY2FwZTpjdXJyZW50LWxheWVyPSJzdmcxNDc2IiAvPgogIDxwYXRoCiAgICAgZD0iTTE5LDRIMTcuNTVBMy4wOCwzLjA4LDAsMCwwLDE3LDNhMywzLDAsMCwwLTIuMjUtMUg5LjI3QTMsMywwLDAsMCw3LDNhMy4wOCwzLjA4LDAsMCwwLS41NywxSDVBMywzLDAsMCwwLDIsN1YxOWEzLDMsMCwwLDAsMywzSDE5YTMsMywwLDAsMCwzLTNWN0EzLDMsMCwwLDAsMTksNFpNOC41Miw0LjM0QTEsMSwwLDAsMSw5LjI3LDRoNS40NmExLDEsMCwwLDEsLjc1LjM0LDEsMSwwLDAsMSwuMjUuNzhsLS41LDRhMSwxLDAsMCwxLTEsLjg4SDEyLjU5bDEuMTQtMi40YTEsMSwwLDAsMC0xLjgtLjg2TDEwLjM3LDEwaC0uNmExLDEsMCwwLDEtMS0uODhsLS41LTRBMSwxLDAsMCwxLDguNTIsNC4zNFpNMjAsMTlhMSwxLDAsMCwxLTEsMUg1YTEsMSwwLDAsMS0xLTFWN0ExLDEsMCwwLDEsNSw2SDYuMzdsLjQyLDMuMzdhMywzLDAsMCwwLDMsMi42M2g0LjQ2YTMsMywwLDAsMCwzLTIuNjNMMTcuNjMsNkgxOWExLDEsMCwwLDEsMSwxWm0tNi0zSDEwYTEsMSwwLDAsMCwwLDJoNGExLDEsMCwwLDAsMC0yWiIKICAgICBpZD0icGF0aDE0NzQiCiAgICAgc3R5bGU9ImZpbGw6I2ZmZmZmZiIgLz4KPC9zdmc+Cg==)](http://php-sorted-collections.readthedocs.io/en/latest/)
 [![Code Size](https://img.shields.io/github/languages/code-size/chdemko/php-sorted-collections.svg?logo=data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjwhLS0gVXBsb2FkZWQgdG86IFNWRyBSZXBvLCB3d3cuc3ZncmVwby5jb20sIEdlbmVyYXRvcjogU1ZHIFJlcG8gTWl4ZXIgVG9vbHMgLS0+Cgo8c3ZnCiAgIGZpbGw9IiMwMDAwMDAiCiAgIHdpZHRoPSI4MDBweCIKICAgaGVpZ2h0PSI4MDBweCIKICAgdmlld0JveD0iMCAwIDI0IDI0IgogICBkYXRhLW5hbWU9IkxheWVyIDEiCiAgIHZlcnNpb249IjEuMSIKICAgaWQ9InN2ZzE0NzYiCiAgIHNvZGlwb2RpOmRvY25hbWU9IndlaWdodC1zdmdyZXBvLWNvbS5zdmciCiAgIGlua3NjYXBlOnZlcnNpb249IjEuMS4yICgwYTAwY2Y1MzM5LCAyMDIyLTAyLTA0KSIKICAgeG1sbnM6aW5rc2NhcGU9Imh0dHA6Ly93d3cuaW5rc2NhcGUub3JnL25hbWVzcGFjZXMvaW5rc2NhcGUiCiAgIHhtbG5zOnNvZGlwb2RpPSJodHRwOi8vc29kaXBvZGkuc291cmNlZm9yZ2UubmV0L0RURC9zb2RpcG9kaS0wLmR0ZCIKICAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogICB4bWxuczpzdmc9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8ZGVmcwogICAgIGlkPSJkZWZzMTQ4MCIgLz4KICA8c29kaXBvZGk6bmFtZWR2aWV3CiAgICAgaWQ9Im5hbWVkdmlldzE0NzgiCiAgICAgcGFnZWNvbG9yPSIjZmZmZmZmIgogICAgIGJvcmRlcmNvbG9yPSIjNjY2NjY2IgogICAgIGJvcmRlcm9wYWNpdHk9IjEuMCIKICAgICBpbmtzY2FwZTpwYWdlc2hhZG93PSIyIgogICAgIGlua3NjYXBlOnBhZ2VvcGFjaXR5PSIwLjAiCiAgICAgaW5rc2NhcGU6cGFnZWNoZWNrZXJib2FyZD0iMCIKICAgICBzaG93Z3JpZD0iZmFsc2UiCiAgICAgaW5rc2NhcGU6em9vbT0iMC44OTg3NSIKICAgICBpbmtzY2FwZTpjeD0iNDAwIgogICAgIGlua3NjYXBlOmN5PSIzOTkuNDQzNjciCiAgICAgaW5rc2NhcGU6d2luZG93LXdpZHRoPSIxOTIwIgogICAgIGlua3NjYXBlOndpbmRvdy1oZWlnaHQ9IjExNjMiCiAgICAgaW5rc2NhcGU6d2luZG93LXg9IjE5MjAiCiAgICAgaW5rc2NhcGU6d2luZG93LXk9IjAiCiAgICAgaW5rc2NhcGU6d2luZG93LW1heGltaXplZD0iMSIKICAgICBpbmtzY2FwZTpjdXJyZW50LWxheWVyPSJzdmcxNDc2IiAvPgogIDxwYXRoCiAgICAgZD0iTTE5LDRIMTcuNTVBMy4wOCwzLjA4LDAsMCwwLDE3LDNhMywzLDAsMCwwLTIuMjUtMUg5LjI3QTMsMywwLDAsMCw3LDNhMy4wOCwzLjA4LDAsMCwwLS41NywxSDVBMywzLDAsMCwwLDIsN1YxOWEzLDMsMCwwLDAsMywzSDE5YTMsMywwLDAsMCwzLTNWN0EzLDMsMCwwLDAsMTksNFpNOC41Miw0LjM0QTEsMSwwLDAsMSw5LjI3LDRoNS40NmExLDEsMCwwLDEsLjc1LjM0LDEsMSwwLDAsMSwuMjUuNzhsLS41LDRhMSwxLDAsMCwxLTEsLjg4SDEyLjU5bDEuMTQtMi40YTEsMSwwLDAsMC0xLjgtLjg2TDEwLjM3LDEwaC0uNmExLDEsMCwwLDEtMS0uODhsLS41LTRBMSwxLDAsMCwxLDguNTIsNC4zNFpNMjAsMTlhMSwxLDAsMCwxLTEsMUg1YTEsMSwwLDAsMS0xLTFWN0ExLDEsMCwwLDEsNSw2SDYuMzdsLjQyLDMuMzdhMywzLDAsMCwwLDMsMi42M2g0LjQ2YTMsMywwLDAsMCwzLTIuNjNMMTcuNjMsNkgxOWExLDEsMCwwLDEsMSwxWm0tNi0zSDEwYTEsMSwwLDAsMCwwLDJoNGExLDEsMCwwLDAsMC0yWiIKICAgICBpZD0icGF0aDE0NzQiCiAgICAgc3R5bGU9ImZpbGw6I2ZmZmZmZiIgLz4KPC9zdmc+Cg==)](http://php-sorted-collections.readthedocs.io/en/latest/)
 
-Sorted Collection for PHP. Insertion, search, and removal compute in `log(n)` time where `n` is the number of items present in the collection. It uses AVL threaded tree [see @Knuth97, 1:320, Sect. 2.3.1] as internal structure.
+Sorted Collection for PHP. Insertion, search, and removal compute in
+`log(n)` time where `n` is the number of items present in the collection.
+It uses AVL threaded tree [see @Knuth97, 1:320, Sect. 2.3.1] as internal
+structure.
 
-@Knuth97: Donald E. Knuth, The Art of Computer Programming, Addison-Wesley, volumes 1 and 2, 2nd edition, 1997.
+@Knuth97: Donald E. Knuth, The Art of Computer Programming, Addison-Wesley,
+volumes 1 and 2, 2nd edition, 1997.
 
 This project uses:
 
-* [PHP Code Sniffer](https://github.com/squizlabs/php_codesniffer) for checking PHP code style
+* [PHP Code Sniffer](https://github.com/squizlabs/php_codesniffer)
+  for checking PHP code style
 * [PHPUnit](http://phpunit.de/) for unit test (100% covered)
-* [Sphinx](https://www.sphinx-doc.org/) and [Doxygen](https://www.doxygen.nl/) for the
+* [Sphinx](https://www.sphinx-doc.org/) and [Doxygen](https://www.doxygen.nl/)
+  for the
   [documentation](http://php-sorted-collections.readthedocs.io/en/latest/?badge=latest)
 
-Instructions
-------------
+## Instructions
 
 Using composer: either
 
 ~~~shell
 $ composer create-project chdemko/sorted-collections:1.0.*@dev; cd sorted-collections
+Creating a "chdemko/sorted-collections:1.0.*@dev" project at "./sorted-collections"
+...
 ~~~
 
 or create a `composer.json` file containing
@@ -51,6 +57,8 @@ and run
 
 ~~~shell
 $ composer install
+Loading composer repositories with package information
+...
 ~~~
 
 Create a `test.php` file containg
@@ -72,18 +80,16 @@ And run
 
 ~~~shell
 $ php test.php
-~~~
-
-This should print
-
-~~~console
 [0,1,2,3,4,5,6,7,8,9]
 ~~~
 
-See the [examples](https://github.com/chdemko/php-sorted-collections/tree/develop/examples) and [benchmarks](https://github.com/chdemko/php-sorted-collections/tree/develop/benchmarks) folders for more information.
+See the
+[examples](https://github.com/chdemko/php-sorted-collections/tree/develop/examples)
+and
+[benchmarks](https://github.com/chdemko/php-sorted-collections/tree/develop/benchmarks)
+folders for more information.
 
-Documentation
--------------
+## Documentation
 
 Run
 
@@ -99,14 +105,17 @@ $
 
 if you want to create local documentation with Sphinx.
 
+## Citation
 
-Citation
---------
+If you are using this project including publication in research activities,
+you have to cite it using
+([BibTeX format](https://raw.github.com/chdemko/php-sorted-collections/develop/cite.bib)).
+You are also pleased to send me an email to <chdemko@gmail.com>.
 
-If you are using this project including publication in research activities, you have to cite it using ([BibTeX format](https://raw.github.com/chdemko/php-sorted-collections/develop/cite.bib)). You are also pleased to send me an email to chdemko@gmail.com.
 * authors: Christophe Demko
 * title: php-sorted-collections: a PHP library for handling sorted collections
 * year: 2014
-* how published: https://packagist.org/packages/chdemko/sorted-collections
+* how published: <https://packagist.org/packages/chdemko/sorted-collections>
 
-All releases can be found [here](https://github.com/chdemko/php-sorted-collections/releases)
+All releases can be found
+[here](https://github.com/chdemko/php-sorted-collections/releases)

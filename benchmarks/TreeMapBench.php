@@ -48,10 +48,10 @@ class TreeMapBench
      */
     public function provideCounts()
     {
-        yield array('count' => 100);
-        yield array('count' => 1000);
-        yield array('count' => 10000);
-        yield array('count' => 100000);
+        yield ['count' => 100];
+        yield ['count' => 1000];
+        yield ['count' => 10000];
+        yield ['count' => 100000];
     }
 
     /**
@@ -63,10 +63,10 @@ class TreeMapBench
      */
     public function provideTypes()
     {
-        yield array('type' => 'tree');
-        yield array('type' => 'reversed');
-        yield array('type' => 'sub', 'from' => 0.30, 'to' => 0.70);
-        yield array('type' => 'sub', 'from' => 0.40, 'to' => 0.80);
+        yield ['type' => 'tree'];
+        yield ['type' => 'reversed'];
+        yield ['type' => 'sub', 'from' => 0.30, 'to' => 0.70];
+        yield ['type' => 'sub', 'from' => 0.40, 'to' => 0.80];
     }
 
     /**
