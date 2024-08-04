@@ -33,7 +33,7 @@ This project uses:
   for the
   [documentation](http://php-sorted-collections.readthedocs.io/en/latest/?badge=latest)
 
-## Instructions
+## Instructions
 
 Using composer: either
 
