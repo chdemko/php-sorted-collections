@@ -1,7 +1,7 @@
 {
 	"name": "chdemko/sorted-collections",
 	"type": "library",
-	"description": "Sorted Collections for PHP >= 8.1",
+	"description": "Sorted Collections for PHP >= 8.2",
 	"keywords": ["collection","set","tree","map","sorted","ordered","iterator","treeset","treemap","avl"],
 	"homepage": "https://php-sorted-collections.readthedocs.io/en/latest/?badge=latest",
 	"license": "BSD-3-Clause",
