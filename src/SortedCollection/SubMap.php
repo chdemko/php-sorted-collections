@@ -4,7 +4,7 @@
  * chdemko\SortedCollection\SubMap class
  *
  * @author    Christophe Demko <chdemko@gmail.com>
- * @copyright Copyright (C) 2012-2023 Christophe Demko. All rights reserved.
+ * @copyright Copyright (C) 2012-2024 Christophe Demko. All rights reserved.
  *
  * @license BSD 3-Clause License
  *
