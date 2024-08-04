@@ -3,10 +3,10 @@
 /**
  * chdemko\SortedCollection\TreeMapTest class
  *
- * @author     Christophe Demko <chdemko@gmail.com>
- * @copyright  Copyright (C) 2012-2023 Christophe Demko. All rights reserved.
+ * @author    Christophe Demko <chdemko@gmail.com>
+ * @copyright Copyright (C) 2012-2023 Christophe Demko. All rights reserved.
  *
- * @license    BSD 3-Clause License
+ * @license BSD 3-Clause License
  *
  * This file is part of the php-sorted-collections package https://github.com/chdemko/php-sorted-collections
  */
@@ -14,24 +14,25 @@
 // Declare chdemko\SortedCollection namespace
 namespace chdemko\SortedCollection;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 /**
  * TreeMap class test
  *
- * @package     SortedCollection
- * @subpackage  Map
+ * @package    SortedCollection
+ * @subpackage Map
  *
- * @since       1.0.0
+ * @since 1.0.0
  */
 class TreeMapTest extends TestCase
 {
     /**
      * Data provider for testCreate
      *
-     * @return  array
+     * @return array
      *
-     * @since   1.0.0
+     * @since 1.0.0
      */
     public static function casesCreate()
     {
@@ -51,21 +52,19 @@ class TreeMapTest extends TestCase
     /**
      * Tests  TreeMap::create
      *
-     * @param   array     $values      Initial values
-     * @param   mixed     $key         Expected root key
-     * @param   callable  $comparator  Comparator
+     * @param array    $values     Initial values
+     * @param mixed    $key        Expected root key
+     * @param callable $comparator Comparator
      *
-     * @return  void
+     * @return void
      *
-     * @covers  chdemko\SortedCollection\TreeMap::__construct
-     * @covers  chdemko\SortedCollection\TreeMap::create
-     * @covers  chdemko\SortedCollection\TreeMap::put
-     * @covers  chdemko\SortedCollection\TreeMap::initialise
-     *
-     * @dataProvider  casesCreate
-     *
-     * @since   1.0.0
+     * @since 1.0.0
      */
+    #[DataProvider('casesCreate')]
+    #[CoversFunction('chdemko\SortedCollection\TreeMap::__construct')]
+    #[CoversFunction('chdemko\SortedCollection\TreeMap::create')]
+    #[CoversFunction('chdemko\SortedCollection\TreeMap::put')]
+    #[CoversFunction('chdemko\SortedCollection\TreeMap::initialise')]
     public function testCreate($values, $key, $comparator)
     {
         $tree = TreeMap::create($comparator)->initialise($values);
@@ -101,12 +100,11 @@ class TreeMapTest extends TestCase
     /**
      * Tests  TreeMap::clear
      *
-     * @return  void
+     * @return void
      *
-     * @covers  chdemko\SortedCollection\TreeMap::clear
-     *
-     * @since   1.0.0
+     * @since 1.0.0
      */
+    #[CoversFunction('chdemko\SortedCollection\TreeMap::clear')]
     public function testClear()
     {
         $tree = TreeMap::create()->put(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
@@ -129,12 +127,11 @@ class TreeMapTest extends TestCase
     /**
      * Tests  TreeMap::__clone
      *
-     * @return  void
+     * @return void
      *
-     * @covers  chdemko\SortedCollection\TreeMap::__clone
-     *
-     * @since   1.0.0
+     * @since 1.0.0
      */
+    #[CoversFunction('chdemko\SortedCollection\TreeMap::__clone')]
     public function testClone()
     {
         $tree = TreeMap::create()->put(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
@@ -149,13 +146,12 @@ class TreeMapTest extends TestCase
     /**
      * Tests  TreeMap::comparator
      *
-     * @return  void
+     * @return void
      *
-     * @covers  chdemko\SortedCollection\TreeMap::comparator
-     * @covers  chdemko\SortedCollection\AbstractMap::__get
-     *
-     * @since   1.0.0
+     * @since 1.0.0
      */
+    #[CoversFunction('chdemko\SortedCollection\TreeMap::comparator')]
+    #[CoversFunction('chdemko\SortedCollection\AbstractMap::__get')]
     public function testComparator()
     {
         $comparator = function ($key1, $key2) {
@@ -171,15 +167,14 @@ class TreeMapTest extends TestCase
     /**
      * Tests  TreeMap::first
      *
-     * @return  void
+     * @return void
      *
-     * @covers  chdemko\SortedCollection\TreeMap::first
-     * @covers  chdemko\SortedCollection\AbstractMap::__get
-     * @covers  chdemko\SortedCollection\AbstractMap::firstKey
-     * @covers  chdemko\SortedCollection\AbstractMap::firstValue
-     *
-     * @since   1.0.0
+     * @since 1.0.0
      */
+    #[CoversFunction('chdemko\SortedCollection\TreeMap::first')]
+    #[CoversFunction('chdemko\SortedCollection\AbstractMap::__get')]
+    #[CoversFunction('chdemko\SortedCollection\AbstractMap::firstKey')]
+    #[CoversFunction('chdemko\SortedCollection\AbstractMap::firstValue')]
     public function testFirst()
     {
         $tree = TreeMap::create()->put(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
@@ -203,15 +198,14 @@ class TreeMapTest extends TestCase
     /**
      * Tests  TreeMap::last
      *
-     * @return  void
+     * @return void
      *
-     * @covers  chdemko\SortedCollection\TreeMap::last
-     * @covers  chdemko\SortedCollection\AbstractMap::__get
-     * @covers  chdemko\SortedCollection\AbstractMap::lastKey
-     * @covers  chdemko\SortedCollection\AbstractMap::lastValue
-     *
-     * @since   1.0.0
+     * @since 1.0.0
      */
+    #[CoversFunction('chdemko\SortedCollection\TreeMap::last')]
+    #[CoversFunction('chdemko\SortedCollection\AbstractMap::__get')]
+    #[CoversFunction('chdemko\SortedCollection\AbstractMap::lastKey')]
+    #[CoversFunction('chdemko\SortedCollection\AbstractMap::lastValue')]
     public function testLast()
     {
         $tree = TreeMap::create()->put(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
@@ -235,13 +229,12 @@ class TreeMapTest extends TestCase
     /**
      * Tests  TreeMap::predecessor
      *
-     * @return  void
+     * @return void
      *
-     * @covers  chdemko\SortedCollection\TreeMap::predecessor
-     * @covers  chdemko\SortedCollection\AbstractMap::predecessor
-     *
-     * @since   1.0.0
+     * @since 1.0.0
      */
+    #[CoversFunction('chdemko\SortedCollection\TreeMap::predecessor')]
+    #[CoversFunction('chdemko\SortedCollection\AbstractMap::predecessor')]
     public function testPredecessor()
     {
         $tree = TreeMap::create()->put(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
@@ -256,13 +249,12 @@ class TreeMapTest extends TestCase
     /**
      * Tests  TreeMap::successor
      *
-     * @return  void
+     * @return void
      *
-     * @covers  chdemko\SortedCollection\TreeMap::successor
-     * @covers  chdemko\SortedCollection\AbstractMap::successor
-     *
-     * @since   1.0.0
+     * @since 1.0.0
      */
+    #[CoversFunction('chdemko\SortedCollection\TreeMap::successor')]
+    #[CoversFunction('chdemko\SortedCollection\AbstractMap::successor')]
     public function testSuccessor()
     {
         $tree = TreeMap::create()->put(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
@@ -277,19 +269,18 @@ class TreeMapTest extends TestCase
     /**
      * Tests  AbstractMap::keys
      *
-     * @return  void
+     * @return void
      *
-     * @covers  chdemko\SortedCollection\AbstractMap::keys
-     * @covers  chdemko\SortedCollection\AbstractMap::__get
-     * @covers  chdemko\SortedCollection\Iterator::keys
-     * @covers  chdemko\SortedCollection\Iterator::rewind
-     * @covers  chdemko\SortedCollection\Iterator::key
-     * @covers  chdemko\SortedCollection\Iterator::current
-     * @covers  chdemko\SortedCollection\Iterator::next
-     * @covers  chdemko\SortedCollection\Iterator::valid
-     *
-     * @since   1.0.0
+     * @since 1.0.0
      */
+    #[CoversFunction('chdemko\SortedCollection\AbstractMap::keys')]
+    #[CoversFunction('chdemko\SortedCollection\AbstractMap::__get')]
+    #[CoversFunction('chdemko\SortedCollection\Iterator::keys')]
+    #[CoversFunction('chdemko\SortedCollection\Iterator::rewind')]
+    #[CoversFunction('chdemko\SortedCollection\Iterator::key')]
+    #[CoversFunction('chdemko\SortedCollection\Iterator::current')]
+    #[CoversFunction('chdemko\SortedCollection\Iterator::next')]
+    #[CoversFunction('chdemko\SortedCollection\Iterator::valid')]
     public function testKeys()
     {
         $empty = true;
@@ -314,19 +305,18 @@ class TreeMapTest extends TestCase
     /**
      * Tests  AbstractMap::values
      *
-     * @return  void
+     * @return void
      *
-     * @covers  chdemko\SortedCollection\AbstractMap::values
-     * @covers  chdemko\SortedCollection\AbstractMap::__get
-     * @covers  chdemko\SortedCollection\Iterator::values
-     * @covers  chdemko\SortedCollection\Iterator::rewind
-     * @covers  chdemko\SortedCollection\Iterator::key
-     * @covers  chdemko\SortedCollection\Iterator::current
-     * @covers  chdemko\SortedCollection\Iterator::next
-     * @covers  chdemko\SortedCollection\Iterator::valid
-     *
-     * @since   1.0.0
+     * @since 1.0.0
      */
+    #[CoversFunction('chdemko\SortedCollection\AbstractMap::values')]
+    #[CoversFunction('chdemko\SortedCollection\AbstractMap::__get')]
+    #[CoversFunction('chdemko\SortedCollection\Iterator::values')]
+    #[CoversFunction('chdemko\SortedCollection\Iterator::rewind')]
+    #[CoversFunction('chdemko\SortedCollection\Iterator::key')]
+    #[CoversFunction('chdemko\SortedCollection\Iterator::current')]
+    #[CoversFunction('chdemko\SortedCollection\Iterator::next')]
+    #[CoversFunction('chdemko\SortedCollection\Iterator::valid')]
     public function testValues()
     {
         $empty = true;
@@ -350,12 +340,11 @@ class TreeMapTest extends TestCase
     /**
      * Tests  TreeMap::__get
      *
-     * @return  void
+     * @return void
      *
-     * @covers  chdemko\SortedCollection\TreeMap::__get
-     *
-     * @since   1.0.0
+     * @since 1.0.0
      */
+    #[CoversFunction('chdemko\SortedCollection\TreeMap::__get')]
     public function testGetUnexisting()
     {
         $tree = TreeMap::create()->put(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
@@ -366,9 +355,9 @@ class TreeMapTest extends TestCase
     /**
      * Data provider for testLower
      *
-     * @return  array
+     * @return array
      *
-     * @since   1.0.0
+     * @since 1.0.0
      */
     public static function casesLower()
     {
@@ -385,21 +374,19 @@ class TreeMapTest extends TestCase
     /**
      * Tests  TreeMap::lower
      *
-     * @param   array  $values     Values array
-     * @param   mixed  $key        Key to search for
-     * @param   mixed  $expected   Expected key/value
-     * @param   mixed  $exception  Exception to be thrown
+     * @param array $values    Values array
+     * @param mixed $key       Key to search for
+     * @param mixed $expected  Expected key/value
+     * @param mixed $exception Exception to be thrown
      *
-     * @return  void
+     * @return void
      *
-     * @covers  chdemko\SortedCollection\TreeMap::lower
-     * @covers  chdemko\SortedCollection\AbstractMap::lowerKey
-     * @covers  chdemko\SortedCollection\AbstractMap::lowerValue
-     *
-     * @dataProvider  casesLower
-     *
-     * @since   1.0.0
+     * @since 1.0.0
      */
+    #[DataProvider('casesLower')]
+    #[CoversFunction('chdemko\SortedCollection\TreeMap::lower')]
+    #[CoversFunction('chdemko\SortedCollection\AbstractMap::lowerKey')]
+    #[CoversFunction('chdemko\SortedCollection\AbstractMap::lowerValue')]
     public function testLower($values, $key, $expected, $exception)
     {
         if ($exception) {
@@ -421,9 +408,9 @@ class TreeMapTest extends TestCase
     /**
      * Data provider for testFloor
      *
-     * @return  array
+     * @return array
      *
-     * @since   1.0.0
+     * @since 1.0.0
      */
     public static function casesFloor()
     {
@@ -440,21 +427,19 @@ class TreeMapTest extends TestCase
     /**
      * Tests  TreeMap::floor
      *
-     * @param   array  $values     Values array
-     * @param   mixed  $key        Key to search for
-     * @param   mixed  $expected   Expected key/value
-     * @param   mixed  $exception  Exception to be thrown
+     * @param array $values    Values array
+     * @param mixed $key       Key to search for
+     * @param mixed $expected  Expected key/value
+     * @param mixed $exception Exception to be thrown
      *
-     * @return  void
+     * @return void
      *
-     * @covers  chdemko\SortedCollection\TreeMap::floor
-     * @covers  chdemko\SortedCollection\AbstractMap::floorKey
-     * @covers  chdemko\SortedCollection\AbstractMap::floorValue
-     *
-     * @dataProvider  casesFloor
-     *
-     * @since   1.0.0
+     * @since 1.0.0
      */
+    #[DataProvider('casesFloor')]
+    #[CoversFunction('chdemko\SortedCollection\TreeMap::floor')]
+    #[CoversFunction('chdemko\SortedCollection\AbstractMap::floorKey')]
+    #[CoversFunction('chdemko\SortedCollection\AbstractMap::floorValue')]
     public function testFloor($values, $key, $expected, $exception)
     {
         if ($exception) {
@@ -476,14 +461,13 @@ class TreeMapTest extends TestCase
     /**
      * Tests  TreeMap::find
      *
-     * @return  void
+     * @return void
      *
-     * @covers  chdemko\SortedCollection\TreeMap::find
-     * @covers  chdemko\SortedCollection\AbstractMap::findKey
-     * @covers  chdemko\SortedCollection\AbstractMap::findValue
-     *
-     * @since   1.0.0
+     * @since 1.0.0
      */
+    #[CoversFunction('chdemko\SortedCollection\TreeMap::find')]
+    #[CoversFunction('chdemko\SortedCollection\AbstractMap::findKey')]
+    #[CoversFunction('chdemko\SortedCollection\AbstractMap::findValue')]
     public function testFind()
     {
         $tree = TreeMap::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
@@ -506,9 +490,9 @@ class TreeMapTest extends TestCase
     /**
      * Data provider for testCeiling
      *
-     * @return  array
+     * @return array
      *
-     * @since   1.0.0
+     * @since 1.0.0
      */
     public static function casesCeiling()
     {
@@ -525,21 +509,19 @@ class TreeMapTest extends TestCase
     /**
      * Tests  TreeMap::ceiling
      *
-     * @param   array  $values     Values array
-     * @param   mixed  $key        Key to search for
-     * @param   mixed  $expected   Expected key/value
-     * @param   mixed  $exception  Exception to be thrown
+     * @param array $values    Values array
+     * @param mixed $key       Key to search for
+     * @param mixed $expected  Expected key/value
+     * @param mixed $exception Exception to be thrown
      *
-     * @return  void
+     * @return void
      *
-     * @covers  chdemko\SortedCollection\TreeMap::ceiling
-     * @covers  chdemko\SortedCollection\AbstractMap::ceilingKey
-     * @covers  chdemko\SortedCollection\AbstractMap::ceilingValue
-     *
-     * @dataProvider  casesCeiling
-     *
-     * @since   1.0.0
+     * @since 1.0.0
      */
+    #[DataProvider('casesCeiling')]
+    #[CoversFunction('chdemko\SortedCollection\TreeMap::ceiling')]
+    #[CoversFunction('chdemko\SortedCollection\AbstractMap::ceilingKey')]
+    #[CoversFunction('chdemko\SortedCollection\AbstractMap::ceilingValue')]
     public function testCeiling($values, $key, $expected, $exception)
     {
         if ($exception) {
@@ -561,9 +543,9 @@ class TreeMapTest extends TestCase
     /**
      * Data provider for testHigher
      *
-     * @return  array
+     * @return array
      *
-     * @since   1.0.0
+     * @since 1.0.0
      */
     public static function casesHigher()
     {
@@ -580,21 +562,19 @@ class TreeMapTest extends TestCase
     /**
      * Tests  TreeMap::higher
      *
-     * @param   array  $values     Values array
-     * @param   mixed  $key        Key to search for
-     * @param   mixed  $expected   Expected key/value
-     * @param   mixed  $exception  Exception to be thrown
+     * @param array $values    Values array
+     * @param mixed $key       Key to search for
+     * @param mixed $expected  Expected key/value
+     * @param mixed $exception Exception to be thrown
      *
-     * @return  void
+     * @return void
      *
-     * @covers  chdemko\SortedCollection\TreeMap::higher
-     * @covers  chdemko\SortedCollection\AbstractMap::higherKey
-     * @covers  chdemko\SortedCollection\AbstractMap::higherValue
-     *
-     * @dataProvider  casesHigher
-     *
-     * @since   1.0.0
+     * @since 1.0.0
      */
+    #[DataProvider('casesHigher')]
+    #[CoversFunction('chdemko\SortedCollection\TreeMap::higher')]
+    #[CoversFunction('chdemko\SortedCollection\AbstractMap::higherKey')]
+    #[CoversFunction('chdemko\SortedCollection\AbstractMap::higherValue')]
     public function testHigher($values, $key, $expected, $exception)
     {
         if ($exception) {
@@ -616,9 +596,9 @@ class TreeMapTest extends TestCase
     /**
      * Data provider for testOffsetGet
      *
-     * @return  array
+     * @return array
      *
-     * @since   1.0.0
+     * @since 1.0.0
      */
     public static function casesOffsetGet()
     {
@@ -635,19 +615,21 @@ class TreeMapTest extends TestCase
     /**
      * Tests  TreeMap::offsetGet
      *
-     * @param   array  $values     Values array
-     * @param   mixed  $key        Key to search for
-     * @param   mixed  $value      Expected value
-     * @param   mixed  $exception  Exception to be thrown
+     * @param array $values    Values array
+     * @param mixed $key       Key to search for
+     * @param mixed $value     Expected value
+     * @param mixed $exception Exception to be thrown
      *
-     * @return  void
+     * @return void
      *
-     * @covers  chdemko\SortedCollection\TreeMap::offsetGet
+     * @covers
      *
-     * @dataProvider  casesOffsetGet
+     * @dataProvider
      *
-     * @since   1.0.0
+     * @since 1.0.0
      */
+    #[DataProvider('casesOffsetGet')]
+    #[CoversFunction('chdemko\SortedCollection\TreeMap::offsetGet')]
     public function testOffsetGet($values, $key, $value, $exception)
     {
         if ($exception) {
@@ -665,12 +647,11 @@ class TreeMapTest extends TestCase
     /**
      * Tests  TreeMap::offsetSet
      *
-     * @return  void
+     * @return void
      *
-     * @covers  chdemko\SortedCollection\TreeMap::offsetSet
-     *
-     * @since   1.0.0
+     * @since 1.0.0
      */
+    #[CoversFunction('chdemko\SortedCollection\TreeMap::offsetSet')]
     public function testOffsetSet()
     {
         $tree = TreeMap::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
@@ -685,12 +666,11 @@ class TreeMapTest extends TestCase
     /**
      * Tests  AbstractMap::offsetExists
      *
-     * @return  void
+     * @return void
      *
-     * @covers  chdemko\SortedCollection\AbstractMap::offsetExists
-     *
-     * @since   1.0.0
+     * @since 1.0.0
      */
+    #[CoversFunction('chdemko\SortedCollection\AbstractMap::offsetExists')]
     public function testOffsetExists()
     {
         $tree = TreeMap::create();
@@ -712,12 +692,11 @@ class TreeMapTest extends TestCase
     /**
      * Tests  TreeMap::offsetUnset
      *
-     * @return  void
+     * @return void
      *
-     * @covers  chdemko\SortedCollection\TreeMap::offsetUnset
-     *
-     * @since   1.0.0
+     * @since 1.0.0
      */
+    #[CoversFunction('chdemko\SortedCollection\TreeMap::offsetUnset')]
     public function testOffsetUnset()
     {
         $tree = TreeMap::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
@@ -735,13 +714,12 @@ class TreeMapTest extends TestCase
     /**
      * Tests  TreeMap::count
      *
-     * @return  void
+     * @return void
      *
-     * @covers  chdemko\SortedCollection\TreeMap::count
-     * @covers  chdemko\SortedCollection\AbstractMap::__get
-     *
-     * @since   1.0.0
+     * @since 1.0.0
      */
+    #[CoversFunction('chdemko\SortedCollection\TreeMap::count')]
+    #[CoversFunction('chdemko\SortedCollection\AbstractMap::__get')]
     public function testCount()
     {
         $tree = TreeMap::create();
@@ -762,21 +740,20 @@ class TreeMapTest extends TestCase
     /**
      * Tests  AbstractMap::__toString
      *
-     * @return  void
+     * @return void
      *
-     * @covers  chdemko\SortedCollection\AbstractMap::__toString
-     * @covers  chdemko\SortedCollection\AbstractMap::toArray
-     * @covers  chdemko\SortedCollection\AbstractMap::getIterator
-     * @covers  chdemko\SortedCollection\Iterator::__construct
-     * @covers  chdemko\SortedCollection\Iterator::create
-     * @covers  chdemko\SortedCollection\Iterator::rewind
-     * @covers  chdemko\SortedCollection\Iterator::key
-     * @covers  chdemko\SortedCollection\Iterator::current
-     * @covers  chdemko\SortedCollection\Iterator::next
-     * @covers  chdemko\SortedCollection\Iterator::valid
-     *
-     * @since   1.0.0
+     * @since 1.0.0
      */
+    #[CoversFunction('chdemko\SortedCollection\AbstractMap::__toString')]
+    #[CoversFunction('chdemko\SortedCollection\AbstractMap::toArray')]
+    #[CoversFunction('chdemko\SortedCollection\AbstractMap::getIterator')]
+    #[CoversFunction('chdemko\SortedCollection\Iterator::__construct')]
+    #[CoversFunction('chdemko\SortedCollection\Iterator::create')]
+    #[CoversFunction('chdemko\SortedCollection\Iterator::rewind')]
+    #[CoversFunction('chdemko\SortedCollection\Iterator::key')]
+    #[CoversFunction('chdemko\SortedCollection\Iterator::current')]
+    #[CoversFunction('chdemko\SortedCollection\Iterator::next')]
+    #[CoversFunction('chdemko\SortedCollection\Iterator::valid')]
     public function testToString()
     {
         $tree = TreeMap::create();
@@ -797,12 +774,11 @@ class TreeMapTest extends TestCase
     /**
      * Tests  TreeMap::jsonSerialize
      *
-     * @return  void
+     * @return void
      *
-     * @covers  chdemko\SortedCollection\TreeMap::jsonSerialize
-     *
-     * @since   1.0.0
+     * @since 1.0.0
      */
+    #[CoversFunction('chdemko\SortedCollection\TreeMap::jsonSerialize')]
     public function testJsonSerialize()
     {
         $tree = TreeMap::create();

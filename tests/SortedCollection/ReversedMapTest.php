@@ -14,6 +14,7 @@
 // Declare chdemko\SortedCollection namespace
 namespace chdemko\SortedCollection;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -31,13 +32,12 @@ class ReversedMapTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\ReversedMap::__construct
-     * @covers  chdemko\SortedCollection\ReversedMap::create
-     * @covers  chdemko\SortedCollection\ReversedMap::__get
-     * @covers  chdemko\SortedCollection\ReversedMap::comparator
-     *
      * @since   1.0.0
      */
+    #[CoversFunction('chdemko\SortedCollection\ReversedMap::__construct')]
+    #[CoversFunction('chdemko\SortedCollection\ReversedMap::create')]
+    #[CoversFunction('chdemko\SortedCollection\ReversedMap::__get')]
+    #[CoversFunction('chdemko\SortedCollection\ReversedMap::comparator')]
     public function testConstruct()
     {
         $tree = TreeMap::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
@@ -71,10 +71,9 @@ class ReversedMapTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\ReversedMap::first
-     *
      * @since   1.0.0
      */
+    #[CoversFunction('chdemko\SortedCollection\ReversedMap::first')]
     public function testFirst()
     {
         $tree = TreeMap::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
@@ -91,10 +90,9 @@ class ReversedMapTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\ReversedMap::last
-     *
      * @since   1.0.0
      */
+    #[CoversFunction('chdemko\SortedCollection\ReversedMap::last')]
     public function testLast()
     {
         $tree = TreeMap::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
@@ -111,11 +109,10 @@ class ReversedMapTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\ReversedMap::predecessor
-     * @covers  chdemko\SortedCollection\AbstractMap::predecessor
-     *
      * @since   1.0.0
      */
+    #[CoversFunction('chdemko\SortedCollection\ReversedMap::predecessor')]
+    #[CoversFunction('chdemko\SortedCollection\AbstractMap::predecessor')]
     public function testPredecessor()
     {
         $tree = TreeMap::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
@@ -133,11 +130,10 @@ class ReversedMapTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\ReversedMap::successor
-     * @covers  chdemko\SortedCollection\AbstractMap::successor
-     *
      * @since   1.0.0
      */
+    #[CoversFunction('chdemko\SortedCollection\ReversedMap::successor')]
+    #[CoversFunction('chdemko\SortedCollection\AbstractMap::successor')]
     public function testSuccessor()
     {
         $tree = TreeMap::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
@@ -179,13 +175,11 @@ class ReversedMapTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\ReversedMap::lower
-     * @covers  chdemko\SortedCollection\AbstractMap::lowerKey
-     *
-     * @dataProvider  casesLowerKey
-     *
      * @since   1.0.0
      */
+    #[DataProvider('casesLowerKey')]
+    #[CoversFunction('chdemko\SortedCollection\ReversedMap::lower')]
+    #[CoversFunction('chdemko\SortedCollection\AbstractMap::lowerKey')]
     public function testLowerKey($values, $key, $expected, $exception)
     {
         if ($exception) {
@@ -230,13 +224,11 @@ class ReversedMapTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\ReversedMap::floor
-     * @covers  chdemko\SortedCollection\AbstractMap::floorKey
-     *
-     * @dataProvider  casesFloorKey
-     *
      * @since   1.0.0
      */
+    #[DataProvider('casesFloorKey')]
+    #[CoversFunction('chdemko\SortedCollection\ReversedMap::floor')]
+    #[CoversFunction('chdemko\SortedCollection\AbstractMap::floorKey')]
     public function testFloorKey($values, $key, $found, $exception)
     {
         if ($exception) {
@@ -257,11 +249,10 @@ class ReversedMapTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\ReversedMap::find
-     * @covers  chdemko\SortedCollection\AbstractMap::findKey
-     *
      * @since   1.0.0
      */
+    #[CoversFunction('chdemko\SortedCollection\ReversedMap::find')]
+    #[CoversFunction('chdemko\SortedCollection\AbstractMap::findKey')]
     public function testFindKey()
     {
         $tree = TreeMap::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
@@ -307,13 +298,11 @@ class ReversedMapTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\ReversedMap::ceiling
-     * @covers  chdemko\SortedCollection\AbstractMap::floorKey
-     *
-     * @dataProvider  casesCeilingKey
-     *
      * @since   1.0.0
      */
+    #[DataProvider('casesCeilingKey')]
+    #[CoversFunction('chdemko\SortedCollection\ReversedMap::ceiling')]
+    #[CoversFunction('chdemko\SortedCollection\AbstractMap::floorKey')]
     public function testCeilingKey($values, $key, $expected, $exception)
     {
         if ($exception) {
@@ -358,13 +347,11 @@ class ReversedMapTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\ReversedMap::higher
-     * @covers  chdemko\SortedCollection\AbstractMap::higherKey
-     *
-     * @dataProvider  casesHigherKey
-     *
      * @since   1.0.0
      */
+    #[DataProvider('casesHigherKey')]
+    #[CoversFunction('chdemko\SortedCollection\ReversedMap::higher')]
+    #[CoversFunction('chdemko\SortedCollection\AbstractMap::higherKey')]
     public function testHigherKey($values, $key, $expected, $exception)
     {
         if ($exception) {
@@ -385,11 +372,10 @@ class ReversedMapTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\ReversedMap::keys
-     * @covers  chdemko\SortedCollection\AbstractMap::__get
-     *
      * @since   1.0.0
      */
+    #[CoversFunction('chdemko\SortedCollection\ReversedMap::keys')]
+    #[CoversFunction('chdemko\SortedCollection\AbstractMap::__get')]
     public function testKeys()
     {
         $empty = true;
@@ -417,11 +403,10 @@ class ReversedMapTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\AbstractMap::values
-     * @covers  chdemko\SortedCollection\AbstractMap::__get
-     *
      * @since   1.0.0
      */
+    #[CoversFunction('chdemko\SortedCollection\AbstractMap::values')]
+    #[CoversFunction('chdemko\SortedCollection\AbstractMap::__get')]
     public function testValues()
     {
         $empty = true;
@@ -473,12 +458,10 @@ class ReversedMapTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\AbstractMap::offsetGet
-     *
-     * @dataProvider  casesOffsetGet
-     *
      * @since   1.0.0
      */
+    #[DataProvider('casesOffsetGet')]
+    #[CoversFunction('chdemko\SortedCollection\AbstractMap::offsetGet')]
     public function testOffsetGet($values, $key, $value, $exception)
     {
         if ($exception) {
@@ -499,10 +482,9 @@ class ReversedMapTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\AbstractMap::offsetSet
-     *
      * @since   1.0.0
      */
+    #[CoversFunction('chdemko\SortedCollection\AbstractMap::offsetSet')]
     public function testOffsetSet()
     {
         $this->expectException('RuntimeException');
@@ -517,10 +499,9 @@ class ReversedMapTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\ReversedMap::offsetExists
-     *
      * @since   1.0.0
      */
+    #[CoversFunction('chdemko\SortedCollection\ReversedMap::offsetExists')]
     public function testOffsetExists()
     {
         $tree = TreeMap::create();
@@ -545,10 +526,9 @@ class ReversedMapTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\AbstractMap::offsetUnset
-     *
      * @since   1.0.0
      */
+    #[CoversFunction('chdemko\SortedCollection\AbstractMap::offsetUnset')]
     public function testOffsetUnset()
     {
         $this->expectException('RuntimeException');
@@ -563,11 +543,10 @@ class ReversedMapTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\ReversedMap::count
-     * @covers  chdemko\SortedCollection\AbstractMap::__get
-     *
      * @since   1.0.0
      */
+    #[CoversFunction('chdemko\SortedCollection\ReversedMap::count')]
+    #[CoversFunction('chdemko\SortedCollection\AbstractMap::__get')]
     public function testCount()
     {
         $tree = TreeMap::create();
@@ -591,10 +570,9 @@ class ReversedMapTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\ReversedMap::jsonSerialize
-     *
      * @since   1.0.0
      */
+    #[CoversFunction('chdemko\SortedCollection\ReversedMap::jsonSerialize')]
     public function testJsonSerialize()
     {
         $tree = TreeMap::create();
