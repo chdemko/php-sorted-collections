@@ -14,6 +14,7 @@
 // Declare chdemko\SortedCollection namespace
 namespace chdemko\SortedCollection;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -59,13 +60,11 @@ class ReversedSetTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\ReversedSet::__construct
-     * @covers  chdemko\SortedCollection\ReversedSet::create
-     *
-     * @dataProvider  casesCreate
-     *
      * @since   1.0.0
      */
+    #[DataProvider('casesCreate')]
+    #[CoversFunction('chdemko\SortedCollection\ReversedSet::__construct')]
+    #[CoversFunction('chdemko\SortedCollection\ReversedSet::create')]
     public function testCreate($values, $key, $comparator, $string)
     {
         $set = TreeSet::create($comparator)->initialise($values);
@@ -81,11 +80,10 @@ class ReversedSetTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\ReversedSet::__get
-     * @covers  chdemko\SortedCollection\AbstractSet::__get
-     *
      * @since   1.0.0
      */
+    #[CoversFunction('chdemko\SortedCollection\ReversedSet::__get')]
+    #[CoversFunction('chdemko\SortedCollection\AbstractSet::__get')]
     public function testGet()
     {
         $set = TreeSet::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
@@ -105,10 +103,9 @@ class ReversedSetTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\ReversedSet::offsetSet
-     *
      * @since   1.0.0
      */
+    #[CoversFunction('chdemko\SortedCollection\ReversedSet::offsetSet')]
     public function testOffsetSet()
     {
         $this->expectException('RuntimeException');
@@ -123,10 +120,9 @@ class ReversedSetTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\AbstractSet::offsetUnset
-     *
      * @since   1.0.0
      */
+    #[CoversFunction('chdemko\SortedCollection\AbstractSet::offsetUnset')]
     public function testOffsetUnset()
     {
         $this->expectException('RuntimeException');
@@ -141,10 +137,9 @@ class ReversedSetTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\ReversedSet::jsonSerialize
-     *
      * @since   1.0.0
      */
+    #[CoversFunction('chdemko\SortedCollection\ReversedSet::jsonSerialize')]
     public function testJsonSerialize()
     {
         $set = TreeSet::create();

@@ -14,6 +14,7 @@
 // Declare chdemko\SortedCollection namespace
 namespace chdemko\SortedCollection;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -116,12 +117,10 @@ class TreeNodeTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\TreeNode::create
-     *
-     * @dataProvider  casesCreate
-     *
      * @since   1.0.0
      */
+    #[DataProvider('casesCreate')]
+    #[CoversFunction('chdemko\SortedCollection\TreeNode::create')]
     public function testCreate($values, $comparator, $string)
     {
         $tree = TreeMap::create($comparator)->initialise($values);
@@ -141,11 +140,10 @@ class TreeNodeTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\TreeNode::first
-     * @covers  chdemko\SortedCollection\TreeNode::__get
-     *
      * @since   1.0.0
      */
+    #[CoversFunction('chdemko\SortedCollection\TreeNode::first')]
+    #[CoversFunction('chdemko\SortedCollection\TreeNode::__get')]
     public function testFirst()
     {
         $tree = TreeMap::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
@@ -165,11 +163,10 @@ class TreeNodeTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\TreeNode::last
-     * @covers  chdemko\SortedCollection\TreeNode::__get
-     *
      * @since   1.0.0
      */
+    #[CoversFunction('chdemko\SortedCollection\TreeNode::last')]
+    #[CoversFunction('chdemko\SortedCollection\TreeNode::__get')]
     public function testLast()
     {
         $tree = TreeMap::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
@@ -189,10 +186,9 @@ class TreeNodeTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\TreeNode::__get
-     *
      * @since   1.0.0
      */
+    #[CoversFunction('chdemko\SortedCollection\TreeNode::__get')]
     public function testGetUnexisting()
     {
         $tree = TreeMap::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
@@ -210,14 +206,13 @@ class TreeNodeTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\TreeNode::__get
-     * @covers  chdemko\SortedCollection\TreeNode::first
-     * @covers  chdemko\SortedCollection\TreeNode::last
-     * @covers  chdemko\SortedCollection\TreeNode::predecessor
-     * @covers  chdemko\SortedCollection\TreeNode::successor
-     *
      * @since   1.0.0
      */
+    #[CoversFunction('chdemko\SortedCollection\TreeNode::__get')]
+    #[CoversFunction('chdemko\SortedCollection\TreeNode::first')]
+    #[CoversFunction('chdemko\SortedCollection\TreeNode::last')]
+    #[CoversFunction('chdemko\SortedCollection\TreeNode::predecessor')]
+    #[CoversFunction('chdemko\SortedCollection\TreeNode::successor')]
     public function testGet()
     {
         $tree = TreeMap::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
@@ -267,11 +262,10 @@ class TreeNodeTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\TreeNode::count
-     * @covers  chdemko\SortedCollection\TreeNode::__get
-     *
      * @since   1.0.0
      */
+    #[CoversFunction('chdemko\SortedCollection\TreeNode::count')]
+    #[CoversFunction('chdemko\SortedCollection\TreeNode::__get')]
     public function testCount()
     {
         $tree = TreeMap::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
@@ -360,12 +354,10 @@ class TreeNodeTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\TreeNode::find
-     *
-     * @dataProvider  casesFind
-     *
      * @since   1.0.0
      */
+    #[DataProvider('casesFind')]
+    #[CoversFunction('chdemko\SortedCollection\TreeNode::find')]
     public function testFind($values, $type, $key, $node)
     {
         $tree = TreeMap::create();
@@ -721,17 +713,15 @@ class TreeNodeTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\TreeNode::insert
-     * @covers  chdemko\SortedCollection\TreeNode::__construct
-     * @covers  chdemko\SortedCollection\TreeNode::decBalance
-     * @covers  chdemko\SortedCollection\TreeNode::incBalance
-     * @covers  chdemko\SortedCollection\TreeNode::rotateLeft
-     * @covers  chdemko\SortedCollection\TreeNode::rotateRight
-     *
-     * @dataProvider  casesModify
-     *
      * @since   1.0.0
      */
+    #[DataProvider('casesModify')]
+    #[CoversFunction('chdemko\SortedCollection\TreeNode::insert')]
+    #[CoversFunction('chdemko\SortedCollection\TreeNode::__construct')]
+    #[CoversFunction('chdemko\SortedCollection\TreeNode::decBalance')]
+    #[CoversFunction('chdemko\SortedCollection\TreeNode::incBalance')]
+    #[CoversFunction('chdemko\SortedCollection\TreeNode::rotateLeft')]
+    #[CoversFunction('chdemko\SortedCollection\TreeNode::rotateRight')]
     public function testInsert($values)
     {
         $tree = TreeMap::create();
@@ -766,10 +756,9 @@ class TreeNodeTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\TreeNode::insert
-     *
      * @since   1.0.0
      */
+    #[CoversFunction('chdemko\SortedCollection\TreeNode::insert')]
     public function testReplace()
     {
         $tree = TreeMap::create()->initialise(array(0));
@@ -788,17 +777,15 @@ class TreeNodeTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\TreeNode::remove
-     * @covers  chdemko\SortedCollection\TreeNode::pullUpLeftMost
-     * @covers  chdemko\SortedCollection\TreeNode::decBalance
-     * @covers  chdemko\SortedCollection\TreeNode::incBalance
-     * @covers  chdemko\SortedCollection\TreeNode::rotateLeft
-     * @covers  chdemko\SortedCollection\TreeNode::rotateRight
-     *
-     * @dataProvider  casesModify
-     *
      * @since   1.0.0
      */
+    #[DataProvider('casesModify')]
+    #[CoversFunction('chdemko\SortedCollection\TreeNode::remove')]
+    #[CoversFunction('chdemko\SortedCollection\TreeNode::pullUpLeftMost')]
+    #[CoversFunction('chdemko\SortedCollection\TreeNode::decBalance')]
+    #[CoversFunction('chdemko\SortedCollection\TreeNode::incBalance')]
+    #[CoversFunction('chdemko\SortedCollection\TreeNode::rotateLeft')]
+    #[CoversFunction('chdemko\SortedCollection\TreeNode::rotateRight')]
     public function testRemove($values)
     {
         foreach ($values as $remove) {

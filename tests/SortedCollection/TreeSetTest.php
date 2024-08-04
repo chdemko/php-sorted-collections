@@ -14,6 +14,7 @@
 // Declare chdemko\SortedCollection namespace
 namespace chdemko\SortedCollection;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -57,15 +58,13 @@ class TreeSetTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\TreeSet::__construct
-     * @covers  chdemko\SortedCollection\TreeSet::create
-     * @covers  chdemko\SortedCollection\TreeSet::put
-     * @covers  chdemko\SortedCollection\TreeSet::initialise
-     *
-     * @dataProvider  casesCreate
-     *
      * @since   1.0.0
      */
+    #[DataProvider('casesCreate')]
+    #[CoversFunction('chdemko\SortedCollection\TreeSet::__construct')]
+    #[CoversFunction('chdemko\SortedCollection\TreeSet::create')]
+    #[CoversFunction('chdemko\SortedCollection\TreeSet::put')]
+    #[CoversFunction('chdemko\SortedCollection\TreeSet::initialise')]
     public function testCreate($values, $key, $comparator)
     {
         $set = TreeSet::create($comparator)->initialise($values);
@@ -108,10 +107,9 @@ class TreeSetTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\AbstractSet::getMap
-     *
      * @since   1.0.0
      */
+    #[CoversFunction('chdemko\SortedCollection\AbstractSet::getMap')]
     public function testGetMap()
     {
         $set = TreeSet::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
@@ -132,10 +130,9 @@ class TreeSetTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\AbstractSet::setMap
-     *
      * @since   1.0.0
      */
+    #[CoversFunction('chdemko\SortedCollection\AbstractSet::setMap')]
     public function testSetMap()
     {
         $set = TreeSet::create();
@@ -160,10 +157,9 @@ class TreeSetTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\TreeSet::clear
-     *
      * @since   1.0.0
      */
+    #[CoversFunction('chdemko\SortedCollection\TreeSet::clear')]
     public function testClear()
     {
         $set = TreeSet::create()->put(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
@@ -193,10 +189,9 @@ class TreeSetTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\TreeSet::__clone
-     *
      * @since   1.0.0
      */
+    #[CoversFunction('chdemko\SortedCollection\TreeSet::__clone')]
     public function testClone()
     {
         $set = TreeSet::create()->put(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
@@ -213,11 +208,10 @@ class TreeSetTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\AbstractSet::comparator
-     * @covers  chdemko\SortedCollection\AbstractSet::__get
-     *
      * @since   1.0.0
      */
+    #[CoversFunction('chdemko\SortedCollection\AbstractSet::comparator')]
+    #[CoversFunction('chdemko\SortedCollection\AbstractSet::__get')]
     public function testComparator()
     {
         $comparator = function ($key1, $key2) {
@@ -235,11 +229,10 @@ class TreeSetTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\AbstractSet::first
-     * @covers  chdemko\SortedCollection\AbstractSet::__get
-     *
      * @since   1.0.0
      */
+    #[CoversFunction('chdemko\SortedCollection\AbstractSet::first')]
+    #[CoversFunction('chdemko\SortedCollection\AbstractSet::__get')]
     public function testFirst()
     {
         $set = TreeSet::create()->put(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
@@ -257,11 +250,10 @@ class TreeSetTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\AbstractSet::last
-     * @covers  chdemko\SortedCollection\AbstractSet::__get
-     *
      * @since   1.0.0
      */
+    #[CoversFunction('chdemko\SortedCollection\AbstractSet::last')]
+    #[CoversFunction('chdemko\SortedCollection\AbstractSet::__get')]
     public function testLast()
     {
         $set = TreeSet::create()->put(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
@@ -279,10 +271,9 @@ class TreeSetTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\AbstractSet::__get
-     *
      * @since   1.0.0
      */
+    #[CoversFunction('chdemko\SortedCollection\AbstractSet::__get')]
     public function testGetUnexisting()
     {
         $set = TreeSet::create()->put(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
@@ -319,12 +310,10 @@ class TreeSetTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\AbstractSet::lower
-     *
-     * @dataProvider  casesLower
-     *
      * @since   1.0.0
      */
+    #[DataProvider('casesLower')]
+    #[CoversFunction('chdemko\SortedCollection\AbstractSet::lower')]
     public function testLower($values, $key, $expected, $exception)
     {
         if ($exception) {
@@ -368,12 +357,10 @@ class TreeSetTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\AbstractSet::floor
-     *
-     * @dataProvider  casesFloor
-     *
      * @since   1.0.0
      */
+    #[DataProvider('casesFloor')]
+    #[CoversFunction('chdemko\SortedCollection\AbstractSet::floor')]
     public function testFloor($values, $key, $expected, $exception)
     {
         if ($exception) {
@@ -393,10 +380,9 @@ class TreeSetTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\AbstractSet::find
-     *
      * @since   1.0.0
      */
+    #[CoversFunction('chdemko\SortedCollection\AbstractSet::find')]
     public function testFind()
     {
         $set = TreeSet::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
@@ -441,12 +427,10 @@ class TreeSetTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\AbstractSet::ceiling
-     *
-     * @dataProvider  casesCeiling
-     *
      * @since   1.0.0
      */
+    #[DataProvider('casesCeiling')]
+    #[CoversFunction('chdemko\SortedCollection\AbstractSet::ceiling')]
     public function testCeiling($values, $key, $expected, $exception)
     {
         if ($exception) {
@@ -490,12 +474,10 @@ class TreeSetTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\AbstractSet::higher
-     *
-     * @dataProvider  casesHigher
-     *
      * @since   1.0.0
      */
+    #[DataProvider('casesHigher')]
+    #[CoversFunction('chdemko\SortedCollection\AbstractSet::higher')]
     public function testHigher($values, $key, $expected, $exception)
     {
         if ($exception) {
@@ -538,12 +520,10 @@ class TreeSetTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\AbstractSet::offsetGet
-     *
-     * @dataProvider  casesOffsetGet
-     *
      * @since   1.0.0
      */
+    #[DataProvider('casesOffsetGet')]
+    #[CoversFunction('chdemko\SortedCollection\AbstractSet::offsetGet')]
     public function testOffsetGet($values, $key, $value)
     {
         $set = TreeSet::create()->initialise($values);
@@ -559,10 +539,9 @@ class TreeSetTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\TreeSet::offsetSet
-     *
      * @since   1.0.0
      */
+    #[CoversFunction('chdemko\SortedCollection\TreeSet::offsetSet')]
     public function testOffsetSet()
     {
         $set = TreeSet::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
@@ -583,10 +562,9 @@ class TreeSetTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\AbstractSet::offsetExists
-     *
      * @since   1.0.0
      */
+    #[CoversFunction('chdemko\SortedCollection\AbstractSet::offsetExists')]
     public function testOffsetExists()
     {
         $set = TreeSet::create();
@@ -610,10 +588,9 @@ class TreeSetTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\TreeSet::offsetUnset
-     *
      * @since   1.0.0
      */
+    #[CoversFunction('chdemko\SortedCollection\TreeSet::offsetUnset')]
     public function testOffsetUnset()
     {
         $set = TreeSet::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
@@ -630,11 +607,10 @@ class TreeSetTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\AbstractSet::count
-     * @covers  chdemko\SortedCollection\AbstractSet::__get
-     *
      * @since   1.0.0
      */
+    #[CoversFunction('chdemko\SortedCollection\AbstractSet::count')]
+    #[CoversFunction('chdemko\SortedCollection\AbstractSet::__get')]
     public function testCount()
     {
         $set = TreeSet::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
@@ -650,18 +626,17 @@ class TreeSetTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\AbstractSet::__toString
-     * @covers  chdemko\SortedCollection\AbstractSet::toArray
-     * @covers  chdemko\SortedCollection\AbstractSet::getIterator
-     * @covers  chdemko\SortedCollection\Iterator::create
-     * @covers  chdemko\SortedCollection\Iterator::rewind
-     * @covers  chdemko\SortedCollection\Iterator::key
-     * @covers  chdemko\SortedCollection\Iterator::current
-     * @covers  chdemko\SortedCollection\Iterator::next
-     * @covers  chdemko\SortedCollection\Iterator::valid
-     *
      * @since   1.0.0
      */
+    #[CoversFunction('chdemko\SortedCollection\AbstractSet::__toString')]
+    #[CoversFunction('chdemko\SortedCollection\AbstractSet::toArray')]
+    #[CoversFunction('chdemko\SortedCollection\AbstractSet::getIterator')]
+    #[CoversFunction('chdemko\SortedCollection\Iterator::create')]
+    #[CoversFunction('chdemko\SortedCollection\Iterator::rewind')]
+    #[CoversFunction('chdemko\SortedCollection\Iterator::key')]
+    #[CoversFunction('chdemko\SortedCollection\Iterator::current')]
+    #[CoversFunction('chdemko\SortedCollection\Iterator::next')]
+    #[CoversFunction('chdemko\SortedCollection\Iterator::valid')]
     public function testToString()
     {
         $set = TreeSet::create();
@@ -684,10 +659,9 @@ class TreeSetTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\TreeSet::jsonSerialize
-     *
      * @since   1.0.0
      */
+    #[CoversFunction('chdemko\SortedCollection\TreeSet::jsonSerialize')]
     public function testJsonSerialize()
     {
         $set = TreeSet::create();

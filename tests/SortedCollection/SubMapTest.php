@@ -14,6 +14,7 @@
 // Declare chdemko\SortedCollection namespace
 namespace chdemko\SortedCollection;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -31,14 +32,13 @@ class SubMapTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\SubMap::create
-     * @covers  chdemko\SortedCollection\SubMap::__construct
-     * @covers  chdemko\SortedCollection\SubMap::setEmpty
-     * @covers  chdemko\SortedCollection\SubMap::__get
-     * @covers  chdemko\SortedCollection\SubMap::__set
-     *
      * @since   1.0.0
      */
+    #[CoversFunction('chdemko\SortedCollection\SubMap::create')]
+    #[CoversFunction('chdemko\SortedCollection\SubMap::__construct')]
+    #[CoversFunction('chdemko\SortedCollection\SubMap::setEmpty')]
+    #[CoversFunction('chdemko\SortedCollection\SubMap::__get')]
+    #[CoversFunction('chdemko\SortedCollection\SubMap::__set')]
     public function testCreate()
     {
         $tree = TreeMap::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
@@ -82,12 +82,11 @@ class SubMapTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\SubMap::head
-     * @covers  chdemko\SortedCollection\SubMap::__construct
-     * @covers  chdemko\SortedCollection\SubMap::__get
-     *
      * @since   1.0.0
      */
+    #[CoversFunction('chdemko\SortedCollection\SubMap::head')]
+    #[CoversFunction('chdemko\SortedCollection\SubMap::__construct')]
+    #[CoversFunction('chdemko\SortedCollection\SubMap::__get')]
     public function testHead()
     {
         $tree = TreeMap::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
@@ -112,12 +111,11 @@ class SubMapTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\SubMap::tail
-     * @covers  chdemko\SortedCollection\SubMap::__construct
-     * @covers  chdemko\SortedCollection\SubMap::__get
-     *
      * @since   1.0.0
      */
+    #[CoversFunction('chdemko\SortedCollection\SubMap::tail')]
+    #[CoversFunction('chdemko\SortedCollection\SubMap::__construct')]
+    #[CoversFunction('chdemko\SortedCollection\SubMap::__get')]
     public function testTail()
     {
         $tree = TreeMap::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
@@ -142,12 +140,11 @@ class SubMapTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\SubMap::view
-     * @covers  chdemko\SortedCollection\SubMap::__construct
-     * @covers  chdemko\SortedCollection\SubMap::__get
-     *
      * @since   1.0.0
      */
+    #[CoversFunction('chdemko\SortedCollection\SubMap::view')]
+    #[CoversFunction('chdemko\SortedCollection\SubMap::__construct')]
+    #[CoversFunction('chdemko\SortedCollection\SubMap::__get')]
     public function testCopy()
     {
         $tree = TreeMap::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
@@ -170,10 +167,9 @@ class SubMapTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\SubMap::__get
-     *
      * @since   1.0.0
      */
+    #[CoversFunction('chdemko\SortedCollection\SubMap::__get')]
     public function testGetFromKey()
     {
         $tree = TreeMap::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
@@ -188,10 +184,9 @@ class SubMapTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\SubMap::__get
-     *
      * @since   1.0.0
      */
+    #[CoversFunction('chdemko\SortedCollection\SubMap::__get')]
     public function testGetToKey()
     {
         $tree = TreeMap::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
@@ -206,10 +201,9 @@ class SubMapTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\SubMap::__get
-     *
      * @since   1.0.0
      */
+    #[CoversFunction('chdemko\SortedCollection\SubMap::__get')]
     public function testGetFromInclusive()
     {
         $tree = TreeMap::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
@@ -224,10 +218,9 @@ class SubMapTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\SubMap::__get
-     *
      * @since   1.0.0
      */
+    #[CoversFunction('chdemko\SortedCollection\SubMap::__get')]
     public function testGetToInclusive()
     {
         $tree = TreeMap::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
@@ -242,10 +235,9 @@ class SubMapTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\SubMap::__set
-     *
      * @since   1.0.0
      */
+    #[CoversFunction('chdemko\SortedCollection\SubMap::__set')]
     public function testSetFromKey()
     {
         $tree = TreeMap::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
@@ -266,10 +258,9 @@ class SubMapTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\SubMap::__set
-     *
      * @since   1.0.0
      */
+    #[CoversFunction('chdemko\SortedCollection\SubMap::__set')]
     public function testSetToKey()
     {
         $tree = TreeMap::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
@@ -290,10 +281,9 @@ class SubMapTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\SubMap::__set
-     *
      * @since   1.0.0
      */
+    #[CoversFunction('chdemko\SortedCollection\SubMap::__set')]
     public function testSetFromInclusive()
     {
         $tree = TreeMap::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
@@ -307,10 +297,9 @@ class SubMapTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\SubMap::__set
-     *
      * @since   1.0.0
      */
+    #[CoversFunction('chdemko\SortedCollection\SubMap::__set')]
     public function testSetToInclusive()
     {
         $tree = TreeMap::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
@@ -324,10 +313,9 @@ class SubMapTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\SubMap::__set
-     *
      * @since   1.0.0
      */
+    #[CoversFunction('chdemko\SortedCollection\SubMap::__set')]
     public function testSetUnexisting()
     {
         $tree = TreeMap::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
@@ -341,10 +329,9 @@ class SubMapTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\SubMap::__unset
-     *
      * @since   1.0.0
      */
+    #[CoversFunction('chdemko\SortedCollection\SubMap::__unset')]
     public function testUnsetFromKey()
     {
         $tree = TreeMap::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
@@ -359,10 +346,9 @@ class SubMapTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\SubMap::__unset
-     *
      * @since   1.0.0
      */
+    #[CoversFunction('chdemko\SortedCollection\SubMap::__unset')]
     public function testUnsetToKey()
     {
         $tree = TreeMap::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
@@ -377,10 +363,9 @@ class SubMapTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\SubMap::__unset
-     *
      * @since   1.0.0
      */
+    #[CoversFunction('chdemko\SortedCollection\SubMap::__unset')]
     public function testUnsetFromInclusive()
     {
         $tree = TreeMap::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
@@ -395,10 +380,9 @@ class SubMapTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\SubMap::__unset
-     *
      * @since   1.0.0
      */
+    #[CoversFunction('chdemko\SortedCollection\SubMap::__unset')]
     public function testUnsetToInclusive()
     {
         $tree = TreeMap::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
@@ -413,10 +397,9 @@ class SubMapTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\SubMap::__unset
-     *
      * @since   1.0.0
      */
+    #[CoversFunction('chdemko\SortedCollection\SubMap::__unset')]
     public function testUnsetUnexisting()
     {
         $tree = TreeMap::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
@@ -430,10 +413,9 @@ class SubMapTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\SubMap::__isset
-     *
      * @since   1.0.0
      */
+    #[CoversFunction('chdemko\SortedCollection\SubMap::__isset')]
     public function testIssetFrom()
     {
         $tree = TreeMap::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
@@ -458,10 +440,9 @@ class SubMapTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\SubMap::__isset
-     *
      * @since   1.0.0
      */
+    #[CoversFunction('chdemko\SortedCollection\SubMap::__isset')]
     public function testIssetTo()
     {
         $tree = TreeMap::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
@@ -486,10 +467,9 @@ class SubMapTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\SubMap::__isset
-     *
      * @since   1.0.0
      */
+    #[CoversFunction('chdemko\SortedCollection\SubMap::__isset')]
     public function testIssetUnexisting()
     {
         $tree = TreeMap::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
@@ -504,12 +484,11 @@ class SubMapTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\SubMap::comparator
-     * @covers  chdemko\SortedCollection\SubMap::__get
-     * @covers  chdemko\SortedCollection\AbstractMap::__get
-     *
      * @since   1.0.0
      */
+    #[CoversFunction('chdemko\SortedCollection\SubMap::comparator')]
+    #[CoversFunction('chdemko\SortedCollection\SubMap::__get')]
+    #[CoversFunction('chdemko\SortedCollection\AbstractMap::__get')]
     public function testComparator()
     {
         $tree = TreeMap::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
@@ -581,14 +560,12 @@ class SubMapTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\SubMap::first
-     * @covers  chdemko\SortedCollection\SubMap::__get
-     * @covers  chdemko\SortedCollection\AbstractMap::__get
-     *
-     * @dataProvider  casesFirst
-     *
      * @since   1.0.0
      */
+    #[DataProvider('casesFirst')]
+    #[CoversFunction('chdemko\SortedCollection\SubMap::first')]
+    #[CoversFunction('chdemko\SortedCollection\SubMap::__get')]
+    #[CoversFunction('chdemko\SortedCollection\AbstractMap::__get')]
     public function testFirst($fromKey, $toKey, $fromInclusive, $toInclusive, $firstKey, $exception)
     {
         if ($exception) {
@@ -631,14 +608,12 @@ class SubMapTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\SubMap::last
-     * @covers  chdemko\SortedCollection\SubMap::__get
-     * @covers  chdemko\SortedCollection\AbstractMap::__get
-     *
-     * @dataProvider  casesLast
-     *
      * @since   1.0.0
      */
+    #[DataProvider('casesLast')]
+    #[CoversFunction('chdemko\SortedCollection\SubMap::last')]
+    #[CoversFunction('chdemko\SortedCollection\SubMap::__get')]
+    #[CoversFunction('chdemko\SortedCollection\AbstractMap::__get')]
     public function testLast($fromKey, $toKey, $fromInclusive, $toInclusive, $lastKey, $exception)
     {
         if ($exception) {
@@ -681,12 +656,10 @@ class SubMapTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\SubMap::predecessor
-     *
-     * @dataProvider  casesPredecessor
-     *
      * @since   1.0.0
      */
+    #[DataProvider('casesPredecessor')]
+    #[CoversFunction('chdemko\SortedCollection\SubMap::predecessor')]
     public function testPredecessor($fromKey, $toKey, $fromInclusive, $toInclusive, $key, $predecessorKey, $exception)
     {
         if ($exception) {
@@ -730,12 +703,10 @@ class SubMapTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\SubMap::successor
-     *
-     * @dataProvider  casesSuccessor
-     *
      * @since   1.0.0
      */
+    #[DataProvider('casesSuccessor')]
+    #[CoversFunction('chdemko\SortedCollection\SubMap::successor')]
     public function testSuccessor($fromKey, $toKey, $fromInclusive, $toInclusive, $key, $successorKey, $exception)
     {
         if ($exception) {
@@ -804,12 +775,10 @@ class SubMapTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\SubMap::lower
-     *
-     * @dataProvider  casesLower
-     *
      * @since   1.0.0
      */
+    #[DataProvider('casesLower')]
+    #[CoversFunction('chdemko\SortedCollection\SubMap::lower')]
     public function testLower($fromKey, $toKey, $fromInclusive, $toInclusive, $key, $lowerKey, $exception)
     {
         if ($exception) {
@@ -874,12 +843,10 @@ class SubMapTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\SubMap::floor
-     *
-     * @dataProvider  casesFloor
-     *
      * @since   1.0.0
      */
+    #[DataProvider('casesFloor')]
+    #[CoversFunction('chdemko\SortedCollection\SubMap::floor')]
     public function testFloor($fromKey, $toKey, $fromInclusive, $toInclusive, $key, $floorKey, $exception)
     {
         if ($exception) {
@@ -943,12 +910,10 @@ class SubMapTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\SubMap::find
-     *
-     * @dataProvider  casesFind
-     *
      * @since   1.0.0
      */
+    #[DataProvider('casesFind')]
+    #[CoversFunction('chdemko\SortedCollection\SubMap::find')]
     public function testFind($fromKey, $toKey, $fromInclusive, $toInclusive, $key, $findKey, $exception)
     {
         if ($exception) {
@@ -1011,12 +976,10 @@ class SubMapTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\SubMap::ceiling
-     *
-     * @dataProvider  casesCeiling
-     *
      * @since   1.0.0
      */
+    #[DataProvider('casesCeiling')]
+    #[CoversFunction('chdemko\SortedCollection\SubMap::ceiling')]
     public function testCeiling($fromKey, $toKey, $fromInclusive, $toInclusive, $key, $ceilingKey, $exception)
     {
         if ($exception) {
@@ -1082,12 +1045,10 @@ class SubMapTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\SubMap::higher
-     *
-     * @dataProvider  casesHigher
-     *
      * @since   1.0.0
      */
+    #[DataProvider('casesHigher')]
+    #[CoversFunction('chdemko\SortedCollection\SubMap::higher')]
     public function testHigher($fromKey, $toKey, $fromInclusive, $toInclusive, $key, $higherKey, $exception)
     {
         if ($exception) {
@@ -1151,12 +1112,10 @@ class SubMapTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\AbstractMap::offsetGet
-     *
-     * @dataProvider  casesOffsetGet
-     *
      * @since   1.0.0
      */
+    #[DataProvider('casesOffsetGet')]
+    #[CoversFunction('chdemko\SortedCollection\AbstractMap::offsetGet')]
     public function testOffsetGet($fromKey, $toKey, $fromInclusive, $toInclusive, $key, $getValue, $exception)
     {
         if ($exception) {
@@ -1199,13 +1158,11 @@ class SubMapTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\SubMap::count
-     * @covers  chdemko\SortedCollection\AbstractMap::__get
-     *
-     * @dataProvider  casesCount
-     *
      * @since   1.0.0
      */
+    #[DataProvider('casesCount')]
+    #[CoversFunction('chdemko\SortedCollection\SubMap::count')]
+    #[CoversFunction('chdemko\SortedCollection\AbstractMap::__get')]
     public function testCount($fromKey, $toKey, $fromInclusive, $toInclusive, $count)
     {
         $sub = $this->createSub($fromKey, $toKey, $fromInclusive, $toInclusive);
@@ -1244,12 +1201,10 @@ class SubMapTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\AbstractMap::__toString
-     *
-     * @dataProvider  casesToString
-     *
      * @since   1.0.0
      */
+    #[DataProvider('casesToString')]
+    #[CoversFunction('chdemko\SortedCollection\AbstractMap::__toString')]
     public function testToString($fromKey, $toKey, $fromInclusive, $toInclusive, $string)
     {
         $sub = $this->createSub($fromKey, $toKey, $fromInclusive, $toInclusive);
@@ -1369,13 +1324,11 @@ class SubMapTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\SubMap::jsonSerialize
-     * @covers  chdemko\SortedCollection\SubMap::setEmpty
-     *
-     * @dataProvider  casesJsonSerialize
-     *
      * @since   1.0.0
      */
+    #[DataProvider('casesJsonSerialize')]
+    #[CoversFunction('chdemko\SortedCollection\SubMap::jsonSerialize')]
+    #[CoversFunction('chdemko\SortedCollection\SubMap::setEmpty')]
     public function testJsonSerialize($fromKey, $toKey, $fromInclusive, $toInclusive, $string)
     {
         $sub = $this->createSub($fromKey, $toKey, $fromInclusive, $toInclusive);

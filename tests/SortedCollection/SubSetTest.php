@@ -14,6 +14,7 @@
 // Declare chdemko\SortedCollection namespace
 namespace chdemko\SortedCollection;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -55,13 +56,11 @@ class SubSetTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\SubSet::__construct
-     * @covers  chdemko\SortedCollection\SubSet::create
-     *
-     * @dataProvider  casesCreate
-     *
      * @since   1.0.0
      */
+    #[DataProvider('casesCreate')]
+    #[CoversFunction('chdemko\SortedCollection\SubSet::__construct')]
+    #[CoversFunction('chdemko\SortedCollection\SubSet::create')]
     public function testCreate($values, $from, $to, $fromInclusive, $toInclusive, $string)
     {
         $set = TreeSet::create()->initialise($values);
@@ -97,13 +96,11 @@ class SubSetTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\SubSet::__construct
-     * @covers  chdemko\SortedCollection\SubSet::head
-     *
-     * @dataProvider  casesHead
-     *
      * @since   1.0.0
      */
+    #[DataProvider('casesHead')]
+    #[CoversFunction('chdemko\SortedCollection\SubSet::__construct')]
+    #[CoversFunction('chdemko\SortedCollection\SubSet::head')]
     public function testHead($values, $to, $toInclusive, $string)
     {
         $set = TreeSet::create()->initialise($values);
@@ -139,13 +136,11 @@ class SubSetTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\SubSet::__construct
-     * @covers  chdemko\SortedCollection\SubSet::tail
-     *
-     * @dataProvider  casesTail
-     *
      * @since   1.0.0
      */
+    #[DataProvider('casesTail')]
+    #[CoversFunction('chdemko\SortedCollection\SubSet::__construct')]
+    #[CoversFunction('chdemko\SortedCollection\SubSet::tail')]
     public function testTail($values, $from, $fromInclusive, $string)
     {
         $set = TreeSet::create()->initialise($values);
@@ -161,11 +156,10 @@ class SubSetTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\SubSet::__construct
-     * @covers  chdemko\SortedCollection\SubSet::view
-     *
      * @since   1.0.0
      */
+    #[CoversFunction('chdemko\SortedCollection\SubSet::__construct')]
+    #[CoversFunction('chdemko\SortedCollection\SubSet::view')]
     public function testView()
     {
         $set = TreeSet::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
@@ -181,11 +175,10 @@ class SubSetTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\SubSet::__get
-     * @covers  chdemko\SortedCollection\AbstractSet::__get
-     *
      * @since   1.0.0
      */
+    #[CoversFunction('chdemko\SortedCollection\SubSet::__get')]
+    #[CoversFunction('chdemko\SortedCollection\AbstractSet::__get')]
     public function testGet()
     {
         $set = TreeSet::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
@@ -221,10 +214,9 @@ class SubSetTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\SubSet::__set
-     *
      * @since   1.0.0
      */
+    #[CoversFunction('chdemko\SortedCollection\SubSet::__set')]
     public function testSet()
     {
         $set = TreeSet::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
@@ -290,11 +282,10 @@ class SubSetTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\SubSet::__unset
-     * @covers  chdemko\SortedCollection\SubSet::__isset
-     *
      * @since   1.0.0
      */
+    #[CoversFunction('chdemko\SortedCollection\SubSet::__unset')]
+    #[CoversFunction('chdemko\SortedCollection\SubSet::__isset')]
     public function testUnsetIsset()
     {
         $set = TreeSet::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
@@ -437,12 +428,10 @@ class SubSetTest extends TestCase
      *
      * @return  void
      *
-     * @covers  chdemko\SortedCollection\SubSet::jsonSerialize
-     *
-     * @dataProvider  casesJsonSerialize
-     *
      * @since   1.0.0
      */
+    #[DataProvider('casesJsonSerialize')]
+    #[CoversFunction('chdemko\SortedCollection\SubSet::jsonSerialize')]
     public function testJsonSerialize($fromKey, $toKey, $fromInclusive, $toInclusive, $string)
     {
         $sub = $this->createSub($fromKey, $toKey, $fromInclusive, $toInclusive);
