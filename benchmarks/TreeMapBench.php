@@ -11,8 +11,8 @@
  * This file is part of the php-sorted-collections package https://github.com/chdemko/php-sorted-collections
  */
 
-// Declare chdemko\SortedCollectionBenchmark namespace
-namespace chdemko\SortedCollectionBenchmark;
+// Declare chdemko\SortedCollection\Benchmark namespace
+namespace chdemko\SortedCollection\Benchmark;
 
 use chdemko\SortedCollection\TreeMap;
 use chdemko\SortedCollection\ReversedMap;
@@ -33,7 +33,7 @@ class TreeMapBench
     protected $tree;
 
     /**
-     * @var SortedMap The sorted map
+     * @var chdemko\SortedCollection\SortedMap The sorted map
      *
      * @since 1.0.5
      */
@@ -42,7 +42,7 @@ class TreeMapBench
     /**
      * Provider for counts
      *
-     * @return iterator Iterator on count
+     * @return \Generator on count
      *
      * @since 1.0.5
      */
@@ -57,7 +57,7 @@ class TreeMapBench
     /**
      * Provider for counts
      *
-     * @return iterator Iterator on type
+     * @return \Generator on type
      *
      * @since 1.0.5
      */
