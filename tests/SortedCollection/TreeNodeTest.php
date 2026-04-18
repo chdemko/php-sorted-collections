@@ -41,7 +41,7 @@ class TreeNodeTest extends TestCase
             $string = '(';
 
             // Set the key property accessible
-            $key = (new \ReflectionClass($node))->getProperty('key');
+            $key = (new \ReflectionClass($node))->getProperty('keyInternal');
             $key->setAccessible(true);
             $string .= $key->getValue($node);
 

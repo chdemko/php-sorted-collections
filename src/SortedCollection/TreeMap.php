@@ -54,7 +54,7 @@ class TreeMap extends AbstractMap
      *
      * @since 1.0.0
      */
-    private $comparator;
+    private $comparatorInternal;
 
     /**
      * Constructor
@@ -66,11 +66,11 @@ class TreeMap extends AbstractMap
     protected function __construct($comparator = null)
     {
         if ($comparator === null) {
-            $this->comparator = function ($key1, $key2) {
+            $this->comparatorInternal = function ($key1, $key2) {
                 return $key1 <=> $key2;
             };
         } else {
-            $this->comparator = $comparator;
+            $this->comparatorInternal = $comparator;
         }
     }
 
@@ -97,7 +97,7 @@ class TreeMap extends AbstractMap
      */
     public function comparator()
     {
-        return $this->comparator;
+        return $this->comparatorInternal;
     }
 
     /**
@@ -194,7 +194,7 @@ class TreeMap extends AbstractMap
     public function lower($key)
     {
         if ($this->root) {
-            $lower = $this->root->find($key, $this->comparator, -2);
+            $lower = $this->root->find($key, $this->comparatorInternal, -2);
         } else {
             $lower = null;
         }
@@ -220,7 +220,7 @@ class TreeMap extends AbstractMap
     public function floor($key)
     {
         if ($this->root) {
-            $floor = $this->root->find($key, $this->comparator, -1);
+            $floor = $this->root->find($key, $this->comparatorInternal, -1);
         } else {
             $floor = null;
         }
@@ -246,7 +246,7 @@ class TreeMap extends AbstractMap
     public function find($key)
     {
         if ($this->root) {
-            $find = $this->root->find($key, $this->comparator, 0);
+            $find = $this->root->find($key, $this->comparatorInternal, 0);
         } else {
             $find = null;
         }
@@ -272,7 +272,7 @@ class TreeMap extends AbstractMap
     public function ceiling($key)
     {
         if ($this->root) {
-            $ceiling = $this->root->find($key, $this->comparator, 1);
+            $ceiling = $this->root->find($key, $this->comparatorInternal, 1);
         } else {
             $ceiling = null;
         }
@@ -298,7 +298,7 @@ class TreeMap extends AbstractMap
     public function higher($key)
     {
         if ($this->root) {
-            $higher = $this->root->find($key, $this->comparator, 2);
+            $higher = $this->root->find($key, $this->comparatorInternal, 2);
         } else {
             $higher = null;
         }
@@ -408,7 +408,7 @@ class TreeMap extends AbstractMap
     public function offsetSet($key, $value): void
     {
         if ($this->root) {
-            $this->root = $this->root->insert($key, $value, $this->comparator);
+            $this->root = $this->root->insert($key, $value, $this->comparatorInternal);
         } else {
             $this->root = TreeNode::create($key, $value);
         }
@@ -426,7 +426,7 @@ class TreeMap extends AbstractMap
     public function offsetUnset($key): void
     {
         if ($this->root) {
-            $this->root = $this->root->remove($key, $this->comparator);
+            $this->root = $this->root->remove($key, $this->comparatorInternal);
         }
     }
 

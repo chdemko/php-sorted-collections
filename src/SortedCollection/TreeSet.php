@@ -82,7 +82,13 @@ class TreeSet extends AbstractSet
      */
     public function clear()
     {
-        $this->getMap()->clear();
+        $map = $this->getMap();
+
+        if ($map instanceof TreeMap) {
+            $map->clear();
+        } else {
+            $this->setMap(TreeMap::create($map->comparator()));
+        }
 
         return $this;
     }

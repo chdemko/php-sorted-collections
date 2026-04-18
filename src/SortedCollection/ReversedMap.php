@@ -67,8 +67,10 @@ class ReversedMap extends AbstractMap
     protected function __construct(SortedMap $map)
     {
         $this->mapInternal = $map;
-        $this->comparatorInternal = function ($key1, $key2) {
-            return - call_user_func($this->mapInternal->comparator, $key1, $key2);
+        $comparator = $map->comparator();
+
+        $this->comparatorInternal = function ($key1, $key2) use ($comparator) {
+            return - call_user_func($comparator, $key1, $key2);
         };
     }
 

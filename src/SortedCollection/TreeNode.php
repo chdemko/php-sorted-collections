@@ -58,7 +58,7 @@ class TreeNode implements \Countable
      *
      * @since 1.0.0
      */
-    private $key;
+    private $keyInternal;
 
     /**
      * @var mixed  Node value
@@ -94,7 +94,7 @@ class TreeNode implements \Countable
      */
     protected function __construct($key, $value, $predecessor = null, $successor = null)
     {
-        $this->key = $key;
+        $this->keyInternal = $key;
         $this->value = $value;
         $this->left = $predecessor;
         $this->right = $successor;
@@ -123,7 +123,7 @@ class TreeNode implements \Countable
             case 'successor':
                 return $this->successor();
             case 'key':
-                return $this->key;
+                return $this->keyInternal;
             case 'count':
                 return $this->count();
             default:
@@ -265,7 +265,7 @@ class TreeNode implements \Countable
         $cmp = 0;
 
         while (true) {
-            $cmp = call_user_func($comparator, $key, $node->key);
+            $cmp = call_user_func($comparator, $key, $node->keyInternal);
 
             if ($cmp < 0 && $node->information & 2) {
                 $node = $node->left;
@@ -429,7 +429,7 @@ class TreeNode implements \Countable
     public function insert($key, $value, $comparator)
     {
         $node = $this;
-        $cmp = call_user_func($comparator, $key, $this->key);
+        $cmp = call_user_func($comparator, $key, $this->keyInternal);
 
         if ($cmp < 0) {
             if ($this->information & 2) {
@@ -483,7 +483,7 @@ class TreeNode implements \Countable
                 return $this;
             }
         } else {
-            $this->left->key = $this->key;
+            $this->left->keyInternal = $this->keyInternal;
             $this->left->value = $this->value;
 
             if ($this->information & 1) {
@@ -516,7 +516,7 @@ class TreeNode implements \Countable
      */
     public function remove($key, $comparator)
     {
-        $cmp = call_user_func($comparator, $key, $this->key);
+        $cmp = call_user_func($comparator, $key, $this->keyInternal);
 
         if ($cmp < 0) {
             if ($this->information & 2) {

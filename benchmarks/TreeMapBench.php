@@ -40,6 +40,13 @@ class TreeMapBench
     protected $data;
 
     /**
+     * @var integer Sink value used to consume benchmark results
+     *
+     * @since 1.0.5
+     */
+    protected $sink = 0;
+
+    /**
      * Provider for counts
      *
      * @return \Generator on count
@@ -72,13 +79,11 @@ class TreeMapBench
     /**
      * Create the tree map.
      *
-     * @param array $params Array of parameters
-     *
      * @return void
      *
      * @since 1.0.5
      */
-    public function init($params)
+    public function init()
     {
         $this->tree = TreeMap::create();
     }
@@ -126,13 +131,11 @@ class TreeMapBench
     /**
      * Clear the tree map.
      *
-     * @param array $params Array of parameters
-     *
      * @return void
      *
      * @since 1.0.5
      */
-    public function finish($params)
+    public function finish()
     {
         $this->tree->clear();
     }
@@ -170,6 +173,8 @@ class TreeMapBench
      */
     public function benchSearch($params)
     {
+        $sink = 0;
+
         if (isset($params['from'])) {
             $min = (int) ($params['from'] * $params['count']);
         } else {
@@ -183,8 +188,10 @@ class TreeMapBench
         }
 
         for ($i = $min; $i < $max; $i++) {
-            $value = $this->data[$i];
+            $sink += $this->data[$i];
         }
+
+        $this->sink = $sink;
     }
 
     /**
