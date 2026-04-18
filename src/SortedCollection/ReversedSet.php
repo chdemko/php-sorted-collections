@@ -46,7 +46,17 @@ class ReversedSet extends AbstractSet
      */
     protected function __construct(SortedSet $set)
     {
-        $this->setMap(ReversedMap::create($set->getMap()))->setInternal = $set;
+        if ($set instanceof AbstractSet) {
+            $map = $set->getMap();
+        } else {
+            $map = TreeMap::create($set->comparator());
+
+            foreach ($set as $value) {
+                $map[$value] = true;
+            }
+        }
+
+        $this->setMap(ReversedMap::create($map))->setInternal = $set;
     }
 
     /**

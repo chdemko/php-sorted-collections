@@ -151,7 +151,7 @@ class TreeMap extends AbstractMap
     {
         $predecessor = $element->predecessor;
 
-        if ($predecessor) {
+        if ($predecessor !== null) {
             return $predecessor;
         } else {
             throw new \OutOfBoundsException('Predecessor element unexisting');
@@ -173,7 +173,7 @@ class TreeMap extends AbstractMap
     {
         $successor = $element->successor;
 
-        if ($successor) {
+        if ($successor !== null) {
             return $successor;
         } else {
             throw new \OutOfBoundsException('Successor element unexisting');

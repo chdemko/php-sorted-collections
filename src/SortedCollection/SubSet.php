@@ -63,6 +63,26 @@ class SubSet extends AbstractSet
     private $set;
 
     /**
+     * Get the underlying map as a SubMap
+     *
+     * @throws RuntimeException If the underlying map is not a SubMap
+     *
+     * @return SubMap The underlying sub map
+     *
+     * @since 1.0.0
+     */
+    private function getSubMap()
+    {
+        $map = $this->getMap();
+
+        if (!$map instanceof SubMap) {
+            throw new \RuntimeException('Unexpected map type');
+        }
+
+        return $map;
+    }
+
+    /**
      * Magic get method
      *
      * @param string $property The property
@@ -73,15 +93,17 @@ class SubSet extends AbstractSet
      */
     public function __get($property)
     {
+        $map = $this->getSubMap();
+
         switch ($property) {
             case 'from':
-                return $this->getMap()->fromKey;
+                return $map->fromKey;
             case 'to':
-                return $this->getMap()->toKey;
+                return $map->toKey;
             case 'fromInclusive':
-                return $this->getMap()->fromInclusive;
+                return $map->fromInclusive;
             case 'toInclusive':
-                return $this->getMap()->toInclusive;
+                return $map->toInclusive;
             case 'set':
                 return $this->set;
             default:
@@ -103,18 +125,20 @@ class SubSet extends AbstractSet
      */
     public function __set($property, $value)
     {
+        $map = $this->getSubMap();
+
         switch ($property) {
             case 'from':
-                $this->getMap()->fromKey = $value;
+                $map->fromKey = $value;
                 break;
             case 'to':
-                $this->getMap()->toKey = $value;
+                $map->toKey = $value;
                 break;
             case 'fromInclusive':
-                $this->getMap()->fromInclusive = $value;
+                $map->fromInclusive = $value;
                 break;
             case 'toInclusive':
-                $this->getMap()->toInclusive = $value;
+                $map->toInclusive = $value;
                 break;
             default:
                 throw new \RuntimeException('Undefined property');
@@ -134,18 +158,20 @@ class SubSet extends AbstractSet
      */
     public function __unset($property)
     {
+        $map = $this->getSubMap();
+
         switch ($property) {
             case 'from':
-                unset($this->getMap()->fromKey);
+                unset($map->fromKey);
                 break;
             case 'to':
-                unset($this->getMap()->toKey);
+                unset($map->toKey);
                 break;
             case 'fromInclusive':
-                unset($this->getMap()->fromInclusive);
+                unset($map->fromInclusive);
                 break;
             case 'toInclusive':
-                unset($this->getMap()->toInclusive);
+                unset($map->toInclusive);
                 break;
             default:
                 throw new \RuntimeException('Undefined property');
@@ -163,15 +189,17 @@ class SubSet extends AbstractSet
      */
     public function __isset($property)
     {
+        $map = $this->getSubMap();
+
         switch ($property) {
             case 'from':
-                return isset($this->getMap()->fromKey);
+                return isset($map->fromKey);
             case 'to':
-                return isset($this->getMap()->toKey);
+                return isset($map->toKey);
             case 'fromInclusive':
-                return isset($this->getMap()->fromInclusive);
+                return isset($map->fromInclusive);
             case 'toInclusive':
-                return isset($this->getMap()->toInclusive);
+                return isset($map->toInclusive);
             default:
                 return false;
         }

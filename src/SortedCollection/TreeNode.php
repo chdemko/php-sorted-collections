@@ -21,12 +21,12 @@ namespace chdemko\SortedCollection;
  *
  * @since 1.0.0
  *
- * @property-read TreeNode  $first        The first node of the tree
- * @property-read TreeNode  $last         The last node of the tree
- * @property-read TreeNode  $predecessor  The predecessor node
- * @property-read TreeNode  $successor    The successor node
- * @property-read mixed     $key          The key
- * @property-read integer   $count        The number of elements in the tree
+ * @property-read TreeNode       $first        The first node of the tree
+ * @property-read TreeNode       $last         The last node of the tree
+ * @property-read TreeNode|null  $predecessor  The predecessor node
+ * @property-read TreeNode|null  $successor    The successor node
+ * @property-read mixed          $key          The key
+ * @property-read integer        $count        The number of elements in the tree
  */
 class TreeNode implements \Countable
 {
@@ -40,14 +40,14 @@ class TreeNode implements \Countable
     private $information = 0;
 
     /**
-     * @var TreeNode  Left|Predecessor node
+     * @var TreeNode|null  Left|Predecessor node
      *
      * @since 1.0.0
      */
     private $left;
 
     /**
-     * @var TreeNode  Right|Successor node
+     * @var TreeNode|null  Right|Successor node
      *
      * @since 1.0.0
      */
@@ -170,7 +170,7 @@ class TreeNode implements \Countable
     /**
      * Get the predecessor
      *
-     * @return TreeNode the predecessor node
+     * @return TreeNode|null the predecessor node
      *
      * @since 1.0.0
      */
@@ -192,7 +192,7 @@ class TreeNode implements \Countable
     /**
      * Get the successor
      *
-     * @return TreeNode the successor node
+     * @return TreeNode|null the successor node
      *
      * @since 1.0.0
      */
