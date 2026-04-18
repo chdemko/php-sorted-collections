@@ -285,13 +285,150 @@ class SubMap extends AbstractMap
     protected function setEmpty()
     {
         if ($this->fromOption != self::UNUSED && $this->toOption != self::UNUSED) {
-            $cmp = call_user_func($this->mapInternal->comparator(), $this->fromKey, $this->toKey);
+            $cmp = $this->compareKeys($this->fromKey, $this->toKey);
 
             $this->empty = $cmp > 0
               || $cmp == 0 && ($this->fromOption == self::EXCLUSIVE || $this->toOption == self::EXCLUSIVE);
         } else {
             $this->empty = false;
         }
+    }
+
+    /**
+     * Compare 2 keys using the map comparator
+     *
+     * @param mixed $key1 First key
+     * @param mixed $key2 Second key
+     *
+     * @return integer Comparison result
+     *
+     * @since 1.0.0
+     */
+    private function compareKeys($key1, $key2)
+    {
+        return call_user_func($this->mapInternal->comparator(), $key1, $key2);
+    }
+
+    /**
+     * Validate lower() input against the lower bound
+     *
+     * @param mixed $key The searched key
+     *
+     * @return void
+     *
+     * @throws OutOfBoundsException If lower bound excludes the key
+     *
+     * @since 1.0.0
+     */
+    private function assertLowerAllowed($key)
+    {
+        if ($this->fromOption != self::UNUSED && $this->compareKeys($key, $this->fromKey) <= 0) {
+            throw new \OutOfBoundsException('Lower element unexisting');
+        }
+    }
+
+    /**
+     * Validate higher() input against the upper bound
+     *
+     * @param mixed $key The searched key
+     *
+     * @return void
+     *
+     * @throws OutOfBoundsException If upper bound excludes the key
+     *
+     * @since 1.0.0
+     */
+    private function assertHigherAllowed($key)
+    {
+        if ($this->toOption != self::UNUSED && $this->compareKeys($key, $this->toKey) >= 0) {
+            throw new \OutOfBoundsException('Higher element unexisting');
+        }
+    }
+
+    /**
+     * Ensure lower() result respects an exclusive lower bound
+     *
+     * @param TreeNode $node The found node
+     *
+     * @return void
+     *
+     * @throws OutOfBoundsException If result is out of bounds
+     *
+     * @since 1.0.0
+     */
+    private function assertLowerResultInRange($node)
+    {
+        if ($node === null) {
+            return;
+        }
+
+        if ($this->fromOption == self::EXCLUSIVE && $this->compareKeys($node->key, $this->fromKey) <= 0) {
+            throw new \OutOfBoundsException('Lower element unexisting');
+        }
+    }
+
+    /**
+     * Ensure higher() result respects an exclusive upper bound
+     *
+     * @param TreeNode $node The found node
+     *
+     * @return void
+     *
+     * @throws OutOfBoundsException If result is out of bounds
+     *
+     * @since 1.0.0
+     */
+    private function assertHigherResultInRange($node)
+    {
+        if ($node === null) {
+            return;
+        }
+
+        if ($this->toOption == self::EXCLUSIVE && $this->compareKeys($node->key, $this->toKey) >= 0) {
+            throw new \OutOfBoundsException('Higher element unexisting');
+        }
+    }
+
+    /**
+     * Clamp a lower-like result against the upper bound
+     *
+     * @param TreeNode $node The found node
+     *
+     * @return TreeNode The clamped node
+     *
+     * @since 1.0.0
+     */
+    private function clampLowerToUpperBound($node)
+    {
+        if (
+            ($this->toOption == self::INCLUSIVE && $this->compareKeys($node->key, $this->toKey) > 0)
+            || ($this->toOption == self::EXCLUSIVE && $this->compareKeys($node->key, $this->toKey) >= 0)
+        ) {
+            return $this->last();
+        }
+
+        return $node;
+    }
+
+    /**
+     * Clamp a higher-like result against the lower bound
+     *
+     * @param TreeNode $node The found node
+     *
+     * @return TreeNode The clamped node
+     *
+     * @since 1.0.0
+     */
+    private function clampHigherToLowerBound($node)
+    {
+        if (
+            ($this->fromOption == self::INCLUSIVE && $this->compareKeys($node->key, $this->fromKey) < 0)
+            || ($this->fromOption == self::EXCLUSIVE && $this->compareKeys($node->key, $this->fromKey) <= 0)
+        ) {
+            return $this->first();
+        }
+
+        return $node;
     }
 
     /**
@@ -519,39 +656,13 @@ class SubMap extends AbstractMap
             throw new \OutOfBoundsException('Lower element unexisting');
         }
 
-        switch ($this->fromOption) {
-            case self::UNUSED:
-                $lower = $this->map->lower($key);
-                break;
-            default:
-                if (call_user_func($this->map->comparator(), $key, $this->fromKey) <= 0) {
-                    throw new \OutOfBoundsException('Lower element unexisting');
-                } else {
-                    $lower = $this->map->lower($key);
+        $this->assertLowerAllowed($key);
 
-                    if (
-                        $this->fromOption == self::EXCLUSIVE
-                          && call_user_func($this->map->comparator(), $lower->key, $this->fromKey) <= 0
-                    ) {
-                        throw new \OutOfBoundsException('Lower element unexisting');
-                    }
-                }
-                break;
-        }
+        $lower = $this->mapInternal->lower($key);
+        $this->assertLowerResultInRange($lower);
 
         if ($lower) {
-            switch ($this->toOption) {
-                case self::INCLUSIVE:
-                    if (call_user_func($this->map->comparator(), $lower->key, $this->toKey) > 0) {
-                          $lower = $this->last();
-                    }
-                    break;
-                case self::EXCLUSIVE:
-                    if (call_user_func($this->map->comparator(), $lower->key, $this->toKey) >= 0) {
-                        $lower = $this->last();
-                    }
-                    break;
-            }
+            $lower = $this->clampLowerToUpperBound($lower);
         }
 
         return $lower;
@@ -726,39 +837,13 @@ class SubMap extends AbstractMap
             throw new \OutOfBoundsException('Higher element unexisting');
         }
 
-        switch ($this->toOption) {
-            case self::UNUSED:
-                $higher = $this->map->higher($key);
-                break;
-            default:
-                if (call_user_func($this->map->comparator(), $key, $this->toKey) >= 0) {
-                    throw new \OutOfBoundsException('Higher element unexisting');
-                } else {
-                    $higher = $this->map->higher($key);
+        $this->assertHigherAllowed($key);
 
-                    if (
-                        $this->toOption == self::EXCLUSIVE
-                          && call_user_func($this->map->comparator(), $higher->key, $this->toKey) >= 0
-                    ) {
-                        throw new \OutOfBoundsException('Higher element unexisting');
-                    }
-                }
-                break;
-        }
+        $higher = $this->mapInternal->higher($key);
+        $this->assertHigherResultInRange($higher);
 
         if ($higher) {
-            switch ($this->fromOption) {
-                case self::INCLUSIVE:
-                    if (call_user_func($this->map->comparator(), $higher->key, $this->fromKey) < 0) {
-                          $higher = $this->first();
-                    }
-                    break;
-                case self::EXCLUSIVE:
-                    if (call_user_func($this->map->comparator(), $higher->key, $this->fromKey) <= 0) {
-                        $higher = $this->first();
-                    }
-                    break;
-            }
+            $higher = $this->clampHigherToLowerBound($higher);
         }
 
         return $higher;
