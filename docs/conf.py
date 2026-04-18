@@ -26,7 +26,7 @@ subprocess.call('doxygen Doxyfile', shell=True)
 # -- Project information -----------------------------------------------------
 
 project = 'PHP Sorted Collections'
-copyright = '2024-2026, Ch. Demko'
+copyright = '2012-2026, Ch. Demko'
 author = 'Ch. Demko'
 
 # The short X.Y version
