@@ -411,8 +411,14 @@ class TreeNode implements \Countable
         $this->information -= 4;
 
         if ($this->information < - 4) {
-            if ($this->left->information >= 4) {
-                $this->left = $this->left->rotateLeft();
+            $left = $this->left;
+
+            if (!$left instanceof self) {
+                return $this;
+            }
+
+            if ($left->information >= 4) {
+                $this->left = $left->rotateLeft();
             }
 
             return $this->rotateRight();
