@@ -261,6 +261,23 @@ class TreeNode implements \Countable
      */
     public function find($key, $comparator, $type = 0)
     {
+        list($node, $cmp) = $this->traverseForFind($key, $comparator);
+
+        return $this->resolveFindResult($node, $cmp, $type);
+    }
+
+    /**
+     * Traverse tree for find operation
+     *
+     * @param mixed    $key        The searched key
+     * @param callable $comparator The comparator function
+     *
+     * @return array{0: TreeNode, 1: integer} The closest node and comparison result
+     *
+     * @since 1.0.0
+     */
+    private function traverseForFind($key, $comparator)
+    {
         $node = $this;
         $cmp = 0;
 
@@ -276,31 +293,55 @@ class TreeNode implements \Countable
             }
         }
 
+        return array($node, $cmp);
+    }
+
+    /**
+     * Resolve find result from traversal state
+     *
+     * @param TreeNode $node The closest node
+     * @param integer  $cmp  The key comparison result
+     * @param integer  $type The operation type
+     *
+     * @return mixed The resolved node or null
+     *
+     * @since 1.0.0
+     */
+    private function resolveFindResult($node, $cmp, $type)
+    {
         if ($cmp < 0) {
             if ($type < 0) {
                 return $node->left;
-            } elseif ($type > 0) {
-                return $node;
-            } else {
-                return null;
             }
-        } elseif ($cmp > 0) {
+
+            if ($type > 0) {
+                return $node;
+            }
+
+            return null;
+        }
+
+        if ($cmp > 0) {
             if ($type < 0) {
                 return $node;
-            } elseif ($type > 0) {
+            }
+
+            if ($type > 0) {
                 return $node->right;
-            } else {
-                return null;
             }
-        } else {
-            if ($type < -1) {
-                return $node->predecessor;
-            } elseif ($type > 1) {
-                return $node->successor;
-            } else {
-                return $node;
-            }
+
+            return null;
         }
+
+        if ($type < -1) {
+            return $node->predecessor;
+        }
+
+        if ($type > 1) {
+            return $node->successor;
+        }
+
+        return $node;
     }
 
     /**
@@ -560,82 +601,132 @@ class TreeNode implements \Countable
         $cmp = call_user_func($comparator, $key, $this->keyInternal);
 
         if ($cmp < 0) {
-            if ($this->information & 2) {
-                $left = $this->left;
+            return $this->removeFromLeft($key, $comparator);
+        }
 
-                if (!$left instanceof self) {
-                    return $this;
-                }
+        if ($cmp > 0) {
+            return $this->removeFromRight($key, $comparator);
+        }
 
-                $leftBalance = $left->information & ~3;
-                $this->left = $left->remove($key, $comparator);
+        return $this->removeCurrent();
+    }
 
-                if (
-                    !($this->information & 2)
-                    || $leftBalance != 0 && ($this->left instanceof self) && ($this->left->information & ~3) == 0
-                ) {
-                    return $this->incBalance();
-                }
+    /**
+     * Remove from left subtree
+     *
+     * @param mixed    $key        The key
+     * @param callable $comparator The comparator function
+     *
+     * @return TreeNode|null The new root
+     *
+     * @since 1.0.0
+     */
+    private function removeFromLeft($key, $comparator)
+    {
+        if ($this->information & 2) {
+            $left = $this->left;
+
+            if (!$left instanceof self) {
+                return $this;
             }
-        } elseif ($cmp > 0) {
-            if ($this->information & 1) {
-                $right = $this->right;
 
-                if (!$right instanceof self) {
-                    return $this;
-                }
+            $leftBalance = $left->information & ~3;
+            $this->left = $left->remove($key, $comparator);
 
-                $rightBalance = $right->information & ~3;
-                $this->right = $right->remove($key, $comparator);
-
-                if (
-                    !($this->information & 1)
-                    || $rightBalance != 0 && ($this->right instanceof self) && ($this->right->information & ~3) == 0
-                ) {
-                    return $this->decBalance();
-                }
-            }
-        } else {
-            if ($this->information & 1) {
-                $right = $this->right;
-
-                if (!$right instanceof self) {
-                    return $this;
-                }
-
-                $rightBalance = $right->information & ~3;
-                $this->right = $right->pullUpLeftMost();
-
-                if (
-                    !($this->information & 1)
-                    || $rightBalance != 0 && ($this->right instanceof self) && ($this->right->information & ~3) == 0
-                ) {
-                    return $this->decBalance();
-                }
-            } else {
-                $left = $this->left;
-                $right = $this->right;
-
-                if ($this->information & 2) {
-                    $left->right = $right;
-
-                    return $left;
-                } else {
-                    if ($left && $left->right == $this) {
-                        $left->information &= ~ 1;
-
-                        return $right;
-                    } elseif ($right && $right->left == $this) {
-                        $right->information &= ~ 2;
-
-                        return $left;
-                    } else {
-                        return null;
-                    }
-                }
+            if (
+                !($this->information & 2)
+                || $leftBalance != 0 && ($this->left instanceof self) && ($this->left->information & ~3) == 0
+            ) {
+                return $this->incBalance();
             }
         }
 
         return $this;
+    }
+
+    /**
+     * Remove from right subtree
+     *
+     * @param mixed    $key        The key
+     * @param callable $comparator The comparator function
+     *
+     * @return TreeNode|null The new root
+     *
+     * @since 1.0.0
+     */
+    private function removeFromRight($key, $comparator)
+    {
+        if ($this->information & 1) {
+            $right = $this->right;
+
+            if (!$right instanceof self) {
+                return $this;
+            }
+
+            $rightBalance = $right->information & ~3;
+            $this->right = $right->remove($key, $comparator);
+
+            if (
+                !($this->information & 1)
+                || $rightBalance != 0 && ($this->right instanceof self) && ($this->right->information & ~3) == 0
+            ) {
+                return $this->decBalance();
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * Remove current node key
+     *
+     * @return TreeNode|null The new root
+     *
+     * @since 1.0.0
+     */
+    private function removeCurrent()
+    {
+        if ($this->information & 1) {
+            $right = $this->right;
+
+            if (!$right instanceof self) {
+                return $this;
+            }
+
+            $rightBalance = $right->information & ~3;
+            $this->right = $right->pullUpLeftMost();
+
+            if (
+                !($this->information & 1)
+                || $rightBalance != 0 && ($this->right instanceof self) && ($this->right->information & ~3) == 0
+            ) {
+                return $this->decBalance();
+            }
+
+            return $this;
+        }
+
+        $left = $this->left;
+        $right = $this->right;
+
+        if ($this->information & 2) {
+            $left->right = $right;
+
+            return $left;
+        }
+
+        if ($left && $left->right == $this) {
+            $left->information &= ~ 1;
+
+            return $right;
+        }
+
+        if ($right && $right->left == $this) {
+            $right->information &= ~ 2;
+
+            return $left;
+        }
+
+        return null;
     }
 }
