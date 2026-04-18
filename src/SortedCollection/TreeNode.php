@@ -445,10 +445,20 @@ class TreeNode implements \Countable
 
         if ($cmp < 0) {
             if ($this->information & 2) {
-                $leftBalance = $this->left->information & ~3;
-                $this->left = $this->left->insert($key, $value, $comparator);
+                $left = $this->left;
 
-                if (($this->left->information & ~3) && ($this->left->information & ~3) != $leftBalance) {
+                if (!$left instanceof self) {
+                    return $node;
+                }
+
+                $leftBalance = $left->information & ~3;
+                $this->left = $left->insert($key, $value, $comparator);
+
+                if (
+                    $this->left instanceof self
+                    && ($this->left->information & ~3)
+                    && ($this->left->information & ~3) != $leftBalance
+                ) {
                     $node = $this->decBalance();
                 }
             } else {
@@ -458,10 +468,20 @@ class TreeNode implements \Countable
             }
         } elseif ($cmp > 0) {
             if ($this->information & 1) {
-                $rightBalance = $this->right->information & ~3;
-                $this->right = $this->right->insert($key, $value, $comparator);
+                $right = $this->right;
 
-                if (($this->right->information & ~3) && ($this->right->information & ~3) != $rightBalance) {
+                if (!$right instanceof self) {
+                    return $node;
+                }
+
+                $rightBalance = $right->information & ~3;
+                $this->right = $right->insert($key, $value, $comparator);
+
+                if (
+                    $this->right instanceof self
+                    && ($this->right->information & ~3)
+                    && ($this->right->information & ~3) != $rightBalance
+                ) {
                     $node = $this->incBalance();
                 }
             } else {
