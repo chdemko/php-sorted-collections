@@ -37,7 +37,6 @@ namespace chdemko\SortedCollection;
  * @property      mixed      $toKey          The to key
  * @property      boolean    $toInclusive    The to inclusive flag
  * @property-read SortedMap  $map            The underlying map
- * @SuppressWarnings(PHPMD.ExcessiveClassComplexity)
  */
 class SubMap extends AbstractMap
 {

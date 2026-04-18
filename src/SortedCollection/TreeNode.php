@@ -27,7 +27,6 @@ namespace chdemko\SortedCollection;
  * @property-read TreeNode|null  $successor    The successor node
  * @property-read mixed          $key          The key
  * @property-read integer        $count        The number of elements in the tree
- * @SuppressWarnings(PHPMD.ExcessiveClassComplexity)
  */
 class TreeNode implements \Countable
 {
