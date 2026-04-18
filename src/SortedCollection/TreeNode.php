@@ -506,10 +506,19 @@ class TreeNode implements \Countable
     private function pullUpLeftMost()
     {
         if ($this->information & 2) {
-            $leftBalance = $this->left->information & ~3;
-            $this->left = $this->left->pullUpLeftMost();
+            $left = $this->left;
 
-            if (!($this->information & 2) || $leftBalance != 0 && ($this->left->information & ~3) == 0) {
+            if (!$left instanceof self) {
+                return $this;
+            }
+
+            $leftBalance = $left->information & ~3;
+            $this->left = $left->pullUpLeftMost();
+
+            if (
+                !($this->information & 2)
+                || $leftBalance != 0 && ($this->left instanceof self) && ($this->left->information & ~3) == 0
+            ) {
                 return $this->incBalance();
             } else {
                 return $this;
@@ -552,28 +561,55 @@ class TreeNode implements \Countable
 
         if ($cmp < 0) {
             if ($this->information & 2) {
-                $leftBalance = $this->left->information & ~3;
-                $this->left = $this->left->remove($key, $comparator);
+                $left = $this->left;
 
-                if (!($this->information & 2) || $leftBalance != 0 && ($this->left->information & ~3) == 0) {
+                if (!$left instanceof self) {
+                    return $this;
+                }
+
+                $leftBalance = $left->information & ~3;
+                $this->left = $left->remove($key, $comparator);
+
+                if (
+                    !($this->information & 2)
+                    || $leftBalance != 0 && ($this->left instanceof self) && ($this->left->information & ~3) == 0
+                ) {
                     return $this->incBalance();
                 }
             }
         } elseif ($cmp > 0) {
             if ($this->information & 1) {
-                $rightBalance = $this->right->information & ~3;
-                $this->right = $this->right->remove($key, $comparator);
+                $right = $this->right;
 
-                if (!($this->information & 1) || $rightBalance != 0 && ($this->right->information & ~3) == 0) {
+                if (!$right instanceof self) {
+                    return $this;
+                }
+
+                $rightBalance = $right->information & ~3;
+                $this->right = $right->remove($key, $comparator);
+
+                if (
+                    !($this->information & 1)
+                    || $rightBalance != 0 && ($this->right instanceof self) && ($this->right->information & ~3) == 0
+                ) {
                     return $this->decBalance();
                 }
             }
         } else {
             if ($this->information & 1) {
-                $rightBalance = $this->right->information & ~3;
-                $this->right = $this->right->pullUpLeftMost();
+                $right = $this->right;
 
-                if (!($this->information & 1) || $rightBalance != 0 && ($this->right->information & ~3) == 0) {
+                if (!$right instanceof self) {
+                    return $this;
+                }
+
+                $rightBalance = $right->information & ~3;
+                $this->right = $right->pullUpLeftMost();
+
+                if (
+                    !($this->information & 1)
+                    || $rightBalance != 0 && ($this->right instanceof self) && ($this->right->information & ~3) == 0
+                ) {
                     return $this->decBalance();
                 }
             } else {
