@@ -383,8 +383,14 @@ class TreeNode implements \Countable
         $this->information += 4;
 
         if ($this->information >= 8) {
-            if ($this->right->information < 0) {
-                $this->right = $this->right->rotateRight();
+            $right = $this->right;
+
+            if (!$right instanceof self) {
+                return $this;
+            }
+
+            if ($right->information < 0) {
+                $this->right = $right->rotateRight();
             }
 
             return $this->rotateLeft();
