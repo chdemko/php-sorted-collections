@@ -1,5 +1,5 @@
 Sphinx>=9.1
-sphinx_rtd_theme>=3.0
+sphinx_rtd_theme>=3.1
 sphinxcontrib-phpdomain>=0.15
 breathe>=4.36
 myst-parser>=5.0
