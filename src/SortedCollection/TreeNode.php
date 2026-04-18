@@ -27,6 +27,7 @@ namespace chdemko\SortedCollection;
  * @property-read TreeNode|null  $successor    The successor node
  * @property-read mixed          $key          The key
  * @property-read integer        $count        The number of elements in the tree
+ * @SuppressWarnings(PHPMD.ExcessiveClassComplexity)
  */
 class TreeNode implements \Countable
 {
@@ -134,6 +135,10 @@ class TreeNode implements \Countable
 
         return $this->getMappedProperty($property);
     }
+
+    /*
+     * Private helpers: magic property access
+     */
 
     /**
      * Resolve mapped magic property
@@ -292,6 +297,10 @@ class TreeNode implements \Countable
         return $this->resolveFindResult($node, $cmp, $type);
     }
 
+    /*
+     * Private helpers: find resolution
+     */
+
     /**
      * Traverse tree for find operation
      *
@@ -404,7 +413,6 @@ class TreeNode implements \Countable
      */
     private function resolveFindResultForZeroCmp($node, $type)
     {
-
         if ($type < -1) {
             return $node->predecessor;
         }
@@ -415,6 +423,10 @@ class TreeNode implements \Countable
 
         return $node;
     }
+
+    /*
+     * Private helpers: balancing and rotations
+     */
 
     /**
      * Rotate the node to the left
@@ -566,6 +578,10 @@ class TreeNode implements \Countable
         return $this->insertHere($value);
     }
 
+    /*
+     * Private helpers: insert
+     */
+
     /**
      * Insert into the left subtree
      *
@@ -661,6 +677,10 @@ class TreeNode implements \Countable
 
         return $this;
     }
+
+    /*
+     * Private helpers: pull-up left-most
+     */
 
     /**
      * Pull up the left most node of a node
@@ -762,6 +782,10 @@ class TreeNode implements \Countable
 
         return $this->removeCurrent();
     }
+
+    /*
+     * Private helpers: remove
+     */
 
     /**
      * Remove from left subtree
@@ -882,7 +906,6 @@ class TreeNode implements \Countable
      */
     private function removeCurrentWithoutRightChild()
     {
-
         $left = $this->left;
         $right = $this->right;
 
