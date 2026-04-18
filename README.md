@@ -3,7 +3,7 @@
 [![PHP package](https://img.shields.io/github/actions/workflow/status/chdemko/php-sorted-collections/php.yml?logo=github&branch=develop)](https://github.com/chdemko/php-sorted-collections/actions/workflows/php.yml)
 [![Coveralls](https://img.shields.io/coveralls/chdemko/php-sorted-collections.svg?logo=Codecov&logoColor=white)](https://coveralls.io/r/chdemko/php-sorted-collections?branch=develop)
 [![Scrutinizer](https://img.shields.io/scrutinizer/g/chdemko/php-sorted-collections/develop.svg?logo=scrutinizer)](https://scrutinizer-ci.com/g/chdemko/php-sorted-collections/?branch=develop)
-[![Code Climate](https://img.shields.io/codeclimate/maintainability/chdemko/php-sorted-collections?logo=codeclimate&barnch=develop)](https://codeclimate.com/github/chdemko/php-sorted-collections/)
+[![Maintainability](https://qlty.sh/gh/chdemko/projects/php-sorted-collections/maintainability.svg)](https://qlty.sh/gh/chdemko/projects/php-sorted-collections)
 [![CodeFactor](https://img.shields.io/codefactor/grade/github/chdemko/php-sorted-collections/develop.svg?logo=codefactor)](https://www.codefactor.io/repository/github/chdemko/php-sorted-collections)
 [![Codacy](https://img.shields.io/codacy/grade/1307547b7a984fe19e98603a91a4cdb6.svg?logo=codacy)](https://app.codacy.com/gh/chdemko/php-sorted-collections/dashboard)
 [![PHP versions](https://img.shields.io/packagist/dependency-v/chdemko/sorted-collections/php?logo=php&logoColor=white)](https://packagist.org/packages/chdemko/sorted-collections)
