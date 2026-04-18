@@ -188,6 +188,10 @@ class Iterator implements \Iterator
      */
     public function next(): void
     {
+        if ($this->current === null) {
+            return;
+        }
+
         try {
             $this->current = $this->map->successor($this->current);
         } catch (\OutOfBoundsException $e) {

@@ -58,7 +58,7 @@ class TreeSet extends AbstractSet
     /**
      * Put values in the set
      *
-     * @param \Traversable $traversable Values to put in the set
+     * @param iterable $traversable Values to put in the set
      *
      * @return TreeSet $this for chaining
      *
@@ -90,7 +90,7 @@ class TreeSet extends AbstractSet
     /**
      * Initialise the set
      *
-     * @param \Traversable $traversable Values to initialise the set
+     * @param iterable $traversable Values to initialise the set
      *
      * @return TreeSet $this for chaining
      *

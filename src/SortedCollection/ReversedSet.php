@@ -35,7 +35,7 @@ class ReversedSet extends AbstractSet
      *
      * @since 1.0.0
      */
-    private $set;
+    private $setInternal;
 
     /**
      * Constructor
@@ -46,7 +46,7 @@ class ReversedSet extends AbstractSet
      */
     protected function __construct(SortedSet $set)
     {
-        $this->setMap(ReversedMap::create($set->getMap()))->set = $set;
+        $this->setMap(ReversedMap::create($set->getMap()))->setInternal = $set;
     }
 
     /**
@@ -76,7 +76,7 @@ class ReversedSet extends AbstractSet
     {
         switch ($property) {
             case 'set':
-                return $this->set;
+                return $this->setInternal;
             default:
                 return parent::__get($property);
         }
@@ -91,6 +91,6 @@ class ReversedSet extends AbstractSet
      */
     public function jsonSerialize(): array
     {
-        return array('ReversedSet' => $this->set->jsonSerialize());
+        return array('ReversedSet' => $this->setInternal->jsonSerialize());
     }
 }

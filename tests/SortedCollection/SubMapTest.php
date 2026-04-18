@@ -359,6 +359,64 @@ class SubMapTest extends TestCase
     }
 
     /**
+     * Tests SubMap::__unset updates empty flag when removing from bound
+     *
+     * @return void
+     *
+     * @since 1.0.0
+     */
+    #[CoversFunction('chdemko\SortedCollection\SubMap::__unset')]
+    #[CoversFunction('chdemko\SortedCollection\SubMap::setEmpty')]
+    #[CoversFunction('chdemko\SortedCollection\SubMap::first')]
+    #[CoversFunction('chdemko\SortedCollection\AbstractMap::firstKey')]
+    public function testUnsetFromKeyUpdatesEmptyFlag()
+    {
+        $tree = TreeMap::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
+        $sub = SubMap::create($tree, 5, 5, false, false);
+
+        $thrown = false;
+
+        try {
+            $key = $sub->firstKey;
+        } catch (\OutOfBoundsException $e) {
+            $thrown = true;
+        }
+
+        $this->assertTrue($thrown);
+
+        unset($sub->fromKey);
+
+        $this->assertEquals(
+            0,
+            $sub->firstKey
+        );
+    }
+
+    /**
+     * Tests SubMap::__unset updates empty flag when removing to bound
+     *
+     * @return void
+     *
+     * @since 1.0.0
+     */
+    #[CoversFunction('chdemko\SortedCollection\SubMap::__unset')]
+    #[CoversFunction('chdemko\SortedCollection\SubMap::setEmpty')]
+    #[CoversFunction('chdemko\SortedCollection\SubMap::first')]
+    #[CoversFunction('chdemko\SortedCollection\AbstractMap::firstKey')]
+    public function testUnsetToKeyUpdatesEmptyFlag()
+    {
+        $tree = TreeMap::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
+        $sub = SubMap::create($tree, 5, 5, false, false);
+
+        unset($sub->toKey);
+
+        $this->assertEquals(
+            6,
+            $sub->firstKey
+        );
+    }
+
+    /**
      * Tests  SubMap::__unset
      *
      * @return  void

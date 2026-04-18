@@ -33,7 +33,7 @@ class TreeMapBench
     protected $tree;
 
     /**
-     * @var chdemko\SortedCollection\SortedMap The sorted map
+     * @var \chdemko\SortedCollection\SortedMap The sorted map
      *
      * @since 1.0.5
      */

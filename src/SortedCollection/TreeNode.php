@@ -73,7 +73,7 @@ class TreeNode implements \Countable
      * @param mixed $key   The node key
      * @param mixed $value The node value
      *
-     * @return A new node
+     * @return TreeNode A new node
      *
      * @since 1.0.0
      */
@@ -134,7 +134,7 @@ class TreeNode implements \Countable
     /**
      * Get the first node
      *
-     * @return the first node
+     * @return TreeNode the first node
      *
      * @since 1.0.0
      */
@@ -152,7 +152,7 @@ class TreeNode implements \Countable
     /**
      * Get the last node
      *
-     * @return the last node
+     * @return TreeNode the last node
      *
      * @since 1.0.0
      */
@@ -170,7 +170,7 @@ class TreeNode implements \Countable
     /**
      * Get the predecessor
      *
-     * @return the predecessor node
+     * @return TreeNode the predecessor node
      *
      * @since 1.0.0
      */
@@ -192,7 +192,7 @@ class TreeNode implements \Countable
     /**
      * Get the successor
      *
-     * @return the successor node
+     * @return TreeNode the successor node
      *
      * @since 1.0.0
      */
@@ -262,6 +262,7 @@ class TreeNode implements \Countable
     public function find($key, $comparator, $type = 0)
     {
         $node = $this;
+        $cmp = 0;
 
         while (true) {
             $cmp = call_user_func($comparator, $key, $node->key);

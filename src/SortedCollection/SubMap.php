@@ -66,7 +66,7 @@ class SubMap extends AbstractMap
      *
      * @since 1.0.0
      */
-    private $map;
+    private $mapInternal;
 
     /**
      * @var integer  from option
@@ -146,7 +146,7 @@ class SubMap extends AbstractMap
                 }
 
             case 'map':
-                return $this->map;
+                return $this->mapInternal;
             default:
                 return parent::__get($property);
         }
@@ -227,6 +227,8 @@ class SubMap extends AbstractMap
             default:
                 throw new \RuntimeException('Undefined property');
         }
+
+        $this->setEmpty();
     }
 
     /**
@@ -265,7 +267,7 @@ class SubMap extends AbstractMap
      */
     protected function __construct(SortedMap $map, $fromKey, $fromOption, $toKey, $toOption)
     {
-        $this->map = $map;
+        $this->mapInternal = $map;
         $this->fromKey = $fromKey;
         $this->fromOption = $fromOption;
         $this->toKey = $toKey;
@@ -283,7 +285,7 @@ class SubMap extends AbstractMap
     protected function setEmpty()
     {
         if ($this->fromOption != self::UNUSED && $this->toOption != self::UNUSED) {
-            $cmp = call_user_func($this->map->comparator(), $this->fromKey, $this->toKey);
+            $cmp = call_user_func($this->mapInternal->comparator(), $this->fromKey, $this->toKey);
 
             $this->empty = $cmp > 0
               || $cmp == 0 && ($this->fromOption == self::EXCLUSIVE || $this->toOption == self::EXCLUSIVE);
@@ -371,7 +373,7 @@ class SubMap extends AbstractMap
      */
     public function comparator()
     {
-        return $this->map->comparator();
+        return $this->mapInternal->comparator();
     }
 
     /**
@@ -391,13 +393,13 @@ class SubMap extends AbstractMap
 
         switch ($this->fromOption) {
             case self::INCLUSIVE:
-                $first = $this->map->ceiling($this->fromKey);
+                $first = $this->mapInternal->ceiling($this->fromKey);
                 break;
             case self::EXCLUSIVE:
-                $first = $this->map->higher($this->fromKey);
+                $first = $this->mapInternal->higher($this->fromKey);
                 break;
             default:
-                $first = $this->map->first();
+                $first = $this->mapInternal->first();
                 break;
         }
 

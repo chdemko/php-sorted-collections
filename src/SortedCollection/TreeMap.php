@@ -65,9 +65,9 @@ class TreeMap extends AbstractMap
      */
     protected function __construct($comparator = null)
     {
-        if ($comparator == null) {
+        if ($comparator === null) {
             $this->comparator = function ($key1, $key2) {
-                return $key1 - $key2;
+                return $key1 <=> $key2;
             };
         } else {
             $this->comparator = $comparator;
@@ -313,7 +313,7 @@ class TreeMap extends AbstractMap
     /**
      * Put values in the map
      *
-     * @param \Traversable $traversable Values to put in the map
+     * @param iterable $traversable Values to put in the map
      *
      * @return TreeMap $this for chaining
      *
@@ -345,7 +345,7 @@ class TreeMap extends AbstractMap
     /**
      * Initialise the map
      *
-     * @param \Traversable $traversable Values to initialise the map
+     * @param iterable $traversable Values to initialise the map
      *
      * @return TreeMap $this for chaining
      *

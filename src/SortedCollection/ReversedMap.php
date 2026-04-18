@@ -41,7 +41,7 @@ class ReversedMap extends AbstractMap
      *
      * @since 1.0.0
      */
-    private $map;
+    private $mapInternal;
 
     /**
      * @var callable  Comparator function
@@ -55,7 +55,7 @@ class ReversedMap extends AbstractMap
      *
      * @since 1.0.0
      */
-    private $comparator;
+    private $comparatorInternal;
 
     /**
      * Constructor
@@ -66,9 +66,9 @@ class ReversedMap extends AbstractMap
      */
     protected function __construct(SortedMap $map)
     {
-        $this->map = $map;
-        $this->comparator = function ($key1, $key2) {
-            return - call_user_func($this->map->comparator, $key1, $key2);
+        $this->mapInternal = $map;
+        $this->comparatorInternal = function ($key1, $key2) {
+            return - call_user_func($this->mapInternal->comparator, $key1, $key2);
         };
     }
 
@@ -99,7 +99,7 @@ class ReversedMap extends AbstractMap
     {
         switch ($property) {
             case 'map':
-                return $this->map;
+                return $this->mapInternal;
             default:
                 return parent::__get($property);
         }
@@ -114,7 +114,7 @@ class ReversedMap extends AbstractMap
      */
     public function comparator()
     {
-        return $this->comparator;
+        return $this->comparatorInternal;
     }
 
     /**
@@ -128,7 +128,7 @@ class ReversedMap extends AbstractMap
      */
     public function first()
     {
-        return $this->map->last();
+        return $this->mapInternal->last();
     }
 
     /**
@@ -142,7 +142,7 @@ class ReversedMap extends AbstractMap
      */
     public function last()
     {
-        return $this->map->first();
+        return $this->mapInternal->first();
     }
 
     /**
@@ -158,7 +158,7 @@ class ReversedMap extends AbstractMap
      */
     public function predecessor($element)
     {
-        return $this->map->successor($element);
+        return $this->mapInternal->successor($element);
     }
 
     /**
@@ -172,7 +172,7 @@ class ReversedMap extends AbstractMap
      */
     public function successor($element)
     {
-        return $this->map->predecessor($element);
+        return $this->mapInternal->predecessor($element);
     }
 
     /**
@@ -188,7 +188,7 @@ class ReversedMap extends AbstractMap
      */
     public function lower($key)
     {
-        return $this->map->higher($key);
+        return $this->mapInternal->higher($key);
     }
 
     /**
@@ -204,7 +204,7 @@ class ReversedMap extends AbstractMap
      */
     public function floor($key)
     {
-        return $this->map->ceiling($key);
+        return $this->mapInternal->ceiling($key);
     }
 
     /**
@@ -220,7 +220,7 @@ class ReversedMap extends AbstractMap
      */
     public function find($key)
     {
-        return $this->map->find($key);
+        return $this->mapInternal->find($key);
     }
 
     /**
@@ -236,7 +236,7 @@ class ReversedMap extends AbstractMap
      */
     public function ceiling($key)
     {
-        return $this->map->floor($key);
+        return $this->mapInternal->floor($key);
     }
 
     /**
@@ -252,7 +252,7 @@ class ReversedMap extends AbstractMap
      */
     public function higher($key)
     {
-        return $this->map->lower($key);
+        return $this->mapInternal->lower($key);
     }
 
     /**
@@ -264,7 +264,7 @@ class ReversedMap extends AbstractMap
      */
     public function jsonSerialize(): array
     {
-        return array('ReversedMap' => $this->map->jsonSerialize());
+        return array('ReversedMap' => $this->mapInternal->jsonSerialize());
     }
 
     /**
@@ -276,6 +276,6 @@ class ReversedMap extends AbstractMap
      */
     public function count(): int
     {
-        return $this->map->count();
+        return $this->mapInternal->count();
     }
 }
