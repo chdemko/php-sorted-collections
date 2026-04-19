@@ -31,21 +31,6 @@ namespace chdemko\SortedCollection;
 class TreeNode implements \Countable
 {
     /**
-     * Property to accessor method map for magic get
-     *
-     * @var array
-     *
-     * @since 1.0.0
-     */
-    private const PROPERTY_METHOD_MAP = array(
-        'first' => 'first',
-        'last' => 'last',
-        'predecessor' => 'predecessor',
-        'successor' => 'successor',
-        'count' => 'count',
-    );
-
-    /**
      * @var integer  Information associated to that node.
      *                   Bits of order 0 and 1 are reserved for the existence of left and right tree.
      *                   Other bits are for the balance
@@ -128,37 +113,22 @@ class TreeNode implements \Countable
      */
     public function __get($property)
     {
-        if ($property === 'key') {
-            return $this->keyInternal;
+        switch ($property) {
+            case 'first':
+                return $this->first();
+            case 'last':
+                return $this->last();
+            case 'predecessor':
+                return $this->predecessor();
+            case 'successor':
+                return $this->successor();
+            case 'key':
+                return $this->keyInternal;
+            case 'count':
+                return $this->count();
+            default:
+                throw new \RuntimeException('Undefined property');
         }
-
-        return $this->getMappedProperty($property);
-    }
-
-    /*
-     * Private helpers: magic property access
-     */
-
-    /**
-     * Resolve mapped magic property
-     *
-     * @param string $property The node property
-     *
-     * @throws RuntimeException If the property is undefined
-     *
-     * @return mixed The value associated to the property
-     *
-     * @since 1.0.0
-     */
-    private function getMappedProperty($property)
-    {
-        if (!isset(self::PROPERTY_METHOD_MAP[$property])) {
-            throw new \RuntimeException('Undefined property');
-        }
-
-        $method = self::PROPERTY_METHOD_MAP[$property];
-
-        return $this->$method();
     }
 
     /**
@@ -291,27 +261,6 @@ class TreeNode implements \Countable
      */
     public function find($key, $comparator, $type = 0)
     {
-        list($node, $cmp) = $this->traverseForFind($key, $comparator);
-
-        return $this->resolveFindResult($node, $cmp, $type);
-    }
-
-    /*
-     * Private helpers: find resolution
-     */
-
-    /**
-     * Traverse tree for find operation
-     *
-     * @param mixed    $key        The searched key
-     * @param callable $comparator The comparator function
-     *
-     * @return array{0: TreeNode, 1: integer} The closest node and comparison result
-     *
-     * @since 1.0.0
-     */
-    private function traverseForFind($key, $comparator)
-    {
         $node = $this;
         $cmp = 0;
 
@@ -327,105 +276,32 @@ class TreeNode implements \Countable
             }
         }
 
-        return array($node, $cmp);
-    }
-
-    /**
-     * Resolve find result from traversal state
-     *
-     * @param TreeNode $node The closest node
-     * @param integer  $cmp  The key comparison result
-     * @param integer  $type The operation type
-     *
-     * @return mixed The resolved node or null
-     *
-     * @since 1.0.0
-     */
-    private function resolveFindResult($node, $cmp, $type)
-    {
         if ($cmp < 0) {
-            return $this->resolveFindResultForNegativeCmp($node, $type);
+            if ($type < 0) {
+                return $node->left;
+            } elseif ($type > 0) {
+                return $node;
+            } else {
+                return null;
+            }
+        } elseif ($cmp > 0) {
+            if ($type < 0) {
+                return $node;
+            } elseif ($type > 0) {
+                return $node->right;
+            } else {
+                return null;
+            }
+        } else {
+            if ($type < -1) {
+                return $node->predecessor;
+            } elseif ($type > 1) {
+                return $node->successor;
+            } else {
+                return $node;
+            }
         }
-
-        if ($cmp > 0) {
-            return $this->resolveFindResultForPositiveCmp($node, $type);
-        }
-
-        return $this->resolveFindResultForZeroCmp($node, $type);
     }
-
-    /**
-     * Resolve find result when comparison is negative
-     *
-     * @param TreeNode $node The closest node
-     * @param integer  $type The operation type
-     *
-     * @return mixed The resolved node or null
-     *
-     * @since 1.0.0
-     */
-    private function resolveFindResultForNegativeCmp($node, $type)
-    {
-        if ($type < 0) {
-            return $node->left;
-        }
-
-        if ($type > 0) {
-            return $node;
-        }
-
-        return null;
-    }
-
-    /**
-     * Resolve find result when comparison is positive
-     *
-     * @param TreeNode $node The closest node
-     * @param integer  $type The operation type
-     *
-     * @return mixed The resolved node or null
-     *
-     * @since 1.0.0
-     */
-    private function resolveFindResultForPositiveCmp($node, $type)
-    {
-        if ($type < 0) {
-            return $node;
-        }
-
-        if ($type > 0) {
-            return $node->right;
-        }
-
-        return null;
-    }
-
-    /**
-     * Resolve find result when comparison is zero
-     *
-     * @param TreeNode $node The closest node
-     * @param integer  $type The operation type
-     *
-     * @return mixed The resolved node
-     *
-     * @since 1.0.0
-     */
-    private function resolveFindResultForZeroCmp($node, $type)
-    {
-        if ($type < -1) {
-            return $node->predecessor;
-        }
-
-        if ($type > 1) {
-            return $node->successor;
-        }
-
-        return $node;
-    }
-
-    /*
-     * Private helpers: balancing and rotations
-     */
 
     /**
      * Rotate the node to the left
@@ -564,122 +440,61 @@ class TreeNode implements \Countable
      */
     public function insert($key, $value, $comparator)
     {
+        $node = $this;
         $cmp = call_user_func($comparator, $key, $this->keyInternal);
 
         if ($cmp < 0) {
-            return $this->insertLeft($key, $value, $comparator);
+            if ($this->information & 2) {
+                $left = $this->left;
+
+                if (!$left instanceof self) {
+                    return $node;
+                }
+
+                $leftBalance = $left->information & ~3;
+                $this->left = $left->insert($key, $value, $comparator);
+
+                if (
+                    $this->left instanceof self
+                    && ($this->left->information & ~3)
+                    && ($this->left->information & ~3) != $leftBalance
+                ) {
+                    $node = $this->decBalance();
+                }
+            } else {
+                $this->left = new static($key, $value, $this->left, $this);
+                $this->information |= 2;
+                $node = $this->decBalance();
+            }
+        } elseif ($cmp > 0) {
+            if ($this->information & 1) {
+                $right = $this->right;
+
+                if (!$right instanceof self) {
+                    return $node;
+                }
+
+                $rightBalance = $right->information & ~3;
+                $this->right = $right->insert($key, $value, $comparator);
+
+                if (
+                    $this->right instanceof self
+                    && ($this->right->information & ~3)
+                    && ($this->right->information & ~3) != $rightBalance
+                ) {
+                    $node = $this->incBalance();
+                }
+            } else {
+                $this->right = new static($key, $value, $this, $this->right);
+                $this->information |= 1;
+                $node = $this->incBalance();
+            }
+        } else {
+            $this->value = $value;
         }
 
-        if ($cmp > 0) {
-            return $this->insertRight($key, $value, $comparator);
-        }
-
-        return $this->insertHere($value);
+        return $node;
     }
-
-    /*
-     * Private helpers: insert
-     */
-
-    /**
-     * Insert into the left subtree
-     *
-     * @param mixed    $key        The key
-     * @param mixed    $value      The value
-     * @param callable $comparator The comparator function
-     *
-     * @return TreeNode The new root
-     *
-     * @since 1.0.0
-     */
-    private function insertLeft($key, $value, $comparator)
-    {
-        if ($this->information & 2) {
-            $left = $this->left;
-
-            if (!$left instanceof self) {
-                return $this;
-            }
-
-            $leftBalance = $left->information & ~3;
-            $this->left = $left->insert($key, $value, $comparator);
-
-            if (
-                $this->left instanceof self
-                && ($this->left->information & ~3)
-                && ($this->left->information & ~3) != $leftBalance
-            ) {
-                return $this->decBalance();
-            }
-
-            return $this;
-        }
-
-        $this->left = new static($key, $value, $this->left, $this);
-        $this->information |= 2;
-
-        return $this->decBalance();
-    }
-
-    /**
-     * Insert into the right subtree
-     *
-     * @param mixed    $key        The key
-     * @param mixed    $value      The value
-     * @param callable $comparator The comparator function
-     *
-     * @return TreeNode The new root
-     *
-     * @since 1.0.0
-     */
-    private function insertRight($key, $value, $comparator)
-    {
-        if ($this->information & 1) {
-            $right = $this->right;
-
-            if (!$right instanceof self) {
-                return $this;
-            }
-
-            $rightBalance = $right->information & ~3;
-            $this->right = $right->insert($key, $value, $comparator);
-
-            if (
-                $this->right instanceof self
-                && ($this->right->information & ~3)
-                && ($this->right->information & ~3) != $rightBalance
-            ) {
-                return $this->incBalance();
-            }
-
-            return $this;
-        }
-
-        $this->right = new static($key, $value, $this, $this->right);
-        $this->information |= 1;
-
-        return $this->incBalance();
-    }
-
-    /**
-     * Update current node value when key already exists
-     *
-     * @param mixed $value The value
-     *
-     * @return TreeNode The current node
-     *
-     * @since 1.0.0
-     */
-    private function insertHere($value)
-    {
-        $this->value = $value;
-
-        return $this;
-    }
-
-    /*
-     * Private helpers: pull-up left-most
-     */
 
     /**
      * Pull up the left most node of a node
@@ -691,70 +506,43 @@ class TreeNode implements \Countable
     private function pullUpLeftMost()
     {
         if ($this->information & 2) {
-            return $this->pullUpLeftMostFromLeftSubtree();
+            $left = $this->left;
+
+            if (!$left instanceof self) {
+                return $this;
+            }
+
+            $leftBalance = $left->information & ~3;
+            $this->left = $left->pullUpLeftMost();
+
+            if (
+                !($this->information & 2)
+                || $leftBalance != 0 && ($this->left instanceof self) && ($this->left->information & ~3) == 0
+            ) {
+                return $this->incBalance();
+            } else {
+                return $this;
+            }
+        } else {
+            $this->left->keyInternal = $this->keyInternal;
+            $this->left->value = $this->value;
+
+            if ($this->information & 1) {
+                $this->right->left = $this->left;
+
+                return $this->right;
+            } else {
+                if ($this->left->right == $this) {
+                    $this->left->information &= ~ 1;
+
+                    return $this->right;
+                } else {
+                    $this->right->information &= ~ 2;
+
+                    return $this->left;
+                }
+            }
         }
-
-        return $this->pullUpLeftMostAtCurrentNode();
-    }
-
-    /**
-     * Pull up left-most node via left subtree recursion
-     *
-     * @return TreeNode The new root
-     *
-     * @since 1.0.0
-     */
-    private function pullUpLeftMostFromLeftSubtree()
-    {
-        $left = $this->left;
-
-        if (!$left instanceof self) {
-            return $this;
-        }
-
-        $leftBalance = $left->information & ~3;
-        $this->left = $left->pullUpLeftMost();
-
-        if (
-            !($this->information & 2)
-            || $leftBalance != 0 && ($this->left instanceof self) && ($this->left->information & ~3) == 0
-        ) {
-            return $this->incBalance();
-        }
-
-        return $this;
-    }
-
-    /**
-     * Pull up left-most node when current node has no left subtree
-     *
-     * @return TreeNode The new root
-     *
-     * @since 1.0.0
-     */
-    private function pullUpLeftMostAtCurrentNode()
-    {
-        $left = $this->left;
-        $right = $this->right;
-
-        $left->keyInternal = $this->keyInternal;
-        $left->value = $this->value;
-
-        if ($this->information & 1) {
-            $right->left = $left;
-
-            return $right;
-        }
-
-        if ($left->right == $this) {
-            $left->information &= ~ 1;
-
-            return $right;
-        }
-
-        $right->information &= ~ 2;
-
-        return $left;
     }
 
     /**
@@ -772,160 +560,82 @@ class TreeNode implements \Countable
         $cmp = call_user_func($comparator, $key, $this->keyInternal);
 
         if ($cmp < 0) {
-            return $this->removeFromLeft($key, $comparator);
-        }
+            if ($this->information & 2) {
+                $left = $this->left;
 
-        if ($cmp > 0) {
-            return $this->removeFromRight($key, $comparator);
-        }
+                if (!$left instanceof self) {
+                    return $this;
+                }
 
-        return $this->removeCurrent();
-    }
+                $leftBalance = $left->information & ~3;
+                $this->left = $left->remove($key, $comparator);
 
-    /*
-     * Private helpers: remove
-     */
-
-    /**
-     * Remove from left subtree
-     *
-     * @param mixed    $key        The key
-     * @param callable $comparator The comparator function
-     *
-     * @return TreeNode|null The new root
-     *
-     * @since 1.0.0
-     */
-    private function removeFromLeft($key, $comparator)
-    {
-        if ($this->information & 2) {
-            $left = $this->left;
-
-            if (!$left instanceof self) {
-                return $this;
+                if (
+                    !($this->information & 2)
+                    || $leftBalance != 0 && ($this->left instanceof self) && ($this->left->information & ~3) == 0
+                ) {
+                    return $this->incBalance();
+                }
             }
+        } elseif ($cmp > 0) {
+            if ($this->information & 1) {
+                $right = $this->right;
 
-            $leftBalance = $left->information & ~3;
-            $this->left = $left->remove($key, $comparator);
+                if (!$right instanceof self) {
+                    return $this;
+                }
 
-            if (
-                !($this->information & 2)
-                || $leftBalance != 0 && ($this->left instanceof self) && ($this->left->information & ~3) == 0
-            ) {
-                return $this->incBalance();
+                $rightBalance = $right->information & ~3;
+                $this->right = $right->remove($key, $comparator);
+
+                if (
+                    !($this->information & 1)
+                    || $rightBalance != 0 && ($this->right instanceof self) && ($this->right->information & ~3) == 0
+                ) {
+                    return $this->decBalance();
+                }
+            }
+        } else {
+            if ($this->information & 1) {
+                $right = $this->right;
+
+                if (!$right instanceof self) {
+                    return $this;
+                }
+
+                $rightBalance = $right->information & ~3;
+                $this->right = $right->pullUpLeftMost();
+
+                if (
+                    !($this->information & 1)
+                    || $rightBalance != 0 && ($this->right instanceof self) && ($this->right->information & ~3) == 0
+                ) {
+                    return $this->decBalance();
+                }
+            } else {
+                $left = $this->left;
+                $right = $this->right;
+
+                if ($this->information & 2) {
+                    $left->right = $right;
+
+                    return $left;
+                } else {
+                    if ($left && $left->right == $this) {
+                        $left->information &= ~ 1;
+
+                        return $right;
+                    } elseif ($right && $right->left == $this) {
+                        $right->information &= ~ 2;
+
+                        return $left;
+                    } else {
+                        return null;
+                    }
+                }
             }
         }
 
         return $this;
-    }
-
-    /**
-     * Remove from right subtree
-     *
-     * @param mixed    $key        The key
-     * @param callable $comparator The comparator function
-     *
-     * @return TreeNode|null The new root
-     *
-     * @since 1.0.0
-     */
-    private function removeFromRight($key, $comparator)
-    {
-        if ($this->information & 1) {
-            $right = $this->right;
-
-            if (!$right instanceof self) {
-                return $this;
-            }
-
-            $rightBalance = $right->information & ~3;
-            $this->right = $right->remove($key, $comparator);
-
-            if (
-                !($this->information & 1)
-                || $rightBalance != 0 && ($this->right instanceof self) && ($this->right->information & ~3) == 0
-            ) {
-                return $this->decBalance();
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * Remove current node key
-     *
-     * @return TreeNode|null The new root
-     *
-     * @since 1.0.0
-     */
-    private function removeCurrent()
-    {
-        if ($this->information & 1) {
-            return $this->removeCurrentWithRightChild();
-        }
-
-        return $this->removeCurrentWithoutRightChild();
-    }
-
-    /**
-     * Remove current node when a right child exists
-     *
-     * @return TreeNode|null The new root
-     *
-     * @since 1.0.0
-     */
-    private function removeCurrentWithRightChild()
-    {
-        $right = $this->right;
-
-        if (!$right instanceof self) {
-            return $this;
-        }
-
-        $rightBalance = $right->information & ~3;
-        $this->right = $right->pullUpLeftMost();
-
-        if (
-            !($this->information & 1)
-            || $rightBalance != 0 && ($this->right instanceof self) && ($this->right->information & ~3) == 0
-        ) {
-            return $this->decBalance();
-        }
-
-        return $this;
-    }
-
-    /**
-     * Remove current node when no right child exists
-     *
-     * @return TreeNode|null The new root
-     *
-     * @since 1.0.0
-     */
-    private function removeCurrentWithoutRightChild()
-    {
-        $left = $this->left;
-        $right = $this->right;
-
-        if ($this->information & 2) {
-            $left->right = $right;
-
-            return $left;
-        }
-
-        if ($left && $left->right == $this) {
-            $left->information &= ~ 1;
-
-            return $right;
-        }
-
-        if ($right && $right->left == $this) {
-            $right->information &= ~ 2;
-
-            return $left;
-        }
-
-        return null;
     }
 }

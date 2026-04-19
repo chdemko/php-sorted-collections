@@ -118,94 +118,38 @@ class SubMap extends AbstractMap
     {
         switch ($property) {
             case 'fromKey':
-                return $this->getFromKey();
+                if ($this->fromOption == self::UNUSED) {
+                     throw new \RuntimeException('Undefined property');
+                } else {
+                    return $this->fromKey;
+                }
 
             case 'toKey':
-                return $this->getToKey();
+                if ($this->toOption == self::UNUSED) {
+                    throw new \RuntimeException('Undefined property');
+                } else {
+                    return $this->toKey;
+                }
 
             case 'fromInclusive':
-                return $this->isFromInclusive();
+                if ($this->fromOption == self::UNUSED) {
+                    throw new \RuntimeException('Undefined property');
+                } else {
+                    return $this->fromOption == self::INCLUSIVE;
+                }
 
             case 'toInclusive':
-                return $this->isToInclusive();
+                if ($this->toOption == self::UNUSED) {
+                    throw new \RuntimeException('Undefined property');
+                } else {
+                    return $this->toOption == self::INCLUSIVE;
+                }
 
             case 'map':
                 return $this->mapInternal;
             default:
                 return parent::__get($property);
         }
-    }
-
-    /**
-     * Get from key property value
-     *
-     * @return mixed
-     *
-     * @throws RuntimeException If from key is undefined
-     *
-     * @since 1.0.0
-     */
-    private function getFromKey()
-    {
-        if ($this->fromOption == self::UNUSED) {
-            throw new \RuntimeException('Undefined property');
-        }
-
-        return $this->fromKey;
-    }
-
-    /**
-     * Get to key property value
-     *
-     * @return mixed
-     *
-     * @throws RuntimeException If to key is undefined
-     *
-     * @since 1.0.0
-     */
-    private function getToKey()
-    {
-        if ($this->toOption == self::UNUSED) {
-            throw new \RuntimeException('Undefined property');
-        }
-
-        return $this->toKey;
-    }
-
-    /**
-     * Get fromInclusive property value
-     *
-     * @return boolean
-     *
-     * @throws RuntimeException If fromInclusive is undefined
-     *
-     * @since 1.0.0
-     */
-    private function isFromInclusive()
-    {
-        if ($this->fromOption == self::UNUSED) {
-            throw new \RuntimeException('Undefined property');
-        }
-
-        return $this->fromOption == self::INCLUSIVE;
-    }
-
-    /**
-     * Get toInclusive property value
-     *
-     * @return boolean
-     *
-     * @throws RuntimeException If toInclusive is undefined
-     *
-     * @since 1.0.0
-     */
-    private function isToInclusive()
-    {
-        if ($this->toOption == self::UNUSED) {
-            throw new \RuntimeException('Undefined property');
-        }
-
-        return $this->toOption == self::INCLUSIVE;
     }
 
     /**
@@ -224,98 +168,38 @@ class SubMap extends AbstractMap
     {
         switch ($property) {
             case 'fromKey':
-                $this->setFromKey($value);
+                $this->fromKey = $value;
+
+                if ($this->fromOption == self::UNUSED) {
+                     $this->fromOption = self::INCLUSIVE;
+                }
                 break;
             case 'toKey':
-                $this->setToKey($value);
+                $this->toKey = $value;
+
+                if ($this->toOption == self::UNUSED) {
+                    $this->toOption = self::EXCLUSIVE;
+                }
                 break;
             case 'fromInclusive':
-                $this->setFromInclusive($value);
+                if ($this->fromOption == self::UNUSED) {
+                    throw new \RuntimeException('Undefined property');
+                } else {
+                    $this->fromOption = $value ? self::INCLUSIVE : self::EXCLUSIVE;
+                }
                 break;
             case 'toInclusive':
-                $this->setToInclusive($value);
+                if ($this->toOption == self::UNUSED) {
+                    throw new \RuntimeException('Undefined property');
+                } else {
+                    $this->toOption = $value ? self::INCLUSIVE : self::EXCLUSIVE;
+                }
                 break;
             default:
                 throw new \RuntimeException('Undefined property');
         }
 
         $this->setEmpty();
-    }
-
-    /**
-     * Set from key bound
-     *
-     * @param mixed $value The from key
-     *
-     * @return void
-     *
-     * @since 1.0.0
-     */
-    private function setFromKey($value)
-    {
-        $this->fromKey = $value;
-
-        if ($this->fromOption == self::UNUSED) {
-            $this->fromOption = self::INCLUSIVE;
-        }
-    }
-
-    /**
-     * Set to key bound
-     *
-     * @param mixed $value The to key
-     *
-     * @return void
-     *
-     * @since 1.0.0
-     */
-    private function setToKey($value)
-    {
-        $this->toKey = $value;
-
-        if ($this->toOption == self::UNUSED) {
-            $this->toOption = self::EXCLUSIVE;
-        }
-    }
-
-    /**
-     * Set from inclusiveness
-     *
-     * @param mixed $value The from inclusive flag
-     *
-     * @return void
-     *
-     * @throws RuntimeException If from bound is undefined
-     *
-     * @since 1.0.0
-     */
-    private function setFromInclusive($value)
-    {
-        if ($this->fromOption == self::UNUSED) {
-            throw new \RuntimeException('Undefined property');
-        }
-
-        $this->fromOption = $value ? self::INCLUSIVE : self::EXCLUSIVE;
-    }
-
-    /**
-     * Set to inclusiveness
-     *
-     * @param mixed $value The to inclusive flag
-     *
-     * @return void
-     *
-     * @throws RuntimeException If to bound is undefined
-     *
-     * @since 1.0.0
-     */
-    private function setToInclusive($value)
-    {
-        if ($this->toOption == self::UNUSED) {
-            throw new \RuntimeException('Undefined property');
-        }
-
-        $this->toOption = $value ? self::INCLUSIVE : self::EXCLUSIVE;
     }
 
     /**
@@ -401,276 +285,13 @@ class SubMap extends AbstractMap
     protected function setEmpty()
     {
         if ($this->fromOption != self::UNUSED && $this->toOption != self::UNUSED) {
-            $cmp = $this->compareKeys($this->fromKey, $this->toKey);
+            $cmp = call_user_func($this->mapInternal->comparator(), $this->fromKey, $this->toKey);
 
             $this->empty = $cmp > 0
               || $cmp == 0 && ($this->fromOption == self::EXCLUSIVE || $this->toOption == self::EXCLUSIVE);
         } else {
             $this->empty = false;
         }
-    }
-
-    /**
-     * Compare 2 keys using the map comparator
-     *
-     * @param mixed $key1 First key
-     * @param mixed $key2 Second key
-     *
-     * @return integer Comparison result
-     *
-     * @since 1.0.0
-     */
-    private function compareKeys($key1, $key2)
-    {
-        return call_user_func($this->mapInternal->comparator(), $key1, $key2);
-    }
-
-    /**
-     * Validate lower() input against the lower bound
-     *
-     * @param mixed $key The searched key
-     *
-     * @return void
-     *
-     * @throws OutOfBoundsException If lower bound excludes the key
-     *
-     * @since 1.0.0
-     */
-    private function assertLowerAllowed($key)
-    {
-        if ($this->fromOption != self::UNUSED && $this->compareKeys($key, $this->fromKey) <= 0) {
-            throw new \OutOfBoundsException('Lower element unexisting');
-        }
-    }
-
-    /**
-     * Validate floor() input against the lower bound
-     *
-     * @param mixed $key The searched key
-     *
-     * @return void
-     *
-     * @throws OutOfBoundsException If lower bound excludes the key
-     *
-     * @since 1.0.0
-     */
-    private function assertFloorAllowed($key)
-    {
-        if (
-            ($this->fromOption == self::INCLUSIVE && $this->compareKeys($key, $this->fromKey) < 0)
-            || ($this->fromOption == self::EXCLUSIVE && $this->compareKeys($key, $this->fromKey) <= 0)
-        ) {
-            throw new \OutOfBoundsException('Floor element unexisting');
-        }
-    }
-
-    /**
-     * Validate higher() input against the upper bound
-     *
-     * @param mixed $key The searched key
-     *
-     * @return void
-     *
-     * @throws OutOfBoundsException If upper bound excludes the key
-     *
-     * @since 1.0.0
-     */
-    private function assertHigherAllowed($key)
-    {
-        if ($this->toOption != self::UNUSED && $this->compareKeys($key, $this->toKey) >= 0) {
-            throw new \OutOfBoundsException('Higher element unexisting');
-        }
-    }
-
-    /**
-     * Validate ceiling() input against the upper bound
-     *
-     * @param mixed $key The searched key
-     *
-     * @return void
-     *
-     * @throws OutOfBoundsException If upper bound excludes the key
-     *
-     * @since 1.0.0
-     */
-    private function assertCeilingAllowed($key)
-    {
-        if (
-            ($this->toOption == self::INCLUSIVE && $this->compareKeys($key, $this->toKey) > 0)
-            || ($this->toOption == self::EXCLUSIVE && $this->compareKeys($key, $this->toKey) >= 0)
-        ) {
-            throw new \OutOfBoundsException('Ceiling element unexisting');
-        }
-    }
-
-    /**
-     * Validate find() input against lower bound
-     *
-     * @param mixed $key The searched key
-     *
-     * @return void
-     *
-     * @throws OutOfBoundsException If lower bound excludes the key
-     *
-     * @since 1.0.0
-     */
-    private function assertFindLowerAllowed($key)
-    {
-        if (
-            ($this->fromOption == self::INCLUSIVE && $this->compareKeys($key, $this->fromKey) < 0)
-            || ($this->fromOption == self::EXCLUSIVE && $this->compareKeys($key, $this->fromKey) <= 0)
-        ) {
-            throw new \OutOfBoundsException('Element unexisting');
-        }
-    }
-
-    /**
-     * Validate find() input against upper bound
-     *
-     * @param mixed $key The searched key
-     *
-     * @return void
-     *
-     * @throws OutOfBoundsException If upper bound excludes the key
-     *
-     * @since 1.0.0
-     */
-    private function assertFindUpperAllowed($key)
-    {
-        if (
-            ($this->toOption == self::INCLUSIVE && $this->compareKeys($key, $this->toKey) > 0)
-            || ($this->toOption == self::EXCLUSIVE && $this->compareKeys($key, $this->toKey) >= 0)
-        ) {
-            throw new \OutOfBoundsException('Element unexisting');
-        }
-    }
-
-    /**
-     * Ensure lower() result respects an exclusive lower bound
-     *
-     * @param TreeNode $node The found node
-     *
-     * @return void
-     *
-     * @throws OutOfBoundsException If result is out of bounds
-     *
-     * @since 1.0.0
-     */
-    private function assertLowerResultInRange($node)
-    {
-        if ($node === null) {
-            return;
-        }
-
-        if ($this->fromOption == self::EXCLUSIVE && $this->compareKeys($node->key, $this->fromKey) <= 0) {
-            throw new \OutOfBoundsException('Lower element unexisting');
-        }
-    }
-
-    /**
-     * Ensure higher() result respects an exclusive upper bound
-     *
-     * @param TreeNode $node The found node
-     *
-     * @return void
-     *
-     * @throws OutOfBoundsException If result is out of bounds
-     *
-     * @since 1.0.0
-     */
-    private function assertHigherResultInRange($node)
-    {
-        if ($node === null) {
-            return;
-        }
-
-        if ($this->toOption == self::EXCLUSIVE && $this->compareKeys($node->key, $this->toKey) >= 0) {
-            throw new \OutOfBoundsException('Higher element unexisting');
-        }
-    }
-
-    /**
-     * Clamp a lower-like result against the upper bound
-     *
-     * @param TreeNode $node The found node
-     *
-     * @return TreeNode The clamped node
-     *
-     * @since 1.0.0
-     */
-    private function clampLowerToUpperBound($node)
-    {
-        if (
-            ($this->toOption == self::INCLUSIVE && $this->compareKeys($node->key, $this->toKey) > 0)
-            || ($this->toOption == self::EXCLUSIVE && $this->compareKeys($node->key, $this->toKey) >= 0)
-        ) {
-            return $this->last();
-        }
-
-        return $node;
-    }
-
-    /**
-     * Clamp a floor-like result against the upper bound
-     *
-     * @param TreeNode $node The found node
-     *
-     * @return TreeNode The clamped node
-     *
-     * @since 1.0.0
-     */
-    private function clampFloorToUpperBound($node)
-    {
-        if (
-            ($this->toOption == self::INCLUSIVE && $this->compareKeys($node->key, $this->toKey) > 0)
-            || ($this->toOption == self::EXCLUSIVE && $this->compareKeys($node->key, $this->toKey) >= 0)
-        ) {
-            return $this->last();
-        }
-
-        return $node;
-    }
-
-    /**
-     * Clamp a higher-like result against the lower bound
-     *
-     * @param TreeNode $node The found node
-     *
-     * @return TreeNode The clamped node
-     *
-     * @since 1.0.0
-     */
-    private function clampHigherToLowerBound($node)
-    {
-        if (
-            ($this->fromOption == self::INCLUSIVE && $this->compareKeys($node->key, $this->fromKey) < 0)
-            || ($this->fromOption == self::EXCLUSIVE && $this->compareKeys($node->key, $this->fromKey) <= 0)
-        ) {
-            return $this->first();
-        }
-
-        return $node;
-    }
-
-    /**
-     * Clamp a ceiling-like result against the lower bound
-     *
-     * @param TreeNode $node The found node
-     *
-     * @return TreeNode The clamped node
-     *
-     * @since 1.0.0
-     */
-    private function clampCeilingToLowerBound($node)
-    {
-        if (
-            ($this->fromOption == self::INCLUSIVE && $this->compareKeys($node->key, $this->fromKey) < 0)
-            || ($this->fromOption == self::EXCLUSIVE && $this->compareKeys($node->key, $this->fromKey) <= 0)
-        ) {
-            return $this->first();
-        }
-
-        return $node;
     }
 
     /**
@@ -898,13 +519,39 @@ class SubMap extends AbstractMap
             throw new \OutOfBoundsException('Lower element unexisting');
         }
 
-        $this->assertLowerAllowed($key);
+        switch ($this->fromOption) {
+            case self::UNUSED:
+                $lower = $this->map->lower($key);
+                break;
+            default:
+                if (call_user_func($this->map->comparator(), $key, $this->fromKey) <= 0) {
+                    throw new \OutOfBoundsException('Lower element unexisting');
+                } else {
+                    $lower = $this->map->lower($key);
 
-        $lower = $this->mapInternal->lower($key);
-        $this->assertLowerResultInRange($lower);
+                    if (
+                        $this->fromOption == self::EXCLUSIVE
+                          && call_user_func($this->map->comparator(), $lower->key, $this->fromKey) <= 0
+                    ) {
+                        throw new \OutOfBoundsException('Lower element unexisting');
+                    }
+                }
+                break;
+        }
 
         if ($lower) {
-            $lower = $this->clampLowerToUpperBound($lower);
+            switch ($this->toOption) {
+                case self::INCLUSIVE:
+                    if (call_user_func($this->map->comparator(), $lower->key, $this->toKey) > 0) {
+                          $lower = $this->last();
+                    }
+                    break;
+                case self::EXCLUSIVE:
+                    if (call_user_func($this->map->comparator(), $lower->key, $this->toKey) >= 0) {
+                        $lower = $this->last();
+                    }
+                    break;
+            }
         }
 
         return $lower;
@@ -927,12 +574,39 @@ class SubMap extends AbstractMap
             throw new \OutOfBoundsException('Floor element unexisting');
         }
 
-        $this->assertFloorAllowed($key);
-
-        $floor = $this->mapInternal->floor($key);
+        switch ($this->fromOption) {
+            case self::INCLUSIVE:
+                if (call_user_func($this->map->comparator(), $key, $this->fromKey) < 0) {
+                    throw new \OutOfBoundsException('Floor element unexisting');
+                } else {
+                    $floor = $this->map->floor($key);
+                }
+                break;
+            case self::EXCLUSIVE:
+                if (call_user_func($this->map->comparator(), $key, $this->fromKey) <= 0) {
+                    throw new \OutOfBoundsException('Floor element unexisting');
+                } else {
+                    $floor = $this->map->floor($key);
+                }
+                break;
+            default:
+                $floor = $this->map->floor($key);
+                break;
+        }
 
         if ($floor) {
-            $floor = $this->clampFloorToUpperBound($floor);
+            switch ($this->toOption) {
+                case self::INCLUSIVE:
+                    if (call_user_func($this->map->comparator(), $floor->key, $this->toKey) > 0) {
+                          $floor = $this->last();
+                    }
+                    break;
+                case self::EXCLUSIVE:
+                    if (call_user_func($this->map->comparator(), $floor->key, $this->toKey) >= 0) {
+                        $floor = $this->last();
+                    }
+                    break;
+            }
         }
 
         return $floor;
@@ -951,10 +625,33 @@ class SubMap extends AbstractMap
      */
     public function find($key)
     {
-        $this->assertFindLowerAllowed($key);
-        $this->assertFindUpperAllowed($key);
+        switch ($this->fromOption) {
+            case self::INCLUSIVE:
+                if (call_user_func($this->map->comparator(), $key, $this->fromKey) < 0) {
+                     throw new \OutOfBoundsException('Element unexisting');
+                }
+                break;
+            case self::EXCLUSIVE:
+                if (call_user_func($this->map->comparator(), $key, $this->fromKey) <= 0) {
+                    throw new \OutOfBoundsException('Element unexisting');
+                }
+                break;
+        }
 
-        return $this->mapInternal->find($key);
+        switch ($this->toOption) {
+            case self::INCLUSIVE:
+                if (call_user_func($this->map->comparator(), $key, $this->toKey) > 0) {
+                    throw new \OutOfBoundsException('Element unexisting');
+                }
+                break;
+            case self::EXCLUSIVE:
+                if (call_user_func($this->map->comparator(), $key, $this->toKey) >= 0) {
+                    throw new \OutOfBoundsException('Element unexisting');
+                }
+                break;
+        }
+
+        return $this->map->find($key);
     }
 
     /**
@@ -974,12 +671,39 @@ class SubMap extends AbstractMap
             throw new \OutOfBoundsException('Ceiling element unexisting');
         }
 
-        $this->assertCeilingAllowed($key);
-
-        $ceiling = $this->mapInternal->ceiling($key);
+        switch ($this->toOption) {
+            case self::INCLUSIVE:
+                if (call_user_func($this->map->comparator(), $key, $this->toKey) > 0) {
+                    throw new \OutOfBoundsException('Ceiling element unexisting');
+                } else {
+                    $ceiling = $this->map->ceiling($key);
+                }
+                break;
+            case self::EXCLUSIVE:
+                if (call_user_func($this->map->comparator(), $key, $this->toKey) >= 0) {
+                    throw new \OutOfBoundsException('Ceiling element unexisting');
+                } else {
+                    $ceiling = $this->map->ceiling($key);
+                }
+                break;
+            default:
+                $ceiling = $this->map->ceiling($key);
+                break;
+        }
 
         if ($ceiling) {
-            $ceiling = $this->clampCeilingToLowerBound($ceiling);
+            switch ($this->fromOption) {
+                case self::INCLUSIVE:
+                    if (call_user_func($this->map->comparator(), $ceiling->key, $this->fromKey) < 0) {
+                          $ceiling = $this->first();
+                    }
+                    break;
+                case self::EXCLUSIVE:
+                    if (call_user_func($this->map->comparator(), $ceiling->key, $this->fromKey) <= 0) {
+                        $ceiling = $this->first();
+                    }
+                    break;
+            }
         }
 
         return $ceiling;
@@ -1002,13 +726,39 @@ class SubMap extends AbstractMap
             throw new \OutOfBoundsException('Higher element unexisting');
         }
 
-        $this->assertHigherAllowed($key);
+        switch ($this->toOption) {
+            case self::UNUSED:
+                $higher = $this->map->higher($key);
+                break;
+            default:
+                if (call_user_func($this->map->comparator(), $key, $this->toKey) >= 0) {
+                    throw new \OutOfBoundsException('Higher element unexisting');
+                } else {
+                    $higher = $this->map->higher($key);
 
-        $higher = $this->mapInternal->higher($key);
-        $this->assertHigherResultInRange($higher);
+                    if (
+                        $this->toOption == self::EXCLUSIVE
+                          && call_user_func($this->map->comparator(), $higher->key, $this->toKey) >= 0
+                    ) {
+                        throw new \OutOfBoundsException('Higher element unexisting');
+                    }
+                }
+                break;
+        }
 
         if ($higher) {
-            $higher = $this->clampHigherToLowerBound($higher);
+            switch ($this->fromOption) {
+                case self::INCLUSIVE:
+                    if (call_user_func($this->map->comparator(), $higher->key, $this->fromKey) < 0) {
+                          $higher = $this->first();
+                    }
+                    break;
+                case self::EXCLUSIVE:
+                    if (call_user_func($this->map->comparator(), $higher->key, $this->fromKey) <= 0) {
+                        $higher = $this->first();
+                    }
+                    break;
+            }
         }
 
         return $higher;

@@ -48,26 +48,30 @@ abstract class AbstractMap implements SortedMap
      */
     public function __get($property)
     {
-        $map = array(
-            'comparator' => 'comparator',
-            'firstKey' => 'firstKey',
-            'lastKey' => 'lastKey',
-            'firstValue' => 'firstValue',
-            'lastValue' => 'lastValue',
-            'first' => 'first',
-            'last' => 'last',
-            'keys' => 'keys',
-            'values' => 'values',
-            'count' => 'count',
-        );
-
-        if (!isset($map[$property])) {
-            throw new \RuntimeException('Undefined property');
+        switch ($property) {
+            case 'comparator':
+                return $this->comparator();
+            case 'firstKey':
+                return $this->firstKey();
+            case 'lastKey':
+                return $this->lastKey();
+            case 'firstValue':
+                return $this->firstValue();
+            case 'lastValue':
+                return $this->lastValue();
+            case 'first':
+                return $this->first();
+            case 'last':
+                return $this->last();
+            case 'keys':
+                return $this->keys();
+            case 'values':
+                return $this->values();
+            case 'count':
+                return $this->count();
+            default:
+                throw new \RuntimeException('Undefined property');
         }
-
-        $method = $map[$property];
-
-        return $this->$method();
     }
 
     /**
