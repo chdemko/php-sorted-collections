@@ -119,7 +119,7 @@ class SubMap extends AbstractMap
         switch ($property) {
             case 'fromKey':
                 if ($this->fromOption == self::UNUSED) {
-                     throw new \RuntimeException('Undefined property');
+                    throw new \RuntimeException('Undefined property');
                 } else {
                     return $this->fromKey;
                 }
