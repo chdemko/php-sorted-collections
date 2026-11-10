@@ -4,7 +4,7 @@
  * chdemko\SortedCollection\SubMapTest class
  *
  * @author     Christophe Demko <chdemko@gmail.com>
- * @copyright  Copyright (C) 2012-2024 Christophe Demko. All rights reserved.
+ * @copyright  Copyright (C) 2012-2026 Christophe Demko. All rights reserved.
  *
  * @license    BSD 3-Clause License
  *
@@ -359,6 +359,64 @@ class SubMapTest extends TestCase
     }
 
     /**
+     * Tests SubMap::__unset updates empty flag when removing from bound
+     *
+     * @return void
+     *
+     * @since 1.0.0
+     */
+    #[CoversFunction('chdemko\SortedCollection\SubMap::__unset')]
+    #[CoversFunction('chdemko\SortedCollection\SubMap::setEmpty')]
+    #[CoversFunction('chdemko\SortedCollection\SubMap::first')]
+    #[CoversFunction('chdemko\SortedCollection\AbstractMap::firstKey')]
+    public function testUnsetFromKeyUpdatesEmptyFlag()
+    {
+        $tree = TreeMap::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
+        $sub = SubMap::create($tree, 5, 5, false, false);
+
+        $thrown = false;
+
+        try {
+            $key = $sub->firstKey;
+        } catch (\OutOfBoundsException $e) {
+            $thrown = true;
+        }
+
+        $this->assertTrue($thrown);
+
+        unset($sub->fromKey);
+
+        $this->assertEquals(
+            0,
+            $sub->firstKey
+        );
+    }
+
+    /**
+     * Tests SubMap::__unset updates empty flag when removing to bound
+     *
+     * @return void
+     *
+     * @since 1.0.0
+     */
+    #[CoversFunction('chdemko\SortedCollection\SubMap::__unset')]
+    #[CoversFunction('chdemko\SortedCollection\SubMap::setEmpty')]
+    #[CoversFunction('chdemko\SortedCollection\SubMap::first')]
+    #[CoversFunction('chdemko\SortedCollection\AbstractMap::firstKey')]
+    public function testUnsetToKeyUpdatesEmptyFlag()
+    {
+        $tree = TreeMap::create()->initialise(array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
+        $sub = SubMap::create($tree, 5, 5, false, false);
+
+        unset($sub->toKey);
+
+        $this->assertEquals(
+            6,
+            $sub->firstKey
+        );
+    }
+
+    /**
      * Tests  SubMap::__unset
      *
      * @return  void
@@ -624,6 +682,76 @@ class SubMapTest extends TestCase
             $lastKey,
             $this->createSub($fromKey, $toKey, $fromInclusive, $toInclusive)->lastKey
         );
+    }
+
+    /**
+     * Tests bounded views over sparse maps do not expose out-of-range keys
+     *
+     * @return void
+     *
+     * @since 1.0.0
+     */
+    #[CoversFunction('chdemko\SortedCollection\SubMap::first')]
+    #[CoversFunction('chdemko\SortedCollection\SubMap::last')]
+    #[CoversFunction('chdemko\SortedCollection\SubMap::lower')]
+    #[CoversFunction('chdemko\SortedCollection\SubMap::floor')]
+    #[CoversFunction('chdemko\SortedCollection\SubMap::ceiling')]
+    #[CoversFunction('chdemko\SortedCollection\SubMap::higher')]
+    #[CoversFunction('chdemko\SortedCollection\SubMap::count')]
+    public function testSparseMapBounds()
+    {
+        $map = TreeMap::create()->initialise(array(1 => 1, 9 => 9));
+        $empty = SubMap::create($map, 3, 7);
+
+        $this->assertSame(array(), $empty->toArray());
+        $this->assertSame(0, count($empty));
+
+        $set = TreeSet::create()->initialise(array(1, 9));
+        $emptySet = SubSet::create($set, 3, 7);
+
+        $this->assertSame(array(), $emptySet->toArray());
+        $this->assertSame(0, count($emptySet));
+
+        $queries = array(
+            function () use ($empty) {
+                return $empty->firstKey;
+            },
+            function () use ($empty) {
+                return $empty->lastKey;
+            },
+            function () use ($empty) {
+                return $empty->lowerKey(4);
+            },
+            function () use ($empty) {
+                return $empty->floorKey(4);
+            },
+            function () use ($empty) {
+                return $empty->ceilingKey(4);
+            },
+            function () use ($empty) {
+                return $empty->higherKey(4);
+            },
+        );
+
+        foreach ($queries as $query) {
+            try {
+                $query();
+                $this->fail('Expected an OutOfBoundsException');
+            } catch (\OutOfBoundsException $e) {
+            }
+        }
+
+        $map = TreeMap::create()->initialise(array(1 => 1, 4 => 4, 9 => 9));
+        $sub = SubMap::create($map, 3, 7);
+
+        $this->assertSame(4, $sub->firstKey);
+        $this->assertSame(4, $sub->lastKey);
+        $this->assertSame(4, $sub->lowerKey(5));
+        $this->assertSame(4, $sub->floorKey(5));
+        $this->assertSame(4, $sub->ceilingKey(3));
+        $this->assertSame(4, $sub->higherKey(3));
+        $this->assertSame(array(4 => 4), $sub->toArray());
+        $this->assertSame(1, count($sub));
     }
 
     /**

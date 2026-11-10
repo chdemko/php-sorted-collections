@@ -4,7 +4,7 @@
  * chdemko\SortedCollection\TreeMapTest class
  *
  * @author    Christophe Demko <chdemko@gmail.com>
- * @copyright Copyright (C) 2012-2024 Christophe Demko. All rights reserved.
+ * @copyright Copyright (C) 2012-2026 Christophe Demko. All rights reserved.
  *
  * @license BSD 3-Clause License
  *
@@ -161,6 +161,33 @@ class TreeMapTest extends TestCase
         $this->assertEquals(
             $comparator,
             $tree->comparator
+        );
+    }
+
+    /**
+     * Tests TreeMap default comparator with string keys
+     *
+     * @return void
+     *
+     * @since 1.0.0
+     */
+    #[CoversFunction('chdemko\SortedCollection\TreeMap::__construct')]
+    #[CoversFunction('chdemko\SortedCollection\TreeMap::offsetSet')]
+    #[CoversFunction('chdemko\SortedCollection\TreeMap::first')]
+    #[CoversFunction('chdemko\SortedCollection\TreeMap::last')]
+    #[CoversFunction('chdemko\SortedCollection\AbstractMap::firstKey')]
+    #[CoversFunction('chdemko\SortedCollection\AbstractMap::lastKey')]
+    public function testDefaultComparatorSupportsStringKeys()
+    {
+        $tree = TreeMap::create()->initialise(array('b' => 2, 'a' => 1));
+
+        $this->assertEquals(
+            'a',
+            $tree->firstKey
+        );
+        $this->assertEquals(
+            'b',
+            $tree->lastKey
         );
     }
 
@@ -335,6 +362,41 @@ class TreeMapTest extends TestCase
             $this->assertEquals($i, $value);
             $i++;
         }
+    }
+
+    /**
+     * Tests Iterator::next when already exhausted
+     *
+     * @return void
+     *
+     * @since 1.0.0
+     */
+    #[CoversFunction('chdemko\SortedCollection\Iterator::next')]
+    #[CoversFunction('chdemko\SortedCollection\Iterator::valid')]
+    #[CoversFunction('chdemko\SortedCollection\TreeMap::successor')]
+    public function testIteratorNextOnExhaustedIterator()
+    {
+        $tree = TreeMap::create()->initialise(array(1 => 1));
+        $iterator = $tree->getIterator();
+
+        $iterator->rewind();
+        $iterator->next();
+
+        $this->assertFalse($iterator->valid());
+
+        set_error_handler(
+            function ($severity, $message, $file, $line) {
+                throw new \ErrorException($message, 0, $severity, $file, $line);
+            }
+        );
+
+        try {
+            $iterator->next();
+        } finally {
+            restore_error_handler();
+        }
+
+        $this->assertFalse($iterator->valid());
     }
 
     /**

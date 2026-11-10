@@ -4,7 +4,7 @@
  * chdemko\SortedCollection\ReversedSet class
  *
  * @author    Christophe Demko <chdemko@gmail.com>
- * @copyright Copyright (C) 2012-2024 Christophe Demko. All rights reserved.
+ * @copyright Copyright (C) 2012-2026 Christophe Demko. All rights reserved.
  *
  * @license BSD 3-Clause License
  *
@@ -35,7 +35,7 @@ class ReversedSet extends AbstractSet
      *
      * @since 1.0.0
      */
-    private $set;
+    private $setInternal;
 
     /**
      * Constructor
@@ -46,7 +46,17 @@ class ReversedSet extends AbstractSet
      */
     protected function __construct(SortedSet $set)
     {
-        $this->setMap(ReversedMap::create($set->getMap()))->set = $set;
+        if ($set instanceof AbstractSet) {
+            $map = $set->getMap();
+        } else {
+            $map = TreeMap::create($set->comparator());
+
+            foreach ($set as $value) {
+                $map[$value] = true;
+            }
+        }
+
+        $this->setMap(ReversedMap::create($map))->setInternal = $set;
     }
 
     /**
@@ -76,7 +86,7 @@ class ReversedSet extends AbstractSet
     {
         switch ($property) {
             case 'set':
-                return $this->set;
+                return $this->setInternal;
             default:
                 return parent::__get($property);
         }
@@ -91,6 +101,6 @@ class ReversedSet extends AbstractSet
      */
     public function jsonSerialize(): array
     {
-        return array('ReversedSet' => $this->set->jsonSerialize());
+        return array('ReversedSet' => $this->setInternal->jsonSerialize());
     }
 }

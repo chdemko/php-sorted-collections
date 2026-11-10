@@ -4,7 +4,7 @@
  * chdemko\SortedCollection\TreeNodeTest class
  *
  * @author     Christophe Demko <chdemko@gmail.com>
- * @copyright  Copyright (C) 2012-2024 Christophe Demko. All rights reserved.
+ * @copyright  Copyright (C) 2012-2026 Christophe Demko. All rights reserved.
  *
  * @license    BSD 3-Clause License
  *
@@ -41,7 +41,7 @@ class TreeNodeTest extends TestCase
             $string = '(';
 
             // Set the key property accessible
-            $key = (new \ReflectionClass($node))->getProperty('key');
+            $key = (new \ReflectionClass($node))->getProperty('keyInternal');
             $key->setAccessible(true);
             $string .= $key->getValue($node);
 

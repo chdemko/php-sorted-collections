@@ -4,7 +4,7 @@
  * TreeMap benchmark class
  *
  * @author     Christophe Demko <chdemko@gmail.com>
- * @copyright  Copyright (C) 2012-2024 Christophe Demko. All rights reserved.
+ * @copyright  Copyright (C) 2012-2026 Christophe Demko. All rights reserved.
  *
  * @license    BSD 3-Clause License
  *
@@ -33,11 +33,18 @@ class TreeMapBench
     protected $tree;
 
     /**
-     * @var chdemko\SortedCollection\SortedMap The sorted map
+     * @var \chdemko\SortedCollection\SortedMap The sorted map
      *
      * @since 1.0.5
      */
     protected $data;
+
+    /**
+     * @var integer Sink value used to consume benchmark results
+     *
+     * @since 1.0.5
+     */
+    protected $sink = 0;
 
     /**
      * Provider for counts
@@ -72,13 +79,11 @@ class TreeMapBench
     /**
      * Create the tree map.
      *
-     * @param array $params Array of parameters
-     *
      * @return void
      *
      * @since 1.0.5
      */
-    public function init($params)
+    public function init()
     {
         $this->tree = TreeMap::create();
     }
@@ -126,13 +131,11 @@ class TreeMapBench
     /**
      * Clear the tree map.
      *
-     * @param array $params Array of parameters
-     *
      * @return void
      *
      * @since 1.0.5
      */
-    public function finish($params)
+    public function finish()
     {
         $this->tree->clear();
     }
@@ -170,6 +173,8 @@ class TreeMapBench
      */
     public function benchSearch($params)
     {
+        $sink = 0;
+
         if (isset($params['from'])) {
             $min = (int) ($params['from'] * $params['count']);
         } else {
@@ -183,8 +188,10 @@ class TreeMapBench
         }
 
         for ($i = $min; $i < $max; $i++) {
-            $value = $this->data[$i];
+            $sink += $this->data[$i];
         }
+
+        $this->sink = $sink;
     }
 
     /**

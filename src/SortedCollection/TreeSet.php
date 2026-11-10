@@ -4,7 +4,7 @@
  * chdemko\SortedCollection\TreeSet class
  *
  * @author    Christophe Demko <chdemko@gmail.com>
- * @copyright Copyright (C) 2012-2024 Christophe Demko. All rights reserved.
+ * @copyright Copyright (C) 2012-2026 Christophe Demko. All rights reserved.
  *
  * @license BSD 3-Clause License
  *
@@ -58,7 +58,7 @@ class TreeSet extends AbstractSet
     /**
      * Put values in the set
      *
-     * @param \Traversable $traversable Values to put in the set
+     * @param iterable $traversable Values to put in the set
      *
      * @return TreeSet $this for chaining
      *
@@ -82,7 +82,13 @@ class TreeSet extends AbstractSet
      */
     public function clear()
     {
-        $this->getMap()->clear();
+        $map = $this->getMap();
+
+        if ($map instanceof TreeMap) {
+            $map->clear();
+        } else {
+            $this->setMap(TreeMap::create($map->comparator()));
+        }
 
         return $this;
     }
@@ -90,7 +96,7 @@ class TreeSet extends AbstractSet
     /**
      * Initialise the set
      *
-     * @param \Traversable $traversable Values to initialise the set
+     * @param iterable $traversable Values to initialise the set
      *
      * @return TreeSet $this for chaining
      *

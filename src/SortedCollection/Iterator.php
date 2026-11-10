@@ -4,7 +4,7 @@
  * chdemko\SortedCollection\Iterator class
  *
  * @author    Christophe Demko <chdemko@gmail.com>
- * @copyright Copyright (C) 2012-2024 Christophe Demko. All rights reserved.
+ * @copyright Copyright (C) 2012-2026 Christophe Demko. All rights reserved.
  *
  * @license BSD 3-Clause License
  *
@@ -188,6 +188,10 @@ class Iterator implements \Iterator
      */
     public function next(): void
     {
+        if ($this->current === null) {
+            return;
+        }
+
         try {
             $this->current = $this->map->successor($this->current);
         } catch (\OutOfBoundsException $e) {
