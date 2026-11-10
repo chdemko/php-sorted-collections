@@ -403,6 +403,10 @@ class SubMap extends AbstractMap
                 break;
         }
 
+        if ($this->isAboveRange($first->key)) {
+            throw new \OutOfBoundsException('First element unexisting');
+        }
+
         return $first;
     }
 
@@ -433,7 +437,51 @@ class SubMap extends AbstractMap
                 break;
         }
 
+        if ($this->isBelowRange($last->key)) {
+            throw new \OutOfBoundsException('Last element unexisting');
+        }
+
         return $last;
+    }
+
+    /**
+     * Check whether a key is below the lower bound
+     *
+     * @param mixed $key The key
+     *
+     * @return boolean
+     *
+     * @since 1.0.0
+     */
+    private function isBelowRange($key)
+    {
+        if ($this->fromOption == self::UNUSED) {
+            return false;
+        }
+
+        $cmp = call_user_func($this->mapInternal->comparator(), $key, $this->fromKey);
+
+        return $cmp < 0 || $cmp == 0 && $this->fromOption == self::EXCLUSIVE;
+    }
+
+    /**
+     * Check whether a key is above the upper bound
+     *
+     * @param mixed $key The key
+     *
+     * @return boolean
+     *
+     * @since 1.0.0
+     */
+    private function isAboveRange($key)
+    {
+        if ($this->toOption == self::UNUSED) {
+            return false;
+        }
+
+        $cmp = call_user_func($this->mapInternal->comparator(), $key, $this->toKey);
+
+        return $cmp > 0 || $cmp == 0 && $this->toOption == self::EXCLUSIVE;
     }
 
     /**
@@ -451,19 +499,8 @@ class SubMap extends AbstractMap
     {
         $predecessor = $this->map->predecessor($element);
 
-        if ($predecessor) {
-            switch ($this->fromOption) {
-                case self::INCLUSIVE:
-                    if (call_user_func($this->map->comparator(), $predecessor->key, $this->fromKey) < 0) {
-                        throw new \OutOfBoundsException('Predecessor element unexisting');
-                    }
-                    break;
-                case self::EXCLUSIVE:
-                    if (call_user_func($this->map->comparator(), $predecessor->key, $this->fromKey) <= 0) {
-                        throw new \OutOfBoundsException('Predecessor element unexisting');
-                    }
-                    break;
-            }
+        if ($this->isBelowRange($predecessor->key) || $this->isAboveRange($predecessor->key)) {
+            throw new \OutOfBoundsException('Predecessor element unexisting');
         }
 
         return $predecessor;
@@ -484,19 +521,8 @@ class SubMap extends AbstractMap
     {
         $successor = $this->map->successor($element);
 
-        if ($successor) {
-            switch ($this->toOption) {
-                case self::INCLUSIVE:
-                    if (call_user_func($this->map->comparator(), $successor->key, $this->toKey) > 0) {
-                        throw new \OutOfBoundsException('Successor element unexisting');
-                    }
-                    break;
-                case self::EXCLUSIVE:
-                    if (call_user_func($this->map->comparator(), $successor->key, $this->toKey) >= 0) {
-                        throw new \OutOfBoundsException('Successor element unexisting');
-                    }
-                    break;
-            }
+        if ($this->isBelowRange($successor->key) || $this->isAboveRange($successor->key)) {
+            throw new \OutOfBoundsException('Successor element unexisting');
         }
 
         return $successor;
@@ -539,19 +565,12 @@ class SubMap extends AbstractMap
                 break;
         }
 
-        if ($lower) {
-            switch ($this->toOption) {
-                case self::INCLUSIVE:
-                    if (call_user_func($this->map->comparator(), $lower->key, $this->toKey) > 0) {
-                          $lower = $this->last();
-                    }
-                    break;
-                case self::EXCLUSIVE:
-                    if (call_user_func($this->map->comparator(), $lower->key, $this->toKey) >= 0) {
-                        $lower = $this->last();
-                    }
-                    break;
-            }
+        if ($this->isBelowRange($lower->key)) {
+            throw new \OutOfBoundsException('Lower element unexisting');
+        }
+
+        if ($this->isAboveRange($lower->key)) {
+            return $this->last();
         }
 
         return $lower;
@@ -594,19 +613,12 @@ class SubMap extends AbstractMap
                 break;
         }
 
-        if ($floor) {
-            switch ($this->toOption) {
-                case self::INCLUSIVE:
-                    if (call_user_func($this->map->comparator(), $floor->key, $this->toKey) > 0) {
-                          $floor = $this->last();
-                    }
-                    break;
-                case self::EXCLUSIVE:
-                    if (call_user_func($this->map->comparator(), $floor->key, $this->toKey) >= 0) {
-                        $floor = $this->last();
-                    }
-                    break;
-            }
+        if ($this->isBelowRange($floor->key)) {
+            throw new \OutOfBoundsException('Floor element unexisting');
+        }
+
+        if ($this->isAboveRange($floor->key)) {
+            return $this->last();
         }
 
         return $floor;
@@ -691,19 +703,12 @@ class SubMap extends AbstractMap
                 break;
         }
 
-        if ($ceiling) {
-            switch ($this->fromOption) {
-                case self::INCLUSIVE:
-                    if (call_user_func($this->map->comparator(), $ceiling->key, $this->fromKey) < 0) {
-                          $ceiling = $this->first();
-                    }
-                    break;
-                case self::EXCLUSIVE:
-                    if (call_user_func($this->map->comparator(), $ceiling->key, $this->fromKey) <= 0) {
-                        $ceiling = $this->first();
-                    }
-                    break;
-            }
+        if ($this->isAboveRange($ceiling->key)) {
+            throw new \OutOfBoundsException('Ceiling element unexisting');
+        }
+
+        if ($this->isBelowRange($ceiling->key)) {
+            return $this->first();
         }
 
         return $ceiling;
@@ -746,19 +751,12 @@ class SubMap extends AbstractMap
                 break;
         }
 
-        if ($higher) {
-            switch ($this->fromOption) {
-                case self::INCLUSIVE:
-                    if (call_user_func($this->map->comparator(), $higher->key, $this->fromKey) < 0) {
-                          $higher = $this->first();
-                    }
-                    break;
-                case self::EXCLUSIVE:
-                    if (call_user_func($this->map->comparator(), $higher->key, $this->fromKey) <= 0) {
-                        $higher = $this->first();
-                    }
-                    break;
-            }
+        if ($this->isAboveRange($higher->key)) {
+            throw new \OutOfBoundsException('Higher element unexisting');
+        }
+
+        if ($this->isBelowRange($higher->key)) {
+            return $this->first();
         }
 
         return $higher;

@@ -9,7 +9,7 @@
 		{
 			"name": "Christophe Demko",
 			"email": "chdemko@gmail.com",
-			"homepage": "https://chdemko.pagelab.univ-lr.fr/",
+			"homepage": "https://chdemko.github.io/",
 			"role": "Developer"
 		}
 	],
@@ -19,8 +19,8 @@
 	"require-dev": {
 		"php-coveralls/php-coveralls": "^2.9",
 		"squizlabs/php_codesniffer": "^4.0",
-		"phpunit/phpunit": "^13.1",
-		"phpbench/phpbench": "^1.6"
+		"phpunit/phpunit": "^13.4",
+		"phpbench/phpbench": "^1.7"
 	},
 	"autoload": {
 		"psr-4": {

@@ -685,6 +685,76 @@ class SubMapTest extends TestCase
     }
 
     /**
+     * Tests bounded views over sparse maps do not expose out-of-range keys
+     *
+     * @return void
+     *
+     * @since 1.0.0
+     */
+    #[CoversFunction('chdemko\SortedCollection\SubMap::first')]
+    #[CoversFunction('chdemko\SortedCollection\SubMap::last')]
+    #[CoversFunction('chdemko\SortedCollection\SubMap::lower')]
+    #[CoversFunction('chdemko\SortedCollection\SubMap::floor')]
+    #[CoversFunction('chdemko\SortedCollection\SubMap::ceiling')]
+    #[CoversFunction('chdemko\SortedCollection\SubMap::higher')]
+    #[CoversFunction('chdemko\SortedCollection\SubMap::count')]
+    public function testSparseMapBounds()
+    {
+        $map = TreeMap::create()->initialise(array(1 => 1, 9 => 9));
+        $empty = SubMap::create($map, 3, 7);
+
+        $this->assertSame(array(), $empty->toArray());
+        $this->assertSame(0, count($empty));
+
+        $set = TreeSet::create()->initialise(array(1, 9));
+        $emptySet = SubSet::create($set, 3, 7);
+
+        $this->assertSame(array(), $emptySet->toArray());
+        $this->assertSame(0, count($emptySet));
+
+        $queries = array(
+            function () use ($empty) {
+                return $empty->firstKey;
+            },
+            function () use ($empty) {
+                return $empty->lastKey;
+            },
+            function () use ($empty) {
+                return $empty->lowerKey(4);
+            },
+            function () use ($empty) {
+                return $empty->floorKey(4);
+            },
+            function () use ($empty) {
+                return $empty->ceilingKey(4);
+            },
+            function () use ($empty) {
+                return $empty->higherKey(4);
+            },
+        );
+
+        foreach ($queries as $query) {
+            try {
+                $query();
+                $this->fail('Expected an OutOfBoundsException');
+            } catch (\OutOfBoundsException $e) {
+            }
+        }
+
+        $map = TreeMap::create()->initialise(array(1 => 1, 4 => 4, 9 => 9));
+        $sub = SubMap::create($map, 3, 7);
+
+        $this->assertSame(4, $sub->firstKey);
+        $this->assertSame(4, $sub->lastKey);
+        $this->assertSame(4, $sub->lowerKey(5));
+        $this->assertSame(4, $sub->floorKey(5));
+        $this->assertSame(4, $sub->ceilingKey(3));
+        $this->assertSame(4, $sub->higherKey(3));
+        $this->assertSame(array(4 => 4), $sub->toArray());
+        $this->assertSame(1, count($sub));
+    }
+
+    /**
      * Data provider for testPredecessor
      *
      * @return  array
